@@ -1,0 +1,832 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3118EFC225C59993002B3711 /* PatientFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFC125C59993002B3711 /* PatientFormView.swift */; };
+		3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFC125C59993002B3711 /* PatientFormView.swift */; };
+		3118EFD725C5C7F2002B3711 /* StackedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFD625C5C7F2002B3711 /* StackedTextField.swift */; };
+		3118EFD825C5C7F2002B3711 /* StackedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFD625C5C7F2002B3711 /* StackedTextField.swift */; };
+		3118EFEA25C5E398002B3711 /* PatientsListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFE925C5E398002B3711 /* PatientsListsView.swift */; };
+		3118EFEB25C5E398002B3711 /* PatientsListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFE925C5E398002B3711 /* PatientsListsView.swift */; };
+		3118EFF125C5E88F002B3711 /* ListFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFF025C5E88F002B3711 /* ListFormView.swift */; };
+		3118EFF225C5E88F002B3711 /* ListFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFF025C5E88F002B3711 /* ListFormView.swift */; };
+		3118EFFC25C60311002B3711 /* PatientListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFFB25C60311002B3711 /* PatientListDetailView.swift */; };
+		3118EFFD25C60311002B3711 /* PatientListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFFB25C60311002B3711 /* PatientListDetailView.swift */; };
+		3118F00325C608BD002B3711 /* PatientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118F00225C608BD002B3711 /* PatientRowView.swift */; };
+		3118F00425C608BD002B3711 /* PatientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118F00225C608BD002B3711 /* PatientRowView.swift */; };
+		3118F01425C615F1002B3711 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118F01325C615F1002B3711 /* ListRow.swift */; };
+		3118F01525C615F1002B3711 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118F01325C615F1002B3711 /* ListRow.swift */; };
+		311C861625C6E1860021E596 /* AddPatientToListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C861525C6E1860021E596 /* AddPatientToListView.swift */; };
+		311C861725C6E1860021E596 /* AddPatientToListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C861525C6E1860021E596 /* AddPatientToListView.swift */; };
+		311C861D25C6E9F20021E596 /* PatientRowAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C861C25C6E9F20021E596 /* PatientRowAddView.swift */; };
+		311C861E25C6E9F20021E596 /* PatientRowAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C861C25C6E9F20021E596 /* PatientRowAddView.swift */; };
+		311C862425C6F94A0021E596 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C862325C6F94A0021E596 /* SearchBar.swift */; };
+		311C862525C6F94A0021E596 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311C862325C6F94A0021E596 /* SearchBar.swift */; };
+		311CA84725C5774800E4513A /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CA84625C5774800E4513A /* Tests_iOS.swift */; };
+		311CA85225C5774900E4513A /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CA85125C5774900E4513A /* Tests_macOS.swift */; };
+		311CA85425C5774900E4513A /* Kreboot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */; };
+		311CA85525C5774900E4513A /* Kreboot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */; };
+		311CA85625C5774900E4513A /* KrebootApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CA82A25C5774700E4513A /* KrebootApp.swift */; };
+		311CA85725C5774900E4513A /* KrebootApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CA82A25C5774700E4513A /* KrebootApp.swift */; };
+		311CA85825C5774900E4513A /* PatientsDBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CA82B25C5774700E4513A /* PatientsDBView.swift */; };
+		311CA85925C5774900E4513A /* PatientsDBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CA82B25C5774700E4513A /* PatientsDBView.swift */; };
+		311CA85A25C5774900E4513A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CA82C25C5774700E4513A /* Persistence.swift */; };
+		311CA85B25C5774900E4513A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CA82C25C5774700E4513A /* Persistence.swift */; };
+		311CA85C25C5774900E4513A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311CA82D25C5774800E4513A /* Assets.xcassets */; };
+		311CA85D25C5774900E4513A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311CA82D25C5774800E4513A /* Assets.xcassets */; };
+		31548B8B25C71A6F00097F2F /* ListFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */; };
+		31548B8C25C71A6F00097F2F /* ListFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */; };
+		31548B9225C71E9A00097F2F /* DynamicFilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9125C71E9A00097F2F /* DynamicFilteredList.swift */; };
+		31548B9325C71E9A00097F2F /* DynamicFilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9125C71E9A00097F2F /* DynamicFilteredList.swift */; };
+		31548B9D25C7273500097F2F /* DynamicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9C25C7273500097F2F /* DynamicGroup.swift */; };
+		31548B9E25C7273500097F2F /* DynamicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9C25C7273500097F2F /* DynamicGroup.swift */; };
+		31548BA425C7286A00097F2F /* StarredPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548BA325C7286A00097F2F /* StarredPatientsList.swift */; };
+		31548BA525C7286A00097F2F /* StarredPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548BA325C7286A00097F2F /* StarredPatientsList.swift */; };
+		315E5A4D25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */; };
+		315E5A4E25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		311CA84325C5774800E4513A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 311CA82325C5774700E4513A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 311CA83125C5774800E4513A;
+			remoteInfo = "Kreboot (iOS)";
+		};
+		311CA84E25C5774800E4513A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 311CA82325C5774700E4513A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 311CA83925C5774800E4513A;
+			remoteInfo = "Kreboot (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3118EFC125C59993002B3711 /* PatientFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormView.swift; sourceTree = "<group>"; };
+		3118EFD625C5C7F2002B3711 /* StackedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedTextField.swift; sourceTree = "<group>"; };
+		3118EFE925C5E398002B3711 /* PatientsListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListsView.swift; sourceTree = "<group>"; };
+		3118EFF025C5E88F002B3711 /* ListFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFormView.swift; sourceTree = "<group>"; };
+		3118EFFB25C60311002B3711 /* PatientListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListDetailView.swift; sourceTree = "<group>"; };
+		3118F00225C608BD002B3711 /* PatientRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRowView.swift; sourceTree = "<group>"; };
+		3118F01325C615F1002B3711 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
+		311C861525C6E1860021E596 /* AddPatientToListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientToListView.swift; sourceTree = "<group>"; };
+		311C861C25C6E9F20021E596 /* PatientRowAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRowAddView.swift; sourceTree = "<group>"; };
+		311C862325C6F94A0021E596 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		311CA82925C5774700E4513A /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
+		311CA82A25C5774700E4513A /* KrebootApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KrebootApp.swift; sourceTree = "<group>"; };
+		311CA82B25C5774700E4513A /* PatientsDBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsDBView.swift; sourceTree = "<group>"; };
+		311CA82C25C5774700E4513A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		311CA82D25C5774800E4513A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		311CA83225C5774800E4513A /* Kreboot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kreboot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		311CA83525C5774800E4513A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		311CA83A25C5774800E4513A /* Kreboot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kreboot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		311CA83C25C5774800E4513A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		311CA83D25C5774800E4513A /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		311CA84225C5774800E4513A /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		311CA84625C5774800E4513A /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
+		311CA84825C5774800E4513A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		311CA84D25C5774800E4513A /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		311CA85125C5774900E4513A /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		311CA85325C5774900E4513A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilterEnum.swift; sourceTree = "<group>"; };
+		31548B9125C71E9A00097F2F /* DynamicFilteredList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicFilteredList.swift; sourceTree = "<group>"; };
+		31548B9C25C7273500097F2F /* DynamicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGroup.swift; sourceTree = "<group>"; };
+		31548BA325C7286A00097F2F /* StarredPatientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPatientsList.swift; sourceTree = "<group>"; };
+		315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionnedPatientsList.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		311CA82F25C5774800E4513A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311CA83725C5774800E4513A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311CA83F25C5774800E4513A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311CA84A25C5774800E4513A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3118F00925C6142A002B3711 /* List Related */ = {
+			isa = PBXGroup;
+			children = (
+				3118EFE925C5E398002B3711 /* PatientsListsView.swift */,
+				315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */,
+				31548BA325C7286A00097F2F /* StarredPatientsList.swift */,
+				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
+				3118F01325C615F1002B3711 /* ListRow.swift */,
+				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
+				3118EFFB25C60311002B3711 /* PatientListDetailView.swift */,
+				311C862325C6F94A0021E596 /* SearchBar.swift */,
+				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
+				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
+				31548B9125C71E9A00097F2F /* DynamicFilteredList.swift */,
+				31548B9C25C7273500097F2F /* DynamicGroup.swift */,
+			);
+			path = "List Related";
+			sourceTree = "<group>";
+		};
+		3118F00A25C6143C002B3711 /* Patient Related */ = {
+			isa = PBXGroup;
+			children = (
+				311CA82B25C5774700E4513A /* PatientsDBView.swift */,
+				3118F00225C608BD002B3711 /* PatientRowView.swift */,
+				3118EFC125C59993002B3711 /* PatientFormView.swift */,
+			);
+			path = "Patient Related";
+			sourceTree = "<group>";
+		};
+		311CA82225C5774700E4513A = {
+			isa = PBXGroup;
+			children = (
+				311CA82725C5774700E4513A /* Shared */,
+				311CA83425C5774800E4513A /* iOS */,
+				311CA83B25C5774800E4513A /* macOS */,
+				311CA84525C5774800E4513A /* Tests iOS */,
+				311CA85025C5774900E4513A /* Tests macOS */,
+				311CA83325C5774800E4513A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		311CA82725C5774700E4513A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				311CA82A25C5774700E4513A /* KrebootApp.swift */,
+				3118EFD625C5C7F2002B3711 /* StackedTextField.swift */,
+				3118F00A25C6143C002B3711 /* Patient Related */,
+				3118F00925C6142A002B3711 /* List Related */,
+				311CA82C25C5774700E4513A /* Persistence.swift */,
+				311CA82D25C5774800E4513A /* Assets.xcassets */,
+				311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		311CA83325C5774800E4513A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				311CA83225C5774800E4513A /* Kreboot.app */,
+				311CA83A25C5774800E4513A /* Kreboot.app */,
+				311CA84225C5774800E4513A /* Tests iOS.xctest */,
+				311CA84D25C5774800E4513A /* Tests macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		311CA83425C5774800E4513A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				311CA83525C5774800E4513A /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		311CA83B25C5774800E4513A /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				311CA83C25C5774800E4513A /* Info.plist */,
+				311CA83D25C5774800E4513A /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		311CA84525C5774800E4513A /* Tests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				311CA84625C5774800E4513A /* Tests_iOS.swift */,
+				311CA84825C5774800E4513A /* Info.plist */,
+			);
+			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		311CA85025C5774900E4513A /* Tests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				311CA85125C5774900E4513A /* Tests_macOS.swift */,
+				311CA85325C5774900E4513A /* Info.plist */,
+			);
+			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		311CA83125C5774800E4513A /* Kreboot (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 311CA86025C5774900E4513A /* Build configuration list for PBXNativeTarget "Kreboot (iOS)" */;
+			buildPhases = (
+				311CA82E25C5774800E4513A /* Sources */,
+				311CA82F25C5774800E4513A /* Frameworks */,
+				311CA83025C5774800E4513A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kreboot (iOS)";
+			productName = "Kreboot (iOS)";
+			productReference = 311CA83225C5774800E4513A /* Kreboot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		311CA83925C5774800E4513A /* Kreboot (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 311CA86325C5774900E4513A /* Build configuration list for PBXNativeTarget "Kreboot (macOS)" */;
+			buildPhases = (
+				311CA83625C5774800E4513A /* Sources */,
+				311CA83725C5774800E4513A /* Frameworks */,
+				311CA83825C5774800E4513A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kreboot (macOS)";
+			productName = "Kreboot (macOS)";
+			productReference = 311CA83A25C5774800E4513A /* Kreboot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		311CA84125C5774800E4513A /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 311CA86625C5774900E4513A /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				311CA83E25C5774800E4513A /* Sources */,
+				311CA83F25C5774800E4513A /* Frameworks */,
+				311CA84025C5774800E4513A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				311CA84425C5774800E4513A /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = 311CA84225C5774800E4513A /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		311CA84C25C5774800E4513A /* Tests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 311CA86925C5774900E4513A /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildPhases = (
+				311CA84925C5774800E4513A /* Sources */,
+				311CA84A25C5774800E4513A /* Frameworks */,
+				311CA84B25C5774800E4513A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				311CA84F25C5774800E4513A /* PBXTargetDependency */,
+			);
+			name = "Tests macOS";
+			productName = "Tests macOS";
+			productReference = 311CA84D25C5774800E4513A /* Tests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		311CA82325C5774700E4513A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					311CA83125C5774800E4513A = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					311CA83925C5774800E4513A = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					311CA84125C5774800E4513A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 311CA83125C5774800E4513A;
+					};
+					311CA84C25C5774800E4513A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 311CA83925C5774800E4513A;
+					};
+				};
+			};
+			buildConfigurationList = 311CA82625C5774700E4513A /* Build configuration list for PBXProject "Kreboot" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 311CA82225C5774700E4513A;
+			productRefGroup = 311CA83325C5774800E4513A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				311CA83125C5774800E4513A /* Kreboot (iOS) */,
+				311CA83925C5774800E4513A /* Kreboot (macOS) */,
+				311CA84125C5774800E4513A /* Tests iOS */,
+				311CA84C25C5774800E4513A /* Tests macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		311CA83025C5774800E4513A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				311CA85C25C5774900E4513A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311CA83825C5774800E4513A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				311CA85D25C5774900E4513A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311CA84025C5774800E4513A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311CA84B25C5774800E4513A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		311CA82E25C5774800E4513A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3118EFD725C5C7F2002B3711 /* StackedTextField.swift in Sources */,
+				3118F00325C608BD002B3711 /* PatientRowView.swift in Sources */,
+				311CA85625C5774900E4513A /* KrebootApp.swift in Sources */,
+				31548B9D25C7273500097F2F /* DynamicGroup.swift in Sources */,
+				3118EFC225C59993002B3711 /* PatientFormView.swift in Sources */,
+				31548B9225C71E9A00097F2F /* DynamicFilteredList.swift in Sources */,
+				311CA85A25C5774900E4513A /* Persistence.swift in Sources */,
+				311C861625C6E1860021E596 /* AddPatientToListView.swift in Sources */,
+				3118EFEA25C5E398002B3711 /* PatientsListsView.swift in Sources */,
+				315E5A4D25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */,
+				311C862425C6F94A0021E596 /* SearchBar.swift in Sources */,
+				3118EFF125C5E88F002B3711 /* ListFormView.swift in Sources */,
+				311CA85425C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
+				31548B8B25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,
+				3118F01425C615F1002B3711 /* ListRow.swift in Sources */,
+				311CA85825C5774900E4513A /* PatientsDBView.swift in Sources */,
+				311C861D25C6E9F20021E596 /* PatientRowAddView.swift in Sources */,
+				3118EFFC25C60311002B3711 /* PatientListDetailView.swift in Sources */,
+				31548BA425C7286A00097F2F /* StarredPatientsList.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311CA83625C5774800E4513A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3118EFD825C5C7F2002B3711 /* StackedTextField.swift in Sources */,
+				3118F00425C608BD002B3711 /* PatientRowView.swift in Sources */,
+				311CA85725C5774900E4513A /* KrebootApp.swift in Sources */,
+				31548B9E25C7273500097F2F /* DynamicGroup.swift in Sources */,
+				3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */,
+				31548B9325C71E9A00097F2F /* DynamicFilteredList.swift in Sources */,
+				311CA85B25C5774900E4513A /* Persistence.swift in Sources */,
+				311C861725C6E1860021E596 /* AddPatientToListView.swift in Sources */,
+				3118EFEB25C5E398002B3711 /* PatientsListsView.swift in Sources */,
+				315E5A4E25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */,
+				311C862525C6F94A0021E596 /* SearchBar.swift in Sources */,
+				3118EFF225C5E88F002B3711 /* ListFormView.swift in Sources */,
+				311CA85525C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
+				31548B8C25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,
+				3118F01525C615F1002B3711 /* ListRow.swift in Sources */,
+				311CA85925C5774900E4513A /* PatientsDBView.swift in Sources */,
+				311C861E25C6E9F20021E596 /* PatientRowAddView.swift in Sources */,
+				3118EFFD25C60311002B3711 /* PatientListDetailView.swift in Sources */,
+				31548BA525C7286A00097F2F /* StarredPatientsList.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311CA83E25C5774800E4513A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				311CA84725C5774800E4513A /* Tests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		311CA84925C5774800E4513A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				311CA85225C5774900E4513A /* Tests_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		311CA84425C5774800E4513A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 311CA83125C5774800E4513A /* Kreboot (iOS) */;
+			targetProxy = 311CA84325C5774800E4513A /* PBXContainerItemProxy */;
+		};
+		311CA84F25C5774800E4513A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 311CA83925C5774800E4513A /* Kreboot (macOS) */;
+			targetProxy = 311CA84E25C5774800E4513A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		311CA85E25C5774900E4513A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		311CA85F25C5774900E4513A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		311CA86125C5774900E4513A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6365P5X875;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Ursularium.Kreboot;
+				PRODUCT_NAME = Kreboot;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		311CA86225C5774900E4513A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6365P5X875;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Ursularium.Kreboot;
+				PRODUCT_NAME = Kreboot;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		311CA86425C5774900E4513A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6365P5X875;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ursularium.Kreboot;
+				PRODUCT_NAME = Kreboot;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		311CA86525C5774900E4513A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6365P5X875;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Ursularium.Kreboot;
+				PRODUCT_NAME = Kreboot;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		311CA86725C5774900E4513A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6365P5X875;
+				INFOPLIST_FILE = "Tests iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Ursularium.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Kreboot (iOS)";
+			};
+			name = Debug;
+		};
+		311CA86825C5774900E4513A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6365P5X875;
+				INFOPLIST_FILE = "Tests iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Ursularium.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Kreboot (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		311CA86A25C5774900E4513A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6365P5X875;
+				INFOPLIST_FILE = "Tests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "Ursularium.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Kreboot (macOS)";
+			};
+			name = Debug;
+		};
+		311CA86B25C5774900E4513A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6365P5X875;
+				INFOPLIST_FILE = "Tests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "Ursularium.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Kreboot (macOS)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		311CA82625C5774700E4513A /* Build configuration list for PBXProject "Kreboot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				311CA85E25C5774900E4513A /* Debug */,
+				311CA85F25C5774900E4513A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		311CA86025C5774900E4513A /* Build configuration list for PBXNativeTarget "Kreboot (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				311CA86125C5774900E4513A /* Debug */,
+				311CA86225C5774900E4513A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		311CA86325C5774900E4513A /* Build configuration list for PBXNativeTarget "Kreboot (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				311CA86425C5774900E4513A /* Debug */,
+				311CA86525C5774900E4513A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		311CA86625C5774900E4513A /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				311CA86725C5774900E4513A /* Debug */,
+				311CA86825C5774900E4513A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		311CA86925C5774900E4513A /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				311CA86A25C5774900E4513A /* Debug */,
+				311CA86B25C5774900E4513A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				311CA82925C5774700E4513A /* Shared.xcdatamodel */,
+			);
+			currentVersion = 311CA82925C5774700E4513A /* Shared.xcdatamodel */;
+			path = Kreboot.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 311CA82325C5774700E4513A /* Project object */;
+}

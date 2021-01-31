@@ -10,7 +10,7 @@ import CoreData
 import SwiftUI
 
 enum ListFilterEnum: CaseIterable {
-    case all, favorite, archived
+    case all, favorite, active, archived
     
     var label: String {
         switch self {
@@ -20,6 +20,8 @@ enum ListFilterEnum: CaseIterable {
             return "Archived"
         case .favorite:
             return "Favorite"
+        case .active:
+            return "Active"
         }
     }
     
@@ -32,6 +34,8 @@ enum ListFilterEnum: CaseIterable {
             return NSPredicate(format: "isArchived = %d", true)
         case .favorite:
             return NSPredicate(format: "isFavorite = %d", true)
+        case .active:
+            return NSPredicate(format: "isArchived = %d", false)
         }
     }
     
