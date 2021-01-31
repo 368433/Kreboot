@@ -28,11 +28,11 @@ struct KrebootApp: App {
                 }.tabItem { Label("Patients", systemImage: "person.2.fill") }
 
                 NavigationView{
-                    PatientFormView()
+                    BillingView()
                 }.tabItem { Label("Billing", systemImage: "latch.2.case") }
                 
                 NavigationView{
-                    PatientFormView()
+                    AnalyticsView()
                 }.tabItem { Label("Analytics", systemImage: "sum") }
                 
             }.environment(\.managedObjectContext, persistenceController.container.viewContext)

@@ -23,16 +23,22 @@ struct PatientListDetailView: View {
                     Text("some other useful information").font(.footnote)
                 }.lineLimit(1).foregroundColor(.secondary)
             }.padding()
-            List {
-                ForEach(list.patientsArray, content: PatientRowView.init)
-            }
-        }
+//            List {
+//                ForEach(list.patientsArray, content: PatientRowView.init)
+                ForEach(list.patientsArray){ patient in
+                DisclosureGroup(
+                    content: { Text("test") },
+                    label: { PatientRowView(patient: patient) }
+                )}
+//            }
+            Spacer()
+        }.padding()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar{
             ToolbarItem(placement: .primaryAction){
                 HStack {
-                    Button(action: {showEditListForm.toggle()}){Image(systemName: "square.and.pencil")}
-                    Button(action: {showAddForm.toggle()}){Image(systemName: "person.crop.circle.badge.plus")}
+                    Button(action: {showEditListForm.toggle()}){Image(systemName: "square.and.pencil").font(.body)}
+                    Button(action: {showAddForm.toggle()}){Image(systemName: "plus").font(.body)}
                 }.sheet(isPresented: $showEditListForm, content: {
                     ListFormView(list: list)
                 })
