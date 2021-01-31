@@ -40,6 +40,10 @@ extension Patient {
 }
 
 extension PatientsList {
+    public var wrappedTitle: String {
+        title ?? "No title"
+    }
+    
     public var patientCountDescription: String {
         let number = String(self.patients?.count ?? 0)
         let text = number == "0" ? "patient":"patients"

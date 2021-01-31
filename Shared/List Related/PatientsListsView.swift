@@ -26,7 +26,8 @@ struct PatientsListsView: View {
             }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
             List {
                 DynamicFilteredList(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
-                    NavigationLink(destination: PatientListDetailView(list: list)){ListRow(list: list)
+                    NavigationLink(destination: PatientListDetailView(list: list)){
+                        ListRow(list: list)
                     }
                 }
             }
@@ -41,6 +42,12 @@ struct PatientsListsView: View {
             }
         }.sheet(isPresented: $presentForm, content: {ListFormView()})
     }
+}
+
+private func update(_ result: FetchedResults<PatientsList>) -> [[PatientsList]] {
+    return Dictionary(grouping: result) {(element: PatientsList) in
+        element.wrappedTitle
+    }.values.map{$0}
 }
 
 struct PatientsListsView_Previews: PreviewProvider {

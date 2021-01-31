@@ -1,17 +1,15 @@
 //
-//  DynamicallyFilteredList.swift
-//  KarlaMay
+//  DynamicGroup.swift
+//  Kreboot
 //
-//  Created by quarticAIMBP2018 on 2020-05-13.
-//  Copyright © 2020 quarticAIMBP2018. All rights reserved.
+//  Created by Amir Mac Pro 2019 on 2021-01-31.
 //
-//  Copied from Hackingwithswift Rights to Paul Hudson and adapted
 
 import SwiftUI
 import Foundation
 import CoreData
 
-struct DynamicFilteredList<T: NSManagedObject, Content: View>: View {
+struct DynamicGroup<T: NSManagedObject, Content: View>: View {
     
     @Environment(\.managedObjectContext) var moc
     var fetchRequest: FetchRequest<T>
