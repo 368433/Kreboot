@@ -38,7 +38,7 @@ enum ListFilterEnum: CaseIterable {
     var descriptors: [NSSortDescriptor] {
         switch self {
         default:
-            return [NSSortDescriptor(keyPath: \PatientsList.dateCreated, ascending: true)]
+            return [NSSortDescriptor(keyPath: \PatientsList.title, ascending: true)]
         }
     }
 }

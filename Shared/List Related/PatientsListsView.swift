@@ -25,15 +25,12 @@ struct PatientsListsView: View {
                 }
             }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
             List {
-            DynamicFilteredList(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
-                NavigationLink(destination: PatientListDetailView(list: list)){ListRow(list: list)
+                DynamicFilteredList(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
+                    NavigationLink(destination: PatientListDetailView(list: list)){ListRow(list: list)
+                    }
                 }
             }
-            }
             Spacer()
-            //            List(lists){list in
-            //                NavigationLink(destination: PatientListDetailView(list: list)){ListRow(list: list)}
-            //            }.listStyle(PlainListStyle())
         }
         .toolbar {
             ToolbarItem(placement: .principal){
