@@ -30,13 +30,13 @@ struct ListRow: View {
                 Text(list.patientCountDescription).font(.caption).foregroundColor(.secondary)
             }
             Spacer()
-            Button(action: toggleFavorite){Image(systemName: list.isFavorite ? "star.fill":"star")}
+//            Button(action: toggleFavorite){Image(systemName: list.isFavorite ? "star.fill":"star")}
         }
     }
-    private func toggleFavorite(){
-        list.isFavorite.toggle()
-        list.saveYourself(in: viewContext)
-    }
+//    private func toggleFavorite(){
+//        list.isFavorite.toggle()
+//        list.saveYourself(in: viewContext)
+//    }
 }
 
 private let itemFormatter: DateFormatter = {
