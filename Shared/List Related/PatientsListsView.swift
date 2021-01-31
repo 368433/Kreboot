@@ -37,18 +37,11 @@ struct PatientsListsView: View {
                 Text("Lists").font(.largeTitle).fontWeight(.bold)
             }
             ToolbarItem(placement: .primaryAction){
-                Button(action: addList){Image(systemName: "plus")}
-                    .sheet(isPresented: $presentForm, content: {ListFormView()})
+                Button(action: {presentForm.toggle()}){Image(systemName: "plus")}
             }
-        }
-    }
-    
-    private func addList(){
-        presentForm.toggle()
+        }.sheet(isPresented: $presentForm, content: {ListFormView()})
     }
 }
-
-
 
 struct PatientsListsView_Previews: PreviewProvider {
     static var previews: some View {
