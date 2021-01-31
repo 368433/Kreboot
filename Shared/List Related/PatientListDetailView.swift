@@ -18,7 +18,10 @@ struct PatientListDetailView: View {
         VStack(alignment:.leading, spacing:0){
             HStack(alignment:.top){
                 Text(list.wrappedTitle).font(.title).fontWeight(.heavy)
-                Text("test")
+                VStack (alignment:.leading){
+                    Text("Semaine du "+list.dayLabel(dateStyle: .medium)).font(.footnote)
+                    Text("some other useful information").font(.footnote)
+                }.lineLimit(1).foregroundColor(.secondary)
             }.padding()
             List {
                 ForEach(list.patientsArray, content: PatientRowView.init)

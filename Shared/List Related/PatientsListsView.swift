@@ -16,23 +16,22 @@ struct PatientsListsView: View {
     
     var body: some View {
         VStack{
-            Picker("Test", selection: $listGroup) {
-                ForEach(ListFilterEnum.allCases, id:\.self){option in
-                    Text(option.label).tag(option)
-                }
-            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
             List {
                 DynamicFilteredList(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
                     NavigationLink(destination: PatientListDetailView(list: list)){
                         ListRow(list: list)
                     }
                 }
-            }.listStyle(PlainListStyle())
+            }
             Spacer()
         }
         .toolbar {
             ToolbarItem(placement: .principal){
-                Text("Lists").font(.largeTitle).fontWeight(.bold)
+                Picker("Test", selection: $listGroup) {
+                    ForEach(ListFilterEnum.allCases, id:\.self){option in
+                        Text(option.label).tag(option)
+                    }
+                }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
             }
             ToolbarItem(placement: .primaryAction){
                 Button(action: {presentForm.toggle()}){Image(systemName: "plus")}

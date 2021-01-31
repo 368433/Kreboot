@@ -12,7 +12,7 @@ struct ListFormView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     var list : PatientsList?
-    var navigationTitle: String?
+    var defaultStar: Bool
     var disableSave: Bool {
         return title == ""
     }
@@ -23,14 +23,14 @@ struct ListFormView: View {
     @State var isFavorite: Bool = false
     @State var dateCreated: Date = Date()
     
-    init(list: PatientsList? = nil, navigationTitle: String? = nil){
-        self.navigationTitle = navigationTitle
+    init(list: PatientsList? = nil, starred: Bool = false ){
+        self.defaultStar = starred
         self.list = list
         self._title = State(initialValue: list?.title ?? "")
         self._listDescription = State(initialValue: list?.listDescription ?? "")
         self._dateCreated = State(initialValue: list?.dateCreated ?? Date())
         self._isArchived = State(initialValue: list?.isArchived ?? false)
-        self._isFavorite = State(initialValue: list?.isFavorite ?? false)
+        self._isFavorite = State(initialValue: starred ? true:(list?.isFavorite ?? false))
     }
     
     var body: some View {
@@ -62,7 +62,7 @@ struct ListFormView: View {
         .padding()
         .toolbar{
             ToolbarItem(placement: .principal){
-                Text(navigationTitle ?? "")
+                Text("")
             }
             ToolbarItem(placement: .confirmationAction){
                 Button("Save", action: Save)
