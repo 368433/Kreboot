@@ -185,11 +185,11 @@
 			isa = PBXGroup;
 			children = (
 				311CA82A25C5774700E4513A /* KrebootApp.swift */,
+				311CA82C25C5774700E4513A /* Persistence.swift */,
 				3118EFD625C5C7F2002B3711 /* StackedTextField.swift */,
 				3118F00A25C6143C002B3711 /* Patient Related */,
 				3118F00925C6142A002B3711 /* List Related */,
 				315E5A5725C754C6005DB2A9 /* PlaceHolderViews */,
-				311CA82C25C5774700E4513A /* Persistence.swift */,
 				311CA82D25C5774800E4513A /* Assets.xcassets */,
 				311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */,
 			);

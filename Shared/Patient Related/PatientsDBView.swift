@@ -68,9 +68,3 @@ struct ContentView_Previews: PreviewProvider {
         PatientsDBView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
-
-//struct ContentView_Previews_2: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}

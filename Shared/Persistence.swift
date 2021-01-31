@@ -14,17 +14,24 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        let newPatient = Patient(context: viewContext)
-        newPatient.name = "bob"
-//        for _ in 0..<10 {
-//            let newPatient = Patient(context: viewContext)
-//            newPatient.name = "A dude" + String(Int.random(in: 0..<20))
-//        }
+        //Generating sample patients
+        for _ in 0..<10 {
+            let newPatient = Patient(context: viewContext)
+            newPatient.name = "A dude" + String(Int.random(in: 10..<200))
+            newPatient.ramqNumber = String(Int.random(in: 1000000..<99999999))
+        }
+        
+        //Generating sample lists
+        for _ in 0..<10 {
+            let newList = PatientsList(context: viewContext)
+            newList.title = "List number " +  String(Int.random(in: 10..<200))
+            newList.isFavorite = Int.random(in: 0..<2) == 0 ? false:true
+            newList.isArchived = Int.random(in: 0..<4) == 0 ? false:true
+        }
+        
         do {
             try viewContext.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }

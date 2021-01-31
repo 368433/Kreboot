@@ -48,6 +48,6 @@ private func update(_ result: FetchedResults<PatientsList>) -> [[PatientsList]] 
 
 struct PatientsListsView_Previews: PreviewProvider {
     static var previews: some View {
-        PatientsListsView()
+        PatientsListsView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
