@@ -35,39 +35,21 @@ struct PatientFormView: View {
     
     var body: some View {
         List {
-            Section {
+            Section(header: Text("Personnal data")) {
                 TextField("Name", text: $name)
                     .labeledTF(label: "Name", isEmpty: name == "")
                 TextField("PostalCode", text: $postalCode)
                     .labeledTF(label: "Postal Code", isEmpty: postalCode == "")
                 DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
             }
-            Section {
+            Section(header: Text("Healthcare system Data")) {
                 TextField("RAMQ", text: $ramq)
                     .labeledTF(label: "RAMQ", isEmpty: ramq == "")
                 TextField("Chart number", text: $chartNumber)
                     .labeledTF(label: "Chart Number", isEmpty: chartNumber == "")
             }
         }.listStyle(GroupedListStyle())
-//        ScrollView{
-//            //            VStack (alignment: .leading) {
-//            //                Text("Patient").font(.headline)
-//            VStack (alignment: .leading, spacing: 2){
-//                TextField("Name", text: $name)
-//                    .labeledTF(label: "Name", isEmpty: name == "")
-//                TextField("RAMQ", text: $ramq)
-//                    .labeledTF(label: "RAMQ", isEmpty: ramq == "")
-//                TextField("Chart number", text: $chartNumber)
-//                    .labeledTF(label: "Chart Number", isEmpty: chartNumber == "")
-//                TextField("PostalCode", text: $postalCode)
-//                    .labeledTF(label: "Postal Code", isEmpty: postalCode == "")
-//                DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
-//                Divider()
-//            }
-//            //            }
-//            //.textFieldStyle(RoundedBorderTextFieldStyle())
-//        }
-//        .padding()
+
         .toolbar{
             ToolbarItem(placement:.principal){Text("Patient form")}
             ToolbarItem(placement: .confirmationAction){
