@@ -13,7 +13,7 @@ struct ListRow: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "list.bullet.rectangle").scaledToFit().font(.title).foregroundColor(.secondary)
+            Image(systemName: "rectangle.stack.person.crop").scaledToFit().font(.title).foregroundColor(.secondary)
             VStack(alignment:.leading){
                 HStack {
                     Text((list.title ?? "No title").localizedCapitalized).fontWeight(.semibold).foregroundColor(.primary)

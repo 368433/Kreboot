@@ -15,37 +15,44 @@ struct PatientListDetailView: View {
     @ObservedObject var list: PatientsList
 
     var body: some View {
-        VStack(alignment:.leading, spacing:0){
-            HStack(alignment:.top){
-                Text(list.wrappedTitle).font(.title).fontWeight(.heavy)
-                VStack (alignment:.leading){
-                    Text("Semaine du "+list.dayLabel(dateStyle: .medium)).font(.footnote)
-                    Text("some other useful information").font(.footnote)
-                }.lineLimit(1).foregroundColor(.secondary)
+        ScrollView {
+            VStack(alignment:.leading){
+                HStack(alignment:.top){
+                    Text(list.wrappedTitle).font(.title).fontWeight(.heavy)
+                    VStack (alignment:.leading){
+                        Text("Semaine du "+list.dayLabel(dateStyle: .medium)).font(.footnote)
+                        Text("some other useful information").font(.footnote)
+                    }.lineLimit(1).foregroundColor(.secondary)
+                }.padding()
+                VStack (spacing: 5){
+                    ForEach(list.patientsArray){ patient in
+                        PatientRowView(patient: patient)
+                    }
+                }
+    //            List {
+    //                ForEach(list.patientsArray, content: PatientRowView.init)
+    //                ForEach(list.patientsArray){ patient in
+    //                DisclosureGroup(
+    //                    content: { Text("test") },
+    //                    label: { PatientRowView(patient: patient) }
+    //                )}
+    //            }
+                Spacer()
             }.padding()
-//            List {
-//                ForEach(list.patientsArray, content: PatientRowView.init)
-                ForEach(list.patientsArray){ patient in
-                DisclosureGroup(
-                    content: { Text("test") },
-                    label: { PatientRowView(patient: patient) }
-                )}
-//            }
-            Spacer()
-        }.padding()
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar{
-            ToolbarItem(placement: .primaryAction){
-                HStack {
-                    Button(action: {showEditListForm.toggle()}){Image(systemName: "square.and.pencil").font(.body)}
-                    Button(action: {showAddForm.toggle()}){Image(systemName: "plus").font(.body)}
-                }.sheet(isPresented: $showEditListForm, content: {
-                    ListFormView(list: list)
-                })
-            }
-        }.sheet(isPresented: $showAddForm, content: {
-            AddPatientToListView(list: list).environment(\.managedObjectContext, viewContext)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar{
+                ToolbarItem(placement: .primaryAction){
+                    HStack {
+                        Button(action: {showEditListForm.toggle()}){Image(systemName: "square.and.pencil").font(.body)}
+                        Button(action: {showAddForm.toggle()}){Image(systemName: "plus.rectangle.on.rectangle").font(.body)}
+                    }.sheet(isPresented: $showEditListForm, content: {
+                        ListFormView(list: list)
+                    })
+                }
+            }.sheet(isPresented: $showAddForm, content: {
+                AddPatientToListView(list: list).environment(\.managedObjectContext, viewContext)
         })
+        }
     }
 }
 

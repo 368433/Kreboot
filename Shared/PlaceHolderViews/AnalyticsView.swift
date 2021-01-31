@@ -9,7 +9,26 @@ import SwiftUI
 
 struct AnalyticsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView{
+            NavigationLink(
+                destination: SecondView(),
+                label: {
+                    VStack {
+                        Text("Navigate")
+                    }
+                }
+            )
+        }
+    }
+}
+
+struct SecondView: View {
+    var body: some View{
+        List{
+            ForEach(0..<10, id:\.self){ index in
+                Text("Row number \(index)")
+            }
+        }
     }
 }
 

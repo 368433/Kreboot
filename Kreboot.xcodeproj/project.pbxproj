@@ -39,6 +39,8 @@
 		311CA85B25C5774900E4513A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311CA82C25C5774700E4513A /* Persistence.swift */; };
 		311CA85C25C5774900E4513A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311CA82D25C5774800E4513A /* Assets.xcassets */; };
 		311CA85D25C5774900E4513A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311CA82D25C5774800E4513A /* Assets.xcassets */; };
+		314C9A7E25C7720800E5B9FE /* PatientRow2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C9A7D25C7720800E5B9FE /* PatientRow2.swift */; };
+		314C9A7F25C7720800E5B9FE /* PatientRow2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C9A7D25C7720800E5B9FE /* PatientRow2.swift */; };
 		31548B8B25C71A6F00097F2F /* ListFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */; };
 		31548B8C25C71A6F00097F2F /* ListFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */; };
 		31548B9225C71E9A00097F2F /* DynamicFilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9125C71E9A00097F2F /* DynamicFilteredList.swift */; };
@@ -99,6 +101,7 @@
 		311CA84D25C5774800E4513A /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		311CA85125C5774900E4513A /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		311CA85325C5774900E4513A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		314C9A7D25C7720800E5B9FE /* PatientRow2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRow2.swift; sourceTree = "<group>"; };
 		31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilterEnum.swift; sourceTree = "<group>"; };
 		31548B9125C71E9A00097F2F /* DynamicFilteredList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicFilteredList.swift; sourceTree = "<group>"; };
 		31548B9C25C7273500097F2F /* DynamicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGroup.swift; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 			children = (
 				311CA82B25C5774700E4513A /* PatientsDBView.swift */,
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,
+				314C9A7D25C7720800E5B9FE /* PatientRow2.swift */,
 				3118EFC125C59993002B3711 /* PatientFormView.swift */,
 			);
 			path = "Patient Related";
@@ -413,6 +417,7 @@
 				311CA85625C5774900E4513A /* KrebootApp.swift in Sources */,
 				31548B9D25C7273500097F2F /* DynamicGroup.swift in Sources */,
 				315E5A6425C754E0005DB2A9 /* BillingView.swift in Sources */,
+				314C9A7E25C7720800E5B9FE /* PatientRow2.swift in Sources */,
 				3118EFC225C59993002B3711 /* PatientFormView.swift in Sources */,
 				31548B9225C71E9A00097F2F /* DynamicFilteredList.swift in Sources */,
 				311CA85A25C5774900E4513A /* Persistence.swift in Sources */,
@@ -441,6 +446,7 @@
 				311CA85725C5774900E4513A /* KrebootApp.swift in Sources */,
 				31548B9E25C7273500097F2F /* DynamicGroup.swift in Sources */,
 				315E5A6525C754E0005DB2A9 /* BillingView.swift in Sources */,
+				314C9A7F25C7720800E5B9FE /* PatientRow2.swift in Sources */,
 				3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */,
 				31548B9325C71E9A00097F2F /* DynamicFilteredList.swift in Sources */,
 				311CA85B25C5774900E4513A /* Persistence.swift in Sources */,

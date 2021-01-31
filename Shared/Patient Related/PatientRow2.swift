@@ -1,13 +1,13 @@
 //
-//  PatientRowView.swift
+//  PatientRow2.swift
 //  Kreboot
 //
-//  Created by Amir Mac Pro 2019 on 2021-01-30.
+//  Created by Amir Mac Pro 2019 on 2021-01-31.
 //
 
 import SwiftUI
 
-struct PatientRowView: View {
+struct PatientRow2: View {
     @ObservedObject var patient: Patient
     
     var body: some View {
@@ -18,14 +18,12 @@ struct PatientRowView: View {
             }
             Spacer()
             Button(action: {}){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}
-        }
+        }.padding().background(Color.white).cornerRadius(3.0).padding().shadow(radius: 5)
     }
 }
 
-struct PatientRowView_Previews: PreviewProvider {
+struct PatientRow2_Previews: PreviewProvider {
     static var previews: some View {
-        let patient = Patient(context: PersistenceController.preview.container.viewContext)
-        patient.name = "test"
-        return PatientRowView(patient: patient)
+        PatientRow2(patient: PersistenceController.singlePatient)
     }
 }
