@@ -14,45 +14,39 @@ struct PatientsDBView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Patient.name, ascending: true)], animation: .default)
     private var patients: FetchedResults<Patient>
     
+    @State private var showForm: Bool = false
+    
     var body: some View {
-        List {
-            ForEach(patients) { pt in
-                NavigationLink(destination: PatientFormView(patient: pt)){
-                    PatientRowView(patient: pt)
+        VStack (alignment:.leading){
+            List {
+                ForEach(patients) { pt in
+                    NavigationLink(destination: PatientFormView(patient: pt)){
+                        PatientRowView(patient: pt)
+                    }
+                }.onDelete(perform: deleteItems)
+            }
+            .toolbar {
+                ToolbarItem(placement: .principal){
+                    Text("Patients").font(.largeTitle).fontWeight(.bold)
                 }
-            }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal){
-                Text("Patients").font(.largeTitle).fontWeight(.bold)
-            }
-            ToolbarItem(placement: .primaryAction){
-                HStack{
-                    #if os(iOS)
-                    EditButton()
-                    #endif
-                    
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                ToolbarItem(placement: .primaryAction){
+                    HStack{
+                        #if os(iOS)
+                        EditButton()
+                        #endif
+                        
+                        Button(action: {showForm.toggle()}) {
+                            Label("Add Item", systemImage: "plus")
+                        }
                     }
                 }
             }
         }
-    }
-    
-    private func addItem() {
-        withAnimation {
-            let newPatient = Patient(context: viewContext)
-            newPatient.name = "boby" + String(Int.random(in: 0..<20))
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        .sheet(isPresented: $showForm, content: {
+            NavigationView{
+                PatientFormView()
             }
-        }
+        })
     }
     
     private func deleteItems(offsets: IndexSet) {

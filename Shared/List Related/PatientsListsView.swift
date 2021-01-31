@@ -11,11 +11,8 @@ struct PatientsListsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \PatientsList.title, ascending: true)], animation: .default)
-    private var lists: FetchedResults<PatientsList>
-    
     @State private var presentForm: Bool = false
-    @State private var listGroup: ListFilterEnum = .favorite
+    @State private var listGroup: ListFilterEnum = .active
     
     var body: some View {
         VStack{
@@ -30,7 +27,7 @@ struct PatientsListsView: View {
                         ListRow(list: list)
                     }
                 }
-            }
+            }.listStyle(PlainListStyle())
             Spacer()
         }
         .toolbar {

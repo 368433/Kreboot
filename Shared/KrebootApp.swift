@@ -25,11 +25,15 @@ struct KrebootApp: App {
                 
                 NavigationView{
                     PatientsDBView()
-                }.tabItem { Label("ViewTest", systemImage: "eye") }
+                }.tabItem { Label("Patients", systemImage: "person.2.fill") }
 
                 NavigationView{
                     PatientFormView()
-                }.tabItem { Label("Patient", systemImage: "person") }
+                }.tabItem { Label("Billing", systemImage: "latch.2.case") }
+                
+                NavigationView{
+                    PatientFormView()
+                }.tabItem { Label("Analytics", systemImage: "sum") }
                 
             }.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

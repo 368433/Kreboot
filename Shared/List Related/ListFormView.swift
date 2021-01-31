@@ -50,7 +50,7 @@ struct ListFormView: View {
                     Spacer()
                     Button(action: {isFavorite.toggle()}){Image(systemName: isFavorite ? "star.fill":"star")}
                 }
-                Toggle("Archive", isOn: $isArchived).padding(.trailing)
+                Toggle(isOn: $isArchived){Text("Archive")}.padding(.trailing)
                 DatePicker("Date created", selection: $dateCreated, displayedComponents: .date)
                 Button("Save"){
                     Save()

@@ -138,8 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				3118EFE925C5E398002B3711 /* PatientsListsView.swift */,
-				315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */,
 				31548BA325C7286A00097F2F /* StarredPatientsList.swift */,
+				315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */,
 				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
 				3118F01325C615F1002B3711 /* ListRow.swift */,
 				3118EFF025C5E88F002B3711 /* ListFormView.swift */,

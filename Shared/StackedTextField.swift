@@ -44,6 +44,15 @@ extension PatientsList {
         title ?? "No title"
     }
     
+    public func dayLabel(dateStyle: DateFormatter.Style) -> String {
+        let itemFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = dateStyle
+            return formatter
+        }()
+        return self.dateCreated != nil ? itemFormatter.string(from: self.dateCreated!) :""
+    }
+    
     public var patientCountDescription: String {
         let number = String(self.patients?.count ?? 0)
         let text = number == "0" ? "patient":"patients"

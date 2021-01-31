@@ -14,17 +14,18 @@ struct PatientListDetailView: View {
     @State private var showEditListForm: Bool = false
     @ObservedObject var list: PatientsList
 
-
     var body: some View {
-        List {
-            ForEach(list.patientsArray, content: PatientRowView.init)
-        }
-        
-        .toolbar{
-            ToolbarItem(placement: .principal){
-                Text("List Detail").fontWeight(.bold)
+        VStack(alignment:.leading, spacing:0){
+            HStack(alignment:.top){
+                Text(list.wrappedTitle).font(.title).fontWeight(.heavy)
+                Text("test")
+            }.padding()
+            List {
+                ForEach(list.patientsArray, content: PatientRowView.init)
             }
-            
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar{
             ToolbarItem(placement: .primaryAction){
                 HStack {
                     Button(action: {showEditListForm.toggle()}){Image(systemName: "square.and.pencil")}

@@ -11,7 +11,14 @@ struct PatientRowView: View {
     @ObservedObject var patient: Patient
     
     var body: some View {
-        Text(patient.name ?? "No name")
+        HStack {
+            Image(systemName: "person.circle").scaledToFit().font(.title).foregroundColor(.secondary)
+            VStack (alignment:.leading){
+                Text(patient.name ?? "No name").foregroundColor(.primary)
+                Text("ramqnumber").foregroundColor(.secondary).font(.footnote)
+            }
+            Spacer()
+        }
     }
 }
 
