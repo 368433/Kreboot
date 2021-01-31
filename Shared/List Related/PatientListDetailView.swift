@@ -24,12 +24,7 @@ struct PatientListDetailView: View {
                 }.lineLimit(1).foregroundColor(.secondary)
             }.padding()
             List {
-//                ForEach(list.patientsArray, content: PatientRowView.init)
-                ForEach(list.patientsArray) { pt in
-                    DisclosureGroup("Test") {
-                        PatientRowView(patient: pt)
-                    }
-                }
+                ForEach(list.patientsArray, content: PatientRowView.init)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
