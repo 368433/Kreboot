@@ -48,3 +48,9 @@ struct PatientListDetailView: View {
         })
     }
 }
+
+struct PatientListDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        PatientListDetailView(list: PersistenceController.singleList)
+    }
+}

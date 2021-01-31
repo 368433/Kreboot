@@ -146,7 +146,6 @@
 				3118EFE925C5E398002B3711 /* PatientsListsView.swift */,
 				31548BA325C7286A00097F2F /* StarredPatientsList.swift */,
 				315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */,
-				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
 				3118F01325C615F1002B3711 /* ListRow.swift */,
 				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
 				3118EFFB25C60311002B3711 /* PatientListDetailView.swift */,
@@ -155,6 +154,7 @@
 				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
 				31548B9125C71E9A00097F2F /* DynamicFilteredList.swift */,
 				31548B9C25C7273500097F2F /* DynamicGroup.swift */,
+				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
 			);
 			path = "List Related";
 			sourceTree = "<group>";

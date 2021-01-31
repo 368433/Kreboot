@@ -32,8 +32,8 @@ struct AddPatientToListView: View {
     }
 }
 
-//struct AddPatientToListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddPatientToListView()
-//    }
-//}
+struct AddPatientToListView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddPatientToListView(list: PersistenceController.singleList).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}

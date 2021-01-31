@@ -39,8 +39,8 @@ struct PatientRowAddView: View {
     }
 }
 
-//struct PatientRowAddView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PatientRowAddView()
-//    }
-//}
+struct PatientRowAddView_Previews: PreviewProvider {
+    static var previews: some View {
+        PatientRowAddView(patient: PersistenceController.singlePatient, list: PersistenceController.singleList)
+    }
+}

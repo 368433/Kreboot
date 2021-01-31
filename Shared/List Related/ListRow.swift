@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListRow: View {
-    @Environment(\.managedObjectContext) private var viewContext
+//    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var list: PatientsList
     
     var body: some View {
@@ -23,7 +23,6 @@ struct ListRow: View {
             }
         }
     }
-
 }
 
 private let itemFormatter: DateFormatter = {
@@ -33,8 +32,8 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-//struct ListRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ListRow()
-//    }
-//}
+struct ListRow_Previews: PreviewProvider {
+    static var previews: some View {
+        ListRow(list: PersistenceController.singleList)
+    }
+}

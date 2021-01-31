@@ -33,6 +33,6 @@ struct SectionnedPatientsList: View {
 
 struct SectionnedPatientsList_Previews: PreviewProvider {
     static var previews: some View {
-        SectionnedPatientsList()
+        SectionnedPatientsList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

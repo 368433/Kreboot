@@ -35,6 +35,6 @@ struct StarredPatientsList: View {
 
 struct StarredPatientsList_Previews: PreviewProvider {
     static var previews: some View {
-        StarredPatientsList()
+        StarredPatientsList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

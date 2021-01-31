@@ -89,3 +89,9 @@ struct PatientFormView: View {
     }
     
 }
+
+struct PatientFormView_Previews: PreviewProvider {
+    static var previews: some View {
+        PatientFormView()
+    }
+}

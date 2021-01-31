@@ -13,7 +13,7 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        
+
         //Generating sample patients
         for _ in 0..<10 {
             let newPatient = Patient(context: viewContext)
@@ -27,6 +27,7 @@ struct PersistenceController {
             newList.title = "List number " +  String(Int.random(in: 10..<200))
             newList.isFavorite = Int.random(in: 0..<2) == 0 ? false:true
             newList.isArchived = Int.random(in: 0..<4) == 0 ? false:true
+            newList.dateCreated = Date(timeIntervalSince1970: Double.random(in: 0..<10000000))
         }
         
         do {
@@ -38,6 +39,44 @@ struct PersistenceController {
         return result
     }()
 
+    static var singlePatient: Patient {
+        let result = PersistenceController(inMemory: true)
+        let viewContext = result.container.viewContext
+        
+        let pt = Patient(context: viewContext)
+        pt.name = "Thelonius Monk"
+        do {
+            try viewContext.save()
+        }
+        catch {
+            
+        }
+        return pt
+    }
+    
+    static var singleList: PatientsList {
+        let result = PersistenceController(inMemory: true)
+        let viewContext = result.container.viewContext
+        
+        let singleList = PatientsList(context: viewContext)
+        singleList.title = "You don't know what love is"
+        singleList.dateCreated = Date()
+        //create linked patients
+        for _ in 0..<10 {
+            let newPatient = Patient(context: viewContext)
+            newPatient.name = "A dude" + String(Int.random(in: 10..<50))
+            newPatient.ramqNumber = String(Int.random(in: 1000000..<99999999))
+            singleList.addToPatients(newPatient)
+        }
+        do {
+            try viewContext.save()
+        }
+        catch {
+            
+        }
+        return singleList
+    }
+    
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
