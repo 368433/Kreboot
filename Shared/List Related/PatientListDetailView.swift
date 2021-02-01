@@ -26,7 +26,7 @@ struct PatientListDetailView: View {
                 }.padding()
                 VStack (spacing: 5){
                     ForEach(list.patientsArray){ patient in
-                        PatientRowView(patient: patient)
+                        PatientRow2(patient: patient)
                     }
                 }
     //            List {

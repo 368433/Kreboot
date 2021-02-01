@@ -21,6 +21,10 @@ extension TextField {
     }
 }
 
+extension Color {
+    static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
+}
+
 extension Patient {
     public var wrappedName: String {
         name ?? "No name assigned"
