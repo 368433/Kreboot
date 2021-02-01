@@ -20,6 +20,7 @@ struct PatientRowAddView: View {
     
     var body: some View {
         HStack{
+            Image(systemName: "person.circle")
             Text(patient.name ?? "No name")
             Spacer()
             Button(action: addPatient, label: {

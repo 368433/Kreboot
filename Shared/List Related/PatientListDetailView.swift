@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PatientListDetailView: View {
     @Environment(\.managedObjectContext) var viewContext
-    
     @State private var showAddForm: Bool = false
     @State private var showEditListForm: Bool = false
     @ObservedObject var list: PatientsList
@@ -17,26 +16,12 @@ struct PatientListDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment:.leading){
-                HStack(alignment:.top){
-                    Text(list.wrappedTitle).font(.title).fontWeight(.heavy)
-                    VStack (alignment:.leading){
-                        Text("Semaine du "+list.dayLabel(dateStyle: .medium)).font(.footnote)
-                        Text("some other useful information").font(.footnote)
-                    }.lineLimit(1).foregroundColor(.secondary)
-                }.padding()
-                VStack (spacing: 5){
-                    ForEach(list.patientsArray){ patient in
-                        PatientRow2(patient: patient)
+                TopDetailView(listTitle: list.wrappedTitle, dayLabel: list.dayLabel(dateStyle: .medium))
+                ZStack {
+                    ForEach(0..<list.patientsArray.count){ position in
+                        PatientRow2(patient: list.patientsArray[position]).offset(y: CGFloat(65*position))
                     }
                 }
-    //            List {
-    //                ForEach(list.patientsArray, content: PatientRowView.init)
-    //                ForEach(list.patientsArray){ patient in
-    //                DisclosureGroup(
-    //                    content: { Text("test") },
-    //                    label: { PatientRowView(patient: patient) }
-    //                )}
-    //            }
                 Spacer()
             }.padding()
             .navigationBarTitleDisplayMode(.inline)
@@ -55,6 +40,22 @@ struct PatientListDetailView: View {
         }
     }
 }
+
+struct TopDetailView: View {
+    var listTitle: String
+    var dayLabel: String
+    
+    var body: some View{
+        HStack(alignment:.top){
+            Text(listTitle).font(.title).fontWeight(.heavy).lineLimit(3)
+            VStack (alignment:.leading){
+                Text("Semaine du " + dayLabel).font(.footnote)
+                Text("some other useful information").font(.footnote)
+            }.lineLimit(1).foregroundColor(.secondary)
+        }.padding()
+    }
+}
+
 
 struct PatientListDetailView_Previews: PreviewProvider {
     static var previews: some View {

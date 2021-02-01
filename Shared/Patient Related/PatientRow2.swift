@@ -10,31 +10,45 @@ import SwiftUI
 struct PatientRow2: View {
     @ObservedObject var patient: Patient
     
+    @State private var showFullCard: Bool = false
+    
     var body: some View {
         VStack (alignment:.leading){
-            Text("room").foregroundColor(.secondary).font(.caption).padding(.top, 3)
-            HStack {
-                VStack (alignment:.leading){
+            HStack (alignment: .top){
+                VStack (alignment:.center, spacing: 5){
                     HStack (alignment: .bottom) {
-                        Text(patient.name ?? "No name").foregroundColor(.primary)
+                        Text(patient.name ?? "No name").foregroundColor(.primary).fontWeight(.semibold)
                         Spacer()
                         Text("Diagnosis").font(.callout)
                     }
-                    HStack (alignment: .top){
-                        Text("chart number")
-                        Spacer()
-                        Text("ramqnumber")
-                    }.foregroundColor(.secondary).font(.caption)
+                    HStack{
+                        HStack (spacing: 2){
+                            Image(systemName: "bed.double")
+                            Text("room")
+                        }.foregroundColor(.secondary).font(.caption)
+                        HStack (spacing: 2){
+                            Image(systemName: "folder")
+                            Text("#00000")
+                        }.foregroundColor(.secondary).font(.caption)
+                        HStack (spacing: 2){
+                            Image(systemName: "clock")
+                            Text("Last seen")
+                        }.foregroundColor(.secondary).font(.caption)
+                    }.lineLimit(1)
+                    Spacer()
                 }
                 Spacer()
                 Button(action: {}){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}.padding(.leading)
             }
-        }.padding([.leading,.bottom,.trailing])
+        }.padding()
         .background(Color.white)
         .cornerRadius(10.0)
-        //.padding()
         .shadow(color: Color.black.opacity(0.2), radius: 10)
-        .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+        .onTapGesture {
+            showFullCard.toggle()
+        }
+        .frame(height: showFullCard ? 400:80)
+        .animation(.easeInOut(duration: 0.2))
     }
 }
 

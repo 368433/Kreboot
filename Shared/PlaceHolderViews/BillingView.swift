@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct BillingView: View {
+    @GestureState private var dragOffset = CGSize.zero
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            Image(systemName: "star.circle.fill")
+                .font(.system(size: 100))
+                .offset(x: dragOffset.width, y: dragOffset.height)
+                .animation(.easeInOut)
+                .foregroundColor(.green)
+        }.gesture(
+            DragGesture()
+                .updating($dragOffset, body: { (value, state, transaction) in
+                    state = value.translation
+                })
+    )
     }
 }
 
