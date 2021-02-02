@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ICDdbTable: View {
+struct ICDdbTable2: View {
     
-    @ObservedObject var icdProvider = ICDProvider2()
+    @ObservedObject var icdProvider = ICDProvider0()
     
     var body: some View {
         LazyVStack{
-            List(icdProvider.icdResultList, rowContent: ICDTableRow.init)
+            List(icdProvider.icdResultList, rowContent: ICDTableRow2.init)
             Spacer()
         }
         .toolbar(content: {
@@ -28,7 +28,7 @@ struct ICDdbTable: View {
     }
 }
 
-struct ICDTableRow: View {
+struct ICDTableRow2: View {
     var icdResult: ICDResult
     var body: some View{
         VStack(alignment:.leading){
@@ -39,8 +39,8 @@ struct ICDTableRow: View {
     }
 }
 
-struct ICDdbTable_Previews: PreviewProvider {
+struct ICDdbTable2_Previews: PreviewProvider {
     static var previews: some View {
-        ICDdbTable()
+        ICDdbTable2()
     }
 }

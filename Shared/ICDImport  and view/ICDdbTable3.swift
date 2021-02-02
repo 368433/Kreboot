@@ -11,7 +11,7 @@ import CoreData
 struct ICDdbTable3: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @StateObject private var dataProvider = ICDCodesProvider ()
+    @StateObject private var dataProvider = ICDCodesProvider3 ()
     @State private var showBusy = true
     
     //    @FetchRequest(entity: ICD10dx.entity(), sortDescriptors: [], predicate: nil, animation: .default)
@@ -73,8 +73,8 @@ struct ICDTableRow: View {
     }
 }
 
-struct ICDdbTable_Previews: PreviewProvider {
+struct ICDdbTable3_Previews: PreviewProvider {
     static var previews: some View {
-        ICDdbTable()
+        ICDdbTable2()
     }
 }
