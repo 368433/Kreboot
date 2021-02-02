@@ -16,7 +16,7 @@ extension ICD10dx {
     
     func update(with icd10Dictionary: [String: String]) throws {
         guard let newCode = icd10Dictionary["icd10Code"],
-              let newDesc = icd10Dictionary["icdDescription"] else {
+              let newDesc = icd10Dictionary["icd10Description"] else {
             throw ICDError.missingData
         }
         icd10Code = newCode
@@ -71,8 +71,8 @@ struct ICDEntry: Decodable {
     
     // the keys must have the same name as the attributes of the icd entity in core data
     var dictionary: [String: String] {
-        return ["icdCode": code ?? "",
-                "icdDescription": desc ?? ""]
+        return ["icd10Code": code ?? "",
+                "icd10Description": desc ?? ""]
     }
 }
 

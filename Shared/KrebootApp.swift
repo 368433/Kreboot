@@ -28,6 +28,10 @@ struct KrebootApp: App {
                 }.tabItem { Label("Patients", systemImage: "person.2.fill") }
 
                 NavigationView{
+                    ICDdbTable3()
+                }.tabItem { Label("ICD", systemImage: "bandage") }
+                
+                NavigationView{
                     BillingView()
                 }.tabItem { Label("Billing", systemImage: "latch.2.case") }
                 

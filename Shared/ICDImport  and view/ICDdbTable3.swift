@@ -11,27 +11,28 @@ import CoreData
 struct ICDdbTable3: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @StateObject private var dataProvider = ICDCodesProvider3 ()
+    @StateObject private var dataProvider = ICDCodesProvider3()
     @State private var showBusy = true
     
     //    @FetchRequest(entity: ICD10dx.entity(), sortDescriptors: [], predicate: nil, animation: .default)
     //    private var res: FetchedResults<ICD10dx>
     
     var body: some View {
-        // put search bar here
-        // table
-        print(dataProvider.dataResults.count)
-        return List(dataProvider.dataResults, rowContent: ICDTableRow.init)
-            //        List(res, rowContent: ICDTableRow.init)
-            .toolbar{
-                ToolbarItem(placement: .primaryAction){
-                    // buttons
-                    HStack{
-                        Button(action: deleteData){Image(systemName: "trash")}
-                        Button(action: refreshData){Image(systemName: "arrow.clockwise")}
-                    }
+//        List(dataProvider.dataResults, rowContent: ICDTableRow.init)
+        ScrollView{
+            LazyVStack{
+                ForEach(dataProvider.dataResults, content: ICDTableRow3.init)
+            }
+        }
+        .toolbar{
+            ToolbarItem(placement: .primaryAction){
+                // buttons
+                HStack{
+                    Button(action: deleteData){Image(systemName: "trash")}
+                    Button(action: refreshData){Image(systemName: "arrow.clockwise")}
                 }
             }
+        }
     }
     
     private func refreshData(){
@@ -45,10 +46,9 @@ struct ICDdbTable3: View {
     }
     
     private func deleteData() {
-//        dataProvider.testDelete()
         dataProvider.deleteAll { (error) in
             DispatchQueue.main.async {
-//                handleBatchOperationCompletion(error: error)
+                handleBatchOperationCompletion(error: error)
             }
         }
     }
@@ -60,21 +60,21 @@ struct ICDdbTable3: View {
             dataProvider.resetAndRefetch()
         }
     }
-    
 }
 
-struct ICDTableRow: View {
+struct ICDTableRow3: View {
     var icdResult: ICD10dx
     var body: some View{
         VStack(alignment:.leading){
             Text(icdResult.icd10Code ?? "No code").fontWeight(.bold)
             Text(icdResult.icd10Description ?? "No description")
-        }
+            Divider()
+        }.padding(.horizontal)
     }
 }
 
 struct ICDdbTable3_Previews: PreviewProvider {
     static var previews: some View {
-        ICDdbTable2()
+        ICDdbTable3()
     }
 }

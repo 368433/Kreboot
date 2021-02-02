@@ -18,38 +18,38 @@ class ICDCodesProvider3: ObservableObject {
      Set up persistent container
      */
   
-    var persistentContainer = PersistenceController.shared.container
+//    var persistentContainer = PersistenceController.shared.container
     
-//    lazy var persistentContainer: NSPersistentContainer = {
-//        let container = NSPersistentContainer(name: "Kreboot")
-//
-//        if #available(iOS 13, macOS 10.15, *){
-//            // Enable remote notifications
-//            guard let description = container.persistentStoreDescriptions.first else {
-//                fatalError("Failed to retrieve a persistent store description")
-//            }
-//            description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-//        }
-//
-//        container.loadPersistentStores { (storeDescription, error) in
-//            guard error == nil else { fatalError("Unresolved error \(error!)")}
-//        }
-//
-//        // refresh UI by refetching data, so doesn't need to merge the changes.
-//        container.viewContext.automaticallyMergesChangesFromParent = false
-//        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-//        container.viewContext.undoManager = nil
-//        container.viewContext.shouldDeleteInaccessibleFaults = true
-//
-//        if #available(iOS 13, macOS 10.15, *){
-//            // Observe Core Data remote change notifications.
-//            NotificationCenter.default.addObserver(
-//                self, selector: #selector(type(of: self).storeRemoteChange(_:)),
-//                name: .NSPersistentStoreRemoteChange, object: nil)
-//        }
-//
-//        return container
-//    }()
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Kreboot")
+
+        if #available(iOS 13, macOS 10.15, *){
+            // Enable remote notifications
+            guard let description = container.persistentStoreDescriptions.first else {
+                fatalError("Failed to retrieve a persistent store description")
+            }
+            description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        }
+
+        container.loadPersistentStores { (storeDescription, error) in
+            guard error == nil else { fatalError("Unresolved error \(error!)")}
+        }
+
+        // refresh UI by refetching data, so doesn't need to merge the changes.
+        container.viewContext.automaticallyMergesChangesFromParent = false
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.undoManager = nil
+        container.viewContext.shouldDeleteInaccessibleFaults = true
+
+        if #available(iOS 13, macOS 10.15, *){
+            // Observe Core Data remote change notifications.
+            NotificationCenter.default.addObserver(
+                self, selector: #selector(type(of: self).storeRemoteChange(_:)),
+                name: .NSPersistentStoreRemoteChange, object: nil)
+        }
+
+        return container
+    }()
     
     /**
         Creates and configures a private queue context
@@ -186,7 +186,7 @@ class ICDCodesProvider3: ObservableObject {
     /**
      A fetched results controller to fetch Quake records sorted by time.
      */
-    private lazy var fetchedResultsController: NSFetchedResultsController<ICD10dx> = {
+    lazy var fetchedResultsController: NSFetchedResultsController<ICD10dx> = {
         
         // Create a fetch request for the Quake entity sorted by time.
         let fetchRequest = NSFetchRequest<ICD10dx>(entityName: "ICD10dx")
@@ -212,16 +212,12 @@ class ICDCodesProvider3: ObservableObject {
      Resets viewContext and refetches the data from the store.
      */
     func resetAndRefetch() {
+        persistentContainer.viewContext.reset()
         do {
             try fetchedResultsController.performFetch()
-            dataResults = fetchedResultsController.fetchedObjects ?? []
         } catch {
             fatalError("Unresolved error \(error)")
         }
-    }
-    
-    func testDelete(){
-        dataResults = []
     }
 
     
