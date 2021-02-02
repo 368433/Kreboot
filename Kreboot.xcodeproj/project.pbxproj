@@ -49,6 +49,7 @@
 		31548B9E25C7273500097F2F /* DynamicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9C25C7273500097F2F /* DynamicGroup.swift */; };
 		31548BA425C7286A00097F2F /* StarredPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548BA325C7286A00097F2F /* StarredPatientsList.swift */; };
 		31548BA525C7286A00097F2F /* StarredPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548BA325C7286A00097F2F /* StarredPatientsList.swift */; };
+		3154A32825C8F2C600E20978 /* ICDdbTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154A32725C8F2C600E20978 /* ICDdbTable.swift */; };
 		315E5A4D25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */; };
 		315E5A4E25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */; };
 		315E5A5925C754D8005DB2A9 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */; };
@@ -106,6 +107,7 @@
 		31548B9125C71E9A00097F2F /* DynamicFilteredList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicFilteredList.swift; sourceTree = "<group>"; };
 		31548B9C25C7273500097F2F /* DynamicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicGroup.swift; sourceTree = "<group>"; };
 		31548BA325C7286A00097F2F /* StarredPatientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPatientsList.swift; sourceTree = "<group>"; };
+		3154A32725C8F2C600E20978 /* ICDdbTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDdbTable.swift; sourceTree = "<group>"; };
 		315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionnedPatientsList.swift; sourceTree = "<group>"; };
 		315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		315E5A6325C754E0005DB2A9 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
@@ -146,10 +148,10 @@
 		3118F00925C6142A002B3711 /* List Related */ = {
 			isa = PBXGroup;
 			children = (
+				3154A32125C8E39F00E20978 /* Pure views */,
 				3118EFE925C5E398002B3711 /* PatientsListsView.swift */,
 				31548BA325C7286A00097F2F /* StarredPatientsList.swift */,
 				315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */,
-				3118F01325C615F1002B3711 /* ListRow.swift */,
 				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
 				3118EFFB25C60311002B3711 /* PatientListDetailView.swift */,
 				311C862325C6F94A0021E596 /* SearchBar.swift */,
@@ -188,14 +190,15 @@
 		311CA82725C5774700E4513A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */,
 				311CA82A25C5774700E4513A /* KrebootApp.swift */,
 				311CA82C25C5774700E4513A /* Persistence.swift */,
+				3154A32625C8F2A400E20978 /* ICDImport  and view */,
 				3118EFD625C5C7F2002B3711 /* StackedTextField.swift */,
 				3118F00A25C6143C002B3711 /* Patient Related */,
 				3118F00925C6142A002B3711 /* List Related */,
 				315E5A5725C754C6005DB2A9 /* PlaceHolderViews */,
 				311CA82D25C5774800E4513A /* Assets.xcassets */,
-				311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -244,6 +247,22 @@
 				311CA85325C5774900E4513A /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		3154A32125C8E39F00E20978 /* Pure views */ = {
+			isa = PBXGroup;
+			children = (
+				3118F01325C615F1002B3711 /* ListRow.swift */,
+			);
+			path = "Pure views";
+			sourceTree = "<group>";
+		};
+		3154A32625C8F2A400E20978 /* ICDImport  and view */ = {
+			isa = PBXGroup;
+			children = (
+				3154A32725C8F2C600E20978 /* ICDdbTable.swift */,
+			);
+			path = "ICDImport  and view";
 			sourceTree = "<group>";
 		};
 		315E5A5725C754C6005DB2A9 /* PlaceHolderViews */ = {
@@ -433,6 +452,7 @@
 				311CA85825C5774900E4513A /* PatientsDBView.swift in Sources */,
 				311C861D25C6E9F20021E596 /* PatientRowAddView.swift in Sources */,
 				3118EFFC25C60311002B3711 /* PatientListDetailView.swift in Sources */,
+				3154A32825C8F2C600E20978 /* ICDdbTable.swift in Sources */,
 				31548BA425C7286A00097F2F /* StarredPatientsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
