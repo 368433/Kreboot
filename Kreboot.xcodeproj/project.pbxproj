@@ -54,6 +54,9 @@
 		3154A33425C8F44200E20978 /* ICDError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154A33325C8F44200E20978 /* ICDError.swift */; };
 		3154A33A25C902D100E20978 /* ICDProvider2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154A33925C902D100E20978 /* ICDProvider2.swift */; };
 		3154A34425C95BD000E20978 /* ICDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154A34325C95BD000E20978 /* ICDProvider.swift */; };
+		3154A35125C9DB4000E20978 /* icd10_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3154A35025C9DB4000E20978 /* icd10_codes.json */; };
+		3154A35825C9DB7F00E20978 /* ICDdbTable3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154A35625C9DB7F00E20978 /* ICDdbTable3.swift */; };
+		3154A35925C9DB7F00E20978 /* ICDProvider3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154A35725C9DB7F00E20978 /* ICDProvider3.swift */; };
 		315E5A4D25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */; };
 		315E5A4E25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */; };
 		315E5A5925C754D8005DB2A9 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */; };
@@ -116,6 +119,9 @@
 		3154A33325C8F44200E20978 /* ICDError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDError.swift; sourceTree = "<group>"; };
 		3154A33925C902D100E20978 /* ICDProvider2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDProvider2.swift; sourceTree = "<group>"; };
 		3154A34325C95BD000E20978 /* ICDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDProvider.swift; sourceTree = "<group>"; };
+		3154A35025C9DB4000E20978 /* icd10_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = icd10_codes.json; sourceTree = "<group>"; };
+		3154A35625C9DB7F00E20978 /* ICDdbTable3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICDdbTable3.swift; sourceTree = "<group>"; };
+		3154A35725C9DB7F00E20978 /* ICDProvider3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICDProvider3.swift; sourceTree = "<group>"; };
 		315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionnedPatientsList.swift; sourceTree = "<group>"; };
 		315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		315E5A6325C754E0005DB2A9 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
@@ -268,6 +274,9 @@
 		3154A32625C8F2A400E20978 /* ICDImport  and view */ = {
 			isa = PBXGroup;
 			children = (
+				3154A35025C9DB4000E20978 /* icd10_codes.json */,
+				3154A35625C9DB7F00E20978 /* ICDdbTable3.swift */,
+				3154A35725C9DB7F00E20978 /* ICDProvider3.swift */,
 				3154A32725C8F2C600E20978 /* ICDdbTable.swift */,
 				3154A33925C902D100E20978 /* ICDProvider2.swift */,
 				3154A34325C95BD000E20978 /* ICDProvider.swift */,
@@ -410,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3154A35125C9DB4000E20978 /* icd10_codes.json in Resources */,
 				311CA85C25C5774900E4513A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3118EFD725C5C7F2002B3711 /* StackedTextField.swift in Sources */,
+				3154A35825C9DB7F00E20978 /* ICDdbTable3.swift in Sources */,
 				3154A33A25C902D100E20978 /* ICDProvider2.swift in Sources */,
 				3118F00325C608BD002B3711 /* PatientRowView.swift in Sources */,
 				311CA85625C5774900E4513A /* KrebootApp.swift in Sources */,
@@ -455,6 +466,7 @@
 				31548B9225C71E9A00097F2F /* DynamicFilteredList.swift in Sources */,
 				311CA85A25C5774900E4513A /* Persistence.swift in Sources */,
 				311C861625C6E1860021E596 /* AddPatientToListView.swift in Sources */,
+				3154A35925C9DB7F00E20978 /* ICDProvider3.swift in Sources */,
 				3118EFEA25C5E398002B3711 /* PatientsListsView.swift in Sources */,
 				315E5A4D25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */,
 				311C862425C6F94A0021E596 /* SearchBar.swift in Sources */,

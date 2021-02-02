@@ -12,18 +12,19 @@ struct ICDdbTable: View {
     @ObservedObject var icdProvider = ICDProvider2()
     
     var body: some View {
-        VStack{
-            // buttons
-            HStack{
-                Button(action:{}){Image(systemName: "trash")}
-                Spacer()
-                Button(action:{}){Image(systemName: "arrow.clockwise")}
-            }
-            // search bar
-            // table
+        LazyVStack{
             List(icdProvider.icdResultList, rowContent: ICDTableRow.init)
             Spacer()
         }
+        .toolbar(content: {
+            ToolbarItem(placement: .primaryAction) {
+                HStack{
+                    Button(action:{}){Image(systemName: "trash")}
+                    Spacer()
+                    Button(action:{}){Image(systemName: "arrow.clockwise")}
+                }
+            }
+        })
     }
 }
 
@@ -33,6 +34,7 @@ struct ICDTableRow: View {
         VStack(alignment:.leading){
             Text(icdResult.icdDescription)
             Text(icdResult.icdCode)
+            Divider()
         }
     }
 }
