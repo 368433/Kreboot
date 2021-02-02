@@ -129,7 +129,7 @@ class ICDCodesProvider {
     @available(iOS 13, macOS 10.15, *)
     private func newBatchInsertRequest(with icdCodesList: [[String: String]]) -> NSBatchInsertRequest {
         let batchInsert: NSBatchInsertRequest
-        if #available(iOS 14, macOS 10.16, *) {
+//        if #available(iOS 14, macOS 10.16, *) {
             // Provide one dictionary at a time when the block is called
             var index = 0
             let total = icdCodesList.count
@@ -139,10 +139,10 @@ class ICDCodesProvider {
                 index += 1
                 return false
             })
-        } else {
-            // Provide the dictionaries all together.
-            batchInsert = NSBatchInsertRequest(entityName: "ICD10dx", objects: icdCodesList)
-        }
+//        } else {
+//            // Provide the dictionaries all together.
+//            batchInsert = NSBatchInsertRequest(entityName: "ICD10dx", objects: icdCodesList)
+//        }
         return batchInsert
     }
     
