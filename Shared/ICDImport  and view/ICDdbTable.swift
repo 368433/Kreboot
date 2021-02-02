@@ -8,8 +8,32 @@
 import SwiftUI
 
 struct ICDdbTable: View {
+    
+    @ObservedObject var icdProvider = ICDProvider2()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            // buttons
+            HStack{
+                Button(action:{}){Image(systemName: "trash")}
+                Spacer()
+                Button(action:{}){Image(systemName: "arrow.clockwise")}
+            }
+            // search bar
+            // table
+            List(icdProvider.icdResultList, rowContent: ICDTableRow.init)
+            Spacer()
+        }
+    }
+}
+
+struct ICDTableRow: View {
+    var icdResult: ICDResult
+    var body: some View{
+        VStack(alignment:.leading){
+            Text(icdResult.icdDescription)
+            Text(icdResult.icdCode)
+        }
     }
 }
 
