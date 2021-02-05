@@ -21,6 +21,9 @@ struct AddPatientToListView: View {
         VStack{
             SearchBar(text: $searchText)
                 .padding([.top, .bottom])
+            Button(action: {}, label: {
+                Text("New Patient")
+            })
             List(patients.filter({searchText.isEmpty ? true : $0.wrappedName.lowercased().contains(searchText.lowercased())})){ patient in
                 PatientRowAddView(patient: patient, list: list)
             }
