@@ -23,7 +23,6 @@ struct PatientsListsView: View {
                     }
                 }
             }
-            Spacer()
         }
         .toolbar {
             ToolbarItem(placement: .principal){

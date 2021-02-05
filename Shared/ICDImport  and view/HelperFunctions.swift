@@ -79,30 +79,30 @@
 //            return fetchedData
 //        }
 //        
-////    public func decodeJSON(from data: Data, into object: Decodable){
-////        // Decode the JSON and import it into Core Data.
-////        do {
-////            // Decode the JSON into codable type GeoJSON.
-////            let geoJSON = try JSONDecoder().decode(GeoJSON.self, from: data)
-////            print("\(Date()) Got \(geoJSON.quakePropertiesList.count) records.")
-////
-////            print("\(Date()) Start importing data to the store ...")
-////            // Import the GeoJSON into Core Data.
-////            if #available(iOS 13, macOS 10.15, *) {
-////                try self.importQuakesUsingBIR(from: geoJSON)
-////            } else {
-////                try self.importQuakesBeforeBIR(from: geoJSON)
-////            }
-////            print("\(Date()) Finished importing data.")
-////
-////        } catch {
-////            // Alert the user if data cannot be digested.
-////            completionHandler(error)
-////            return
-////        }
-////        completionHandler(nil)
-////    }
-////
+//    public func decodeJSON(from data: Data, into object: Decodable){
+//        // Decode the JSON and import it into Core Data.
+//        do {
+//            // Decode the JSON into codable type GeoJSON.
+//            let geoJSON = try JSONDecoder().decode(GeoJSON.self, from: data)
+//            print("\(Date()) Got \(geoJSON.quakePropertiesList.count) records.")
+//
+//            print("\(Date()) Start importing data to the store ...")
+//            // Import the GeoJSON into Core Data.
+//            if #available(iOS 13, macOS 10.15, *) {
+//                try self.importQuakesUsingBIR(from: geoJSON)
+//            } else {
+//                try self.importQuakesBeforeBIR(from: geoJSON)
+//            }
+//            print("\(Date()) Finished importing data.")
+//
+//        } catch {
+//            // Alert the user if data cannot be digested.
+//            completionHandler(error)
+//            return
+//        }
+//        completionHandler(nil)
+//    }
+//
 //}
 //
 //

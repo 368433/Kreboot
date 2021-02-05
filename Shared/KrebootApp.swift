@@ -15,29 +15,33 @@ struct KrebootApp: App {
         WindowGroup {
             TabView{
 
-                NavigationView{
-                    StarredPatientsList()
-                }.tabItem { Label("WorkLists", systemImage: "star.fill") }
+//                NavigationView{
+//                    StarredPatientsList()
+//                }.tabItem { Label("WorkLists", systemImage: "star.fill") }
                 
                 NavigationView{
                     PatientsListsView()
-                }.tabItem { Label("All Lists", systemImage: "doc.text") }
+                }.tabItem { Label("WorkLists", systemImage: "doc.text") }
                 
                 NavigationView{
                     PatientsDBView()
                 }.tabItem { Label("Patients", systemImage: "person.2.fill") }
-
-                NavigationView{
-                    ICDdbTable3()
-                }.tabItem { Label("ICD", systemImage: "bandage") }
-                
-                NavigationView{
-                    BillingView()
-                }.tabItem { Label("Billing", systemImage: "latch.2.case") }
                 
                 NavigationView{
                     AnalyticsView()
                 }.tabItem { Label("Analytics", systemImage: "sum") }
+                
+                NavigationView{
+                    Settings()
+                }.tabItem { Label("Settings", systemImage: "gear") }
+
+//                NavigationView{
+//                    ICDdbTable3()
+//                }.tabItem { Label("ICD", systemImage: "bandage") }
+                
+//                NavigationView{
+//                    BillingView()
+//                }.tabItem { Label("Billing", systemImage: "latch.2.case") }
                 
             }.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
