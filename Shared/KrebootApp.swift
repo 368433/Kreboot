@@ -30,7 +30,11 @@ struct KrebootApp: App {
                 NavigationView{
                     AnalyticsView()
                 }.tabItem { Label("Analytics", systemImage: "sum") }
-                
+
+                NavigationView{
+                    BillingView()
+                }.tabItem { Label("Billing", systemImage: "latch.2.case") }
+
                 NavigationView{
                     Settings()
                 }.tabItem { Label("Settings", systemImage: "gear") }
@@ -39,9 +43,6 @@ struct KrebootApp: App {
 //                    ICDdbTable3()
 //                }.tabItem { Label("ICD", systemImage: "bandage") }
                 
-//                NavigationView{
-//                    BillingView()
-//                }.tabItem { Label("Billing", systemImage: "latch.2.case") }
                 
             }.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

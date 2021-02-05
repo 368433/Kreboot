@@ -34,30 +34,31 @@ struct PatientFormView: View {
     }
     
     var body: some View {
-        List {
-            Section(header: Text("Personnal data")) {
-                TextField("Name", text: $name)
-                    .labeledTF(label: "Name", isEmpty: name == "")
-                TextField("PostalCode", text: $postalCode)
-                    .labeledTF(label: "Postal Code", isEmpty: postalCode == "")
-                DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
+        NavigationView{
+            List {
+                Section(header: Text("Personnal data")) {
+                    TextField("Name", text: $name)
+                        .labeledTF(label: "Name", isEmpty: name == "")
+                    TextField("PostalCode", text: $postalCode)
+                        .labeledTF(label: "Postal Code", isEmpty: postalCode == "")
+                    DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
+                }
+                Section(header: Text("Healthcare system Data")) {
+                    TextField("RAMQ", text: $ramq)
+                        .labeledTF(label: "RAMQ", isEmpty: ramq == "")
+                    TextField("Chart number", text: $chartNumber)
+                        .labeledTF(label: "Chart Number", isEmpty: chartNumber == "")
+                }
+            }.listStyle(GroupedListStyle())
+            .toolbar{
+                ToolbarItem(placement:.principal){Text("Patient form")}
+                ToolbarItem(placement: .confirmationAction){
+                    Button("Save", action: Save)
+                        .disabled(disableSave)
+                }
             }
-            Section(header: Text("Healthcare system Data")) {
-                TextField("RAMQ", text: $ramq)
-                    .labeledTF(label: "RAMQ", isEmpty: ramq == "")
-                TextField("Chart number", text: $chartNumber)
-                    .labeledTF(label: "Chart Number", isEmpty: chartNumber == "")
-            }
-        }.listStyle(GroupedListStyle())
-
-        .toolbar{
-            ToolbarItem(placement:.principal){Text("Patient form")}
-            ToolbarItem(placement: .confirmationAction){
-                Button("Save", action: Save)
-                    .disabled(disableSave)
-            }
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     

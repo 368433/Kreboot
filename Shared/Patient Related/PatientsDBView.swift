@@ -43,9 +43,7 @@ struct PatientsDBView: View {
             }
         }
         .sheet(isPresented: $showForm, content: {
-            NavigationView{
-                PatientFormView()
-            }
+            PatientFormView()
         })
     }
     

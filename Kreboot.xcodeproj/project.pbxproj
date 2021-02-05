@@ -69,6 +69,7 @@
 		315E5A5A25C754D8005DB2A9 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */; };
 		315E5A6425C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
 		315E5A6525C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
+		6A05183825CDF36100527AF1 /* UIEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A05183725CDF36100527AF1 /* UIEmptyState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionnedPatientsList.swift; sourceTree = "<group>"; };
 		315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		315E5A6325C754E0005DB2A9 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
+		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +283,7 @@
 				3149201225CDDEAC002D873C /* Button modifiers.swift */,
 				3149201425CDDEAC002D873C /* ICDSettings.swift */,
 				3149201525CDDEAC002D873C /* Karla Protocols.swift */,
+				6A05183725CDF36100527AF1 /* UIEmptyState.swift */,
 				3149201325CDDEAC002D873C /* Settings.swift */,
 			);
 			path = "New Group";
@@ -514,6 +517,7 @@
 				3154A35925C9DB7F00E20978 /* ICDProvider3.swift in Sources */,
 				3118EFEA25C5E398002B3711 /* PatientsListsView.swift in Sources */,
 				3149201625CDDEAC002D873C /* Button modifiers.swift in Sources */,
+				6A05183825CDF36100527AF1 /* UIEmptyState.swift in Sources */,
 				3149200C25CB136B002D873C /* HelperFunctions.swift in Sources */,
 				315E5A4D25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */,
 				311C862425C6F94A0021E596 /* SearchBar.swift in Sources */,

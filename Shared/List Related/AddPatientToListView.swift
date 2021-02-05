@@ -15,19 +15,31 @@ struct AddPatientToListView: View {
     private var patients: FetchedResults<Patient>
     
     @State private var searchText: String = ""
+    @State private var showNewPatientForm: Bool = false
     var list: PatientsList
        
     var body: some View {
         VStack{
             SearchBar(text: $searchText)
                 .padding([.top, .bottom])
-            Button(action: {}, label: {
-                Text("New Patient")
-            })
-            List(patients.filter({searchText.isEmpty ? true : $0.wrappedName.lowercased().contains(searchText.lowercased())})){ patient in
-                PatientRowAddView(patient: patient, list: list)
+            Button(action: {showNewPatientForm.toggle()}, label: {
+                HStack {
+                    Spacer()
+                    Label("New patient", systemImage: "plus.circle")
+                    Spacer()
+                }
+            }).buttonStyle(SettingsButton()).padding(.horizontal)
+            if patients.count == 0 {
+                UIEmptyState(titleText: "No patients in database")
+            } else {
+                List(patients.filter({searchText.isEmpty ? true : $0.wrappedName.lowercased().contains(searchText.lowercased())})){ patient in
+                    PatientRowAddView(patient: patient, list: list)
+                }
             }
         }
+        .sheet(isPresented: $showNewPatientForm, content: {
+            PatientFormView()
+        })
     }
     
     private func addPatientToList(offsets: IndexSet){
