@@ -17,9 +17,9 @@ struct PatientListDetailView: View {
         ScrollView {
             VStack(alignment:.leading){
                 TopDetailView(listTitle: list.wrappedTitle, dayLabel: list.dayLabel(dateStyle: .medium))
-                ZStack {
-                    ForEach(0..<list.patientsArray.count){ position in
-                        PatientRow2(patient: list.patientsArray[position]).offset(y: CGFloat(65*position))
+                VStack {
+                    ForEach(list.patientsArray, id:\.self){ patient in
+                        PatientRow2(patient: patient)
                     }
                 }
                 Spacer()
