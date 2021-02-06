@@ -21,6 +21,7 @@ struct PatientRow2: View {
                         Spacer()
                         Text("Diagnosis").font(.callout)
                     }
+                    Spacer()
                     HStack{
                         HStack (spacing: 2){
                             Image(systemName: "bed.double")
@@ -35,7 +36,6 @@ struct PatientRow2: View {
                             Text("Last seen")
                         }.foregroundColor(.secondary).font(.caption)
                     }.lineLimit(1)
-                    Spacer()
                 }
                 Spacer()
                 Button(action: {}){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}.padding(.leading)
