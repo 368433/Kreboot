@@ -35,7 +35,9 @@ struct PatientsListsView: View {
             ToolbarItem(placement: .primaryAction){
                 Button(action: {presentForm.toggle()}){Image(systemName: "plus")}
             }
-        }.sheet(isPresented: $presentForm, content: {ListFormView()})
+        }.sheet(isPresented: $presentForm, content: {
+            NavigationView{ListFormView()}
+        })
     }
 }
 

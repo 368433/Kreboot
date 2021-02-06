@@ -33,3 +33,14 @@ struct OutlineButton: ButtonStyle {
     }
 }
 
+struct CapsuleButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration
+            .label
+            .foregroundColor(.white)
+            .padding(.vertical, 3)
+            .padding(.horizontal)
+            .background(Capsule().fill(configuration.isPressed ? Color.gray : Color.accentColor))
+    }
+}
+

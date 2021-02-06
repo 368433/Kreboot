@@ -34,36 +34,22 @@ struct ListFormView: View {
     }
     
     var body: some View {
-        ScrollView{
-            VStack (alignment: .center) {
-                VStack (alignment: .leading, spacing: 2){
-                    Text("List").font(.largeTitle)
-                    Divider()
-                    TextField("Title", text: $title)
-                        .labeledTF(label: "Title", isEmpty: title == "")
-                    ScrollChoice(labelText: $title, choice: SomeConstants.listTitleChoice )
-                    TextField("List description", text: $listDescription)
-                        .labeledTF(label: "List description", isEmpty: listDescription == "")
-                }
-                HStack {
-                    Text("Favorite")
-                    Spacer()
-                    Button(action: {isFavorite.toggle()}){Image(systemName: isFavorite ? "star.fill":"star")}
-                }
-                Toggle(isOn: $isArchived){Text("Archive")}.padding(.trailing)
-                DatePicker("Date created", selection: $dateCreated, displayedComponents: .date)
-                Button("Save"){
-                    Save()
-                }
-                .disabled(disableSave)
-                .buttonStyle(PrimaryButtonStyle())
+        List{
+            TextField("Title", text: $title)
+                .labeledTF(label: "Title", isEmpty: title == "")
+            ScrollChoice(labelText: $title, choice: SomeConstants.listTitleChoice )
+            TextField("List description", text: $listDescription)
+                .labeledTF(label: "List description", isEmpty: listDescription == "")
+            HStack {
+                Text("Favorite")
+                Spacer()
+                Button(action: {isFavorite.toggle()}){Image(systemName: isFavorite ? "star.fill":"star")}
             }
+            Toggle(isOn: $isArchived){Text("Archive")}.padding(.trailing)
+            DatePicker("Date created", selection: $dateCreated, displayedComponents: .date)            
         }
-        .padding()
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar{
-            ToolbarItem(placement: .principal){
-                Text("")
-            }
             ToolbarItem(placement: .confirmationAction){
                 Button("Save", action: Save)
                     .disabled(disableSave)
