@@ -69,6 +69,8 @@
 		315E5A6425C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
 		315E5A6525C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
 		3196B5C725CE2740006A3E72 /* DataTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196B5C625CE2740006A3E72 /* DataTab.swift */; };
+		3196B5D125CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
+		3196B5D225CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
 		6A05183825CDF36100527AF1 /* UIEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A05183725CDF36100527AF1 /* UIEmptyState.swift */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,7 @@
 		315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		315E5A6325C754E0005DB2A9 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
 		3196B5C625CE2740006A3E72 /* DataTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTab.swift; sourceTree = "<group>"; };
+		3196B5D025CEE7F4006A3E72 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +221,7 @@
 		311CA82725C5774700E4513A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3196B5D025CEE7F4006A3E72 /* README */,
 				311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */,
 				311CA82A25C5774700E4513A /* KrebootApp.swift */,
 				311CA82C25C5774700E4513A /* Persistence.swift */,
@@ -474,6 +478,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3196B5D125CEE7F4006A3E72 /* README in Resources */,
 				3154A35125C9DB4000E20978 /* icd10_codes.json in Resources */,
 				311CA85C25C5774900E4513A /* Assets.xcassets in Resources */,
 			);
@@ -483,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3196B5D225CEE7F4006A3E72 /* README in Resources */,
 				311CA85D25C5774900E4513A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,15 @@
+
+On device databases will be handled with core data. They include:
+    - Physicians database
+    - ICD codes
+    - RAMQ codes
+    
+    ** Can incorporate core data code in UI if need be as no expectation to move those to cloud
+    
+Databases that have to be independent and able to change are:
+    - patients
+    - acts
+    - lists
+    
+    **  Have to make the all the UI independent of references to a specific framework of persistence.
+        Be able to change from core data to firebase for example without having to change the UI code
