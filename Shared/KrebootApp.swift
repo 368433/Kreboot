@@ -23,9 +23,8 @@ struct KrebootApp: App {
                     PatientsListsView()
                 }.tabItem { Label("WorkLists", systemImage: "doc.text") }
                 
-                NavigationView{
-                    PatientsDBView()
-                }.tabItem { Label("Patients", systemImage: "person.2.fill") }
+                DataTab()
+                .tabItem { Label("Data", systemImage: "square.stack.3d.up") }
                 
                 NavigationView{
                     AnalyticsView()
