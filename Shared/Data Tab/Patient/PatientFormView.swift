@@ -11,7 +11,7 @@ struct PatientFormView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     
-    var patient: Patient?
+    @ObservedObject var patientt: Patient
     var disableSave: Bool {
         return name == ""
     }
@@ -24,7 +24,8 @@ struct PatientFormView: View {
     @State var dateOfBirth: Date = Date()
     
     init(patient: Patient? = nil){
-        self.patient = patient
+        self.patientt = patient ?? Patient()
+        
         self._title = State(initialValue: patient?.name ?? "Unnamed")
         self._name = State(initialValue: patient?.name ?? "")
         self._ramq = State(initialValue: patient?.ramqNumber ?? "")
@@ -34,13 +35,24 @@ struct PatientFormView: View {
     }
     
     var body: some View {
-        NavigationView{
+//        NavigationView{
             List {
-                Section(header: Text("Personnal data")) {
-                    TextField("Name", text: $name)
+                Section(
+                    header:
+                        HStack{
+                            Text("Personnal data")
+                            Spacer()
+                            Button(action: {}){Image(systemName: "doc.text.viewfinder")}.buttonStyle(CircularButton())
+                        }) {
+                    TextField("Name", text: $patientt.name ?? "")
                         .labeledTF(label: "Name", isEmpty: name == "")
                     TextField("PostalCode", text: $postalCode)
                         .labeledTF(label: "Postal Code", isEmpty: postalCode == "")
+                    HStack{
+                        Text("Card photo")
+                        Spacer()
+                        Image(systemName: "person.crop.rectangle")
+                    }
                     DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
                 }
                 Section(header: Text("Healthcare system Data")) {
@@ -48,6 +60,10 @@ struct PatientFormView: View {
                         .labeledTF(label: "RAMQ", isEmpty: ramq == "")
                     TextField("Chart number", text: $chartNumber)
                         .labeledTF(label: "Chart Number", isEmpty: chartNumber == "")
+                }
+                Section(header: Text("Health Data")) {
+                    TextField("Allergies, comma separated", text: $ramq)
+                    NavigationLink(destination: Text("Past medical history")){ Text("Past medical history")}
                 }
             }.listStyle(GroupedListStyle())
             .toolbar{
@@ -58,37 +74,21 @@ struct PatientFormView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-        }
+//        }
     }
-    
     
     private func Save() -> Void {
         // TODO Add message to confirm overwriting changes
         guard name != "" else { return }
-        
-        if let patient = patient {
-            savePatient(patient)
-        }else {
-            let newPatient = Patient(context: viewContext)
-            savePatient(newPatient)
-        }
+        viewContext.insert(patientt)
+        let patientToSave = Patient(context: viewContext)
+        patientToSave.name = self.name
+        patientToSave.chartNumber = self.chartNumber
+        patientToSave.ramqNumber = self.ramq
+        patientToSave.postalCode = self.postalCode
+        patientToSave.dateOfBirth = self.dateOfBirth
+        patientToSave.saveYourself(in: viewContext)
     }
-    
-    private func savePatient( _ patient: Patient){
-        patient.name = self.name
-        patient.chartNumber = self.chartNumber
-        patient.ramqNumber = self.ramq
-        patient.postalCode = self.postalCode
-        patient.dateOfBirth = self.dateOfBirth
-        do {
-            try viewContext.save()
-            self.presentationMode.wrappedValue.dismiss()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
-    
 }
 
 struct PatientFormView_Previews: PreviewProvider {

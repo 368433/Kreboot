@@ -53,7 +53,6 @@
 		31548B8C25C71A6F00097F2F /* ListFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */; };
 		31548B9225C71E9A00097F2F /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9125C71E9A00097F2F /* CoreDataProvider.swift */; };
 		31548B9D25C7273500097F2F /* DynamicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9C25C7273500097F2F /* DynamicGroup.swift */; };
-		31548B9E25C7273500097F2F /* DynamicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9C25C7273500097F2F /* DynamicGroup.swift */; };
 		31548BA425C7286A00097F2F /* StarredPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548BA325C7286A00097F2F /* StarredPatientsList.swift */; };
 		31548BA525C7286A00097F2F /* StarredPatientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548BA325C7286A00097F2F /* StarredPatientsList.swift */; };
 		3154A32825C8F2C600E20978 /* ICDdbTable2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3154A32725C8F2C600E20978 /* ICDdbTable2.swift */; };
@@ -185,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				31548B9125C71E9A00097F2F /* CoreDataProvider.swift */,
+				31548B9C25C7273500097F2F /* DynamicGroup.swift */,
 			);
 			path = "CoreData Adaptors";
 			sourceTree = "<group>";
@@ -199,7 +199,6 @@
 				3118F01325C615F1002B3711 /* ListRow.swift */,
 				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
 				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
-				31548B9C25C7273500097F2F /* DynamicGroup.swift */,
 				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
 				6AD4DFFB25CDE47700DA2114 /* Discarded version */,
 			);
@@ -568,7 +567,6 @@
 			files = (
 				3118F00425C608BD002B3711 /* PatientRowView.swift in Sources */,
 				311CA85725C5774900E4513A /* KrebootApp.swift in Sources */,
-				31548B9E25C7273500097F2F /* DynamicGroup.swift in Sources */,
 				315E5A6525C754E0005DB2A9 /* BillingView.swift in Sources */,
 				314C9A7F25C7720800E5B9FE /* PatientRow2.swift in Sources */,
 				3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */,

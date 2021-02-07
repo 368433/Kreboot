@@ -37,7 +37,9 @@ struct PatientListDetailView: View {
             case .second:
                 NavigationView{ListFormView(list: list)}
             case .third:
-                PatientFormView()
+                NavigationView{
+                    PatientFormView()
+                }
             default:
                 EmptyView()
             }
