@@ -21,15 +21,18 @@ extension TextField {
     }
 }
 
+func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
+    Binding(
+        get: { lhs.wrappedValue ?? rhs },
+        set: { lhs.wrappedValue = $0 }
+    )
+}
+
 extension Color {
     static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
 }
 
-extension Patient {
-    public var wrappedName: String {
-        name ?? "No name assigned"
-    }
-    
+extension NSManagedObject {
     public func saveYourself(in context: NSManagedObjectContext){
         do {
             try context.save()
@@ -40,6 +43,12 @@ extension Patient {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
+    }
+}
+
+extension Patient {
+    public var wrappedName: String {
+        name ?? "No name assigned"
     }
 }
 
@@ -67,18 +76,6 @@ extension PatientsList {
         let ptsList = self.patients as? Set<Patient> ?? []
         return ptsList.sorted{
             $0.wrappedName < $1.wrappedName
-        }
-    }
-    
-    public func saveYourself(in context: NSManagedObjectContext){
-        do {
-            try context.save()
-        }
-        catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }

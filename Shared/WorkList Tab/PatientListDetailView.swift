@@ -9,38 +9,36 @@ import SwiftUI
 
 struct PatientListDetailView: View {
     @Environment(\.managedObjectContext) var viewContext
-    @State private var showAddForm: Bool = false
-    @State private var showEditListForm: Bool = false
+    @State private var activeSheet: ActiveSheet?
     @ObservedObject var list: PatientsList
     
     var body: some View {
-        ScrollView {
-            VStack(alignment:.leading){
-                ListTopDetailView(list: list, editAction: {showEditListForm.toggle()})
-                VStack {
-                    ForEach(list.patientsArray, id:\.self){ patient in
-                        PatientRow2(patient: patient)
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView {
+                VStack(alignment:.leading){
+                    ListTopDetailView(list: list, editAction: {activeSheet = .second})
+                    VStack {
+                        ForEach(list.patientsArray, id:\.self){ patient in
+                            PatientRow2(patient: patient)
+                        }
                     }
-                }
-            }.padding()
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar{
-                ToolbarItem(placement: .primaryAction){
-                    HStack (spacing: 10) {
-                        Button(action: {showAddForm.toggle()}){
-                            Image(systemName: "person.crop.circle.badge.plus").font(.title2)
-                        }
-                        Button(action: {showAddForm.toggle()}){
-                            Image(systemName: "doc.text.viewfinder").font(.title2)
-                        }
-                    }.sheet(isPresented: $showAddForm, content: {
-                        AddPatientToListView(list: list).environment(\.managedObjectContext, viewContext)
-                    })
-                }
+                }.padding()
             }
-            .sheet(isPresented: $showEditListForm, content: {
+            VStack{
+                Button(action: {activeSheet = .first}){Image(systemName: "person.crop.circle.badge.plus")}
+                Button(action: {}){Image(systemName: "doc.text.viewfinder")}
+            }.font(.title3).buttonStyle(CircularButton()).padding()
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .first:
+                AddPatientToListView(list: list).environment(\.managedObjectContext, viewContext)
+            case .second:
                 NavigationView{ListFormView(list: list)}
-            })
+            default:
+                EmptyView()
+            }
         }
     }
 }

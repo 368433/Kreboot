@@ -16,7 +16,7 @@ struct KrebootApp: App {
             TabView{
 
 //                NavigationView{
-//                    StarredPatientsList()
+//                    testGen()
 //                }.tabItem { Label("WorkLists", systemImage: "star.fill") }
                 
                 NavigationView{

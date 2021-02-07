@@ -11,17 +11,15 @@ struct ListFormView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     
-    var list : PatientsList?
+    var list: PatientsList?
     var defaultStar: Bool
-    var disableSave: Bool {
-        return title == ""
-    }
+    var disableSave: Bool { return title == "" }
     
-    @State var title: String = ""
-    @State var listDescription: String = ""
-    @State var isArchived: Bool = false
-    @State var isFavorite: Bool = false
-    @State var dateCreated: Date = Date()
+    @State var title: String
+    @State var listDescription: String
+    @State var isArchived: Bool
+    @State var isFavorite: Bool
+    @State var dateCreated: Date
     
     init(list: PatientsList? = nil, starred: Bool = false ){
         self.defaultStar = starred
@@ -61,32 +59,15 @@ struct ListFormView: View {
         // TODO Add message to confirm overwriting changes
         guard title != "" else { return }
         
-        if let list = list {
-            savelist(list)
-        }else {
-            let newlist = PatientsList(context: viewContext)
-            savelist(newlist)
-        }
+        let listToSave = list ?? PatientsList(context: viewContext)
+        listToSave.title = self.title
+        listToSave.listDescription = self.listDescription
+        listToSave.dateCreated = self.dateCreated
+        listToSave.isFavorite = self.isFavorite
+        listToSave.isArchived = self.isArchived
+        listToSave.saveYourself(in: viewContext)
         self.presentationMode.wrappedValue.dismiss()
     }
-    
-    private func savelist( _ list: PatientsList){
-        list.title = self.title
-        list.listDescription = self.listDescription
-        list.dateCreated = self.dateCreated
-        list.isFavorite = self.isFavorite
-        list.isArchived = self.isArchived
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
-    
-    
 }
 
 struct ListFormView_Previews: PreviewProvider {

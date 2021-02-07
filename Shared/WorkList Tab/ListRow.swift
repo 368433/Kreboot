@@ -15,22 +15,13 @@ struct ListRow: View {
         HStack {
             Image(systemName: "rectangle.stack.person.crop").scaledToFit().font(.title).foregroundColor(.secondary)
             VStack(alignment:.leading){
-                HStack {
-                    Text((list.title ?? "No title").localizedCapitalized).fontWeight(.semibold).foregroundColor(.primary)
-                    Text("wk of " + list.dayLabel(dateStyle: .medium)).font(.callout)
-                }
+                Text((list.title ?? "No title").localizedCapitalized).fontWeight(.semibold).foregroundColor(.primary)
+                Text("wk of " + list.dayLabel(dateStyle: .medium)).font(.callout)
                 Text(list.patientCountDescription).font(.caption).foregroundColor(.secondary)
-            }
+            }.lineLimit(1)
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-//    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ListRow_Previews: PreviewProvider {
     static var previews: some View {

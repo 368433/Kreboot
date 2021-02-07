@@ -44,3 +44,14 @@ struct CapsuleButton: ButtonStyle {
     }
 }
 
+struct CircularButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration
+            .label
+            .foregroundColor(.white)
+            .padding(10)
+            .background(Circle().fill(configuration.isPressed ? Color.gray : Color.accentColor))
+            .shadow(radius: 5)
+    }
+}
+

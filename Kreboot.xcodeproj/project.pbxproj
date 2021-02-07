@@ -10,6 +10,8 @@
 		31015B3925C9E426006D843D /* ICDDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31015B3825C9E426006D843D /* ICDDataBridge.swift */; };
 		310A872825D0141F00437522 /* ListTopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A872725D0141F00437522 /* ListTopDetailView.swift */; };
 		310A872925D0141F00437522 /* ListTopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A872725D0141F00437522 /* ListTopDetailView.swift */; };
+		310A873325D01C4700437522 /* ActiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A873225D01C4700437522 /* ActiveSheet.swift */; };
+		310A873425D01C4700437522 /* ActiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A873225D01C4700437522 /* ActiveSheet.swift */; };
 		3118EFC225C59993002B3711 /* PatientFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFC125C59993002B3711 /* PatientFormView.swift */; };
 		3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFC125C59993002B3711 /* PatientFormView.swift */; };
 		3118EFD725C5C7F2002B3711 /* StackedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFD625C5C7F2002B3711 /* StackedTextField.swift */; };
@@ -94,6 +96,7 @@
 /* Begin PBXFileReference section */
 		31015B3825C9E426006D843D /* ICDDataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDDataBridge.swift; sourceTree = "<group>"; };
 		310A872725D0141F00437522 /* ListTopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTopDetailView.swift; sourceTree = "<group>"; };
+		310A873225D01C4700437522 /* ActiveSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheet.swift; sourceTree = "<group>"; };
 		3118EFC125C59993002B3711 /* PatientFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormView.swift; sourceTree = "<group>"; };
 		3118EFD625C5C7F2002B3711 /* StackedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedTextField.swift; sourceTree = "<group>"; };
 		3118EFE925C5E398002B3711 /* PatientsListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListsView.swift; sourceTree = "<group>"; };
@@ -296,6 +299,7 @@
 				311C862325C6F94A0021E596 /* SearchBar.swift */,
 				3118EFD625C5C7F2002B3711 /* StackedTextField.swift */,
 				3149201225CDDEAC002D873C /* Button modifiers.swift */,
+				310A873225D01C4700437522 /* ActiveSheet.swift */,
 				3149201425CDDEAC002D873C /* ICDSettings.swift */,
 				3149201525CDDEAC002D873C /* Karla Protocols.swift */,
 				6A05183725CDF36100527AF1 /* UIEmptyState.swift */,
@@ -551,6 +555,7 @@
 				3118EFFC25C60311002B3711 /* PatientListDetailView.swift in Sources */,
 				310A872825D0141F00437522 /* ListTopDetailView.swift in Sources */,
 				3154A32825C8F2C600E20978 /* ICDdbTable2.swift in Sources */,
+				310A873325D01C4700437522 /* ActiveSheet.swift in Sources */,
 				31015B3925C9E426006D843D /* ICDDataBridge.swift in Sources */,
 				3154A32E25C8F34400E20978 /* ICD10Code.swift in Sources */,
 				31548BA425C7286A00097F2F /* StarredPatientsList.swift in Sources */,
@@ -569,6 +574,7 @@
 				3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */,
 				311CA85B25C5774900E4513A /* Persistence.swift in Sources */,
 				311C861725C6E1860021E596 /* AddPatientToListView.swift in Sources */,
+				310A873425D01C4700437522 /* ActiveSheet.swift in Sources */,
 				3118EFEB25C5E398002B3711 /* PatientsListsView.swift in Sources */,
 				315E5A4E25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */,
 				3118EFF225C5E88F002B3711 /* ListFormView.swift in Sources */,
