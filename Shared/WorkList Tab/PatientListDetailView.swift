@@ -25,8 +25,8 @@ struct PatientListDetailView: View {
                 }.padding()
             }
             VStack{
-                Button(action: {activeSheet = .first}){Image(systemName: "person.crop.circle.badge.plus")}
-                Button(action: {}){Image(systemName: "doc.text.viewfinder")}
+                Button(action: {activeSheet = .first}){Image(systemName: "plus.magnifyingglass")}
+                Button(action: {activeSheet = .third}){Image(systemName: "person.crop.circle.badge.plus")}
             }.font(.title3).buttonStyle(CircularButton()).padding()
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -36,6 +36,8 @@ struct PatientListDetailView: View {
                 AddPatientToListView(list: list).environment(\.managedObjectContext, viewContext)
             case .second:
                 NavigationView{ListFormView(list: list)}
+            case .third:
+                PatientFormView()
             default:
                 EmptyView()
             }

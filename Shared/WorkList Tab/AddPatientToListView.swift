@@ -11,39 +11,23 @@ struct AddPatientToListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     
-    @FetchRequest(entity: Patient.entity(), sortDescriptors: [])
-    private var patients: FetchedResults<Patient>
-    
     @State private var searchText: String = ""
     @State private var showNewPatientForm: Bool = false
     var list: PatientsList
+    var predicate: NSPredicate? {
+        return searchText == "" ? nil : NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+    }
        
     var body: some View {
         VStack{
-            SearchBar(text: $searchText)
-                .padding([.top, .bottom])
-            Button(action: {showNewPatientForm.toggle()}, label: {
-                HStack {
-                    Spacer()
-                    Label("New patient", systemImage: "plus.circle")
-                    Spacer()
-                }
-            }).buttonStyle(SettingsButton()).padding(.horizontal)
-            if patients.count == 0 {
-                UIEmptyState(titleText: "No patients in database")
-            } else {
-                List(patients.filter({searchText.isEmpty ? true : $0.wrappedName.lowercased().contains(searchText.lowercased())})){ patient in
+            SearchBar(text: $searchText).padding([.horizontal,.top])
+            List {
+                CoreDataProvider(sorting: [NSSortDescriptor(keyPath: \Patient.name, ascending: true)], predicate: predicate ) { (patient: Patient) in
                     PatientRowAddView(patient: patient, list: list)
                 }
             }
         }
-        .sheet(isPresented: $showNewPatientForm, content: {
-            PatientFormView()
-        })
-    }
-    
-    private func addPatientToList(offsets: IndexSet){
-//        list.addToPatients(<#T##value: Patient##Patient#>)
+        .sheet(isPresented: $showNewPatientForm, content: {PatientFormView()})
     }
 }
 

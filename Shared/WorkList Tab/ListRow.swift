@@ -15,9 +15,11 @@ struct ListRow: View {
         HStack {
             Image(systemName: "rectangle.stack.person.crop").scaledToFit().font(.title).foregroundColor(.secondary)
             VStack(alignment:.leading){
-                Text((list.title ?? "No title").localizedCapitalized).fontWeight(.semibold).foregroundColor(.primary)
-                Text("wk of " + list.dayLabel(dateStyle: .medium)).font(.callout)
-                Text(list.patientCountDescription).font(.caption).foregroundColor(.secondary)
+                HStack {
+                    Text((list.title ?? "No title").localizedCapitalized).fontWeight(.semibold).foregroundColor(.primary)
+                    Text("wk of " + list.dayLabel(dateStyle: .medium)).font(.footnote)
+                }
+                Text(list.patientCountDescription).font(.footnote).foregroundColor(.secondary)
             }.lineLimit(1)
         }
     }

@@ -13,34 +13,26 @@ struct PatientRow2: View {
     @State private var showFullCard: Bool = false
     
     var body: some View {
-        VStack (alignment:.leading){
             HStack (alignment: .top){
-                VStack (alignment:.center, spacing: 5){
-                    HStack (alignment: .bottom) {
+                VStack{
+                    HStack (alignment: .center) {
+                        Button(action: {}, label: {Image(systemName: "person.crop.circle.fill")})
                         Text(patient.name ?? "No name").foregroundColor(.primary).fontWeight(.semibold)
                         Spacer()
-                        Text("Diagnosis").font(.callout)
+                        Text("Diagnosis").font(.footnote)
                     }
                     Spacer()
                     HStack{
-                        HStack (spacing: 2){
-                            Image(systemName: "bed.double")
-                            Text("room")
-                        }.foregroundColor(.secondary).font(.caption)
-                        HStack (spacing: 2){
-                            Image(systemName: "folder")
-                            Text("#00000")
-                        }.foregroundColor(.secondary).font(.caption)
-                        HStack (spacing: 2){
-                            Image(systemName: "clock")
-                            Text("Last seen")
-                        }.foregroundColor(.secondary).font(.caption)
-                    }.lineLimit(1)
+                        Group{
+                            Label("room", systemImage: "bed.double")
+                            Label("#00000", systemImage: "folder")
+                            Label("Last seen", systemImage: "clock")
+                        }.foregroundColor(.secondary).font(.caption).lineLimit(1)
+                    }
                 }
                 Spacer()
                 Button(action: {}){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}.padding(.leading)
-            }
-        }.padding()
+            }.padding()
         .background(Color.white)
         .cornerRadius(10.0)
         .shadow(color: Color.black.opacity(0.2), radius: 10)
