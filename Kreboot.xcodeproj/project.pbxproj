@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		31015B3925C9E426006D843D /* ICDDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31015B3825C9E426006D843D /* ICDDataBridge.swift */; };
+		310A872825D0141F00437522 /* ListTopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A872725D0141F00437522 /* ListTopDetailView.swift */; };
+		310A872925D0141F00437522 /* ListTopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A872725D0141F00437522 /* ListTopDetailView.swift */; };
 		3118EFC225C59993002B3711 /* PatientFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFC125C59993002B3711 /* PatientFormView.swift */; };
 		3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFC125C59993002B3711 /* PatientFormView.swift */; };
 		3118EFD725C5C7F2002B3711 /* StackedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFD625C5C7F2002B3711 /* StackedTextField.swift */; };
@@ -91,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		31015B3825C9E426006D843D /* ICDDataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDDataBridge.swift; sourceTree = "<group>"; };
+		310A872725D0141F00437522 /* ListTopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTopDetailView.swift; sourceTree = "<group>"; };
 		3118EFC125C59993002B3711 /* PatientFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormView.swift; sourceTree = "<group>"; };
 		3118EFD625C5C7F2002B3711 /* StackedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedTextField.swift; sourceTree = "<group>"; };
 		3118EFE925C5E398002B3711 /* PatientsListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListsView.swift; sourceTree = "<group>"; };
@@ -183,11 +186,12 @@
 			path = "CoreData Adaptors";
 			sourceTree = "<group>";
 		};
-		3118F00925C6142A002B3711 /* List Related */ = {
+		3118F00925C6142A002B3711 /* WorkList Tab */ = {
 			isa = PBXGroup;
 			children = (
 				3118EFE925C5E398002B3711 /* PatientsListsView.swift */,
 				3118EFFB25C60311002B3711 /* PatientListDetailView.swift */,
+				310A872725D0141F00437522 /* ListTopDetailView.swift */,
 				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
 				3118F01325C615F1002B3711 /* ListRow.swift */,
 				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
@@ -196,7 +200,7 @@
 				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
 				6AD4DFFB25CDE47700DA2114 /* Discarded version */,
 			);
-			path = "List Related";
+			path = "WorkList Tab";
 			sourceTree = "<group>";
 		};
 		3118F00A25C6143C002B3711 /* Patient */ = {
@@ -233,7 +237,7 @@
 				3149201125CDDEA4002D873C /* New Group */,
 				3154A32625C8F2A400E20978 /* ICDImport  and view */,
 				3196B5C525CE2725006A3E72 /* Data Tab */,
-				3118F00925C6142A002B3711 /* List Related */,
+				3118F00925C6142A002B3711 /* WorkList Tab */,
 				315E5A5725C754C6005DB2A9 /* PlaceHolderViews */,
 				311CA82D25C5774800E4513A /* Assets.xcassets */,
 			);
@@ -545,6 +549,7 @@
 				311CA85825C5774900E4513A /* PatientsDBView.swift in Sources */,
 				311C861D25C6E9F20021E596 /* PatientRowAddView.swift in Sources */,
 				3118EFFC25C60311002B3711 /* PatientListDetailView.swift in Sources */,
+				310A872825D0141F00437522 /* ListTopDetailView.swift in Sources */,
 				3154A32825C8F2C600E20978 /* ICDdbTable2.swift in Sources */,
 				31015B3925C9E426006D843D /* ICDDataBridge.swift in Sources */,
 				3154A32E25C8F34400E20978 /* ICD10Code.swift in Sources */,
@@ -567,6 +572,7 @@
 				3118EFEB25C5E398002B3711 /* PatientsListsView.swift in Sources */,
 				315E5A4E25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */,
 				3118EFF225C5E88F002B3711 /* ListFormView.swift in Sources */,
+				310A872925D0141F00437522 /* ListTopDetailView.swift in Sources */,
 				311CA85525C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
 				315E5A5A25C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
 				31548B8C25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,
