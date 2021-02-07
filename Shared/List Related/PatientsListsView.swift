@@ -9,15 +9,13 @@ import SwiftUI
 
 struct PatientsListsView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.presentationMode) var presentationMode
-    
     @State private var presentForm: Bool = false
     @State private var listGroup: ListFilterEnum = .active
     
     var body: some View {
         VStack{
             List {
-                DynamicFilteredList(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
+                CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
                     NavigationLink(destination: PatientListDetailView(list: list)){
                         ListRow(list: list)
                     }
@@ -26,7 +24,7 @@ struct PatientsListsView: View {
         }
         .toolbar {
             ToolbarItem(placement: .principal){
-                Picker("Test", selection: $listGroup) {
+                Picker("List filter", selection: $listGroup) {
                     ForEach(ListFilterEnum.allCases, id:\.self){option in
                         Text(option.label).tag(option)
                     }
@@ -39,12 +37,6 @@ struct PatientsListsView: View {
             NavigationView{ListFormView()}
         })
     }
-}
-
-private func update(_ result: FetchedResults<PatientsList>) -> [[PatientsList]] {
-    return Dictionary(grouping: result) {(element: PatientsList) in
-        element.wrappedTitle
-    }.values.map{$0}
 }
 
 struct PatientsListsView_Previews: PreviewProvider {
