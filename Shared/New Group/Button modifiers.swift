@@ -33,6 +33,22 @@ struct OutlineButton: ButtonStyle {
     }
 }
 
+struct TightOutlineButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration
+            .label
+            .foregroundColor(configuration.isPressed ? .gray : .accentColor)
+            .padding(.vertical, 3)
+            .padding(.horizontal)
+            .background(
+                RoundedRectangle(
+                    cornerRadius: 8,
+                    style: .continuous
+                ).stroke(Color.accentColor)
+        )
+    }
+}
+
 struct CapsuleButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration
@@ -41,6 +57,17 @@ struct CapsuleButton: ButtonStyle {
             .padding(.vertical, 3)
             .padding(.horizontal)
             .background(Capsule().fill(configuration.isPressed ? Color.gray : Color.accentColor))
+    }
+}
+
+struct OutlineCapsuleButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration
+            .label
+            .foregroundColor(configuration.isPressed ? .gray : .accentColor)
+            .padding(.vertical, 3)
+            .padding(.horizontal)
+            .background(Capsule().stroke(Color.accentColor))
     }
 }
 

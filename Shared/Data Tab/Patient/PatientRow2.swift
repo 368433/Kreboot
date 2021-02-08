@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct PatientRow2: View {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var patient: Patient
-    
     @State private var showFullCard: Bool = false
+
     
     var body: some View {
             HStack (alignment: .top){
@@ -19,7 +20,7 @@ struct PatientRow2: View {
                         Button(action: {}, label: {Image(systemName: "person.crop.circle.fill")})
                         Text(patient.name ?? "No name").foregroundColor(.primary).fontWeight(.semibold)
                         Spacer()
-                        Text("Diagnosis").font(.footnote)
+                        Button(action: {}){ Text("Diagnosis").font(.footnote)}.buttonStyle(TightOutlineButton())
                     }
                     Spacer()
                     HStack{
@@ -32,7 +33,9 @@ struct PatientRow2: View {
                 }
                 Spacer()
                 Button(action: {}){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}.padding(.leading)
+                    
             }.padding()
+            
         .background(Color.white)
         .cornerRadius(10.0)
         .shadow(color: Color.black.opacity(0.2), radius: 10)
@@ -41,6 +44,7 @@ struct PatientRow2: View {
         }
         .frame(height: showFullCard ? 400:80)
         .animation(.easeInOut(duration: 0.2))
+            
     }
 }
 

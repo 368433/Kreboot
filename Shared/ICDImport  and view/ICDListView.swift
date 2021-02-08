@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 struct ICDListView: View {
-    @ObservedObject var delay = DelayedSearch()
+    @ObservedObject var delay = DelayedSearch(initialPredicate: NSPredicate(format: "icd10Description CONTAINS[cd] %@", ""), predicateFormat: "icd10Description CONTAINS[cd] %@")
     
     var body: some View {
         VStack{
@@ -29,10 +29,13 @@ struct ICDListView: View {
 
 class DelayedSearch: ObservableObject {
     @Published var searchTerm: String = String()
+    @Published var predicate: NSPredicate?
     var subscription: Set<AnyCancellable> = []
-    @Published var predicate: NSPredicate? = NSPredicate(format: "icd10Description CONTAINS[cd] %@", "")
+    var predicateFormat: String
     
-    init(){
+    init(initialPredicate: NSPredicate?, predicateFormat: String){
+        self.predicate = initialPredicate
+        self.predicateFormat = predicateFormat
         $searchTerm
             .debounce(for: .milliseconds(800), scheduler: RunLoop.main)
             .removeDuplicates()
@@ -46,7 +49,7 @@ class DelayedSearch: ObservableObject {
             .sink {(_) in
                 //
             } receiveValue: { [self] (searchWord) in
-                predicate = NSPredicate(format: "icd10Description CONTAINS[cd] %@", searchWord)
+                predicate = NSPredicate(format: predicateFormat, searchWord)
             }.store(in: &subscription)
     }
 }

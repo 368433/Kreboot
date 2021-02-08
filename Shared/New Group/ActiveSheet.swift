@@ -8,7 +8,7 @@
 import Foundation
 
 enum ActiveSheet: Identifiable {
-    case first, second, third, fourth
+    case first, second, third, fourth, fifth, sixth, seventh
     var id: Int {
         hashValue
     }

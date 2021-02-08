@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PatientListDetailView: View {
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.presentationMode) var presentationMode
     @State private var activeSheet: ActiveSheet?
     @ObservedObject var list: PatientsList
     
@@ -42,6 +43,8 @@ struct PatientListDetailView: View {
                 NavigationView{
                     PatientFormView().environment(\.managedObjectContext, viewContext)
                 }
+            case .fourth:
+                ICDListView().environment(\.managedObjectContext, viewContext)
             default:
                 EmptyView()
             }
