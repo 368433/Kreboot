@@ -11,7 +11,7 @@ struct PatientRow2: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var patient: Patient
     @State private var showFullCard: Bool = false
-
+    var dxAction: () -> Void
     
     var body: some View {
             HStack (alignment: .top){
@@ -20,7 +20,7 @@ struct PatientRow2: View {
                         Button(action: {}, label: {Image(systemName: "person.crop.circle.fill")})
                         Text(patient.name ?? "No name").foregroundColor(.primary).fontWeight(.semibold)
                         Spacer()
-                        Button(action: {}){ Text("Diagnosis").font(.footnote)}.buttonStyle(TightOutlineButton())
+                        Button(action: dxAction){ Text("Diagnosis").font(.footnote)}.buttonStyle(TightOutlineButton())
                     }
                     Spacer()
                     HStack{
@@ -50,6 +50,6 @@ struct PatientRow2: View {
 
 struct PatientRow2_Previews: PreviewProvider {
     static var previews: some View {
-        PatientRow2(patient: PersistenceController.singlePatient)
+        PatientRow2(patient: PersistenceController.singlePatient, dxAction: {})
     }
 }

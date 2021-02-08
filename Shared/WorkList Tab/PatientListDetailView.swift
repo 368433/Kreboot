@@ -9,9 +9,10 @@ import SwiftUI
 
 struct PatientListDetailView: View {
     @Environment(\.managedObjectContext) var viewContext
-    @Environment(\.presentationMode) var presentationMode
     @State private var activeSheet: ActiveSheet?
     @ObservedObject var list: PatientsList
+    @ObservedObject var monitor = MonitorPt()
+    var tempoPt: Patient?
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -20,7 +21,10 @@ struct PatientListDetailView: View {
                     ListTopDetailView(list: list, editAction: {activeSheet = .second})
                     VStack {
                         ForEach(list.patientsArray, id:\.self){ patient in
-                            PatientRow2(patient: patient)
+                            PatientRow2(patient: patient, dxAction: {
+                                monitor.pt = patient
+                                activeSheet = .fifth
+                            })
                         }
                     }
                 }.padding()
@@ -45,11 +49,19 @@ struct PatientListDetailView: View {
                 }
             case .fourth:
                 ICDListView().environment(\.managedObjectContext, viewContext)
+            case .fifth:
+                NavigationView{
+                    PatientFormView(patient: monitor.pt).environment(\.managedObjectContext, viewContext)
+                }
             default:
                 EmptyView()
             }
         }
     }
+}
+
+class MonitorPt: ObservableObject {
+    @Published var pt: Patient?
 }
 
 struct PatientListDetailView_Previews: PreviewProvider {

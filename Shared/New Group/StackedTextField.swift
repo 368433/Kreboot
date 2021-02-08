@@ -12,6 +12,24 @@
 import SwiftUI
 import CoreData
 
+
+private struct TempPatient: EnvironmentKey {
+    static let defaultValue: Patient? = nil
+}
+
+extension EnvironmentValues {
+    var tempPt: Patient? {
+        get { self[TempPatient.self] }
+        set { self[TempPatient.self] = newValue }
+    }
+}
+
+extension View {
+    func tempPt(_ tempPt: Patient?) -> some View {
+        environment(\.tempPt, tempPt)
+    }
+}
+
 extension TextField {
     func labeledTF(label: String, isEmpty: Bool = true) -> some View {
         VStack(alignment: .leading, spacing: 0){
