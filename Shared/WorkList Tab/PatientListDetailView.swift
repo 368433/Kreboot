@@ -35,10 +35,12 @@ struct PatientListDetailView: View {
             case .first:
                 AddPatientToListView(list: list).environment(\.managedObjectContext, viewContext)
             case .second:
-                NavigationView{ListFormView(list: list)}
+                NavigationView{
+                    ListFormView(list: list).environment(\.managedObjectContext, viewContext)
+                }
             case .third:
                 NavigationView{
-                    PatientFormView()
+                    PatientFormView().environment(\.managedObjectContext, viewContext)
                 }
             default:
                 EmptyView()

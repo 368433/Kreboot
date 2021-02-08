@@ -13,12 +13,10 @@ struct PatientsListsView: View {
     @State private var listGroup: ListFilterEnum = .active
     
     var body: some View {
-        VStack{
-            List {
-                CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
-                    NavigationLink(destination: PatientListDetailView(list: list)){
-                        ListRow(list: list)
-                    }
+        List {
+            CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
+                NavigationLink(destination: PatientListDetailView(list: list)){
+                    ListRow(list: list)
                 }
             }
         }

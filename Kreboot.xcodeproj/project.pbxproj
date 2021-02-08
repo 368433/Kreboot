@@ -69,6 +69,7 @@
 		315E5A5A25C754D8005DB2A9 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */; };
 		315E5A6425C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
 		315E5A6525C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
+		3180F08125D0909600837FA2 /* ICDListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180F08025D0909600837FA2 /* ICDListView.swift */; };
 		3196B5C725CE2740006A3E72 /* DataTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196B5C625CE2740006A3E72 /* DataTab.swift */; };
 		3196B5D125CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
 		3196B5D225CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
@@ -143,6 +144,7 @@
 		315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionnedPatientsList.swift; sourceTree = "<group>"; };
 		315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		315E5A6325C754E0005DB2A9 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
+		3180F08025D0909600837FA2 /* ICDListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDListView.swift; sourceTree = "<group>"; };
 		3196B5C625CE2740006A3E72 /* DataTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTab.swift; sourceTree = "<group>"; };
 		3196B5D025CEE7F4006A3E72 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				3149200B25CB136B002D873C /* HelperFunctions.swift */,
 				31015B3825C9E426006D843D /* ICDDataBridge.swift */,
 				3154A32D25C8F34400E20978 /* ICD10Code.swift */,
+				3180F08025D0909600837FA2 /* ICDListView.swift */,
 				3154A36E25C9E07200E20978 /* OldV */,
 				3154A33325C8F44200E20978 /* ICDError.swift */,
 			);
@@ -546,6 +549,7 @@
 				3118EFF125C5E88F002B3711 /* ListFormView.swift in Sources */,
 				311CA85425C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
 				315E5A5925C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
+				3180F08125D0909600837FA2 /* ICDListView.swift in Sources */,
 				3196B5C725CE2740006A3E72 /* DataTab.swift in Sources */,
 				31548B8B25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,
 				3118F01425C615F1002B3711 /* ListRow.swift in Sources */,

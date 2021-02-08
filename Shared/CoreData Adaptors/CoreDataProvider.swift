@@ -20,7 +20,9 @@ struct CoreDataProvider<T: NSManagedObject, Content: View>: View {
     let content: (T) -> Content
     
     var body: some View {
-        ForEach(fetchRequest.wrappedValue, id: \.self) { filteredObject in
+        print("dynamic")
+        print(fetchRequest.wrappedValue.count)
+        return ForEach(fetchRequest.wrappedValue, id: \.self) { filteredObject in
             self.content(filteredObject)
         }.onDelete(perform: deleteItem)
     }

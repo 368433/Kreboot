@@ -46,6 +46,15 @@ extension NSManagedObject {
     }
 }
 
+extension ICD10dx {
+    public var wrappedCode: String {
+        icd10Code ?? "No code"
+    }
+    public var wrappedDescription: String {
+        icd10Description ?? "No description"
+    }
+}
+
 extension Patient {
     public var wrappedName: String {
         name ?? "No name assigned"
