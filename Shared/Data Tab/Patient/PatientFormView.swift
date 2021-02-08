@@ -12,74 +12,57 @@ struct PatientFormView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @ObservedObject var patient: Patient
+    var list: PatientsList?
     var disableSave: Bool {
-        return name == ""
+        return patient.name?.isEmpty ?? true
     }
     
-    @State var title: String = ""
-    @State var name: String = ""
-    @State var ramq: String = ""
-    @State var chartNumber: String = ""
-    @State var postalCode: String = ""
-    @State var dateOfBirth: Date = Date()
-    
-    init(patient: Patient? = nil){
+    init(patient: Patient? = nil, list: PatientsList? = nil){
         self.patient = patient ?? Patient(context: PersistenceController.shared.container.viewContext)
+        self.list = list
     }
     
     var body: some View {
-//        NavigationView{
-            List {
-                Section(
-                    header:
-                        VStack(alignment: .leading){
-                            HStack {
-                                Spacer()
-                                Button(action: {}){Image(systemName: "doc.text.viewfinder")}.buttonStyle(CircularButton()).padding(.top)
-                            }
-                            Text("Personnal data")
-                        }) {
-                    TextField("Name", text: $patient.name ?? "")
-                    TextField("PostalCode", text: $patient.postalCode ?? "")
-                    HStack{
-                        Text("Card photo")
-                        Spacer()
-                        Image(systemName: "person.crop.rectangle")
-                    }
-                    DatePicker("Date of Birth", selection: $patient.dateOfBirth ?? Date(), displayedComponents: .date)
+        List {
+            Section( header: VStack(alignment: .leading){
+                HStack {
+                    Spacer()
+                    Button(action: {}){Image(systemName: "doc.text.viewfinder")}.buttonStyle(CircularButton()).padding(.top)
                 }
-                Section(header: Text("Healthcare system Data")) {
-                    TextField("RAMQ", text: $patient.ramqNumber ?? "")
-                        .labeledTF(label: "RAMQ", isEmpty: ramq == "")
-                    TextField("Chart number", text: $chartNumber)
-                        .labeledTF(label: "Chart Number", isEmpty: chartNumber == "")
+                Text("Personnal data")
+            }) {
+                TextField("Name", text: $patient.name ?? "")
+                TextField("PostalCode", text: $patient.postalCode ?? "")
+                HStack{
+                    Text("Card photo")
+                    Spacer()
+                    Image(systemName: "person.crop.rectangle")
                 }
-                Section(header: Text("Health Data")) {
-                    TextField("Allergies, comma separated", text: $ramq)
-                    NavigationLink(destination: ICDListView()){ Text("Past medical history")}
-                }
-            }.listStyle(GroupedListStyle())
-            .toolbar{
-                ToolbarItem(placement:.principal){Text("Patient form")}
-                ToolbarItem(placement: .confirmationAction){
-                    Button("Save", action: Save)
-                        .disabled(disableSave)
-                }
+                DatePicker("Date of Birth", selection: $patient.dateOfBirth ?? Date(), displayedComponents: .date)
             }
-            .navigationBarTitleDisplayMode(.inline)
-//        }
+            Section(header: Text("Healthcare system Data")) {
+                TextField("RAMQ", text: $patient.ramqNumber ?? "")
+                TextField("Chart number", text: $patient.chartNumber ?? "")
+            }
+            Section(header: Text("Health Data")) {
+                TextField("Allergies, comma separated", text: $patient.ramqNumber ?? "")
+                NavigationLink(destination: ICDListView()){ Text("Past medical history")}
+            }
+        }.listStyle(GroupedListStyle())
+        .toolbar{
+            ToolbarItem(placement:.principal){Text("Patient form")}
+            ToolbarItem(placement: .confirmationAction){
+                Button("Save", action: Save)
+                    .disabled(disableSave)
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func Save() -> Void {
-        // TODO Add message to confirm overwriting changes
-        guard name != "" else { return }
-        let patientToSave = Patient(context: viewContext)
-        patientToSave.name = self.name
-        patientToSave.chartNumber = self.chartNumber
-        patientToSave.ramqNumber = self.ramq
-        patientToSave.postalCode = self.postalCode
-        patientToSave.dateOfBirth = self.dateOfBirth
-        patientToSave.saveYourself(in: viewContext)
+        list?.addToPatients(patient)
+        patient.saveYourself(in: viewContext)
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 

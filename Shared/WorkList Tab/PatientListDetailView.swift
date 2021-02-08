@@ -12,7 +12,6 @@ struct PatientListDetailView: View {
     @State private var activeSheet: ActiveSheet?
     @ObservedObject var list: PatientsList
     @ObservedObject var monitor = MonitorPt()
-    var tempoPt: Patient?
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -21,10 +20,16 @@ struct PatientListDetailView: View {
                     ListTopDetailView(list: list, editAction: {activeSheet = .second})
                     VStack {
                         ForEach(list.patientsArray, id:\.self){ patient in
-                            PatientRow2(patient: patient, dxAction: {
+                            PatientRow2(
+                                patient: patient,
+                                dxAction: {
                                 monitor.pt = patient
-                                activeSheet = .fifth
-                            })
+                                activeSheet = .fourth
+                            },
+                                idCardAction: {
+                                    monitor.pt = patient
+                                    activeSheet = .fifth
+                                })
                         }
                     }
                 }.padding()
@@ -45,7 +50,7 @@ struct PatientListDetailView: View {
                 }
             case .third:
                 NavigationView{
-                    PatientFormView().environment(\.managedObjectContext, viewContext)
+                    PatientFormView(list: list).environment(\.managedObjectContext, viewContext)
                 }
             case .fourth:
                 ICDListView().environment(\.managedObjectContext, viewContext)
