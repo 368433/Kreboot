@@ -9,15 +9,21 @@ import SwiftUI
 
 struct PatientListDetailView: View {
     @Environment(\.managedObjectContext) var viewContext
-    @State private var activeSheet: ActiveSheet?
     @ObservedObject var list: PatientsList
     @ObservedObject var monitor = MonitorPt()
+    @State private var activeSheet: ActiveSheet?
+    @State private var cardsGroup: CardsFilter = .toSee
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView {
                 VStack(alignment:.leading){
                     ListTopDetailView(list: list, editAction: {activeSheet = .second})
+                    Picker("Cards filter", selection: $cardsGroup) {
+                        ForEach(CardsFilter.allCases, id:\.self){option in
+                            Text(option.label).tag(option)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle()).padding(.vertical)
                     VStack {
                         ForEach(list.patientsArray, id:\.self){ patient in
                             PatientRow2(

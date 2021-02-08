@@ -13,3 +13,11 @@ Databases that have to be independent and able to change are:
     
     **  Have to make the all the UI independent of references to a specific framework of persistence.
         Be able to change from core data to firebase for example without having to change the UI code
+        
+        
+TODO:
+
+    ** Framework for handling empty results gracefully
+    ** Implement data analysis flow
+    ** Implement billing algo
+    ** Implement settings to save to userdefaults hospitals, etc...

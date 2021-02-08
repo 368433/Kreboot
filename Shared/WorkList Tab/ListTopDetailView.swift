@@ -20,7 +20,7 @@ struct ListTopDetailView: View {
             }.lineLimit(2).foregroundColor(.secondary)
             Spacer()
             Button(action: editAction){Text("Edit").font(.caption)}.buttonStyle(CapsuleButton())
-        }.padding(.bottom)
+        }
     }
 }
 

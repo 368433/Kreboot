@@ -70,6 +70,8 @@
 		315E5A6425C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
 		315E5A6525C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
 		3180F08125D0909600837FA2 /* ICDListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180F08025D0909600837FA2 /* ICDListView.swift */; };
+		318E27EA25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */; };
+		318E27EB25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */; };
 		3196B5C725CE2740006A3E72 /* DataTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196B5C625CE2740006A3E72 /* DataTab.swift */; };
 		3196B5D125CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
 		3196B5D225CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
@@ -145,6 +147,7 @@
 		315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		315E5A6325C754E0005DB2A9 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
 		3180F08025D0909600837FA2 /* ICDListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDListView.swift; sourceTree = "<group>"; };
+		318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsFilterEnum.swift; sourceTree = "<group>"; };
 		3196B5C625CE2740006A3E72 /* DataTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTab.swift; sourceTree = "<group>"; };
 		3196B5D025CEE7F4006A3E72 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
@@ -201,6 +204,7 @@
 				3118F01325C615F1002B3711 /* ListRow.swift */,
 				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
 				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
+				318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */,
 				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
 				6AD4DFFB25CDE47700DA2114 /* Discarded version */,
 			);
@@ -549,6 +553,7 @@
 				3118EFF125C5E88F002B3711 /* ListFormView.swift in Sources */,
 				311CA85425C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
 				315E5A5925C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
+				318E27EA25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */,
 				3180F08125D0909600837FA2 /* ICDListView.swift in Sources */,
 				3196B5C725CE2740006A3E72 /* DataTab.swift in Sources */,
 				31548B8B25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,
@@ -580,6 +585,7 @@
 				3118EFEB25C5E398002B3711 /* PatientsListsView.swift in Sources */,
 				315E5A4E25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */,
 				3118EFF225C5E88F002B3711 /* ListFormView.swift in Sources */,
+				318E27EB25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */,
 				310A872925D0141F00437522 /* ListTopDetailView.swift in Sources */,
 				311CA85525C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
 				315E5A5A25C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
