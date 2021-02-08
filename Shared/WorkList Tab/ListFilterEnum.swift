@@ -19,7 +19,7 @@ enum ListFilterEnum: CaseIterable {
         case .archived:
             return "Archived"
         case .favorite:
-            return "Favorite"
+            return "Pinned"
         case .active:
             return "Active"
         }

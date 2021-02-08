@@ -12,6 +12,8 @@ struct ListFormView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @ObservedObject var list: PatientsList
+    @State private var isPinned = false
+    @State private var isArchived = false
     var disableSave: Bool { return list.title?.isEmpty ?? true }
     
     init(list: PatientsList? = nil ){
@@ -24,11 +26,11 @@ struct ListFormView: View {
             ScrollChoice(labelText: $list.title ?? "", choice: SomeConstants.listTitleChoice )
             TextField("List description", text: $list.listDescription ?? "")
             HStack {
-                Text("Favorite")
+                Text("Pin")
                 Spacer()
-                Button(action: {list.isFavorite.toggle()}){Image(systemName: list.isFavorite ? "star.fill":"star")}
+                Button(action: {isPinned.toggle()}){Image(systemName: isPinned ? "pin.fill":"pin")}
             }
-            Toggle(isOn: $list.isArchived){Text("Archive")}.padding(.trailing)
+            Toggle(isOn: $isArchived){Text("Archive")}.padding(.trailing)
             DatePicker("Date created", selection: $list.dateCreated ?? Date(), displayedComponents: .date)
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -41,6 +43,8 @@ struct ListFormView: View {
     }
     
     private func Save() -> Void {
+        list.isArchived = isArchived
+        list.isFavorite = isPinned
         list.saveYourself(in: viewContext)
         self.presentationMode.wrappedValue.dismiss()
     }
