@@ -69,6 +69,8 @@
 		315E5A5A25C754D8005DB2A9 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */; };
 		315E5A6425C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
 		315E5A6525C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
+		317CEA3E25D4157700393AD6 /* ListFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */; };
+		317CEA3F25D4157700393AD6 /* ListFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */; };
 		3180F08125D0909600837FA2 /* ICDListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180F08025D0909600837FA2 /* ICDListView.swift */; };
 		318E27EA25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */; };
 		318E27EB25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */; };
@@ -146,6 +148,7 @@
 		315E5A4C25C73086005DB2A9 /* SectionnedPatientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionnedPatientsList.swift; sourceTree = "<group>"; };
 		315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		315E5A6325C754E0005DB2A9 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
+		317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFormViewModel.swift; sourceTree = "<group>"; };
 		3180F08025D0909600837FA2 /* ICDListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDListView.swift; sourceTree = "<group>"; };
 		318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsFilterEnum.swift; sourceTree = "<group>"; };
 		3196B5C625CE2740006A3E72 /* DataTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTab.swift; sourceTree = "<group>"; };
@@ -201,6 +204,7 @@
 				3118EFFB25C60311002B3711 /* PatientListDetailView.swift */,
 				310A872725D0141F00437522 /* ListTopDetailView.swift */,
 				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
+				317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */,
 				3118F01325C615F1002B3711 /* ListRow.swift */,
 				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
 				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
@@ -548,6 +552,7 @@
 				6A05183825CDF36100527AF1 /* UIEmptyState.swift in Sources */,
 				3149200C25CB136B002D873C /* HelperFunctions.swift in Sources */,
 				315E5A4D25C73086005DB2A9 /* SectionnedPatientsList.swift in Sources */,
+				317CEA3E25D4157700393AD6 /* ListFormViewModel.swift in Sources */,
 				311C862425C6F94A0021E596 /* SearchBar.swift in Sources */,
 				3154A34425C95BD000E20978 /* ICDProvider2.swift in Sources */,
 				3118EFF125C5E88F002B3711 /* ListFormView.swift in Sources */,
@@ -594,6 +599,7 @@
 				311CA85925C5774900E4513A /* PatientsDBView.swift in Sources */,
 				311C861E25C6E9F20021E596 /* PatientRowAddView.swift in Sources */,
 				3118EFFD25C60311002B3711 /* PatientListDetailView.swift in Sources */,
+				317CEA3F25D4157700393AD6 /* ListFormViewModel.swift in Sources */,
 				31548BA525C7286A00097F2F /* StarredPatientsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

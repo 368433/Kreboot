@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PatientsListsView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @State private var presentForm: Bool = false
     @State private var listGroup: ListFilterEnum = .active
     

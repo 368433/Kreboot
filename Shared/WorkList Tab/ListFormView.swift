@@ -8,45 +8,44 @@
 import SwiftUI
 
 struct ListFormView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.presentationMode) private var presentationMode
     
-    @ObservedObject var list: PatientsList
-    @State private var isPinned = false
-    @State private var isArchived = false
-    var disableSave: Bool { return list.title?.isEmpty ?? true }
+    @Environment(\.presentationMode) private var presentationMode
+    @ObservedObject private var viewModel: ListFormViewModel
     
     init(list: PatientsList? = nil ){
-        self.list = list ?? PatientsList(context: PersistenceController.shared.container.viewContext)
+        self.viewModel = ListFormViewModel(list: list)
     }
     
     var body: some View {
-        List{
-            TextField("Title", text: $list.title ?? "")
-            ScrollChoice(labelText: $list.title ?? "", choice: SomeConstants.listTitleChoice )
-            TextField("List description", text: $list.listDescription ?? "")
-            HStack {
-                Text("Pin")
-                Spacer()
-                Button(action: {isPinned.toggle()}){Image(systemName: isPinned ? "pin.fill":"pin")}
+        Form{
+            Section(
+                header: Text("LIST NAME"),
+                footer:HStack {
+                    Text("Sugg.: ").font(.caption2)
+                    ScrollChoice(labelText: $viewModel.title, choice: SomeConstants.listTitleChoice )
+                }
+            ){ TextField("Name", text: $viewModel.title)}
+            Section(header: Text("DETAILS")) {
+                TextField("List description", text: $viewModel.listDescription)
+                HStack {
+                    Text("Pin")
+                    Spacer()
+                    Button(action: {viewModel.isPinned.toggle()}){Image(systemName: viewModel.isPinned ? "pin.fill":"pin")}
+                }
+                Toggle(isOn: $viewModel.isArchived){Text("Archive")}.padding(.trailing)
+                DatePicker("Date created", selection: $viewModel.date, displayedComponents: .date)
             }
-            Toggle(isOn: $isArchived){Text("Archive")}.padding(.trailing)
-            DatePicker("Date created", selection: $list.dateCreated ?? Date(), displayedComponents: .date)
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle(Text("List Form"))
         .toolbar{
             ToolbarItem(placement: .confirmationAction){
-                Button("Save", action: Save)
-                    .disabled(disableSave)
+                Button("Save", action: {
+                    viewModel.save()
+                    self.presentationMode.wrappedValue.dismiss()
+                })
+                    .disabled(!viewModel.formIsValid)
             }
         }
-    }
-    
-    private func Save() -> Void {
-        list.isArchived = isArchived
-        list.isFavorite = isPinned
-        list.saveYourself(in: viewContext)
-        self.presentationMode.wrappedValue.dismiss()
     }
 }
 
