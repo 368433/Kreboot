@@ -6,6 +6,23 @@
 //
 
 import Foundation
+
+protocol MedicalEpisodeProtocol {
+    var patient: Patient {get set}
+    var start: Date? {get set}
+    var end: Date? {get set}
+    var acts: [MedicalActProtocol] {get set}
+    var hospitalizationDate: Date? {get set}
+    var parentList: PatientsList? {get set}
+}
+protocol MedicalActProtocol {
+    var actDate: Date {get set}
+    var actType: String {get set}
+//    var actLocation: MedicalLocation {get set}
+    var billed: Bool {get set}
+    var billable: Bool {get set}
+    var consultingPhysician: PhysicianObject? {get set}
+}
 //
 //protocol PatientObject {
 //    var name: String {get}
@@ -16,24 +33,6 @@ import Foundation
 //    var medicalHistory: [Diagnosis] {get set}
 //    var allergies: [Allergy] {get set}
 //    var episodesOfCare: [MedicalEpisode] {get set}
-//}
-//
-//protocol MedicalEpisode {
-//    var patient: PatientObject {get set}
-//    var start: Date {get set}
-//    var end: Date? {get set}
-//    var acts: [MedicalAct] {get set}
-//    var hospitalizationDate: Date? {get set}
-//    var parentList: PatientList? {get set}
-//}
-//
-//protocol MedicalAct {
-//    var actDate: Date {get set}
-//    var actType: String {get set}
-//    var actLocation: MedicalLocation {get set}
-//    var billed: Bool {get set}
-//    var billable: Bool {get set}
-//    var consultingPhysician: PhysicianObject? {get set}
 //}
 //
 //protocol PhysicianObject {
