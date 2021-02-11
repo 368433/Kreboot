@@ -200,11 +200,11 @@
 		3118F00925C6142A002B3711 /* WorkList Tab */ = {
 			isa = PBXGroup;
 			children = (
+				317CEA4425D4BF4B00393AD6 /* View Models */,
+				317CEA4525D4BF5400393AD6 /* Views */,
 				3118EFE925C5E398002B3711 /* PatientsListsView.swift */,
 				3118EFFB25C60311002B3711 /* PatientListDetailView.swift */,
 				310A872725D0141F00437522 /* ListTopDetailView.swift */,
-				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
-				317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */,
 				3118F01325C615F1002B3711 /* ListRow.swift */,
 				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
 				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
@@ -350,6 +350,22 @@
 				315E5A6325C754E0005DB2A9 /* BillingView.swift */,
 			);
 			path = PlaceHolderViews;
+			sourceTree = "<group>";
+		};
+		317CEA4425D4BF4B00393AD6 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		317CEA4525D4BF5400393AD6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3196B5C525CE2725006A3E72 /* Data Tab */ = {
