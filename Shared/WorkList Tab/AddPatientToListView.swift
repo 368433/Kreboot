@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddPatientToListView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     
     @State private var searchText: String = ""

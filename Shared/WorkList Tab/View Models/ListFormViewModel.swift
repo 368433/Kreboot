@@ -17,9 +17,9 @@ class ListFormViewModel: ObservableObject {
     @Published var title: String
     @Published var date: Date
     @Published var listDescription: String
-    @Published var isPinned = false
-    @Published var isArchived = false
-    @Published var formIsValid = false
+    @Published var isPinned: Bool
+    @Published var isArchived: Bool
+    @Published var formIsValid: Bool
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -33,9 +33,13 @@ class ListFormViewModel: ObservableObject {
     
     init(list: PatientsList? = nil){
         self.list = list ?? PatientsList(context: PersistenceController.shared.container.viewContext)
+        
         self._title = Published(initialValue: self.list.title ?? "")
         self._listDescription = Published(initialValue: self.list.listDescription ?? "")
         self._date = Published(initialValue: self.list.dateCreated ?? Date())
+        self._isPinned = Published(initialValue: self.list.isFavorite)
+        self._isArchived = Published(initialValue: self.list.isArchived)
+        self.formIsValid = !(self.list.title?.isEmpty ?? true)
         
         isTitleValidPublisher
             .dropFirst()

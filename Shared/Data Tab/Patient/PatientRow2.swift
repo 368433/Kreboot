@@ -13,6 +13,7 @@ struct PatientRow2: View {
     @State private var showFullCard: Bool = false
     var dxAction: () -> Void
     var idCardAction: () -> Void
+    var roomAction: ()->Void
     
     var body: some View {
             HStack (alignment: .top){
@@ -26,7 +27,7 @@ struct PatientRow2: View {
                     Spacer()
                     HStack{
                         Group{
-                            Button(action:{}){Label("room", systemImage: "bed.double")}
+                            Button(action: roomAction){Label("room", systemImage: "bed.double")}
                             Label("#00000", systemImage: "folder")
                             Label("Last seen", systemImage: "clock")
                         }.foregroundColor(.secondary).font(.caption).lineLimit(1)
@@ -51,6 +52,6 @@ struct PatientRow2: View {
 
 struct PatientRow2_Previews: PreviewProvider {
     static var previews: some View {
-        PatientRow2(patient: PersistenceController.singlePatient, dxAction: {}, idCardAction: {})
+        PatientRow2(patient: PersistenceController.singlePatient, dxAction: {}, idCardAction: {}, roomAction: {})
     }
 }

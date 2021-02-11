@@ -13,6 +13,7 @@ struct PatientFormView: View {
     
     @ObservedObject var patient: Patient
     var list: PatientsList?
+    @State private var comments: String = ""
     var disableSave: Bool {
         return patient.name?.isEmpty ?? true
     }
@@ -23,20 +24,22 @@ struct PatientFormView: View {
     }
     
     var body: some View {
-        List {
-            Section( header: VStack(alignment: .leading){
+        Form {
+            Section( header: VStack(alignment: .leading, spacing: 0){
                 HStack {
                     Spacer()
-                    Button(action: {}){Image(systemName: "doc.text.viewfinder")}.buttonStyle(CircularButton()).padding(.top)
+                    Button(action: {}){Image(systemName: "doc.text.viewfinder")}.buttonStyle(CircularButton())//.padding(.top)
                 }
                 Text("Personnal data")
             }) {
                 TextField("Name", text: $patient.name ?? "")
                 TextField("PostalCode", text: $patient.postalCode ?? "")
-                HStack{
-                    Text("Card photo")
-                    Spacer()
-                    Image(systemName: "person.crop.rectangle")
+                Button(action: {}){
+                    HStack{
+                        Text("Card photo")
+                        Spacer()
+                        Image(systemName: "person.crop.rectangle")
+                    }
                 }
                 DatePicker("Date of Birth", selection: $patient.dateOfBirth ?? Date(), displayedComponents: .date)
             }
@@ -44,11 +47,39 @@ struct PatientFormView: View {
                 TextField("RAMQ", text: $patient.ramqNumber ?? "")
                 TextField("Chart number", text: $patient.chartNumber ?? "")
             }
-            Section(header: Text("Health Data")) {
+            Section(header: Text("Allergies")) {
                 TextField("Allergies, comma separated", text: $patient.ramqNumber ?? "")
-                NavigationLink(destination: ICDListView()){ Text("Past medical history")}
+                Text("Frequency List:").font(.subheadline).fontWeight(.light).foregroundColor(.secondary)
+                
             }
-        }.listStyle(GroupedListStyle())
+            Section(header: Text("Past Medical History")) {
+                NavigationLink(destination: ICDListView()){
+                    HStack{
+                        Text("Add ICD dx")
+                        Spacer()
+                        Image(systemName: "plus.magnifyingglass")
+                    }
+                }
+                Text("Frequency List:").font(.subheadline).fontWeight(.light).foregroundColor(.secondary)
+                DisclosureGroup("View Past Medical History") {
+                    List{
+                        Text("First dx")
+                        Text("Second dx")
+                        Text("Third dx")
+                    }
+                }
+            }
+            
+            Section(header: Text("Episodes of care")){
+                DisclosureGroup("View encounters") {
+                    EmptyView()
+                }
+            }
+            
+            Section(header: Text("Comments")){
+                TextField("", text: $comments).frame(height: 100)
+            }
+        }
         .toolbar{
             ToolbarItem(placement:.principal){Text("Patient form")}
             ToolbarItem(placement: .confirmationAction){

@@ -200,16 +200,12 @@
 		3118F00925C6142A002B3711 /* WorkList Tab */ = {
 			isa = PBXGroup;
 			children = (
+				3160B47625D4C056002BED92 /* Models */,
 				317CEA4425D4BF4B00393AD6 /* View Models */,
 				317CEA4525D4BF5400393AD6 /* Views */,
-				3118EFE925C5E398002B3711 /* PatientsListsView.swift */,
 				3118EFFB25C60311002B3711 /* PatientListDetailView.swift */,
-				310A872725D0141F00437522 /* ListTopDetailView.swift */,
-				3118F01325C615F1002B3711 /* ListRow.swift */,
 				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
 				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
-				318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */,
-				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
 				6AD4DFFB25CDE47700DA2114 /* Discarded version */,
 			);
 			path = "WorkList Tab";
@@ -352,6 +348,15 @@
 			path = PlaceHolderViews;
 			sourceTree = "<group>";
 		};
+		3160B47625D4C056002BED92 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */,
+				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		317CEA4425D4BF4B00393AD6 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,7 +368,10 @@
 		317CEA4525D4BF5400393AD6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3118EFE925C5E398002B3711 /* PatientsListsView.swift */,
+				3118F01325C615F1002B3711 /* ListRow.swift */,
 				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
+				310A872725D0141F00437522 /* ListTopDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
