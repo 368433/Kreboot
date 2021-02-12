@@ -21,7 +21,7 @@ protocol MedicalActProtocol {
 //    var actLocation: MedicalLocation {get set}
     var billed: Bool {get set}
     var billable: Bool {get set}
-    var consultingPhysician: PhysicianObject? {get set}
+    var consultingPhysician: PhysicianObjectProtocol? {get set}
 }
 //
 //protocol PatientObject {
@@ -35,10 +35,10 @@ protocol MedicalActProtocol {
 //    var episodesOfCare: [MedicalEpisode] {get set}
 //}
 //
-//protocol PhysicianObject {
-//    var licenseNumber: String {get set}
-//    var name: String {get set}
-//}
+protocol PhysicianObjectProtocol {
+    var licenseNumber: String {get set}
+    var name: String {get set}
+}
 //
 //protocol PatientList {
 //    var episodes: [MedicalEpisode] {get set}
