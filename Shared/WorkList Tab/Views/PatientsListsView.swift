@@ -12,27 +12,26 @@ struct PatientsListsView: View {
     @State private var listGroup: ListFilterEnum = .active
     
     var body: some View {
-        List {
-            CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
-                NavigationLink(destination: PatientListDetailView(list: list)){
-                    ListRow(list: list)
-                }
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal){
+        VStack {
+            HStack {
                 Picker("List filter", selection: $listGroup) {
                     ForEach(ListFilterEnum.allCases, id:\.self){option in
                         Text(option.label).tag(option)
                     }
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
-            }
-            ToolbarItem(placement: .primaryAction){
+                Spacer()
                 Button(action: {presentForm.toggle()}){Image(systemName: "plus")}
-            }
-        }.sheet(isPresented: $presentForm, content: {
-            NavigationView{ListFormView()}
-        })
+            }.padding()
+            List {
+                CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
+                    NavigationLink(destination: PatientListDetailView(list: list)){
+                        ListRow(list: list)
+                    }
+                }
+            }.sheet(isPresented: $presentForm, content: {
+                NavigationView{ListFormView()}
+            })
+        }
     }
 }
 

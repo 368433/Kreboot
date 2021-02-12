@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		31015B3925C9E426006D843D /* ICDDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31015B3825C9E426006D843D /* ICDDataBridge.swift */; };
+		310996E425D6448800E0C123 /* AddActView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310996E325D6448800E0C123 /* AddActView.swift */; };
+		310996E525D6448800E0C123 /* AddActView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310996E325D6448800E0C123 /* AddActView.swift */; };
 		310A872825D0141F00437522 /* ListTopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A872725D0141F00437522 /* ListTopDetailView.swift */; };
 		310A872925D0141F00437522 /* ListTopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A872725D0141F00437522 /* ListTopDetailView.swift */; };
 		310A873325D01C4700437522 /* ActiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A873225D01C4700437522 /* ActiveSheet.swift */; };
@@ -71,6 +73,7 @@
 		315E5A6425C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
 		315E5A6525C754E0005DB2A9 /* BillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E5A6325C754E0005DB2A9 /* BillingView.swift */; };
 		31643EBD25D622680009BF9C /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31643EBC25D622680009BF9C /* PopupView.swift */; };
+		31643EC325D63A360009BF9C /* RoomChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31643EC225D63A360009BF9C /* RoomChangeView.swift */; };
 		317CEA3E25D4157700393AD6 /* ListFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */; };
 		317CEA3F25D4157700393AD6 /* ListFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */; };
 		3180F08125D0909600837FA2 /* ICDListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180F08025D0909600837FA2 /* ICDListView.swift */; };
@@ -101,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		31015B3825C9E426006D843D /* ICDDataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDDataBridge.swift; sourceTree = "<group>"; };
+		310996E325D6448800E0C123 /* AddActView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActView.swift; sourceTree = "<group>"; };
 		310A872725D0141F00437522 /* ListTopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTopDetailView.swift; sourceTree = "<group>"; };
 		310A873225D01C4700437522 /* ActiveSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheet.swift; sourceTree = "<group>"; };
 		3118EFC125C59993002B3711 /* PatientFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormView.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 		315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		315E5A6325C754E0005DB2A9 /* BillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingView.swift; sourceTree = "<group>"; };
 		31643EBC25D622680009BF9C /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		31643EC225D63A360009BF9C /* RoomChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomChangeView.swift; sourceTree = "<group>"; };
 		317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFormViewModel.swift; sourceTree = "<group>"; };
 		3180F08025D0909600837FA2 /* ICDListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDListView.swift; sourceTree = "<group>"; };
 		318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsFilterEnum.swift; sourceTree = "<group>"; };
@@ -208,6 +213,8 @@
 				317CEA4425D4BF4B00393AD6 /* View Models */,
 				317CEA4525D4BF5400393AD6 /* Views */,
 				3118EFFB25C60311002B3711 /* PatientListDetailView.swift */,
+				31643EC225D63A360009BF9C /* RoomChangeView.swift */,
+				310996E325D6448800E0C123 /* AddActView.swift */,
 				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
 				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
 				6AD4DFFB25CDE47700DA2114 /* Discarded version */,
@@ -570,6 +577,7 @@
 			files = (
 				3118EFD725C5C7F2002B3711 /* StackedTextField.swift in Sources */,
 				3154A35825C9DB7F00E20978 /* ICDdbTable3.swift in Sources */,
+				31643EC325D63A360009BF9C /* RoomChangeView.swift in Sources */,
 				3154A33A25C902D100E20978 /* ICDProvider0.swift in Sources */,
 				3118F00325C608BD002B3711 /* PatientRowView.swift in Sources */,
 				311CA85625C5774900E4513A /* KrebootApp.swift in Sources */,
@@ -580,6 +588,7 @@
 				314C9A7E25C7720800E5B9FE /* PatientRow2.swift in Sources */,
 				3149201725CDDEAC002D873C /* Settings.swift in Sources */,
 				3149201925CDDEAC002D873C /* Karla Protocols.swift in Sources */,
+				310996E425D6448800E0C123 /* AddActView.swift in Sources */,
 				3118EFC225C59993002B3711 /* PatientFormView.swift in Sources */,
 				31548B9225C71E9A00097F2F /* CoreDataProvider.swift in Sources */,
 				311CA85A25C5774900E4513A /* Persistence.swift in Sources */,
@@ -632,6 +641,7 @@
 				3118EFF225C5E88F002B3711 /* ListFormView.swift in Sources */,
 				318E27EB25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */,
 				310A872925D0141F00437522 /* ListTopDetailView.swift in Sources */,
+				310996E525D6448800E0C123 /* AddActView.swift in Sources */,
 				311CA85525C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
 				315E5A5A25C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
 				31548B8C25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,

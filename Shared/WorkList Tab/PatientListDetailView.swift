@@ -13,9 +13,7 @@ struct PatientListDetailView: View {
     @ObservedObject var monitor = MonitorPt()
     @State private var activeSheet: ActiveSheet?
     @State private var cardsGroup: CardsFilter = .toSee
-    @State private var showRoomPopUp = false
-    @State private var currentRoom: String = ""
-    @State private var updatedRoom: String = ""
+
     
     var body: some View {
         ZStack(alignment: .top){
@@ -34,7 +32,12 @@ struct PatientListDetailView: View {
                                     monitor.pt = patient
                                     activeSheet = .fifth
                                 },
-                                roomAction: {showRoomPopUp.toggle()})
+                                roomAction: {
+                                    activeSheet = .sixth
+                                },
+                                addActAction: {
+                                    activeSheet = .seventh
+                                })
                         }
                     }.padding(.horizontal).offset(y: 30)
                 }
@@ -50,6 +53,11 @@ struct PatientListDetailView: View {
             }.pickerStyle(SegmentedPickerStyle())
         }
         .navigationBarTitle(list.title ?? "List")
+        .toolbar(content: {
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {activeSheet = .eigth}){Image(systemName: "doc.text.magnifyingglass")}
+            }
+        })
         .sheet(item: $activeSheet) { item in
             switch item {
             case .first:
@@ -62,8 +70,12 @@ struct PatientListDetailView: View {
                 ICDListView().environment(\.managedObjectContext, viewContext)
             case .fifth:
                 NavigationView{PatientFormView(patient: monitor.pt).environment(\.managedObjectContext, viewContext)}
-            default:
-                EmptyView()
+            case .sixth:
+                RoomChangeView()
+            case .seventh:
+                AddActView()
+            case .eigth:
+                PatientsListsView()
             }
         }
     }
