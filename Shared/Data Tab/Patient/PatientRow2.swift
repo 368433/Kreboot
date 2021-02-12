@@ -11,23 +11,24 @@ struct PatientRow2: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var patient: Patient
     @State private var showFullCard: Bool = false
-    var dxAction: () -> Void
-    var idCardAction: () -> Void
-    var roomAction: ()->Void
-    var addActAction: () -> Void
+//    @Binding var activeSheet: ActiveSheet?
+    @ObservedObject var model: WorklistViewModel
     
     var body: some View {
             HStack (alignment: .top){
                 VStack{
                     HStack (alignment: .center) {
-                        Button(action: idCardAction, label: {Label((patient.name ?? "No name"), systemImage: "person.crop.circle.fill")})
+                        HStack {
+                            Button(action: {model.activeSheet = .showIdCard; model.selectedCard = patient}){Image(systemName: "person.crop.circle.fill").font(.title2)}
+                            Text(patient.name ?? "No name")
+                        }
                         Spacer()
-                        Button(action: dxAction){ Text("Diagnosis").font(.footnote)}.buttonStyle(TightOutlineButton())
+                        Button(action: {model.activeSheet = .setDiagnosis; model.selectedCard = patient}){ Text("Diagnosis").font(.footnote)}.buttonStyle(TightOutlineButton())
                     }
                     Spacer()
                     HStack{
                         Group{
-                            Button(action: roomAction){Label("room", systemImage: "bed.double")}
+                            Button(action: {model.activeSheet = .editRoom; model.selectedCard = patient}){Label("room", systemImage: "bed.double")}
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 5)
                                 .background(Color.offWhite)
@@ -39,7 +40,7 @@ struct PatientRow2: View {
                     }
                 }
                 Spacer()
-                Button(action: addActAction){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}.padding(.leading)
+                Button(action: {model.activeSheet = .addAct; model.selectedCard = patient}){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}.padding(.leading)
                     
             }.padding()
             
@@ -57,6 +58,6 @@ struct PatientRow2: View {
 
 struct PatientRow2_Previews: PreviewProvider {
     static var previews: some View {
-        PatientRow2(patient: PersistenceController.singlePatient, dxAction: {}, idCardAction: {}, roomAction: {}, addActAction: {})
+        PatientRow2(patient: PersistenceController.singlePatient, model: WorklistViewModel())
     }
 }

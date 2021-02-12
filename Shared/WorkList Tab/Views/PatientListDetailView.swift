@@ -7,43 +7,35 @@
 
 import SwiftUI
 
+//view model
+class WorklistViewModel: ObservableObject {
+    @Published var list: [String]? = nil
+    @Published var selectedCard: Patient? = nil
+    @Published var activeSheet: ActiveSheet? = nil
+}
+
 struct PatientListDetailView: View {
     @Environment(\.managedObjectContext) var viewContext
+    
+    @ObservedObject var model: WorklistViewModel = WorklistViewModel()
     @ObservedObject var list: PatientsList
-    @ObservedObject var monitor = MonitorPt()
-    @State private var activeSheet: ActiveSheet?
+    
     @State private var cardsGroup: CardsFilter = .toSee
-
     
     var body: some View {
         ZStack(alignment: .top){
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack {
-                        ListTopDetailView(title: "", details: "Liste semaine du \( list.dayLabel(dateStyle: .medium))",editAction: {activeSheet = .second}).padding(.vertical)
+                        ListTopDetailView(title: "", details: "Liste semaine du \( list.dayLabel(dateStyle: .medium))",editAction: {model.activeSheet = .editListDetails}).padding(.vertical)
                         ForEach(list.patientsArray, id:\.self){ patient in
-                            PatientRow2(
-                                patient: patient,
-                                dxAction: {
-                                    monitor.pt = patient
-                                    activeSheet = .fourth
-                                },
-                                idCardAction: {
-                                    monitor.pt = patient
-                                    activeSheet = .fifth
-                                },
-                                roomAction: {
-                                    activeSheet = .sixth
-                                },
-                                addActAction: {
-                                    activeSheet = .seventh
-                                })
+                            PatientRow2(patient: patient, model: model)
                         }
                     }.padding(.horizontal).offset(y: 30)
                 }
                 VStack{
-                    Button(action: {activeSheet = .first}){Image(systemName: "plus.magnifyingglass")}
-                    Button(action: {activeSheet = .third}){Image(systemName: "person.crop.circle.badge.plus")}
+                    Button(action: {model.activeSheet = .searchPatients}){Image(systemName: "plus.magnifyingglass")}
+                    Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}
                 }.font(.title3).buttonStyle(CircularButton()).padding()
             }
             Picker("Cards filter", selection: $cardsGroup) {
@@ -55,35 +47,32 @@ struct PatientListDetailView: View {
         .navigationBarTitle(list.title ?? "List")
         .toolbar(content: {
             ToolbarItem(placement: .primaryAction) {
-                Button(action: {activeSheet = .eigth}){Image(systemName: "doc.text.magnifyingglass")}
+                Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
             }
         })
-        .sheet(item: $activeSheet) { item in
+        .sheet(item: $model.activeSheet) { item in
             switch item {
-            case .first:
+            case .searchPatients:
                 AddPatientToListView(list: list).environment(\.managedObjectContext, viewContext)
-            case .second:
+            case .editListDetails:
                 NavigationView{ListFormView(list: list).environment(\.managedObjectContext, viewContext)}
-            case .third:
+            case .addPatient:
                 NavigationView{PatientFormView(list: list).environment(\.managedObjectContext, viewContext)}
-            case .fourth:
+            case .setDiagnosis:
                 ICDListView().environment(\.managedObjectContext, viewContext)
-            case .fifth:
-                NavigationView{PatientFormView(patient: monitor.pt).environment(\.managedObjectContext, viewContext)}
-            case .sixth:
+            case .showIdCard:
+                NavigationView{PatientFormView(patient: model.selectedCard).environment(\.managedObjectContext, viewContext)}
+            case .editRoom:
                 RoomChangeView()
-            case .seventh:
+            case .addAct:
                 AddActView()
-            case .eigth:
+            case .showAllLists:
                 PatientsListsView()
+//            default:
+//                EmptyView()
             }
         }
     }
-}
-
-
-class MonitorPt: ObservableObject {
-    @Published var pt: Patient?
 }
 
 struct PatientListDetailView_Previews: PreviewProvider {
