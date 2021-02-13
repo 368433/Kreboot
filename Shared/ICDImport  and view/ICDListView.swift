@@ -50,9 +50,22 @@ class DelayedSearch: ObservableObject {
             .sink {(_) in
                 //
             } receiveValue: { [self] (searchWord) in
+//                //create array of predicate
+//                var predicates = [NSPredicate]()
+//
+//                //split search string into words
+//                //for each word add to array a predicate with CONTAINS[cd] word
+//                predicates = searchWord.split(whereSeparator: \.isLetter.negation).map{NSPredicate(format: predicateFormat, String($0))}
+//
+//                //return a compound predicate
+//                predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
                 predicate = NSPredicate(format: predicateFormat, searchWord)
             }.store(in: &subscription)
     }
+}
+
+extension Bool {
+    var negation: Bool { !self }
 }
 
 struct ICDListView_Previews: PreviewProvider {
