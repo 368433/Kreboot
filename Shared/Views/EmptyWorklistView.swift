@@ -14,7 +14,7 @@ struct EmptyWorklistView: View {
             Spacer()
             VStack (alignment: .center){
                 Spacer()
-                Text("No list\nSelect one").fontWeight(.bold)
+                Text("No list\nSelect or create one").fontWeight(.bold)
                 Button(action:action){Image(systemName: "doc.text.magnifyingglass")}.buttonStyle(CircularButton())
                 Spacer()
             }.multilineTextAlignment(.center).foregroundColor(Color.offgray).font(.largeTitle)

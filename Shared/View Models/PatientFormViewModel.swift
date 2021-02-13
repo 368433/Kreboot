@@ -32,6 +32,11 @@ class PatientFormViewModel: ObservableObject {
     
     func save(){
         let patient = self.patient ?? Patient(context: viewContext)
+        patient.name = name
+        patient.postalCode = postalCode
+        patient.chartNumber = chartNumber
+        patient.ramqNumber = ramqNumber
+        patient.dateOfBirth = dateOfBirth
         if let list = list {
             list.addToPatients(patient)
         }
