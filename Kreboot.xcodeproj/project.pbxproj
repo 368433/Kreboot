@@ -89,6 +89,8 @@
 		6A51F74E25D884510060AE35 /* Models Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F74D25D884510060AE35 /* Models Extension.swift */; };
 		6A7177FB25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
 		6A7177FC25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
+		6AD71C4625D88B0200840B6B /* WorklistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */; };
+		6AD71C4725D88B0200840B6B /* WorklistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +177,7 @@
 		6A51F74725D884330060AE35 /* Extensions customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions customs.swift"; sourceTree = "<group>"; };
 		6A51F74D25D884510060AE35 /* Models Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models Extension.swift"; sourceTree = "<group>"; };
 		6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistViewModel.swift; sourceTree = "<group>"; };
+		6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				3118EFFB25C60311002B3711 /* WorklistView.swift */,
+				6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */,
 				3196B5C625CE2740006A3E72 /* DataTab.swift */,
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,
 				314C9A7D25C7720800E5B9FE /* PatientRow2.swift */,
@@ -575,6 +579,7 @@
 				3149201625CDDEAC002D873C /* Button modifiers.swift in Sources */,
 				6A05183825CDF36100527AF1 /* UIEmptyState.swift in Sources */,
 				3149200C25CB136B002D873C /* HelperFunctions.swift in Sources */,
+				6AD71C4625D88B0200840B6B /* WorklistHeaderView.swift in Sources */,
 				317CEA3E25D4157700393AD6 /* ListFormViewModel.swift in Sources */,
 				311C862425C6F94A0021E596 /* SearchBar.swift in Sources */,
 				3154A34425C95BD000E20978 /* ICDProvider2.swift in Sources */,
@@ -610,6 +615,7 @@
 				314C9A7F25C7720800E5B9FE /* PatientRow2.swift in Sources */,
 				3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */,
 				311CA85B25C5774900E4513A /* Persistence.swift in Sources */,
+				6AD71C4725D88B0200840B6B /* WorklistHeaderView.swift in Sources */,
 				311C861725C6E1860021E596 /* AddPatientToListView.swift in Sources */,
 				310A873425D01C4700437522 /* ActiveSheet.swift in Sources */,
 				3118EFEB25C5E398002B3711 /* PatientsListsView.swift in Sources */,
