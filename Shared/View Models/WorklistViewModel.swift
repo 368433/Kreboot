@@ -11,7 +11,7 @@ class WorklistViewModel: ObservableObject {
     @Published var list: PatientsList? = nil
     @Published var selectedCard: Patient? = nil
     @Published var activeSheet: ActiveSheet? = nil
-    @Published var medicalEpisodes: [Patient] = []
+//    @Published var medicalEpisodes: [Patient] = []
     
     var isEmpty: Bool {
         return list == nil
@@ -20,4 +20,8 @@ class WorklistViewModel: ObservableObject {
         return list?.title ?? "Untiltled list"
     }
     
+    var medicalEpisodes: [Patient] {
+        guard let list = list else {return []}
+        return list.patientsArray
+    }
 }

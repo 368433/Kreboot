@@ -27,13 +27,11 @@ struct WorklistView: View {
                     VStack {
                         WorklistHeaderView(for: model)
                         
-                        if let listToShow = model.list {
-                            ScrollView {
-                                VStack(spacing:-6){
-                                    ForEach(listToShow.patientsArray, id:\.self){ patient in
-                                        PatientRow2(patient: patient, model: model)
-                                    }.padding()
-                                }
+                        ScrollView {
+                            VStack(spacing:-6){
+                                ForEach(model.medicalEpisodes, id:\.self){ patient in
+                                    PatientRow2(patient: patient, model: model)
+                                }.padding()
                             }
                         }
                     }
