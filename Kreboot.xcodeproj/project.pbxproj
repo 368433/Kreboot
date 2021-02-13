@@ -304,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				6A51F74725D884330060AE35 /* Extensions customs.swift */,
-				3149201525CDDEAC002D873C /* Karla Protocols.swift */,
 				6A51F73B25D883A70060AE35 /* Karla Preexisting values.swift */,
 				3146971725D7A18C00CEEDFD /* Custom colors.swift */,
 				6A51F72925D8825A0060AE35 /* VerticalLabel.swift */,
@@ -349,6 +348,7 @@
 		3160B47625D4C056002BED92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3149201525CDDEAC002D873C /* Karla Protocols.swift */,
 				6A51F74D25D884510060AE35 /* Models Extension.swift */,
 				310A873225D01C4700437522 /* ActiveSheet.swift */,
 				31548B9125C71E9A00097F2F /* CoreDataProvider.swift */,

@@ -18,7 +18,7 @@ struct WorklistView: View {
     }
     
     var body: some View {
-        ZStack{
+        Group{
             if model.isEmpty{
                 EmptyWorklistView(action: {model.activeSheet = .showAllLists}).offset(y:-50)
             }
@@ -41,7 +41,6 @@ struct WorklistView: View {
                 }
             }
         }
-        
         .sheet(item: $model.activeSheet) { item in
             switch item {
             case .searchPatients:
