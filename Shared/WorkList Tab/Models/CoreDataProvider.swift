@@ -28,8 +28,6 @@ struct CoreDataProvider<T: NSManagedObject, Content: View>: View {
     init(sorting: [NSSortDescriptor], predicate: NSPredicate?, @ViewBuilder content:  @escaping (T) -> Content) {
         fetchRequest = FetchRequest<T>(entity: T.entity(), sortDescriptors: sorting, predicate: predicate)
         self.content = content
-//        print("From coredata provider:")
-//        print(viewContext)
     }
     
     private func deleteItem(at offsets: IndexSet){

@@ -17,8 +17,6 @@ struct PatientsListsView: View {
 
     init(selectedList: Binding<PatientsList?>){
         self._selectedList = selectedList
-        print("\n From patientsListsView init")
-        print(viewContext)
     }
 
     var body: some View {
@@ -30,7 +28,7 @@ struct PatientsListsView: View {
                     }
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
                 Spacer()
-                Button(action: {presentForm.toggle(); print("\n From patientslistsView BUTTON"); print(viewContext)}){Image(systemName: "plus")}
+                Button(action: {presentForm.toggle()}){Image(systemName: "plus")}
             }.padding()
             List {
                 CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in

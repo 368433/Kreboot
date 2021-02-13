@@ -93,7 +93,6 @@ struct PatientFormView: View {
     
     private func Save() -> Void {
         list?.addToPatients(patient)
-        print("Saving from patientsformview")
         patient.saveYourself(in: viewContext)
         self.presentationMode.wrappedValue.dismiss()
     }

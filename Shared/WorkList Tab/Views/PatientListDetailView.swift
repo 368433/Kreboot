@@ -16,11 +16,6 @@ struct PatientListDetailView: View {
     @State private var cardsGroup: CardsFilter = .toSee
     
     init(list: PatientsList? = nil ){
-        print("From patientslistdetailview init:")
-        print(viewContext)
-        
-        print("\n From patientslistdetailview init BUT PERSISTENT STATIC")
-        print(PersistenceController.shared.container.viewContext)
         self.model.list = list
     }
     
@@ -51,7 +46,7 @@ struct PatientListDetailView: View {
 //        .navigationBarTitle(model.list?.title ?? "No List")
         .toolbar(content: {
             ToolbarItem(placement: .primaryAction) {
-                Button(action: {model.activeSheet = .showAllLists; print("From patientslistdetail view"); print(viewContext)}){Image(systemName: "doc.text.magnifyingglass")}
+                Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
             }
         })
         .sheet(item: $model.activeSheet) { item in

@@ -37,7 +37,7 @@ struct PatientRowAddView: View {
         } else {
             list.addToPatients(patient)
         }
-        print("Saving from addpatient in patientrowaddview")
+
         list.saveYourself(in: viewContext)
         rowTapped.toggle()
     }

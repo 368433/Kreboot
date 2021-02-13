@@ -13,10 +13,8 @@ struct DataTab: View {
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 100), spacing: nil, alignment: .center),
     ]
-    init(){
-        print("From dataTab")
-        print(viewContext)
-    }
+
+    
     var body: some View {
         NavigationView{
             ScrollView(){
