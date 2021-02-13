@@ -11,17 +11,16 @@ struct PatientFormView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     
-    @ObservedObject var patient: Patient
-    var list: PatientsList? = nil
+    @ObservedObject private var model: PatientFormViewModel
+    
+    init(patient: Patient? = nil, to list: PatientsList? = nil){
+        self.model = PatientFormViewModel(list: list, patient: patient)
+    }
+    
     @State private var comments: String = ""
     
     var disableSave: Bool {
-        return patient.name?.isEmpty ?? true
-    }
-    
-    init(patient: Patient? = nil, to list: PatientsList? = nil){
-        self.patient = patient ?? Patient(context: PersistenceController.shared.container.viewContext)
-        self.list = list
+        return model.disableForm
     }
     
     var body: some View {
@@ -33,8 +32,8 @@ struct PatientFormView: View {
                 }
                 Text("Personnal data")
             }) {
-                TextField("Name", text: $patient.name ?? "")
-                TextField("PostalCode", text: $patient.postalCode ?? "")
+                TextField("Name", text: $model.name)
+                TextField("PostalCode", text: $model.postalCode)
                 Button(action: {}){
                     HStack{
                         Text("Card photo")
@@ -42,16 +41,16 @@ struct PatientFormView: View {
                         Image(systemName: "person.crop.rectangle")
                     }
                 }
-                DatePicker("Date of Birth", selection: $patient.dateOfBirth ?? Date(), displayedComponents: .date)
+                DatePicker("Date of Birth", selection: $model.dateOfBirth, displayedComponents: .date)
             }
             Section(header: Text("Healthcare system Data")) {
-                TextField("RAMQ", text: $patient.ramqNumber ?? "")
-                TextField("Chart number", text: $patient.chartNumber ?? "")
+                TextField("RAMQ", text: $model.ramqNumber)
+                TextField("Chart number", text: $model.chartNumber)
             }
             Section(header: Text("Allergies")) {
-                TextField("Allergies, comma separated", text: $patient.ramqNumber ?? "")
+                TextField("Allergies, comma separated", text: $model.ramqNumber)
                 Text("Frequency List:").font(.subheadline).fontWeight(.light).foregroundColor(.secondary)
-                
+
             }
             Section(header: Text("Past Medical History")) {
                 NavigationLink(destination: ICDListView()){
@@ -70,30 +69,30 @@ struct PatientFormView: View {
                     }
                 }
             }
-            
+
             Section(header: Text("Episodes of care")){
                 DisclosureGroup("View encounters") {
                     EmptyView()
                 }
             }
-            
+
             Section(header: Text("Comments")){
                 TextField("", text: $comments).frame(height: 100)
             }
         }
         .toolbar{
             ToolbarItem(placement:.principal){Text("Patient form")}
-            ToolbarItem(placement: .confirmationAction){
-                Button("Save", action: Save)
-                    .disabled(disableSave)
+            ToolbarItem{
+                Button("Save", action: save)
+                    .disabled(false)
+
             }
         }
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func Save() -> Void {
-        list?.addToPatients(patient)
-        patient.saveYourself(in: viewContext)
+    private func save(){
+        model.save()
         self.presentationMode.wrappedValue.dismiss()
     }
 }

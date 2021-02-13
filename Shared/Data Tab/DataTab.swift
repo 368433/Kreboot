@@ -16,11 +16,11 @@ struct DataTab: View {
 
     
     var body: some View {
-        NavigationView{
+//        NavigationView{
             ScrollView(){
                 VStack (spacing: 20){
                     NavigationLink(
-                        destination: PatientsDBView().environment(\.managedObjectContext, viewContext),
+                        destination: PatientsDBView(),
                         label: {
                             DataPav(image: "person.3", title: "Patients Database")
                         }).buttonStyle(PlainButtonStyle())
@@ -30,7 +30,7 @@ struct DataTab: View {
                     DataPav(image: "doc.text.below.ecg", title: "Billing codes")
                 }.padding()
             }
-        }
+//        }
     }
 }
 

@@ -15,9 +15,9 @@ struct PatientsListsView: View {
     @State private var listGroup: ListFilterEnum = .active
     @Binding var selectedList: PatientsList?
 
-    init(selectedList: Binding<PatientsList?>){
-        self._selectedList = selectedList
-    }
+//    init(selectedList: Binding<PatientsList?>){
+//        self._selectedList = selectedList
+//    }
 
     var body: some View {
         VStack {

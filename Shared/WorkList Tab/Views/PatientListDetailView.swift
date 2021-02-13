@@ -20,35 +20,30 @@ struct PatientListDetailView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .top){
-            ZStack(alignment: .bottomTrailing) {
+        ZStack(alignment: .bottomTrailing){
+            VStack (alignment: .leading, spacing: 0) {
+                Text(model.list?.title ?? "No title").font(.largeTitle).fontWeight(.black).lineLimit(2).padding(.horizontal)
+                ListTopDetailView(title: "\(model.list?.title ?? "NO TITLE")", details: "Liste semaine du \( model.list?.dayLabel(dateStyle: .medium) ?? "NO LIST")",editAction: {model.activeSheet = .editListDetails}).padding(.horizontal)
+                Picker("Cards filter", selection: $cardsGroup) {
+                    ForEach(CardsFilter.allCases, id:\.self){option in
+                        Text(option.label).tag(option)
+                    }
+                }.pickerStyle(SegmentedPickerStyle()).padding([.horizontal, .top])
                 ScrollView {
-                    VStack {
-                        ListTopDetailView(title: "", details: "Liste semaine du \( model.list?.dayLabel(dateStyle: .medium) ?? "NO LIST")",editAction: {model.activeSheet = .editListDetails}).padding(.vertical)
-                        if let listToShow = model.list {
-                            ForEach(listToShow.patientsArray, id:\.self){ patient in
-                                PatientRow2(patient: patient, model: model)
-                            }
-                        }
-                    }.padding(.horizontal).offset(y: 30)
+                    if let listToShow = model.list {
+                        ForEach(listToShow.patientsArray, id:\.self){ patient in
+                            PatientRow2(patient: patient, model: model)
+                        }.padding()
+                    }
                 }
-                VStack{
-                    Button(action: {model.activeSheet = .searchPatients}){Image(systemName: "plus.magnifyingglass")}
-                    Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}
-                }.font(.title3).buttonStyle(CircularButton()).padding()
             }
-            Picker("Cards filter", selection: $cardsGroup) {
-                ForEach(CardsFilter.allCases, id:\.self){option in
-                    Text(option.label).tag(option)
-                }
-            }.pickerStyle(SegmentedPickerStyle())
-        }
-//        .navigationBarTitle(model.list?.title ?? "No List")
-        .toolbar(content: {
-            ToolbarItem(placement: .primaryAction) {
+            VStack{
                 Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
-            }
-        })
+                Button(action: {model.activeSheet = .searchPatients}){Image(systemName: "plus.magnifyingglass")}
+                Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}
+            }.font(.title3).buttonStyle(CircularButton()).padding()
+        }
+        
         .sheet(item: $model.activeSheet) { item in
             switch item {
             case .searchPatients:

@@ -35,7 +35,7 @@ struct PatientsDBView: View {
                         #if os(iOS)
                         EditButton()
                         #endif
-                        
+
                         Button(action: {showForm.toggle()}) {
                             Label("Add Item", systemImage: "plus")
                         }

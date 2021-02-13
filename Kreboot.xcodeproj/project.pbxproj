@@ -84,6 +84,8 @@
 		3196B5D225CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
 		6A05183825CDF36100527AF1 /* UIEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A05183725CDF36100527AF1 /* UIEmptyState.swift */; };
 		6A51F71125D74E040060AE35 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9125C71E9A00097F2F /* CoreDataProvider.swift */; };
+		6A51F71B25D770650060AE35 /* PatientFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */; };
+		6A51F71C25D770650060AE35 /* PatientFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */; };
 		6A7177FB25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
 		6A7177FC25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -166,6 +168,7 @@
 		3196B5C625CE2740006A3E72 /* DataTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTab.swift; sourceTree = "<group>"; };
 		3196B5D025CEE7F4006A3E72 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
+		6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormViewModel.swift; sourceTree = "<group>"; };
 		6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -229,6 +232,7 @@
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,
 				314C9A7D25C7720800E5B9FE /* PatientRow2.swift */,
 				3118EFC125C59993002B3711 /* PatientFormView.swift */,
+				6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -590,6 +594,7 @@
 				6A7177FB25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */,
 				31548B9D25C7273500097F2F /* DynamicGroup.swift in Sources */,
 				3154A33425C8F44200E20978 /* ICDError.swift in Sources */,
+				6A51F71B25D770650060AE35 /* PatientFormViewModel.swift in Sources */,
 				315E5A6425C754E0005DB2A9 /* BillingView.swift in Sources */,
 				314C9A7E25C7720800E5B9FE /* PatientRow2.swift in Sources */,
 				3149201725CDDEAC002D873C /* Settings.swift in Sources */,
@@ -654,6 +659,7 @@
 				315E5A5A25C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
 				31548B8C25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,
 				3118F01525C615F1002B3711 /* ListRow.swift in Sources */,
+				6A51F71C25D770650060AE35 /* PatientFormViewModel.swift in Sources */,
 				311CA85925C5774900E4513A /* PatientsDBView.swift in Sources */,
 				311C861E25C6E9F20021E596 /* PatientRowAddView.swift in Sources */,
 				3118EFFD25C60311002B3711 /* PatientListDetailView.swift in Sources */,

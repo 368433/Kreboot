@@ -21,11 +21,13 @@ struct KrebootApp: App {
 //                    PatientsListsView(selectedList: $test)
 //                }.tabItem { Label("test", systemImage: "star.fill") }
                 
-                NavigationView{
-                    PatientListDetailView()
-                }.tabItem { Label("WorkList", systemImage: "doc.text") }
+//                NavigationView{
+                    PatientListDetailView() //}
+                .tabItem { Label("WorkList", systemImage: "doc.text") }
 
-                DataTab()
+                NavigationView{
+                    DataTab()
+                }
                 .tabItem { Label("Data", systemImage: "square.stack.3d.up") }
 
                 NavigationView{

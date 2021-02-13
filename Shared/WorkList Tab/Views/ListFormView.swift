@@ -35,7 +35,7 @@ struct ListFormView: View {
                     Button(action: {viewModel.isPinned.toggle()}){Image(systemName: viewModel.isPinned ? "pin.fill":"pin")}
                 }
                 Toggle(isOn: $viewModel.isArchived){Text("Archive")}.padding(.trailing)
-                DatePicker("Date created", selection: $viewModel.date, displayedComponents: .date)
+                DatePicker("Date created", selection: $viewModel.date, displayedComponents: .date)//.datePickerStyle(GraphicalDatePickerStyle())
             }
         }
         .navigationBarTitle(Text(blankForm ? "Create New List":"Edit List"))
