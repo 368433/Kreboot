@@ -12,13 +12,14 @@ struct PatientFormView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @ObservedObject var patient: Patient
-    var list: PatientsList?
+    var list: PatientsList? = nil
     @State private var comments: String = ""
+    
     var disableSave: Bool {
         return patient.name?.isEmpty ?? true
     }
     
-    init(patient: Patient? = nil, list: PatientsList? = nil){
+    init(patient: Patient? = nil, to list: PatientsList? = nil){
         self.patient = patient ?? Patient(context: PersistenceController.shared.container.viewContext)
         self.list = list
     }
@@ -92,6 +93,7 @@ struct PatientFormView: View {
     
     private func Save() -> Void {
         list?.addToPatients(patient)
+        print("Saving from patientsformview")
         patient.saveYourself(in: viewContext)
         self.presentationMode.wrappedValue.dismiss()
     }

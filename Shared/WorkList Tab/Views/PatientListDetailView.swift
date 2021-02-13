@@ -8,28 +8,32 @@
 import SwiftUI
 
 //view model
-class WorklistViewModel: ObservableObject {
-    @Published var list: [String]? = nil
-    @Published var selectedCard: Patient? = nil
-    @Published var activeSheet: ActiveSheet? = nil
-}
 
 struct PatientListDetailView: View {
-    @Environment(\.managedObjectContext) var viewContext
     
-    @ObservedObject var model: WorklistViewModel = WorklistViewModel()
-    @ObservedObject var list: PatientsList
-    
+    @Environment(\.managedObjectContext) private var viewContext
+    @ObservedObject private var model: WorklistViewModel = WorklistViewModel()
     @State private var cardsGroup: CardsFilter = .toSee
+    
+    init(list: PatientsList? = nil ){
+        print("From patientslistdetailview init:")
+        print(viewContext)
+        
+        print("\n From patientslistdetailview init BUT PERSISTENT STATIC")
+        print(PersistenceController.shared.container.viewContext)
+        self.model.list = list
+    }
     
     var body: some View {
         ZStack(alignment: .top){
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack {
-                        ListTopDetailView(title: "", details: "Liste semaine du \( list.dayLabel(dateStyle: .medium))",editAction: {model.activeSheet = .editListDetails}).padding(.vertical)
-                        ForEach(list.patientsArray, id:\.self){ patient in
-                            PatientRow2(patient: patient, model: model)
+                        ListTopDetailView(title: "", details: "Liste semaine du \( model.list?.dayLabel(dateStyle: .medium) ?? "NO LIST")",editAction: {model.activeSheet = .editListDetails}).padding(.vertical)
+                        if let listToShow = model.list {
+                            ForEach(listToShow.patientsArray, id:\.self){ patient in
+                                PatientRow2(patient: patient, model: model)
+                            }
                         }
                     }.padding(.horizontal).offset(y: 30)
                 }
@@ -44,32 +48,30 @@ struct PatientListDetailView: View {
                 }
             }.pickerStyle(SegmentedPickerStyle())
         }
-        .navigationBarTitle(list.title ?? "List")
+//        .navigationBarTitle(model.list?.title ?? "No List")
         .toolbar(content: {
             ToolbarItem(placement: .primaryAction) {
-                Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
+                Button(action: {model.activeSheet = .showAllLists; print("From patientslistdetail view"); print(viewContext)}){Image(systemName: "doc.text.magnifyingglass")}
             }
         })
         .sheet(item: $model.activeSheet) { item in
             switch item {
             case .searchPatients:
-                AddPatientToListView(list: list).environment(\.managedObjectContext, viewContext)
+                AddPatientToListView(list: model.list).environment(\.managedObjectContext, self.viewContext)
             case .editListDetails:
-                NavigationView{ListFormView(list: list).environment(\.managedObjectContext, viewContext)}
+                NavigationView{ListFormView(list: model.list)}.environment(\.managedObjectContext, self.viewContext)
             case .addPatient:
-                NavigationView{PatientFormView(list: list).environment(\.managedObjectContext, viewContext)}
+                NavigationView{PatientFormView(to: model.list)}.environment(\.managedObjectContext, self.viewContext)
             case .setDiagnosis:
-                ICDListView().environment(\.managedObjectContext, viewContext)
+                ICDListView().environment(\.managedObjectContext, self.viewContext)
             case .showIdCard:
-                NavigationView{PatientFormView(patient: model.selectedCard).environment(\.managedObjectContext, viewContext)}
+                NavigationView{PatientFormView(patient: model.selectedCard)}.environment(\.managedObjectContext, self.viewContext)
             case .editRoom:
-                RoomChangeView()
+                RoomChangeView().environment(\.managedObjectContext, self.viewContext)
             case .addAct:
-                AddActView()
+                AddActView().environment(\.managedObjectContext, self.viewContext)
             case .showAllLists:
-                PatientsListsView()
-//            default:
-//                EmptyView()
+                PatientsListsView(selectedList: $model.list).environment(\.managedObjectContext, self.viewContext)
             }
         }
     }

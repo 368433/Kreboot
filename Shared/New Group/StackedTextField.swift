@@ -53,6 +53,7 @@ extension Color {
 extension NSManagedObject {
     public func saveYourself(in context: NSManagedObjectContext){
         do {
+            print("Saving from extension nsmanagedobject")
             try context.save()
         }
         catch {

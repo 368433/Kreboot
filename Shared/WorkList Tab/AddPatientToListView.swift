@@ -12,7 +12,7 @@ struct AddPatientToListView: View {
     
     @State private var searchText: String = ""
     @State private var showNewPatientForm: Bool = false
-    var list: PatientsList
+    var list: PatientsList?
     var predicate: NSPredicate? {
         return searchText == "" ? nil : NSPredicate(format: "name CONTAINS[cd] %@", searchText)
     }

@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct DataTab: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 100), spacing: nil, alignment: .center),
     ]
-    
+    init(){
+        print("From dataTab")
+        print(viewContext)
+    }
     var body: some View {
         NavigationView{
             ScrollView(){
                 VStack (spacing: 20){
                     NavigationLink(
-                        destination: PatientsDBView(),
+                        destination: PatientsDBView().environment(\.managedObjectContext, viewContext),
                         label: {
                             DataPav(image: "person.3", title: "Patients Database")
                         }).buttonStyle(PlainButtonStyle())

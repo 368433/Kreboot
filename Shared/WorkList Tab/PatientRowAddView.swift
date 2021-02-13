@@ -10,11 +10,12 @@ import SwiftUI
 struct PatientRowAddView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var patient: Patient
-    var list: PatientsList
+    var list: PatientsList?
     
     @State var rowTapped: Bool = false
     
     private var isInList: Bool {
+        guard let list = list else {return false}
         return list.patientsArray.contains(patient)
     }
     
@@ -30,11 +31,13 @@ struct PatientRowAddView: View {
             .onTapGesture {addPatient()}
     }
     private func addPatient(){
+        guard let list = list else {print("NEED TO handle this case");return}
         if isInList {
             list.removeFromPatients(patient)
         } else {
             list.addToPatients(patient)
         }
+        print("Saving from addpatient in patientrowaddview")
         list.saveYourself(in: viewContext)
         rowTapped.toggle()
     }

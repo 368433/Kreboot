@@ -16,6 +16,11 @@ struct PatientsDBView: View {
     
     @State private var showForm: Bool = false
     
+    init(){
+        print("From patientsdbView")
+        print(viewContext)
+    }
+    
     var body: some View {
         VStack (alignment:.leading){
             List {

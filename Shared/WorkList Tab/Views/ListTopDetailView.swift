@@ -14,8 +14,11 @@ struct ListTopDetailView: View {
     
     var body: some View{
         HStack(alignment:.center){
-            Text(title).font(.title).fontWeight(.heavy).lineLimit(3)
             VStack (alignment:.leading){
+                HStack{
+                    Text("Status:").font(.subheadline)
+                    Text("STSTUS")
+                }
                 Text(details).font(.footnote)
             }.lineLimit(2).foregroundColor(.secondary)
             Spacer()

@@ -16,7 +16,7 @@ struct ListRow: View {
             Image(systemName: "rectangle.stack.person.crop").scaledToFit().font(.title).foregroundColor(.secondary)
             VStack(alignment:.leading){
                 HStack {
-                    Text((list.title ?? "No title").localizedCapitalized).fontWeight(.semibold).foregroundColor(.primary)
+                    Text((list.title ?? "No titlexxx").localizedCapitalized).fontWeight(.semibold).foregroundColor(.primary)
                     Text("wk of " + list.dayLabel(dateStyle: .medium)).font(.footnote)
                 }
                 Text(list.patientCountDescription).font(.footnote).foregroundColor(.secondary)

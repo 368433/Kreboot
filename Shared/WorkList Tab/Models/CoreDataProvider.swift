@@ -13,7 +13,7 @@ import CoreData
 
 struct CoreDataProvider<T: NSManagedObject, Content: View>: View {
     
-    @Environment(\.managedObjectContext) var viewContext
+    //@Environment(\.managedObjectContext) var viewContext
     var fetchRequest: FetchRequest<T>
     
     // this is our content closure; we'll call this once for each item in the list
@@ -28,14 +28,23 @@ struct CoreDataProvider<T: NSManagedObject, Content: View>: View {
     init(sorting: [NSSortDescriptor], predicate: NSPredicate?, @ViewBuilder content:  @escaping (T) -> Content) {
         fetchRequest = FetchRequest<T>(entity: T.entity(), sortDescriptors: sorting, predicate: predicate)
         self.content = content
+//        print("From coredata provider:")
+//        print(viewContext)
     }
     
     private func deleteItem(at offsets: IndexSet){
-        for index in offsets {
-            let item = fetchRequest.wrappedValue[index]
-            viewContext.delete(item)
+        let viewContext = PersistenceController.shared.container.viewContext
+        withAnimation {
+            viewContext.perform{
+                offsets.map { fetchRequest.wrappedValue[$0] }.forEach(viewContext.delete)
+                
+                do {
+                    try viewContext.save()
+                } catch {
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                }
+            }
         }
-        do {try viewContext.save()}
-        catch {/*handle the Core Data error */}
     }
 }

@@ -11,9 +11,11 @@ struct ListFormView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject private var viewModel: ListFormViewModel
+    private var blankForm: Bool
     
     init(list: PatientsList? = nil ){
         self.viewModel = ListFormViewModel(list: list)
+        blankForm = list != nil ? false:true
     }
     
     var body: some View {
@@ -36,7 +38,7 @@ struct ListFormView: View {
                 DatePicker("Date created", selection: $viewModel.date, displayedComponents: .date)
             }
         }
-        .navigationBarTitle(Text("List Form"))
+        .navigationBarTitle(Text(blankForm ? "Create New List":"Edit List"))
         .toolbar{
             ToolbarItem(placement: .confirmationAction){
                 Button("Save", action: {

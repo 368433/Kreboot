@@ -10,22 +10,24 @@ import SwiftUI
 @main
 struct KrebootApp: App {
     let persistenceController = PersistenceController.shared
+
     
     var body: some Scene {
         WindowGroup {
             TabView{
 
 //                NavigationView{
-//                    testGen()
-//                }.tabItem { Label("WorkLists", systemImage: "star.fill") }
+////                    testGen()
+//                    PatientsListsView(selectedList: $test)
+//                }.tabItem { Label("test", systemImage: "star.fill") }
                 
                 NavigationView{
-                    PatientsListsView()
+                    PatientListDetailView()
                 }.tabItem { Label("WorkList", systemImage: "doc.text") }
-                
+
                 DataTab()
                 .tabItem { Label("Data", systemImage: "square.stack.3d.up") }
-                
+
                 NavigationView{
                     AnalyticsView()
                 }.tabItem { Label("Analytics", systemImage: "sum") }
@@ -38,9 +40,9 @@ struct KrebootApp: App {
                     Settings()
                 }.tabItem { Label("Settings", systemImage: "gear") }
 
-//                NavigationView{
-//                    ICDdbTable3()
-//                }.tabItem { Label("ICD", systemImage: "bandage") }
+                NavigationView{
+                    ICDdbTable3()
+                }.tabItem { Label("ICD", systemImage: "bandage") }
                 
                 
             }.environment(\.managedObjectContext, persistenceController.container.viewContext)

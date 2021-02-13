@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct PatientsListsView: View {
+    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @State private var presentForm: Bool = false
     @State private var listGroup: ListFilterEnum = .active
-    
+    @Binding var selectedList: PatientsList?
+
+    init(selectedList: Binding<PatientsList?>){
+        self._selectedList = selectedList
+        print("\n From patientsListsView init")
+        print(viewContext)
+    }
+
     var body: some View {
         VStack {
             HStack {
@@ -20,16 +30,18 @@ struct PatientsListsView: View {
                     }
                 }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
                 Spacer()
-                Button(action: {presentForm.toggle()}){Image(systemName: "plus")}
+                Button(action: {presentForm.toggle(); print("\n From patientslistsView BUTTON"); print(viewContext)}){Image(systemName: "plus")}
             }.padding()
             List {
                 CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
-                    NavigationLink(destination: PatientListDetailView(list: list)){
-                        ListRow(list: list)
-                    }
+                    ListRow(list: list)
+                        .onTapGesture{
+                            selectedList = list
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                 }
             }.sheet(isPresented: $presentForm, content: {
-                NavigationView{ListFormView()}
+                NavigationView{ListFormView()}.environment(\.managedObjectContext, self.viewContext)
             })
         }
     }
@@ -37,6 +49,6 @@ struct PatientsListsView: View {
 
 struct PatientsListsView_Previews: PreviewProvider {
     static var previews: some View {
-        PatientsListsView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        PatientsListsView(selectedList: .constant(nil)).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

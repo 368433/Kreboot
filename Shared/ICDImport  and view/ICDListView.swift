@@ -13,7 +13,8 @@ struct ICDListView: View {
     @ObservedObject var delay = DelayedSearch(initialPredicate: NSPredicate(format: "icd10Description CONTAINS[cd] %@", ""), predicateFormat: "icd10Description CONTAINS[cd] %@")
     
     var body: some View {
-        VStack{
+        VStack(alignment:.leading){
+            Text("ICD search").font(.largeTitle).fontWeight(.heavy).padding([.top, .leading])
             SearchBar(text: $delay.searchTerm).padding()
             List{
                 CoreDataProvider(sorting: [NSSortDescriptor(keyPath: \ICD10dx.icd10Code, ascending: true)], predicate: delay.predicate) { (icd: ICD10dx) in
