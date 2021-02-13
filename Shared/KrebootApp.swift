@@ -22,7 +22,7 @@ struct KrebootApp: App {
 //                }.tabItem { Label("test", systemImage: "star.fill") }
                 
 //                NavigationView{
-                    PatientListDetailView() //}
+                    WorklistView() //}
                 .tabItem { Label("WorkList", systemImage: "doc.text") }
 
                 NavigationView{

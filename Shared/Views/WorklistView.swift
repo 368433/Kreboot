@@ -1,5 +1,5 @@
 //
-//  PatientListDetailView.swift
+//  WorklistView.swift
 //  Kreboot
 //
 //  Created by Amir Mac Pro 2019 on 2021-01-30.
@@ -9,7 +9,7 @@ import SwiftUI
 
 //view model
 
-struct PatientListDetailView: View {
+struct WorklistView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject private var model: WorklistViewModel = WorklistViewModel()
@@ -91,6 +91,6 @@ struct PatientListDetailView: View {
 
 struct PatientListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PatientListDetailView(list: PersistenceController.singleList)
+        WorklistView(list: PersistenceController.singleList)
     }
 }
