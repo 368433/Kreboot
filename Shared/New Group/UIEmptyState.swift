@@ -19,14 +19,7 @@ struct UIEmptyState: View {
     }
 }
 
-struct VerticalLabel: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        VStack{
-            configuration.icon
-            configuration.title
-        }
-    }
-}
+
 
 struct UIEmptyState_Previews: PreviewProvider {
     static var previews: some View {

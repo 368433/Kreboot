@@ -88,6 +88,7 @@
 		6A51F71125D74E040060AE35 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9125C71E9A00097F2F /* CoreDataProvider.swift */; };
 		6A51F71B25D770650060AE35 /* PatientFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */; };
 		6A51F71C25D770650060AE35 /* PatientFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */; };
+		6A51F72A25D8825A0060AE35 /* VerticalLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F72925D8825A0060AE35 /* VerticalLabel.swift */; };
 		6A7177FB25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
 		6A7177FC25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -174,6 +175,7 @@
 		3196B5D025CEE7F4006A3E72 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
 		6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormViewModel.swift; sourceTree = "<group>"; };
+		6A51F72925D8825A0060AE35 /* VerticalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabel.swift; sourceTree = "<group>"; };
 		6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,7 +251,7 @@
 				3160B47625D4C056002BED92 /* Models */,
 				317CEA4425D4BF4B00393AD6 /* View Models */,
 				317CEA4525D4BF5400393AD6 /* Views */,
-				3129D75525D55518000EAA5C /* Custom View Modifiers */,
+				3129D75525D55518000EAA5C /* Custom View & Modifiers */,
 				3149201125CDDEA4002D873C /* New Group */,
 				3154A32625C8F2A400E20978 /* ICDImport  and view */,
 				3118F00925C6142A002B3711 /* WorkList Tab */,
@@ -305,9 +307,10 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
-		3129D75525D55518000EAA5C /* Custom View Modifiers */ = {
+		3129D75525D55518000EAA5C /* Custom View & Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				6A51F72925D8825A0060AE35 /* VerticalLabel.swift */,
 				311C862325C6F94A0021E596 /* SearchBar.swift */,
 				3149201225CDDEAC002D873C /* Button modifiers.swift */,
 				31643EBC25D622680009BF9C /* PopupView.swift */,
@@ -315,7 +318,7 @@
 				3146970125D79A8000CEEDFD /* TrlnClsrBadge.swift */,
 				3129D75C25D55B18000EAA5C /* TestView1.swift */,
 			);
-			path = "Custom View Modifiers";
+			path = "Custom View & Modifiers";
 			sourceTree = "<group>";
 		};
 		3149201125CDDEA4002D873C /* New Group */ = {
@@ -326,7 +329,6 @@
 				3149201425CDDEAC002D873C /* ICDSettings.swift */,
 				3149201525CDDEAC002D873C /* Karla Protocols.swift */,
 				6A05183725CDF36100527AF1 /* UIEmptyState.swift */,
-				3149201325CDDEAC002D873C /* Settings.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -401,6 +403,7 @@
 				3118F01325C615F1002B3711 /* ListRow.swift */,
 				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
 				310996E325D6448800E0C123 /* AddActView.swift */,
+				3149201325CDDEAC002D873C /* Settings.swift */,
 				31643EC225D63A360009BF9C /* RoomChangeView.swift */,
 			);
 			path = Views;
@@ -580,6 +583,7 @@
 				3154A35825C9DB7F00E20978 /* ICDdbTable3.swift in Sources */,
 				31643EC325D63A360009BF9C /* RoomChangeView.swift in Sources */,
 				3154A33A25C902D100E20978 /* ICDProvider0.swift in Sources */,
+				6A51F72A25D8825A0060AE35 /* VerticalLabel.swift in Sources */,
 				3118F00325C608BD002B3711 /* PatientRowView.swift in Sources */,
 				311CA85625C5774900E4513A /* KrebootApp.swift in Sources */,
 				3149201825CDDEAC002D873C /* ICDSettings.swift in Sources */,
