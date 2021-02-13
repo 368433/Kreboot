@@ -8,29 +8,26 @@
 import SwiftUI
 
 struct DataTab: View {
-    @Environment(\.managedObjectContext) private var viewContext
     
     private var columns: [GridItem] = [
         GridItem(.adaptive(minimum: 100), spacing: nil, alignment: .center),
     ]
-
+    
     
     var body: some View {
-//        NavigationView{
-            ScrollView(){
-                VStack (spacing: 20){
-                    NavigationLink(
-                        destination: PatientsDBView(),
-                        label: {
-                            DataPav(image: "person.3", title: "Patients Database")
-                        }).buttonStyle(PlainButtonStyle())
-                    DataPav(image: "waveform.path.ecg", title: "Dx Database")
-                    DataPav(image: "bandage", title: "ICD Database")
-                    DataPav(image: "cross.circle", title: "Physicians Database")
-                    DataPav(image: "doc.text.below.ecg", title: "Billing codes")
-                }.padding()
-            }
-//        }
+        ScrollView(){
+            VStack (spacing: 20){
+                NavigationLink(
+                    destination: PatientsDBView(),
+                    label: {
+                        DataPav(image: "person.3", title: "Patients Database")
+                    }).buttonStyle(PlainButtonStyle())
+                DataPav(image: "waveform.path.ecg", title: "Dx Database")
+                DataPav(image: "bandage", title: "ICD Database")
+                DataPav(image: "cross.circle", title: "Physicians Database")
+                DataPav(image: "doc.text.below.ecg", title: "Billing codes")
+            }.padding()
+        }
     }
 }
 

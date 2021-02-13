@@ -11,4 +11,10 @@ class WorklistViewModel: ObservableObject {
     @Published var list: PatientsList? = nil
     @Published var selectedCard: Patient? = nil
     @Published var activeSheet: ActiveSheet? = nil
+    var isEmpty: Bool {
+        return list == nil
+    }
+    var listTitle: String {
+        return list?.title ?? "Untiltled list"
+    }
 }

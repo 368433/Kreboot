@@ -76,7 +76,7 @@ struct CircularButton: ButtonStyle {
         configuration
             .label
             .foregroundColor(.white)
-            .padding(10)
+            .padding()
             .background(Circle().fill(configuration.isPressed ? Color.gray : Color.accentColor))
             .shadow(radius: 5)
     }

@@ -22,25 +22,45 @@ struct PatientListDetailView: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing){
             VStack (alignment: .leading, spacing: 0) {
-                Text(model.list?.title ?? "No title").font(.largeTitle).fontWeight(.black).lineLimit(2).padding(.horizontal)
-                ListTopDetailView(title: "\(model.list?.title ?? "NO TITLE")", details: "Liste semaine du \( model.list?.dayLabel(dateStyle: .medium) ?? "NO LIST")",editAction: {model.activeSheet = .editListDetails}).padding(.horizontal)
-                Picker("Cards filter", selection: $cardsGroup) {
-                    ForEach(CardsFilter.allCases, id:\.self){option in
-                        Text(option.label).tag(option)
+                if !model.isEmpty{
+                    Button(action:{model.list = nil}){Image(systemName:"xmark").font(.title3)}.padding(.leading)
+                }
+                HStack(alignment: .top){
+                    VStack(alignment: .leading){
+                        Text(model.isEmpty ? "" : model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.4)
+                        Text(model.isEmpty ? "":"Week of \(model.list?.dayLabel(dateStyle: .medium) ?? "No date")")
                     }
-                }.pickerStyle(SegmentedPickerStyle()).padding([.horizontal, .top])
-                ScrollView {
-                    if let listToShow = model.list {
+                    Spacer()
+                    VStack (alignment: .trailing){
+                        Button(action: {model.activeSheet = .editListDetails}){Text("Edit").font(.caption)}.buttonStyle(CapsuleButton()).disabled(model.isEmpty)
+                        Button(action: {model.activeSheet = .showAllLists}){Text("Open").font(.caption)}.buttonStyle(CapsuleButton())
+                    }
+                    
+                }.padding().padding(.top)
+                if !model.isEmpty{
+                    Picker("Cards filter", selection: $cardsGroup) {
+                        ForEach(CardsFilter.allCases, id:\.self){option in
+                            Text(option.label).tag(option)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle()).padding([.horizontal]).disabled(model.isEmpty)
+                }
+                
+                if let listToShow = model.list {
+                    ScrollView {
                         ForEach(listToShow.patientsArray, id:\.self){ patient in
                             PatientRow2(patient: patient, model: model)
                         }.padding()
                     }
                 }
+                if model.isEmpty {
+                    EmptyWorklistView(action: {model.activeSheet = .showAllLists} ).offset(y:-80)
+                }
+                Spacer()
             }
             VStack{
-                Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
-                Button(action: {model.activeSheet = .searchPatients}){Image(systemName: "plus.magnifyingglass")}
-                Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}
+                Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}.hidden()
+                Button(action: {model.activeSheet = .searchPatients}){Image(systemName: "plus.magnifyingglass")}.disabled(model.isEmpty)
+                Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}.disabled(model.isEmpty)
             }.font(.title3).buttonStyle(CircularButton()).padding()
         }
         

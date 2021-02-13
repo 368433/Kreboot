@@ -20,6 +20,11 @@ class ListFormViewModel: ObservableObject {
     @Published var isPinned: Bool
     @Published var isArchived: Bool
     @Published var formIsValid: Bool
+    @Published var titleSuggestion: String {
+        didSet{
+            self.title += self.title.isEmpty ? titleSuggestion:" \(titleSuggestion)"
+        }
+    }
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -40,6 +45,7 @@ class ListFormViewModel: ObservableObject {
         self._isPinned = Published(initialValue: self.list?.isFavorite ?? false)
         self._isArchived = Published(initialValue: self.list?.isArchived ?? false)
         self.formIsValid = !(self.list?.title?.isEmpty ?? true)
+        self._titleSuggestion = Published(initialValue: "")
         
         isTitleValidPublisher
             .dropFirst()

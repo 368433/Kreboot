@@ -24,7 +24,7 @@ struct ListFormView: View {
                 header: Text("LIST NAME"),
                 footer:HStack {
                     Text("Sugg.: ").font(.caption2)
-                    ScrollChoice(labelText: $viewModel.title, choice: SomeConstants.listTitleChoice )
+                    ScrollChoice(labelText: $viewModel.titleSuggestion, choice: SomeConstants.listTitleChoice )
                 }
             ){ TextField("Name", text: $viewModel.title)}
             Section(header: Text("DETAILS")) {
@@ -35,7 +35,7 @@ struct ListFormView: View {
                     Button(action: {viewModel.isPinned.toggle()}){Image(systemName: viewModel.isPinned ? "pin.fill":"pin")}
                 }
                 Toggle(isOn: $viewModel.isArchived){Text("Archive")}.padding(.trailing)
-                DatePicker("Date created", selection: $viewModel.date, displayedComponents: .date)//.datePickerStyle(GraphicalDatePickerStyle())
+                DatePicker("Date created", selection: $viewModel.date, displayedComponents: .date)
             }
         }
         .navigationBarTitle(Text(blankForm ? "Create New List":"Edit List"))

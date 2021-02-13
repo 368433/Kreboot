@@ -46,9 +46,7 @@ func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
     )
 }
 
-extension Color {
-    static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
-}
+
 
 extension NSManagedObject {
     public func saveYourself(in context: NSManagedObjectContext){

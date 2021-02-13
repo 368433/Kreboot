@@ -20,16 +20,18 @@ struct PatientsListsView: View {
 //    }
 
     var body: some View {
-        VStack {
+        VStack (alignment: .center){
             HStack {
-                Picker("List filter", selection: $listGroup) {
-                    ForEach(ListFilterEnum.allCases, id:\.self){option in
-                        Text(option.label).tag(option)
-                    }
-                }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+                Text("Worklists").font(.largeTitle).fontWeight(.black)
                 Spacer()
-                Button(action: {presentForm.toggle()}){Image(systemName: "plus")}
-            }.padding()
+                Button(action: {presentForm.toggle()}){Text("Add").fontWeight(.bold)}//.padding()
+            }.padding([.top, .horizontal])
+            Picker("List filter", selection: $listGroup) {
+                ForEach(ListFilterEnum.allCases, id:\.self){option in
+                    Text(option.label).tag(option)
+                }
+            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+
             List {
                 CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
                     ListRow(list: list)
