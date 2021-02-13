@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-//view model
-
 struct WorklistView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -27,7 +25,7 @@ struct WorklistView: View {
             if !model.isEmpty{
                 ZStack(alignment: .bottomTrailing){
                     VStack {
-                        WorklistHeaderView(model: model)
+                        WorklistHeaderView(for: model)
                         
                         if let listToShow = model.list {
                             ScrollView {
@@ -39,11 +37,7 @@ struct WorklistView: View {
                             }
                         }
                     }
-                    VStack{
-                        Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}.hidden()
-                        Button(action: {model.activeSheet = .searchPatients}){Image(systemName: "plus.magnifyingglass")}.disabled(model.isEmpty)
-                        Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}.disabled(model.isEmpty)
-                    }.font(.title3).buttonStyle(CircularButton()).padding()
+                    WorklistActionButtons(for: model)
                 }
             }
         }

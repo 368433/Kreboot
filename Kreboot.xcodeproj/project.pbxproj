@@ -91,6 +91,8 @@
 		6A7177FC25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
 		6AD71C4625D88B0200840B6B /* WorklistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */; };
 		6AD71C4725D88B0200840B6B /* WorklistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */; };
+		6AD71C4D25D88B6400840B6B /* WorklistActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD71C4C25D88B6400840B6B /* WorklistActionButtons.swift */; };
+		6AD71C4E25D88B6400840B6B /* WorklistActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD71C4C25D88B6400840B6B /* WorklistActionButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +180,7 @@
 		6A51F74D25D884510060AE35 /* Models Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models Extension.swift"; sourceTree = "<group>"; };
 		6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistViewModel.swift; sourceTree = "<group>"; };
 		6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistHeaderView.swift; sourceTree = "<group>"; };
+		6AD71C4C25D88B6400840B6B /* WorklistActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistActionButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				3118EFFB25C60311002B3711 /* WorklistView.swift */,
+				6AD71C4C25D88B6400840B6B /* WorklistActionButtons.swift */,
 				6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */,
 				3196B5C625CE2740006A3E72 /* DataTab.swift */,
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,
@@ -589,6 +593,7 @@
 				318E27EA25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */,
 				3180F08125D0909600837FA2 /* ICDListView.swift in Sources */,
 				3146970225D79A8000CEEDFD /* TrlnClsrBadge.swift in Sources */,
+				6AD71C4D25D88B6400840B6B /* WorklistActionButtons.swift in Sources */,
 				3196B5C725CE2740006A3E72 /* DataTab.swift in Sources */,
 				31548B8B25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,
 				31643EBD25D622680009BF9C /* PopupView.swift in Sources */,
@@ -621,6 +626,7 @@
 				3118EFEB25C5E398002B3711 /* PatientsListsView.swift in Sources */,
 				3118EFF225C5E88F002B3711 /* ListFormView.swift in Sources */,
 				318E27EB25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */,
+				6AD71C4E25D88B6400840B6B /* WorklistActionButtons.swift in Sources */,
 				6A7177FC25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */,
 				6A51F71125D74E040060AE35 /* CoreDataProvider.swift in Sources */,
 				310996E525D6448800E0C123 /* AddActView.swift in Sources */,

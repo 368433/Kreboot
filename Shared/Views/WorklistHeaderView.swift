@@ -10,6 +10,7 @@ import SwiftUI
 struct WorklistHeaderView: View {
     @ObservedObject var model: WorklistViewModel
     @State private var cardsGroup: CardsFilter = .toSee
+    init(for model: WorklistViewModel){self.model = model}
     
     var body: some View{
         VStack(alignment: .leading) {
@@ -36,6 +37,6 @@ struct WorklistHeaderView: View {
 
 struct WorklistHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        WorklistHeaderView()
+        WorklistHeaderView(for: WorklistViewModel())
     }
 }
