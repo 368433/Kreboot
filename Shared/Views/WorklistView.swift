@@ -35,13 +35,13 @@ struct WorklistView: View {
                         ScrollView {
                             VStack(spacing:-6){
                                 ForEach(model.medicalEpisodes(with:[.name], true), id:\.self){ episode in //patient in
-//                                    //PatientRow2(patient: patient, model: model)
+                                    //                                    //PatientRow2(patient: patient, model: model)
                                     MedicalEpisodeRow(episode: episode, model: model)
                                 }.padding()
                             }
                         }
                     }
-                    WorklistActionButtons(for: model)
+                    WorklistActionButtons(for: model).opacity(model.hideActionButton ? 0:1)
                 }
             }
         }

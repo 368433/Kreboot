@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class PatientFormViewModel: ObservableObject {
     private var viewContext = PersistenceController.shared.container.viewContext
@@ -20,6 +21,13 @@ class PatientFormViewModel: ObservableObject {
     @Published var ramqNumber: String
     @Published var dateOfBirth: Date
     
+    private var cancellables = Set<AnyCancellable>()
+    private var disableFormPublisher: AnyPublisher<Bool, Never> {
+        $name
+            .map{$0.isEmpty}
+            .eraseToAnyPublisher()
+    }
+    
     init(list: PatientsList? = nil, patient: Patient? = nil, newEpisode: Bool = false){
         self.patient = patient
         self.list = list
@@ -30,6 +38,11 @@ class PatientFormViewModel: ObservableObject {
         self._dateOfBirth = Published(initialValue: self.patient?.dateOfBirth ?? Date())
         self._chartNumber = Published(initialValue: self.patient?.chartNumber ?? "")
         self._ramqNumber = Published(initialValue: self.patient?.ramqNumber ?? "")
+        
+        disableFormPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.disableForm, on: self)
+            .store(in: &cancellables)
     }
     
     func save(){

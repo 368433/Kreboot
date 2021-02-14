@@ -66,7 +66,10 @@ struct MedicalEpisodeRow: View {
         .cornerRadius(10.0)
         .shadow(color: Color.black.opacity(0.3), radius: 5)
         .onTapGesture {
-            showFullCard.toggle()
+            withAnimation{
+                model.hideActionButton.toggle()
+                showFullCard.toggle()
+            }
         }
         .frame(height: showFullCard ? 400:80)
         .animation(.easeInOut(duration: 0.2))

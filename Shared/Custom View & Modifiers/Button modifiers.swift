@@ -72,11 +72,12 @@ struct OutlineCapsuleButton: ButtonStyle {
 }
 
 struct CircularButton: ButtonStyle {
+    var tightness: Tightness = .normal
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
             .foregroundColor(.white)
-            .padding()
+            .padding(.all, tightness.space)
             .background(Circle().fill(configuration.isPressed ? Color.gray : Color.accentColor))
             .shadow(radius: 5)
     }
@@ -102,5 +103,19 @@ struct PrimaryButtonStyle: ButtonStyle {
             .foregroundColor(.white)
             .clipShape(Rectangle())
             .cornerRadius(5)
+    }
+}
+
+enum Tightness {
+    case tight, normal, large
+    var space : CGFloat?{
+        switch self {
+        case .tight:
+            return 8
+        case .normal:
+            return nil
+        case .large:
+            return 25
+        }
     }
 }

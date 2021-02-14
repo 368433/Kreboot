@@ -16,7 +16,7 @@ struct WorklistActionButtons: View {
             Button(action: {}){Image(systemName: "arrow.up.arrow.down")}.disabled(model.isEmpty)
             Button(action: {}){Image(systemName: "doc.text.viewfinder")}.disabled(model.isEmpty)
             Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}.disabled(model.isEmpty)
-        }.buttonStyle(CircularButton()).padding().opacity(0.4)
+        }.buttonStyle(CircularButton()).padding()//.opacity(0.5)
     }
 }
 

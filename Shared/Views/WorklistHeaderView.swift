@@ -24,7 +24,7 @@ struct WorklistHeaderView: View {
                 VStack (alignment: .trailing){
                     Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}.buttonStyle(CapsuleButton()).disabled(model.isEmpty)
                     //Button(action: {model.activeSheet = .showAllLists}){Text("Open...").font(.caption)}.buttonStyle(CapsuleButton())
-                    Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}.buttonStyle(CircularButton())
+                    Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}.buttonStyle(CircularButton(tightness: .tight))
                 }.font(.caption).padding(.leading)
             }
             Picker("Cards filter", selection: $cardsGroup) {

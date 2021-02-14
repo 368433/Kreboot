@@ -8,19 +8,12 @@
 import SwiftUI
 
 struct PatientFormView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
-    
     @ObservedObject private var model: PatientFormViewModel
+    @State private var comments: String = ""
     
     init(patient: Patient? = nil, to list: PatientsList? = nil, newEpisode: Bool){
         self.model = PatientFormViewModel(list: list, patient: patient, newEpisode: newEpisode)
-    }
-    
-    @State private var comments: String = ""
-    
-    var disableSave: Bool {
-        return model.disableForm
     }
     
     var body: some View {
@@ -84,7 +77,7 @@ struct PatientFormView: View {
             ToolbarItem(placement:.principal){Text("Patient form")}
             ToolbarItem{
                 Button("Save", action: save)
-                    .disabled(false)
+                    .disabled(model.disableForm)
 
             }
         }

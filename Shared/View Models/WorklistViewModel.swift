@@ -13,6 +13,7 @@ class WorklistViewModel: ObservableObject {
     @Published var selectedAct: Act? = nil
     @Published var selectedEpisode: MedicalEpisode? = nil
     @Published var activeSheet: ActiveSheet? = nil
+    @Published var hideActionButton: Bool = false
 //    @Published var medicalEpisodes: [Patient] = []
     
     var isEmpty: Bool {
