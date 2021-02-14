@@ -53,7 +53,7 @@ struct WorklistView: View {
             case .showIdCard:
                 NavigationView{PatientFormView(patient: model.selectedCard, newEpisode: false)}.environment(\.managedObjectContext, self.viewContext)
             case .editRoom:
-                RoomChangeView().environment(\.managedObjectContext, self.viewContext)
+                RoomChangeView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .addAct:
                 AddActView().environment(\.managedObjectContext, self.viewContext)
             case .showAllLists:

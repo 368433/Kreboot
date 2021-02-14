@@ -18,7 +18,7 @@ struct MedicalEpisodeRow: View {
             VStack{
                 HStack (alignment: .center) {
                     HStack {
-                        Button(action: {model.activeSheet = .showIdCard; model.selectedCard = episode.patient}){Image(systemName: "person.crop.circle.fill").font(.title2)}
+                        Button(action: {model.activeSheet = .showIdCard; model.selectedEpisode = episode}){Image(systemName: "person.crop.circle.fill").font(.title2)}
                         Text(episode.patient?.name ?? "No name")
                     }
                     Spacer()
@@ -27,7 +27,7 @@ struct MedicalEpisodeRow: View {
                 Spacer()
                 HStack{
                     Group{
-                        Button(action: {model.activeSheet = .editRoom; model.selectedCard = episode.patient}){Label("room", systemImage: "bed.double")}
+                        Button(action: {model.activeSheet = .editRoom; model.selectedEpisode = episode}){Label(episode.roomLocation ?? "room", systemImage: "bed.double")}
                             .padding(.horizontal, 10)
                             .padding(.vertical, 5)
                             .background(Color.offWhite)

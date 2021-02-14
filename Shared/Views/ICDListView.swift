@@ -27,6 +27,7 @@ struct ICDListView: View {
                     }.onTapGesture{
                         guard let episode = episode else {return}
                         episode.diagnosis = icd
+                        episode.saveYourself(in: PersistenceController.shared.container.viewContext)
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }
