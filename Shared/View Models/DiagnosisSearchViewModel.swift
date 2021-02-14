@@ -38,24 +38,24 @@ class DiagnosisSearchViewModel: ObservableObject {
             
             //convert search string to array of words
             //then return array of predicates from words
-            .map{ searchWords -> [NSPredicate] in
-                if searchWords.isEmpty{ return [] }
-                return searchWords.split(whereSeparator: \.isLetter.negation).map{NSPredicate(format:"icd10Description CONTAINS[cd] %@" , String($0))}
+            .map{ searchWords in
+                searchWords.split(whereSeparator: \.isLetter.negation).map{NSPredicate(format:"icd10Description CONTAINS[cd] %@" , String($0))}
             }
             .sink { predicates in
-                if predicates.isEmpty {
-                    self.searchResults = []
-                } else {
-                    self.request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-                    self.request.sortDescriptors = [self.sortDescriptor]
-                    do {
-                        self.searchResults = try self.moc.fetch(self.request)
-                    } catch {
-                        print(error)
-                    }
-                }
+                self.searchResults = predicates.isEmpty ? [] : self.getSearchResults(for: predicates)
             }
             .store(in: &subscription)
+    }
+    
+    private func getSearchResults(for predicates: [NSPredicate]) -> [ICD10dx] {
+        self.request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        self.request.sortDescriptors = [self.sortDescriptor]
+        do {
+            return try self.moc.fetch(self.request)
+        } catch {
+            print(error)
+            return []
+        }
     }
     
     func assignToEpisode(diagnosis: ICD10dx){
