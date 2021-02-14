@@ -51,7 +51,8 @@ struct WorklistView: View {
             case .addPatient:
                 NavigationView{PatientFormView(to: model.list, newEpisode: true)}.environment(\.managedObjectContext, self.viewContext)
             case .setDiagnosis:
-                ICDListView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
+                DiagnosisSearchView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
+//                ICDListView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .showIdCard:
                 NavigationView{PatientFormView(patient: model.selectedEpisode?.patient, newEpisode: false)}.environment(\.managedObjectContext, self.viewContext)
             case .editRoom:

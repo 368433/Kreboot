@@ -98,6 +98,8 @@
 		6A51F74E25D884510060AE35 /* Models Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F74D25D884510060AE35 /* Models Extension.swift */; };
 		6A54659325D9CE6D00AC55A0 /* BoolNegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54659225D9CE6D00AC55A0 /* BoolNegation.swift */; };
 		6A54659425D9CE6D00AC55A0 /* BoolNegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54659225D9CE6D00AC55A0 /* BoolNegation.swift */; };
+		6A54659A25D9CEA300AC55A0 /* DiagnosisSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54659925D9CEA300AC55A0 /* DiagnosisSearchView.swift */; };
+		6A54659B25D9CEA300AC55A0 /* DiagnosisSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54659925D9CEA300AC55A0 /* DiagnosisSearchView.swift */; };
 		6A66E52625D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */; };
 		6A66E52725D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */; };
 		6A7177FB25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
@@ -196,6 +198,7 @@
 		6A51F74725D884330060AE35 /* Extensions customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions customs.swift"; sourceTree = "<group>"; };
 		6A51F74D25D884510060AE35 /* Models Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models Extension.swift"; sourceTree = "<group>"; };
 		6A54659225D9CE6D00AC55A0 /* BoolNegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolNegation.swift; sourceTree = "<group>"; };
+		6A54659925D9CEA300AC55A0 /* DiagnosisSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosisSearchView.swift; sourceTree = "<group>"; };
 		6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosisSearchViewModel.swift; sourceTree = "<group>"; };
 		6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistViewModel.swift; sourceTree = "<group>"; };
 		6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistHeaderView.swift; sourceTree = "<group>"; };
@@ -399,6 +402,7 @@
 				3118EFE925C5E398002B3711 /* WorklistNavigatorView.swift */,
 				3196B5C625CE2740006A3E72 /* DataTab.swift */,
 				3180F08025D0909600837FA2 /* ICDListView.swift */,
+				6A54659925D9CEA300AC55A0 /* DiagnosisSearchView.swift */,
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,
 				314C9A7D25C7720800E5B9FE /* PatientRow2.swift */,
 				311CA82B25C5774700E4513A /* PatientsDBView.swift */,
@@ -629,6 +633,7 @@
 				31643EBD25D622680009BF9C /* PopupView.swift in Sources */,
 				3146971225D7A00100CEEDFD /* EmptyWorklistView.swift in Sources */,
 				3118F01425C615F1002B3711 /* ListRow.swift in Sources */,
+				6A54659A25D9CEA300AC55A0 /* DiagnosisSearchView.swift in Sources */,
 				311CA85825C5774900E4513A /* PatientsDBView.swift in Sources */,
 				311C861D25C6E9F20021E596 /* PatientRowAddView.swift in Sources */,
 				3173664425D97B5300237668 /* NSPredicate+KeyPath+Operators.swift in Sources */,
@@ -649,6 +654,7 @@
 				3169014525D8DCCB00B6403A /* MedicalActRow.swift in Sources */,
 				311CA85725C5774900E4513A /* KrebootApp.swift in Sources */,
 				3173664525D97B5300237668 /* NSPredicate+KeyPath+Operators.swift in Sources */,
+				6A54659B25D9CEA300AC55A0 /* DiagnosisSearchView.swift in Sources */,
 				315E5A6525C754E0005DB2A9 /* BillingView.swift in Sources */,
 				314C9A7F25C7720800E5B9FE /* PatientRow2.swift in Sources */,
 				3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */,

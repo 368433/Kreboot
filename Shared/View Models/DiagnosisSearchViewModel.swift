@@ -23,8 +23,11 @@ class DiagnosisSearchViewModel: ObservableObject {
         request.fetchLimit = 500
         return request
     }()
+    private var episode: MedicalEpisode?
     
-    init(){
+    init(episode: MedicalEpisode?){
+        self.episode = episode
+        
         //setup publisher to subscriber channel
         $searchString
             //Set throttle to avoid overloading queries
@@ -42,5 +45,12 @@ class DiagnosisSearchViewModel: ObservableObject {
                 }
             }
             .store(in: &subscription)
+    }
+    
+    func assignToEpisode(diagnosis: ICD10dx){
+        guard let episode = episode else {return}
+        episode.diagnosis = diagnosis
+        episode.saveYourself(in: PersistenceController.shared.container.viewContext)
+
     }
 }
