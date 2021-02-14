@@ -5,7 +5,8 @@
 //  Created by quarticAIMBP2018 on 2021-02-12.
 //
 
-import SwiftUI
+import Foundation
+import Combine
 
 class WorklistViewModel: ObservableObject {
     @Published var list: PatientsList? = nil
@@ -14,7 +15,18 @@ class WorklistViewModel: ObservableObject {
     @Published var selectedEpisode: MedicalEpisode? = nil
     @Published var activeSheet: ActiveSheet? = nil
     @Published var hideActionButton: Bool = false
-//    @Published var medicalEpisodes: [Patient] = []
+
+    private var cancellables = Set<AnyCancellable>()
+
+    init(){
+        $list
+            .map{$0?.uniqueID?.uuidString}
+            //.compactMap{$0}
+            .sink{ uniqueID in
+                UserDefaults.standard.set(uniqueID, forKey: "lastListSelected")
+            }
+            .store(in: &cancellables)
+    }
     
     var isEmpty: Bool {
         return list == nil

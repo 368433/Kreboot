@@ -6,41 +6,57 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct KrebootApp: App {
     let persistenceController = PersistenceController.shared
 
+    private var lastList: PatientsList?
+
+    init(){
+        if let uniqueID = UserDefaults.standard.string(forKey: "lastListSelected") {
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PatientsList")
+            request.predicate = NSPredicate(format: "uniqueID == %@", uniqueID)
+            do {
+                lastList = try PersistenceController.shared.container.viewContext.fetch(request).first as? PatientsList
+            } catch {
+                print(error)
+            }
+        }
+    }
     
     var body: some Scene {
         WindowGroup {
             TabView{
-
-//                NavigationView{
-////                    testGen()
-//                    PatientsListsView(selectedList: $test)
-//                }.tabItem { Label("test", systemImage: "star.fill") }
                 
-//                NavigationView{
-                    WorklistView() //}
-                .tabItem { Label("WorkList", systemImage: "doc.text") }
-
+                //                NavigationView{
+                ////                    testGen()
+                //                    PatientsListsView(selectedList: $test)
+                //                }.tabItem { Label("test", systemImage: "star.fill") }
+                
+                //                NavigationView{
+                // find last list viewed
+                
+                WorklistView(list: lastList) //}
+                    .tabItem { Label("WorkList", systemImage: "doc.text") }
+                
                 NavigationView{
                     DataTab()
                 }.tabItem { Label("Data", systemImage: "square.stack.3d.up") }
-
+                
                 NavigationView{
                     AnalyticsView()
                 }.tabItem { Label("Analytics", systemImage: "sum") }
-
+                
                 NavigationView{
                     BillingView()
                 }.tabItem { Label("Billing", systemImage: "latch.2.case") }
-
-                NavigationView{
-                    Settings()
-                }.tabItem { Label("Settings", systemImage: "gear") }
-
+                
+//                NavigationView{
+                    Settings().tabItem { Label("Settings", systemImage: "gear") }
+//                }
+                
                 NavigationView{
                     ICDdbTable3()
                 }.tabItem { Label("ICD", systemImage: "bandage") }

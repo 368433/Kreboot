@@ -68,6 +68,7 @@ class ListFormViewModel: ObservableObject {
             saveDetails(list)
         } else {
             let list = PatientsList(context: viewContext)
+            list.uniqueID = UUID()
             saveDetails(list)
         }
         
