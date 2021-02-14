@@ -13,10 +13,10 @@ struct WorklistActionButtons: View {
     
     var body: some View {
         VStack{
-            Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}.hidden()
-            Button(action: {model.activeSheet = .searchPatients}){Image(systemName: "plus.magnifyingglass")}.disabled(model.isEmpty)
+            Button(action: {}){Image(systemName: "arrow.up.arrow.down")}.disabled(model.isEmpty)
+            Button(action: {}){Image(systemName: "doc.text.viewfinder")}.disabled(model.isEmpty)
             Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}.disabled(model.isEmpty)
-        }.font(.title3).buttonStyle(CircularButton()).padding()
+        }.buttonStyle(CircularButton()).padding().opacity(0.4)
     }
 }
 

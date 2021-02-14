@@ -22,9 +22,10 @@ struct WorklistHeaderView: View {
                 }
                 Spacer()
                 VStack (alignment: .trailing){
-                    Button(action: {model.activeSheet = .editListDetails}){Text("Edit").font(.caption)}.buttonStyle(CapsuleButton()).disabled(model.isEmpty)
-                    Button(action: {model.activeSheet = .showAllLists}){Text("Open").font(.caption)}.buttonStyle(CapsuleButton())
-                }.padding(.leading)
+                    Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}.buttonStyle(CapsuleButton()).disabled(model.isEmpty)
+                    //Button(action: {model.activeSheet = .showAllLists}){Text("Open...").font(.caption)}.buttonStyle(CapsuleButton())
+                    Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}.buttonStyle(CircularButton())
+                }.font(.caption).padding(.leading)
             }
             Picker("Cards filter", selection: $cardsGroup) {
                 ForEach(CardsFilter.allCases, id:\.self){option in
