@@ -82,3 +82,25 @@ struct CircularButton: ButtonStyle {
     }
 }
 
+struct TagButtonStyle: ButtonStyle {
+    private var bgColor: Color = .yellow
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.caption)
+            .padding(6)
+            .background(configuration.isPressed ? bgColor.opacity(0.5) : bgColor)
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+    }
+}
+
+struct PrimaryButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(8)
+            .background(configuration.isPressed ? Color.blue.opacity(0.5) : Color.blue)
+            .foregroundColor(.white)
+            .clipShape(Rectangle())
+            .cornerRadius(5)
+    }
+}
