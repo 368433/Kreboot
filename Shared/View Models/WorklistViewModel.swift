@@ -30,7 +30,7 @@ class WorklistViewModel: ObservableObject {
         return Array(episodes)
     }
     
-    func medicalEpisodes(with episodeFilters: [EpisodeFilter], _ ascending: Bool) -> [MedicalEpisode] {
+    func medicalEpisodes(sortedBy episodeFilters: [EpisodeFilter], _ ascending: Bool) -> [MedicalEpisode] {
         //TODO: convert to function and add a predicate and sorting option
         guard let list = list else {return []}
         guard let episode = list.medicalEpisodes else {return []}

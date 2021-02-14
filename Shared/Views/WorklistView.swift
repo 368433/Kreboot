@@ -12,11 +12,6 @@ struct WorklistView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject private var model: WorklistViewModel = WorklistViewModel()
     @State private var cardsGroup: CardsFilter = .toSee
-    private var sortDescriptors = [
-        NSSortDescriptor(keyPath: \MedicalEpisode.patient?.name, ascending: true),
-        NSSortDescriptor(keyPath: \MedicalEpisode.roomLocation, ascending: true),
-        NSSortDescriptor(keyPath: \MedicalEpisode.startDate, ascending: true),
-    ]
     
     init(list: PatientsList? = nil ){
         self.model.list = list
@@ -34,7 +29,7 @@ struct WorklistView: View {
                         
                         ScrollView {
                             VStack(spacing:-6){
-                                ForEach(model.medicalEpisodes(with:[.name], true), id:\.self){ episode in //patient in
+                                ForEach(model.medicalEpisodes(sortedBy:[.name], true), id:\.self){ episode in //patient in
                                     //                                    //PatientRow2(patient: patient, model: model)
                                     MedicalEpisodeRow(episode: episode, model: model)
                                 }.padding()
@@ -62,7 +57,7 @@ struct WorklistView: View {
             case .addAct:
                 ActFormView(for: nil, in: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .showAllLists:
-                PatientsListsView(selectedList: $model.list).environment(\.managedObjectContext, self.viewContext)
+                WorklistNavigatorView(selectedList: $model.list)//.environment(\.managedObjectContext, self.viewContext)
             case .actFormView:
                 ActFormView(for: model.selectedAct, in: nil).environment(\.managedObjectContext, self.viewContext)
             }

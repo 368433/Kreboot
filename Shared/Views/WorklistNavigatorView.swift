@@ -1,5 +1,5 @@
 //
-//  PatientsListsView.swift
+//  WorklistNavigatorView.swift
 //  Kreboot
 //
 //  Created by Amir Mac Pro 2019 on 2021-01-30.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PatientsListsView: View {
+struct WorklistNavigatorView: View {
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -49,6 +49,6 @@ struct PatientsListsView: View {
 
 struct PatientsListsView_Previews: PreviewProvider {
     static var previews: some View {
-        PatientsListsView(selectedList: .constant(nil)).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        WorklistNavigatorView(selectedList: .constant(nil)).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
