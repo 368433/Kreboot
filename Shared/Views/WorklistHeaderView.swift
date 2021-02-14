@@ -18,7 +18,7 @@ struct WorklistHeaderView: View {
             HStack(alignment: .top){
                 VStack(alignment: .leading){
                     Text(model.isEmpty ? "" : model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.3)
-                    Text(model.isEmpty ? "":"Week of \(model.list?.dayLabel(dateStyle: .medium) ?? "No date")")
+                    Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")")
                 }
                 Spacer()
                 VStack (alignment: .trailing){

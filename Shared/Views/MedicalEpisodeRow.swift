@@ -14,7 +14,7 @@ struct MedicalEpisodeRow: View {
     @ObservedObject var model: WorklistViewModel
     
     var body: some View {
-        HStack (alignment: .top){
+//        HStack (alignment: .top){
             VStack{
                 HStack (alignment: .center) {
                     HStack {
@@ -23,6 +23,31 @@ struct MedicalEpisodeRow: View {
                     }
                     Spacer()
                     Button(action: {model.activeSheet = .setDiagnosis; model.selectedEpisode = episode}){ Text(episode.diagnosis?.icd10Description ?? "Diagnosis").font(.footnote)}.buttonStyle(TightOutlineButton())
+                    Button(action: {model.activeSheet = .addAct; model.selectedEpisode = episode}){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}.padding(.leading)
+                }
+                if showFullCard && episode.acts?.count != 0{
+                    HStack{
+                        ScrollView{
+                            VStack(alignment:.leading){
+                                // STRENGHTEN the foreach
+                                ForEach(Array(episode.acts as? Set<Act> ?? [])){act in
+                                    MedicalActRow(act: act).onTapGesture{
+                                        model.selectedAct = act
+                                        model.activeSheet = .actFormView
+                                    }
+                                }
+                            }
+                        }
+                        Spacer()
+                        VStack(alignment:.trailing){
+                            Button(action:{}){Text("consulting")}
+                            Spacer()
+                            Button(action:{}){Label("Notes", systemImage: "note.text")}.buttonStyle(CapsuleButton())
+                            Spacer()
+                            Button(action:{}){Image(systemName: "flag")}
+                            Spacer()
+                        }.font(.subheadline).lineLimit(1)
+                    }.padding()
                 }
                 Spacer()
                 HStack{
@@ -37,11 +62,8 @@ struct MedicalEpisodeRow: View {
                         Label("Last seen", systemImage: "clock")
                     }.foregroundColor(.secondary).font(.caption).lineLimit(1)
                 }
-            }
-            Spacer()
-            Button(action: {model.activeSheet = .addAct; model.selectedCard = episode.patient}){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}.padding(.leading)
-            
-        }.padding()
+            }.padding()
+//        }.padding()
         .background(Color.white)
         .cornerRadius(10.0)
         .shadow(color: Color.black.opacity(0.3), radius: 5)

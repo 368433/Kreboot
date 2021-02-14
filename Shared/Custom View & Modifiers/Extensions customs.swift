@@ -33,6 +33,17 @@ extension TextField {
     }
 }
 
+extension Date{
+    public func dayLabel(dateStyle: DateFormatter.Style) -> String {
+        let itemFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = dateStyle
+            return formatter
+        }()
+        return itemFormatter.string(from: self)
+    }
+}
+
 func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
     Binding(
         get: { lhs.wrappedValue ?? rhs },

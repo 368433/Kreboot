@@ -54,6 +54,22 @@ struct PersistenceController {
         return pt
     }
     
+    static var singleAct: Act {
+        let result = PersistenceController(inMemory: true)
+        let viewContext = result.container.viewContext
+        
+        let act = Act(context: viewContext)
+        act.ramqCode = "432234"
+        act.timestamp = Date()
+        do {
+            try viewContext.save()
+        }
+        catch {
+            
+        }
+        return act
+    }
+    
     static var singleMedicalEpisode: MedicalEpisode {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext

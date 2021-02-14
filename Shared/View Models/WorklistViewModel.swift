@@ -10,6 +10,7 @@ import SwiftUI
 class WorklistViewModel: ObservableObject {
     @Published var list: PatientsList? = nil
     @Published var selectedCard: Patient? = nil
+    @Published var selectedAct: Act? = nil
     @Published var selectedEpisode: MedicalEpisode? = nil
     @Published var activeSheet: ActiveSheet? = nil
 //    @Published var medicalEpisodes: [Patient] = []

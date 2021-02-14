@@ -51,13 +51,15 @@ struct WorklistView: View {
             case .setDiagnosis:
                 ICDListView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .showIdCard:
-                NavigationView{PatientFormView(patient: model.selectedCard, newEpisode: false)}.environment(\.managedObjectContext, self.viewContext)
+                NavigationView{PatientFormView(patient: model.selectedEpisode?.patient, newEpisode: false)}.environment(\.managedObjectContext, self.viewContext)
             case .editRoom:
                 RoomChangeView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .addAct:
-                AddActView().environment(\.managedObjectContext, self.viewContext)
+                ActFormView(for: nil, in: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .showAllLists:
                 PatientsListsView(selectedList: $model.list).environment(\.managedObjectContext, self.viewContext)
+            case .actFormView:
+                ActFormView(for: model.selectedAct, in: nil).environment(\.managedObjectContext, self.viewContext)
             }
         }
     }
