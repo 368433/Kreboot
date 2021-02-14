@@ -10,7 +10,7 @@ import SwiftUI
 struct MedicalActRow: View {
     var act: Act
     var body: some View {
-        Text("\(act.timestamp?.dayLabel(dateStyle: .medium) ?? "No date") - \(act.ramqCode ?? "No ramq code")").font(.footnote)
+        Text("\(act.timestamp?.dayLabel(dateStyle: .medium) ?? "No date") - \(act.ramqCode ?? "No ramq code")")//.font(.subheadline)
     }
 }
 

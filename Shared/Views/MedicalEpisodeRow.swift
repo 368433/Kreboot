@@ -41,13 +41,11 @@ struct MedicalEpisodeRow: View {
                         Spacer()
                         VStack(alignment:.trailing){
                             Button(action:{}){Text("consulting")}
-                            Spacer()
                             Button(action:{}){Label("Notes", systemImage: "note.text")}.buttonStyle(CapsuleButton())
-                            Spacer()
                             Button(action:{}){Image(systemName: "flag")}
                             Spacer()
-                        }.font(.subheadline).lineLimit(1)
-                    }.padding()
+                        }.lineLimit(1)
+                    }.padding(.leading)
                 }
                 Spacer()
                 HStack{

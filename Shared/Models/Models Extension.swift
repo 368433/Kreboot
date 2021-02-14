@@ -21,6 +21,20 @@ extension NSManagedObject {
     }
 }
 
+extension MedicalEpisode {
+    public var wrappedRoom: String {
+        return self.roomLocation ?? "No room"
+    }
+    
+    public var wrappedDiagnosis: String {
+        return self.diagnosis?.icd10Description ?? "No diagnosis"
+    }
+    
+    public var wrappedPatientName: String {
+        return self.patient?.name ?? "No patient Name"
+    }
+}
+
 extension ICD10dx {
     public var wrappedCode: String {
         icd10Code ?? "No code"

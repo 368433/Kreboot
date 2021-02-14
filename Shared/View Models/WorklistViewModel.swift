@@ -28,6 +28,16 @@ class WorklistViewModel: ObservableObject {
         let episodes = list.medicalEpisodes as? Set<MedicalEpisode> ?? []
         return Array(episodes)
     }
+    
+    func medicalEpisodes(with episodeFilters: [EpisodeFilter], _ ascending: Bool) -> [MedicalEpisode] {
+        //TODO: convert to function and add a predicate and sorting option
+        guard let list = list else {return []}
+        guard let episode = list.medicalEpisodes else {return []}
+        
+        // CAN CATCH ERROR HERE IF SORTDESCRIPTORS DO NOT FIT MEDICAL EPISODE
+        return episode.sortedArray(using: episodeFilters.map{$0.descriptor(ascending)}) as? [MedicalEpisode] ?? []
+    }
+    
     var patientsList: [Patient] {
         guard let list = list else {return []}
         return list.patientsArray

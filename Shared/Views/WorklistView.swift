@@ -12,6 +12,11 @@ struct WorklistView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject private var model: WorklistViewModel = WorklistViewModel()
     @State private var cardsGroup: CardsFilter = .toSee
+    private var sortDescriptors = [
+        NSSortDescriptor(keyPath: \MedicalEpisode.patient?.name, ascending: true),
+        NSSortDescriptor(keyPath: \MedicalEpisode.roomLocation, ascending: true),
+        NSSortDescriptor(keyPath: \MedicalEpisode.startDate, ascending: true),
+    ]
     
     init(list: PatientsList? = nil ){
         self.model.list = list
@@ -29,7 +34,7 @@ struct WorklistView: View {
                         
                         ScrollView {
                             VStack(spacing:-6){
-                                ForEach(model.medicalEpisodes, id:\.self){ episode in //patient in
+                                ForEach(model.medicalEpisodes(with:[.name], true), id:\.self){ episode in //patient in
 //                                    //PatientRow2(patient: patient, model: model)
                                     MedicalEpisodeRow(episode: episode, model: model)
                                 }.padding()

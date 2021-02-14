@@ -20,6 +20,9 @@ class AddActViewModel: ObservableObject {
     init(act: Act?, episode: MedicalEpisode?){
         self.episode = episode
         self.act = act
+        
+        self._actCode = Published(initialValue: self.act?.ramqCode ?? "")
+        self._actDate = Published(initialValue: self.act?.timestamp ?? Date())
     }
     
     func saveAct(){
@@ -65,7 +68,7 @@ struct ActFormView: View {
                     if !model.searchActText.isEmpty {
                         Text("test")
                     }
-                    DatePicker("Performed", selection: $model.actDate, displayedComponents: [.date, .hourAndMinute])
+                    DatePicker("Date", selection: $model.actDate, displayedComponents: [.date, .hourAndMinute])
                 }.padding(.top)
                 
                 if !model.searchActText.isEmpty {
