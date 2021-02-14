@@ -16,7 +16,7 @@ struct MedicalEpisodeRow: View {
     var body: some View {
 //        HStack (alignment: .top){
             VStack{
-                HStack (alignment: .center) {
+                HStack (alignment: .top) {
                     HStack {
                         Button(action: {model.activeSheet = .showIdCard; model.selectedEpisode = episode}){Image(systemName: "person.crop.circle.fill").font(.title2)}
                         Text(episode.patient?.name ?? "No name")

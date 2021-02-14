@@ -262,6 +262,7 @@
 				3129D75525D55518000EAA5C /* Custom View & Modifiers */,
 				3175138E25D9921500C2B8CB /* JSON on disk DB */,
 				3154A32625C8F2A400E20978 /* ICDImport  and view */,
+				6A5465A025D9D03A00AC55A0 /* To Trash */,
 				311CA82D25C5774800E4513A /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -401,7 +402,6 @@
 				3146971125D7A00100CEEDFD /* EmptyWorklistView.swift */,
 				3118EFE925C5E398002B3711 /* WorklistNavigatorView.swift */,
 				3196B5C625CE2740006A3E72 /* DataTab.swift */,
-				3180F08025D0909600837FA2 /* ICDListView.swift */,
 				6A54659925D9CEA300AC55A0 /* DiagnosisSearchView.swift */,
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,
 				314C9A7D25C7720800E5B9FE /* PatientRow2.swift */,
@@ -420,6 +420,14 @@
 				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6A5465A025D9D03A00AC55A0 /* To Trash */ = {
+			isa = PBXGroup;
+			children = (
+				3180F08025D0909600837FA2 /* ICDListView.swift */,
+			);
+			path = "To Trash";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

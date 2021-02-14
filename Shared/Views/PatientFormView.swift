@@ -46,7 +46,7 @@ struct PatientFormView: View {
 
             }
             Section(header: Text("Past Medical History")) {
-                NavigationLink(destination: ICDListView()){
+                NavigationLink(destination: DiagnosisSearchView(episode: nil)){
                     HStack{
                         Text("Add ICD dx")
                         Spacer()

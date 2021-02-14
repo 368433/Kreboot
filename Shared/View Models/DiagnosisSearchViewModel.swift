@@ -3,7 +3,10 @@
 //  Kreboot
 //
 //  Created by quarticAIMBP2018 on 2021-02-14.
-//
+/**
+ with help from https://medium.com/better-programming/search-bar-and-combine-in-swift-ui-46f37cec5a9f
+ and other readings
+ */
 
 import Combine
 import CoreData
@@ -32,16 +35,24 @@ class DiagnosisSearchViewModel: ObservableObject {
         $searchString
             //Set throttle to avoid overloading queries
             .debounce(for: .milliseconds(800), scheduler: RunLoop.main)
-            //convert search string to predicate
-            .map{NSPredicate(format: "icd10Description CONTAINS[cd] %@", $0)}
-            //generate coredata search request and fetch and assign result to search result array
-            .sink { predicate in
-                self.request.predicate = predicate
-                self.request.sortDescriptors = [self.sortDescriptor]
-                do {
-                    self.searchResults = try self.moc.fetch(self.request)
-                } catch {
-                    print(error)
+            
+            //convert search string to array of words
+            //then return array of predicates from words
+            .map{ searchWords -> [NSPredicate] in
+                if searchWords.isEmpty{ return [] }
+                return searchWords.split(whereSeparator: \.isLetter.negation).map{NSPredicate(format:"icd10Description CONTAINS[cd] %@" , String($0))}
+            }
+            .sink { predicates in
+                if predicates.isEmpty {
+                    self.searchResults = []
+                } else {
+                    self.request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+                    self.request.sortDescriptors = [self.sortDescriptor]
+                    do {
+                        self.searchResults = try self.moc.fetch(self.request)
+                    } catch {
+                        print(error)
+                    }
                 }
             }
             .store(in: &subscription)
@@ -51,6 +62,6 @@ class DiagnosisSearchViewModel: ObservableObject {
         guard let episode = episode else {return}
         episode.diagnosis = diagnosis
         episode.saveYourself(in: PersistenceController.shared.container.viewContext)
-
+        
     }
 }
