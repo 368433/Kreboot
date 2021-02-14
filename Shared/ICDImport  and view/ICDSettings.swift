@@ -51,23 +51,6 @@ struct ICDSettings: View {
     }
 }
 
-struct ICDSettingsHeader: View {
-    var body: some View{
-        Text("ICD Codes")
-    }
-}
-
-struct ICDSettingsFooter: View {
-    var body: some View {
-        HStack(alignment: .center) {
-            Text("ICD: ")
-            Divider()
-            Text("Imported: ")
-            Divider()
-            Text("Total codes: ")
-        }
-    }
-}
 
 struct ICDSettings_Previews: PreviewProvider {
     static var previews: some View {
