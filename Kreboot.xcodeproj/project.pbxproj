@@ -332,7 +332,6 @@
 				31015B3825C9E426006D843D /* ICDDataBridge.swift */,
 				3154A32D25C8F34400E20978 /* ICD10Code.swift */,
 				3154A36E25C9E07200E20978 /* OldV */,
-				3154A33325C8F44200E20978 /* ICDError.swift */,
 			);
 			path = "ICDImport  and view";
 			sourceTree = "<group>";
@@ -355,6 +354,7 @@
 				6A51F74D25D884510060AE35 /* Models Extension.swift */,
 				310A873225D01C4700437522 /* ActiveSheet.swift */,
 				31548B9125C71E9A00097F2F /* CoreDataProvider.swift */,
+				3154A33325C8F44200E20978 /* ICDError.swift */,
 				318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */,
 				3169014E25D8F74200B6403A /* MedicalEpisodeFilterEnum.swift */,
 				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
