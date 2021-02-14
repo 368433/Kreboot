@@ -53,6 +53,7 @@
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="listDescription" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="uniqeID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="medicalEpisodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MedicalEpisode" inverseName="list" inverseEntity="MedicalEpisode"/>
         <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="lists" inverseEntity="Patient"/>
     </entity>
@@ -63,6 +64,6 @@
         <element name="MedicalEpisode" positionX="-63" positionY="63" width="128" height="149"/>
         <element name="MedicalHxEntry" positionX="-45" positionY="72" width="128" height="119"/>
         <element name="Patient" positionX="-63" positionY="-9" width="128" height="149"/>
-        <element name="PatientsList" positionX="-54" positionY="36" width="128" height="134"/>
+        <element name="PatientsList" positionX="-54" positionY="36" width="128" height="149"/>
     </elements>
 </model>
