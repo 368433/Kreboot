@@ -96,6 +96,8 @@
 		6A51F74225D883EF0060AE35 /* ScrollChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F74125D883EF0060AE35 /* ScrollChoice.swift */; };
 		6A51F74825D884330060AE35 /* Extensions customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F74725D884330060AE35 /* Extensions customs.swift */; };
 		6A51F74E25D884510060AE35 /* Models Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F74D25D884510060AE35 /* Models Extension.swift */; };
+		6A54659325D9CE6D00AC55A0 /* BoolNegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54659225D9CE6D00AC55A0 /* BoolNegation.swift */; };
+		6A54659425D9CE6D00AC55A0 /* BoolNegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54659225D9CE6D00AC55A0 /* BoolNegation.swift */; };
 		6A66E52625D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */; };
 		6A66E52725D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */; };
 		6A7177FB25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
@@ -193,6 +195,7 @@
 		6A51F74125D883EF0060AE35 /* ScrollChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollChoice.swift; sourceTree = "<group>"; };
 		6A51F74725D884330060AE35 /* Extensions customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions customs.swift"; sourceTree = "<group>"; };
 		6A51F74D25D884510060AE35 /* Models Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models Extension.swift"; sourceTree = "<group>"; };
+		6A54659225D9CE6D00AC55A0 /* BoolNegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolNegation.swift; sourceTree = "<group>"; };
 		6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosisSearchViewModel.swift; sourceTree = "<group>"; };
 		6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistViewModel.swift; sourceTree = "<group>"; };
 		6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistHeaderView.swift; sourceTree = "<group>"; };
@@ -352,6 +355,7 @@
 		3160B47625D4C056002BED92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6A54659225D9CE6D00AC55A0 /* BoolNegation.swift */,
 				3149201525CDDEAC002D873C /* Karla Protocols.swift */,
 				3173664325D97B5300237668 /* NSPredicate+KeyPath+Operators.swift */,
 				6A51F74D25D884510060AE35 /* Models Extension.swift */,
@@ -584,6 +588,7 @@
 				3149201825CDDEAC002D873C /* ICDSettings.swift in Sources */,
 				6A7177FB25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */,
 				3146970825D79B2C00CEEDFD /* CheckmarkToggleStyle.swift in Sources */,
+				6A54659325D9CE6D00AC55A0 /* BoolNegation.swift in Sources */,
 				3154A33425C8F44200E20978 /* ICDError.swift in Sources */,
 				6A51F71B25D770650060AE35 /* PatientFormViewModel.swift in Sources */,
 				315E5A6425C754E0005DB2A9 /* BillingView.swift in Sources */,
@@ -654,6 +659,7 @@
 				310A873425D01C4700437522 /* ActiveSheet.swift in Sources */,
 				3118EFEB25C5E398002B3711 /* WorklistNavigatorView.swift in Sources */,
 				3169015025D8F74200B6403A /* MedicalEpisodeFilterEnum.swift in Sources */,
+				6A54659425D9CE6D00AC55A0 /* BoolNegation.swift in Sources */,
 				3118EFF225C5E88F002B3711 /* ListFormView.swift in Sources */,
 				318E27EB25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */,
 				6AD71C4E25D88B6400840B6B /* WorklistActionButtons.swift in Sources */,

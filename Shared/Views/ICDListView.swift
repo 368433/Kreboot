@@ -7,8 +7,38 @@
 //
 
 import SwiftUI
+import Combine
 
-
+struct DiagnosisSearchView: View {
+    @Environment(\.presentationMode) private var presentationMode
+    
+    @ObservedObject var model = DiagnosisSearchViewModel()
+    private var episode: MedicalEpisode?
+    
+    init(episode: MedicalEpisode?){
+        self.episode = episode
+    }
+    
+    var body: some View {
+        VStack(alignment:.leading){
+            Text("ICD search").font(.largeTitle).fontWeight(.heavy).padding([.top, .leading])
+            SearchBar(text: $model.searchString).padding()
+            List{
+                ForEach(model.searchResults){ icd in
+                    VStack (alignment: .leading){
+                        Text(icd.wrappedCode)
+                        Text(icd.wrappedDescription)
+                    }.onTapGesture{
+                        guard let episode = episode else {return}
+                        episode.diagnosis = icd
+                        episode.saveYourself(in: PersistenceController.shared.container.viewContext)
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            }
+        }
+    }
+}
 
 struct ICDListView: View {
     @Environment(\.presentationMode) private var presentationMode
@@ -73,9 +103,7 @@ class DelayedSearch: ObservableObject {
     }
 }
 
-extension Bool {
-    var negation: Bool { !self }
-}
+
 
 struct ICDListView_Previews: PreviewProvider {
     static var previews: some View {
