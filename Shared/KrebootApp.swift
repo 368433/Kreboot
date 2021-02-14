@@ -27,8 +27,7 @@ struct KrebootApp: App {
 
                 NavigationView{
                     DataTab()
-                }
-                .tabItem { Label("Data", systemImage: "square.stack.3d.up") }
+                }.tabItem { Label("Data", systemImage: "square.stack.3d.up") }
 
                 NavigationView{
                     AnalyticsView()

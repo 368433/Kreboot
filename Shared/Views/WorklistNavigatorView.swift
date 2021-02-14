@@ -15,17 +15,15 @@ struct WorklistNavigatorView: View {
     @State private var listGroup: ListFilterEnum = .active
     @Binding var selectedList: PatientsList?
 
-//    init(selectedList: Binding<PatientsList?>){
-//        self._selectedList = selectedList
-//    }
-
     var body: some View {
         VStack (alignment: .center){
+            
             HStack {
                 Text("Worklists").font(.largeTitle).fontWeight(.black)
                 Spacer()
                 Button(action: {presentForm.toggle()}){Text("Add").fontWeight(.bold)}//.padding()
             }.padding([.top, .horizontal])
+            
             Picker("List filter", selection: $listGroup) {
                 ForEach(ListFilterEnum.allCases, id:\.self){option in
                     Text(option.label).tag(option)

@@ -16,17 +16,41 @@ struct DataTab: View {
     
     var body: some View {
         ScrollView(){
-            VStack (spacing: 20){
-                NavigationLink(
-                    destination: PatientsDBView(),
-                    label: {
-                        DataPav(image: "person.3", title: "Patients Database")
-                    }).buttonStyle(PlainButtonStyle())
-                DataPav(image: "waveform.path.ecg", title: "Dx Database")
-                DataPav(image: "bandage", title: "ICD Database")
-                DataPav(image: "cross.circle", title: "Physicians Database")
-                DataPav(image: "doc.text.below.ecg", title: "Billing codes")
-            }.padding()
+            VStack (alignment: .leading, spacing: 20){
+                Text("Work databases").font(.title).fontWeight(.black)
+                //Divider()
+                NavigationLink(destination: PatientsDBView(), label: {DataViews.ptDatabse.tabView})
+                NavigationLink(destination: EmptyView(), label: {DataViews.dxDatabase.tabView})
+                NavigationLink(destination: EmptyView(), label: {DataViews.locationDatabse.tabView})
+                
+                Divider()
+                Text("External Databases").font(.title).fontWeight(.black).padding(.top)
+                
+                NavigationLink(destination: EmptyView(), label: {DataViews.icdDatabse.tabView})
+                NavigationLink(destination: EmptyView(), label: {DataViews.mdDatabase.tabView})
+                NavigationLink(destination: EmptyView(), label: {DataViews.billingCodesDatabse.tabView})
+            }.padding(.horizontal).buttonStyle(PlainButtonStyle())
+        }
+    }
+}
+
+enum DataViews: CaseIterable {
+    case ptDatabse, dxDatabase, icdDatabse, mdDatabase, billingCodesDatabse, locationDatabse
+    
+    var tabView: some View {
+        switch self {
+        case .ptDatabse:
+            return DataPav(image: "person.3", title: "Patients Database")
+        case .dxDatabase:
+            return DataPav(image: "waveform.path.ecg", title: "Dx Database")
+        case .icdDatabse:
+            return DataPav(image: "bandage", title: "ICD Database")
+        case .mdDatabase:
+            return DataPav(image: "cross.circle", title: "Physicians Database")
+        case .billingCodesDatabse:
+            return DataPav(image: "doc.text.below.ecg", title: "Billing codes")
+        case .locationDatabse:
+            return DataPav(image: "mappin.and.ellipse", title: "Work locations")
         }
     }
 }

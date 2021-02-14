@@ -10,6 +10,8 @@ import SwiftUI
 struct WorklistView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) private var presentationMode
+    
     @ObservedObject private var model: WorklistViewModel = WorklistViewModel()
     @State private var cardsGroup: CardsFilter = .toSee
     
@@ -57,7 +59,7 @@ struct WorklistView: View {
             case .addAct:
                 ActFormView(for: nil, in: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .showAllLists:
-                WorklistNavigatorView(selectedList: $model.list)//.environment(\.managedObjectContext, self.viewContext)
+                WorklistNavigatorView(selectedList: $model.list).environment(\.managedObjectContext, self.viewContext)
             case .actFormView:
                 ActFormView(for: model.selectedAct, in: nil).environment(\.managedObjectContext, self.viewContext)
             }
