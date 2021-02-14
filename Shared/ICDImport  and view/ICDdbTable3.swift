@@ -14,11 +14,7 @@ struct ICDdbTable3: View {
     @StateObject private var dataProvider = ICDCodesProvider3()
     @State private var showBusy = true
     
-    //    @FetchRequest(entity: ICD10dx.entity(), sortDescriptors: [], predicate: nil, animation: .default)
-    //    private var res: FetchedResults<ICD10dx>
-    
     var body: some View {
-//        List(dataProvider.dataResults, rowContent: ICDTableRow.init)
         ScrollView{
             LazyVStack{
                 ForEach(dataProvider.dataResults, content: ICDTableRow3.init)

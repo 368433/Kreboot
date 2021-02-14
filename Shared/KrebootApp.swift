@@ -53,15 +53,10 @@ struct KrebootApp: App {
                     BillingView()
                 }.tabItem { Label("Billing", systemImage: "latch.2.case") }
                 
-//                NavigationView{
-                    Settings().tabItem { Label("Settings", systemImage: "gear") }
-//                }
-                
                 NavigationView{
-                    ICDdbTable3()
-                }.tabItem { Label("ICD", systemImage: "bandage") }
-                
-                
+                    Settings()
+                }.tabItem { Label("Settings", systemImage: "gear") }
+ 
             }.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

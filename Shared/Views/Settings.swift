@@ -10,6 +10,7 @@ import SwiftUI
 struct Settings: View {
     @State private var iCloudSynced: Bool = false
     @State private var firebaseSynced: Bool = false
+    
     var body: some View {
         Form {
             Section(

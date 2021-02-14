@@ -251,6 +251,7 @@
 				317CEA4425D4BF4B00393AD6 /* View Models */,
 				317CEA4525D4BF5400393AD6 /* Views */,
 				3129D75525D55518000EAA5C /* Custom View & Modifiers */,
+				3175138E25D9921500C2B8CB /* JSON on disk DB */,
 				3154A32625C8F2A400E20978 /* ICDImport  and view */,
 				311CA82D25C5774800E4513A /* Assets.xcassets */,
 			);
@@ -325,7 +326,6 @@
 			isa = PBXGroup;
 			children = (
 				3149201425CDDEAC002D873C /* ICDSettings.swift */,
-				3154A35025C9DB4000E20978 /* icd10_codes.json */,
 				3154A35625C9DB7F00E20978 /* ICDdbTable3.swift */,
 				3154A35725C9DB7F00E20978 /* ICDProvider3.swift */,
 				3149200B25CB136B002D873C /* HelperFunctions.swift */,
@@ -360,6 +360,14 @@
 				31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3175138E25D9921500C2B8CB /* JSON on disk DB */ = {
+			isa = PBXGroup;
+			children = (
+				3154A35025C9DB4000E20978 /* icd10_codes.json */,
+			);
+			path = "JSON on disk DB";
 			sourceTree = "<group>";
 		};
 		317CEA4425D4BF4B00393AD6 /* View Models */ = {
