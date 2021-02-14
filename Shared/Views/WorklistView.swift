@@ -31,8 +31,7 @@ struct WorklistView: View {
                         
                         ScrollView {
                             VStack(spacing:-6){
-                                ForEach(model.medicalEpisodes(sortedBy:[.name], true), id:\.self){ episode in //patient in
-                                    //                                    //PatientRow2(patient: patient, model: model)
+                                ForEach(model.medicalEpisodes(sortedBy:[.name], true), id:\.self){ episode in 
                                     MedicalEpisodeRow(episode: episode, model: model)
                                 }.padding()
                             }
