@@ -54,6 +54,23 @@ struct PersistenceController {
         return pt
     }
     
+    static var singleMedicalEpisode: MedicalEpisode {
+        let result = PersistenceController(inMemory: true)
+        let viewContext = result.container.viewContext
+        let episode = MedicalEpisode(context: viewContext)
+        episode.patient = singlePatient
+        episode.startDate = Date()
+        episode.referringMD = "Bob squidward"
+        episode.roomLocation = "dasha"
+        do {
+            try viewContext.save()
+        } catch {
+            
+        }
+        
+        return episode
+    }
+    
     static var singleList: PatientsList {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext

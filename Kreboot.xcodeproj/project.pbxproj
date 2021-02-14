@@ -46,6 +46,8 @@
 		3146970825D79B2C00CEEDFD /* CheckmarkToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3146970725D79B2C00CEEDFD /* CheckmarkToggleStyle.swift */; };
 		3146971225D7A00100CEEDFD /* EmptyWorklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3146971125D7A00100CEEDFD /* EmptyWorklistView.swift */; };
 		3146971825D7A18D00CEEDFD /* Custom colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3146971725D7A18C00CEEDFD /* Custom colors.swift */; };
+		3146972A25D8C17B00CEEDFD /* MedicalEpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3146972925D8C17B00CEEDFD /* MedicalEpisodeRow.swift */; };
+		3146972B25D8C17B00CEEDFD /* MedicalEpisodeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3146972925D8C17B00CEEDFD /* MedicalEpisodeRow.swift */; };
 		3149200C25CB136B002D873C /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149200B25CB136B002D873C /* HelperFunctions.swift */; };
 		3149201625CDDEAC002D873C /* Button modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149201225CDDEAC002D873C /* Button modifiers.swift */; };
 		3149201725CDDEAC002D873C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149201325CDDEAC002D873C /* Settings.swift */; };
@@ -146,6 +148,7 @@
 		3146970725D79B2C00CEEDFD /* CheckmarkToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkToggleStyle.swift; sourceTree = "<group>"; };
 		3146971125D7A00100CEEDFD /* EmptyWorklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWorklistView.swift; sourceTree = "<group>"; };
 		3146971725D7A18C00CEEDFD /* Custom colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom colors.swift"; sourceTree = "<group>"; };
+		3146972925D8C17B00CEEDFD /* MedicalEpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalEpisodeRow.swift; sourceTree = "<group>"; };
 		3149200B25CB136B002D873C /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		3149201225CDDEAC002D873C /* Button modifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button modifiers.swift"; sourceTree = "<group>"; };
 		3149201325CDDEAC002D873C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -377,6 +380,7 @@
 				3196B5C625CE2740006A3E72 /* DataTab.swift */,
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,
 				314C9A7D25C7720800E5B9FE /* PatientRow2.swift */,
+				3146972925D8C17B00CEEDFD /* MedicalEpisodeRow.swift */,
 				311CA82B25C5774700E4513A /* PatientsDBView.swift */,
 				3118EFC125C59993002B3711 /* PatientFormView.swift */,
 				3146971125D7A00100CEEDFD /* EmptyWorklistView.swift */,
@@ -585,6 +589,7 @@
 				3149200C25CB136B002D873C /* HelperFunctions.swift in Sources */,
 				6AD71C4625D88B0200840B6B /* WorklistHeaderView.swift in Sources */,
 				317CEA3E25D4157700393AD6 /* ListFormViewModel.swift in Sources */,
+				3146972A25D8C17B00CEEDFD /* MedicalEpisodeRow.swift in Sources */,
 				311C862425C6F94A0021E596 /* SearchBar.swift in Sources */,
 				3154A34425C95BD000E20978 /* ICDProvider2.swift in Sources */,
 				3118EFF125C5E88F002B3711 /* ListFormView.swift in Sources */,
@@ -620,6 +625,7 @@
 				314C9A7F25C7720800E5B9FE /* PatientRow2.swift in Sources */,
 				3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */,
 				311CA85B25C5774900E4513A /* Persistence.swift in Sources */,
+				3146972B25D8C17B00CEEDFD /* MedicalEpisodeRow.swift in Sources */,
 				6AD71C4725D88B0200840B6B /* WorklistHeaderView.swift in Sources */,
 				311C861725C6E1860021E596 /* AddPatientToListView.swift in Sources */,
 				310A873425D01C4700437522 /* ActiveSheet.swift in Sources */,
