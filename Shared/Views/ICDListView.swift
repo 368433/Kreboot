@@ -10,7 +10,10 @@ import SwiftUI
 import Combine
 
 struct ICDListView: View {
-    @ObservedObject var delay = DelayedSearch(initialPredicate: NSPredicate(format: "icd10Description CONTAINS[cd] %@", ""), predicateFormat: "icd10Description CONTAINS[cd] %@")
+    @Environment(\.presentationMode) private var presentationMode
+    @ObservedObject private var delay = DelayedSearch(initialPredicate: NSPredicate(format: "icd10Description CONTAINS[cd] %@", ""), predicateFormat: "icd10Description CONTAINS[cd] %@")
+    
+    var episode: MedicalEpisode?
     
     var body: some View {
         VStack(alignment:.leading){
@@ -21,6 +24,10 @@ struct ICDListView: View {
                     VStack (alignment: .leading){
                         Text(icd.wrappedCode)
                         Text(icd.wrappedDescription)
+                    }.onTapGesture{
+                        guard let episode = episode else {return}
+                        episode.diagnosis = icd
+                        self.presentationMode.wrappedValue.dismiss()
                     }
                 }
             }

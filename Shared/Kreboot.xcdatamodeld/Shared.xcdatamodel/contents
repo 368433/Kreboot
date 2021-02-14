@@ -8,6 +8,7 @@
     <entity name="ICD10dx" representedClassName="ICD10dx" syncable="YES" codeGenerationType="class">
         <attribute name="icd10Code" optional="YES" attributeType="String"/>
         <attribute name="icd10Description" optional="YES" attributeType="String"/>
+        <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MedicalEpisode" inverseName="diagnosis" inverseEntity="MedicalEpisode"/>
         <relationship name="medicalEntries" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MedicalHxEntry" inverseName="diagnosis" inverseEntity="MedicalHxEntry"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -23,6 +24,8 @@
         <attribute name="roomLocation" optional="YES" attributeType="String"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="acts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Act" inverseName="medicalEpisode" inverseEntity="Act"/>
+        <relationship name="diagnosis" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10dx" inverseName="episodes" inverseEntity="ICD10dx"/>
+        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientsList" inverseName="medicalEpisodes" inverseEntity="PatientsList"/>
         <relationship name="medicalHxEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MedicalHxEntry" inverseName="medicalEpisode" inverseEntity="MedicalHxEntry"/>
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="medicalEpisodes" inverseEntity="Patient"/>
     </entity>
@@ -50,15 +53,16 @@
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="listDescription" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="medicalEpisodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MedicalEpisode" inverseName="list" inverseEntity="MedicalEpisode"/>
         <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="lists" inverseEntity="Patient"/>
     </entity>
     <elements>
         <element name="Act" positionX="-63" positionY="-9" width="128" height="74"/>
-        <element name="ICD10dx" positionX="-63" positionY="63" width="128" height="74"/>
+        <element name="ICD10dx" positionX="-63" positionY="63" width="128" height="89"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="MedicalEpisode" positionX="-63" positionY="63" width="128" height="119"/>
+        <element name="MedicalEpisode" positionX="-63" positionY="63" width="128" height="149"/>
         <element name="MedicalHxEntry" positionX="-45" positionY="72" width="128" height="119"/>
         <element name="Patient" positionX="-63" positionY="-9" width="128" height="149"/>
-        <element name="PatientsList" positionX="-54" positionY="36" width="128" height="119"/>
+        <element name="PatientsList" positionX="-54" positionY="36" width="128" height="134"/>
     </elements>
 </model>

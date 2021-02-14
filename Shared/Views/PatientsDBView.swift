@@ -21,7 +21,7 @@ struct PatientsDBView: View {
         VStack (alignment:.leading){
             List {
                 ForEach(patients) { pt in
-                    NavigationLink(destination: PatientFormView(patient: pt)){
+                    NavigationLink(destination: PatientFormView(patient: pt, newEpisode: false)){
                         PatientRowView(patient: pt)
                     }
                 }.onDelete(perform: deleteItems)
@@ -44,7 +44,7 @@ struct PatientsDBView: View {
             }
         }
         .sheet(isPresented: $showForm, content: {
-            PatientFormView()
+            PatientFormView(newEpisode: false)
         })
     }
     

@@ -14,10 +14,10 @@ struct EmptyWorklistView: View {
             Spacer()
             VStack (alignment: .center){
                 Spacer()
-                Text("No list\nSelect or create one").fontWeight(.bold)
-                Button(action:action){Image(systemName: "doc.text.magnifyingglass")}.buttonStyle(CircularButton())
+                Text("No list\nSelect or create one").font(.largeTitle).fontWeight(.bold)
+                Button(action:action){Image(systemName: "doc.text.magnifyingglass").font(.title2)}.buttonStyle(CircularButton())
                 Spacer()
-            }.multilineTextAlignment(.center).foregroundColor(Color.offgray).font(.largeTitle)
+            }.multilineTextAlignment(.center).foregroundColor(Color.offgray)
             Spacer()
         }
     }

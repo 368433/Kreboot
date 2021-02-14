@@ -26,7 +26,7 @@ struct AddPatientToListView: View {
                 }
             }
         }
-        .sheet(isPresented: $showNewPatientForm, content: {PatientFormView()})
+        .sheet(isPresented: $showNewPatientForm, content: {PatientFormView(newEpisode: false)})
     }
 }
 

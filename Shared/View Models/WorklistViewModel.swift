@@ -10,6 +10,7 @@ import SwiftUI
 class WorklistViewModel: ObservableObject {
     @Published var list: PatientsList? = nil
     @Published var selectedCard: Patient? = nil
+    @Published var selectedEpisode: MedicalEpisode? = nil
     @Published var activeSheet: ActiveSheet? = nil
 //    @Published var medicalEpisodes: [Patient] = []
     
@@ -20,7 +21,13 @@ class WorklistViewModel: ObservableObject {
         return list?.title ?? "Untiltled list"
     }
     
-    var medicalEpisodes: [Patient] {
+    var medicalEpisodes: [MedicalEpisode] {
+        //TODO: convert to function and add a predicate and sorting option
+        guard let list = list else {return []}
+        let episodes = list.medicalEpisodes as? Set<MedicalEpisode> ?? []
+        return Array(episodes)
+    }
+    var patientsList: [Patient] {
         guard let list = list else {return []}
         return list.patientsArray
     }

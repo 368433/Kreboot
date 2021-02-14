@@ -29,8 +29,9 @@ struct WorklistView: View {
                         
                         ScrollView {
                             VStack(spacing:-6){
-                                ForEach(model.medicalEpisodes, id:\.self){ patient in
-                                    PatientRow2(patient: patient, model: model)
+                                ForEach(model.medicalEpisodes, id:\.self){ episode in //patient in
+//                                    //PatientRow2(patient: patient, model: model)
+                                    MedicalEpisodeRow(episode: episode, model: model)
                                 }.padding()
                             }
                         }
@@ -46,11 +47,11 @@ struct WorklistView: View {
             case .editListDetails:
                 NavigationView{ListFormView(list: model.list)}.environment(\.managedObjectContext, self.viewContext)
             case .addPatient:
-                NavigationView{PatientFormView(to: model.list)}.environment(\.managedObjectContext, self.viewContext)
+                NavigationView{PatientFormView(to: model.list, newEpisode: true)}.environment(\.managedObjectContext, self.viewContext)
             case .setDiagnosis:
-                ICDListView().environment(\.managedObjectContext, self.viewContext)
+                ICDListView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .showIdCard:
-                NavigationView{PatientFormView(patient: model.selectedCard)}.environment(\.managedObjectContext, self.viewContext)
+                NavigationView{PatientFormView(patient: model.selectedCard, newEpisode: false)}.environment(\.managedObjectContext, self.viewContext)
             case .editRoom:
                 RoomChangeView().environment(\.managedObjectContext, self.viewContext)
             case .addAct:

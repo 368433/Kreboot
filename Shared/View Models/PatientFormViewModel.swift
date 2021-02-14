@@ -11,6 +11,7 @@ class PatientFormViewModel: ObservableObject {
     private var viewContext = PersistenceController.shared.container.viewContext
     private var list: PatientsList?
     private var patient: Patient?
+    private var newEpisode: Bool = false
     
     @Published var disableForm: Bool = true
     @Published var name: String
@@ -19,9 +20,10 @@ class PatientFormViewModel: ObservableObject {
     @Published var ramqNumber: String
     @Published var dateOfBirth: Date
     
-    init(list: PatientsList? = nil, patient: Patient? = nil){
+    init(list: PatientsList? = nil, patient: Patient? = nil, newEpisode: Bool = false){
         self.patient = patient
         self.list = list
+        self.newEpisode = newEpisode
         
         self._name = Published(initialValue: self.patient?.name ?? "")
         self._postalCode = Published(initialValue: self.patient?.postalCode ?? "")
@@ -37,8 +39,13 @@ class PatientFormViewModel: ObservableObject {
         patient.chartNumber = chartNumber
         patient.ramqNumber = ramqNumber
         patient.dateOfBirth = dateOfBirth
-        if let list = list {
-            list.addToPatients(patient)
+        
+        if newEpisode {
+            let episode = MedicalEpisode(context: viewContext)
+            episode.patient = patient
+            if let list = list {
+                list.addToMedicalEpisodes(episode)
+            }
         }
         patient.saveYourself(in: viewContext)
     }

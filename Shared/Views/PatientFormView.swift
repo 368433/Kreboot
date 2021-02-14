@@ -13,8 +13,8 @@ struct PatientFormView: View {
     
     @ObservedObject private var model: PatientFormViewModel
     
-    init(patient: Patient? = nil, to list: PatientsList? = nil){
-        self.model = PatientFormViewModel(list: list, patient: patient)
+    init(patient: Patient? = nil, to list: PatientsList? = nil, newEpisode: Bool){
+        self.model = PatientFormViewModel(list: list, patient: patient, newEpisode: newEpisode)
     }
     
     @State private var comments: String = ""
@@ -99,6 +99,6 @@ struct PatientFormView: View {
 
 struct PatientFormView_Previews: PreviewProvider {
     static var previews: some View {
-        PatientFormView()
+        PatientFormView(newEpisode: false)
     }
 }

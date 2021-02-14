@@ -22,7 +22,7 @@ struct MedicalEpisodeRow: View {
                         Text(episode.patient?.name ?? "No name")
                     }
                     Spacer()
-                    Button(action: {model.activeSheet = .setDiagnosis; model.selectedCard = episode.patient}){ Text("Diagnosis").font(.footnote)}.buttonStyle(TightOutlineButton())
+                    Button(action: {model.activeSheet = .setDiagnosis; model.selectedEpisode = episode}){ Text(episode.diagnosis?.icd10Description ?? "Diagnosis").font(.footnote)}.buttonStyle(TightOutlineButton())
                 }
                 Spacer()
                 HStack{
