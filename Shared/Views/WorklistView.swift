@@ -33,7 +33,7 @@ struct WorklistView: View {
                             VStack(spacing:-6){
                                 ForEach(model.medicalEpisodes(sortedBy:[.name], true), id:\.self){ episode in 
                                     MedicalEpisodeRow(episode: episode, model: model)
-                                }.padding()
+                                }.padding().padding(.horizontal)
                             }
                         }
                     }

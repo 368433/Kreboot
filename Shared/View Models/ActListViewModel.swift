@@ -12,6 +12,7 @@ class ActListViewModel: ObservableObject {
     @Published var actList: [Act] = []
     @Published var episode: MedicalEpisode?
     
+    private let viewContext = PersistenceController.shared.container.viewContext
     private var cancellables = Set<AnyCancellable>()
     private var changeActsPublisher: AnyPublisher<[Act], Never> {
         $episode
@@ -33,6 +34,19 @@ class ActListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func delete(act: Act) {
+        withAnimation {
+            viewContext.perform {
+                self.viewContext.delete(act)
+                do {
+                    try self.viewContext.save()
+                } catch {
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                }
+            }
+        }
+    }
     
     func deleteItem(at offsets: IndexSet){
         let viewContext = PersistenceController.shared.container.viewContext
