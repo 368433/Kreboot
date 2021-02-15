@@ -15,19 +15,22 @@ struct Settings: View {
         Form {
             Section(
                 header: Text("Sync"),
-                footer: Text(" "),
                 content: {
                     Toggle("Sync with iCloud", isOn: $iCloudSynced)
                     Toggle("Sync with Google firebase", isOn: $firebaseSynced)
                 })
             Section(
-                header: ICDSettingsHeader(),
-                footer: ICDSettingsFooter(),
+                header: Text("ICD Codes"),
+                footer: ICDSettingsFooter().padding(.bottom),
                 content: {ICDSettings()})
             Section(
                 header: Text("Physicians Database"),
-                footer: Text("Last updated: "),
+                footer: Text("Last updated: ").padding(.bottom),
                 content: {Text("Upload database")})
+            Section(
+                header: Text("Check Database"),
+                footer: Text("Ensure no nil UUID. Attach unassigned Episodes to UnassignedList").padding(.bottom),
+                content: {Text("Needs implementation")})
         }
         .navigationBarTitle("Settings")
     }
