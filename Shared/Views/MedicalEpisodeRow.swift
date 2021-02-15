@@ -32,7 +32,7 @@ struct MedicalEpisodeRow: View {
                 VStack (alignment: .leading){
                     Text("Act list").font(.subheadline).fontWeight(.bold).padding(.trailing)
                     ScrollView{
-                        VStack(alignment:.leading, spacing: 5){
+                        VStack(alignment:.leading, spacing: 0){
                             // STRENGHTEN the foreach
                             ForEach(Array(episode.acts as? Set<Act> ?? [])){act in
                                 MedicalActRow(act: act).onTapGesture{
@@ -61,10 +61,10 @@ struct MedicalEpisodeRow: View {
             }
         }
         .padding()
-        .frame(maxHeight: expandCard ? 300:90)
-        .background(Color.white)
+        .frame(maxHeight: expandCard ? 350:90)
+        .background(Color.Aliceblue)
         .cornerRadius(10.0)
-//        .shadow(color: Color.black.opacity(0.3), radius: 5)
+        .shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
         
         .onTapGesture {
             if couldExpand {

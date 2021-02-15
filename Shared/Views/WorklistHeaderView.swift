@@ -18,9 +18,9 @@ struct WorklistHeaderView: View {
             HStack(alignment: .top){
                 VStack(alignment: .leading){
                     Text(model.isEmpty ? "" : model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.3)
-                    Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
+                    
                     HStack{
-                        Text("List:").fontWeight(.thin)
+                        Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
                         ForEach(model.list?.listStatus ?? [], id:\.self) { listStatus in
                             TrlnClsrBadge(name: listStatus.label, color: listStatus.tagColor)
                         }

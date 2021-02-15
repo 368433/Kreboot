@@ -10,7 +10,19 @@ import SwiftUI
 struct MedicalActRow: View {
     var act: Act
     var body: some View {
-        Text("\(act.timestamp?.dayLabel(dateStyle: .short) ?? "No date") - \(act.ramqCode ?? "No ramq code")").font(.subheadline)
+        HStack{
+            ZStack{
+                Divider()
+                Image(systemName: "smallcircle.fill.circle").font(.subheadline)
+            }
+            
+            VStack (alignment: .leading){
+                Text("\(act.timestamp?.dayLabel(dateStyle: .short) ?? "No date")").foregroundColor(.secondary).font(.caption)
+                Text( "\(act.ramqCode ?? "No ramq code")").font(.subheadline).fontWeight(.medium)
+            }.padding(.vertical,4)
+            Spacer()
+        }
+        
     }
 }
 
