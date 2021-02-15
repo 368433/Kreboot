@@ -18,7 +18,7 @@ struct ActListView: View {
 //    }
     
     var body: some View {
-        VStack (alignment: .leading){
+        VStack (alignment: .leading, spacing: 0){
             Text("Act list").font(.subheadline).fontWeight(.bold).padding(.trailing)
             ScrollView{
                 VStack(alignment:.leading, spacing: 0){
@@ -28,9 +28,9 @@ struct ActListView: View {
                             selectedAct = act
                             activeSheet = .actFormView
                         }
-                    }.onDelete(perform: model.deleteItem)
+                    }
                 }
-            }.padding([.leading, .bottom])
+            }.padding([.bottom])
         }
     }
 }
