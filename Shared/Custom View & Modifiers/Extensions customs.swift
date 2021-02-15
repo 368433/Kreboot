@@ -24,6 +24,15 @@ extension View {
     }
 }
 
+extension Optional where Wrapped: NSSet{
+    var isNull: Bool {
+        if let set = self {
+            return set.count == 0
+        }
+        return true
+    }
+}
+
 extension TextField {
     func labeledTF(label: String, isEmpty: Bool = true) -> some View {
         VStack(alignment: .leading, spacing: 0){

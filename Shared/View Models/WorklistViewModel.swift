@@ -5,7 +5,7 @@
 //  Created by quarticAIMBP2018 on 2021-02-12.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 
 class WorklistViewModel: ObservableObject {
@@ -50,6 +50,7 @@ class WorklistViewModel: ObservableObject {
         // CAN CATCH ERROR HERE IF SORTDESCRIPTORS DO NOT FIT MEDICAL EPISODE
         return episode.sortedArray(using: episodeFilters.map{$0.descriptor(ascending)}) as? [MedicalEpisode] ?? []
     }
+    
     
     var patientsList: [Patient] {
         guard let list = list else {return []}

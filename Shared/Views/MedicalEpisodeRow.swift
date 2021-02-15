@@ -15,6 +15,7 @@ struct MedicalEpisodeRow: View {
     @State private var showFullCard: Bool = false
     private var expandCard: Bool {return showFullCard && episode.acts?.count != 0}
     private var couldExpand: Bool {return episode.acts?.count != 0}
+    private var noActs: Bool {return showFullCard && episode.acts.isNull}
     
     var body: some View {
         VStack{
@@ -30,20 +31,27 @@ struct MedicalEpisodeRow: View {
             }.lineLimit(2)
             Spacer()
             Divider()
+            if noActs {
+                
+            }
+            if noActs {
+                Text("test")
+            }
             if expandCard {
                 VStack (alignment: .leading){
-                    Text("Act list").font(.subheadline).fontWeight(.bold).padding(.trailing)
-                    ScrollView{
-                        VStack(alignment:.leading, spacing: 0){
-                            // STRENGHTEN the foreach
-                            ForEach(Array(episode.acts as? Set<Act> ?? [])){act in
-                                MedicalActRow(act: act).onTapGesture{
-                                    model.selectedAct = act
-                                    model.activeSheet = .actFormView
-                                }
-                            }
-                        }
-                    }.padding([.leading, .bottom])
+                    ActListView(model: ActListViewModel(episode: episode), selectedAct: $model.selectedAct, activeSheet: $model.activeSheet)
+//                    Text("Act list").font(.subheadline).fontWeight(.bold).padding(.trailing)
+//                    ScrollView{
+//                        VStack(alignment:.leading, spacing: 0){
+//                            // STRENGHTEN the foreach
+//                            ForEach(Array(episode.acts as? Set<Act> ?? [])){act in
+//                                MedicalActRow(act: act).onTapGesture{
+//                                    model.selectedAct = act
+//                                    model.activeSheet = .actFormView
+//                                }
+//                            }
+//                        }
+//                    }.padding([.leading, .bottom])
                     
                     HStack(alignment:.bottom){
                         Button(action:{}){Text("Consulting MD")}; Spacer()
