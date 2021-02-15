@@ -1,5 +1,5 @@
 //
-//  MedicalEpisodeFilterEnum.swift
+//  MedicalEpisodeSort.swift
 //  Kreboot
 //
 //  Created by Amir Mac Pro 2019 on 2021-02-14.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum EpisodeFilter: CaseIterable {
+enum MedicalEpisodeSort: CaseIterable {
     case name, room, date
     
     func descriptor(_ ascending: Bool) -> NSSortDescriptor {
@@ -19,5 +19,13 @@ enum EpisodeFilter: CaseIterable {
         case .date:
             return NSSortDescriptor(keyPath: \MedicalEpisode.startDate, ascending: ascending)
         }
+    }
+}
+
+enum MedicalEpisodeFilter: CaseIterable {
+    case toSee, seen, discharged, all
+    
+    func getPredicate() -> NSPredicate? {
+        return nil
     }
 }
