@@ -15,7 +15,7 @@ class ActListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var changeActsPublisher: AnyPublisher<[Act], Never> {
         $episode
-            .map{_ in guard let actSet = self.episode?.acts as? Set<Act> else {return []}
+            .map{ episode in guard let actSet = episode?.acts as? Set<Act> else {return []}
                 return actSet.sorted(by: {
                     guard let time0 = $0.timestamp else {return true}
                     guard let time1 = $1.timestamp else {return true}
@@ -33,14 +33,6 @@ class ActListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-//    private func setActs(){
-//        guard let actSet = episode?.acts as? Set<Act> else {return}
-//        actList = actSet.sorted(by: {
-//            guard let time0 = $0.timestamp else {return true}
-//            guard let time1 = $1.timestamp else {return true}
-//            return time0 > time1
-//        })
-//    }
     
     func deleteItem(at offsets: IndexSet){
         let viewContext = PersistenceController.shared.container.viewContext
