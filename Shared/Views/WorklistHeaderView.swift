@@ -28,7 +28,6 @@ struct WorklistHeaderView: View {
                         TrlnClsrBadge(name: listStatus.label, color: listStatus.tagColor)
                     }
                 }
-                
             }
 
             Picker("Cards filter", selection: $cardsGroup) {

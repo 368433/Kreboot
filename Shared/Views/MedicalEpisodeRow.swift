@@ -28,30 +28,13 @@ struct MedicalEpisodeRow: View {
                 Button(action: {model.activeSheet = .setDiagnosis; model.selectedEpisode = episode}){ Text(episode.diagnosis?.icd10Description ?? "Diagnosis").fontWeight(.bold)}
                     .padding(.horizontal)
                 Button(action: {model.activeSheet = .addAct; model.selectedEpisode = episode}){Image(systemName: "plus")}
-            }.lineLimit(2)
+            }.lineLimit(2).buttonStyle(PlainButtonStyle())
             Spacer()
             Divider()
-            if noActs {
-                
-            }
-            if noActs {
-                Text("test")
-            }
+
             if expandCard {
                 VStack (alignment: .leading){
                     ActListView(model: ActListViewModel(episode: episode), selectedAct: $model.selectedAct, activeSheet: $model.activeSheet)
-//                    Text("Act list").font(.subheadline).fontWeight(.bold).padding(.trailing)
-//                    ScrollView{
-//                        VStack(alignment:.leading, spacing: 0){
-//                            // STRENGHTEN the foreach
-//                            ForEach(Array(episode.acts as? Set<Act> ?? [])){act in
-//                                MedicalActRow(act: act).onTapGesture{
-//                                    model.selectedAct = act
-//                                    model.activeSheet = .actFormView
-//                                }
-//                            }
-//                        }
-//                    }.padding([.leading, .bottom])
                     
                     HStack(alignment:.bottom){
                         Button(action:{}){Text("Consulting MD")}; Spacer()
@@ -61,7 +44,6 @@ struct MedicalEpisodeRow: View {
                     Divider()
                 }
             }
-//            Spacer()
             HStack{
                 Group{
                     Button(action: {model.activeSheet = .editRoom; model.selectedEpisode = episode}){Label(episode.roomLocation ?? "room", systemImage: "bed.double")}
