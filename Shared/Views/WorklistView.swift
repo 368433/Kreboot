@@ -13,10 +13,11 @@ struct WorklistView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @ObservedObject private var model: WorklistViewModel = WorklistViewModel()
-    @State private var cardsGroup: CardsFilter = .toSee
-    
+//    @State private var cardsGroup: CardsFilter = .toSee
+//
     init(list: PatientsList? = nil ){
         self.model.list = list
+        self.model.cardsFilter = .discharged
     }
     
     var body: some View {
@@ -31,7 +32,7 @@ struct WorklistView: View {
                         
                         ScrollView {
                             VStack(spacing:-6){
-                                ForEach(model.medicalEpisodes(sortedBy:[.name], true), id:\.self){ episode in 
+                                ForEach(/*model.medicalEpisodes(sortedBy:[model.cardsSort], true)*/model.episodesList, id:\.self){ episode in
                                     MedicalEpisodeRow(episode: episode, model: model)
                                 }.padding().padding(.horizontal)
                             }

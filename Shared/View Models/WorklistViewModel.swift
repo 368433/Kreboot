@@ -9,35 +9,53 @@ import SwiftUI
 import Combine
 
 class WorklistViewModel: ObservableObject {
-    @Published var list: PatientsList? = nil
+    @Published var list: PatientsList?
+    
     @Published var selectedCard: Patient? = nil
     @Published var selectedAct: Act? = nil
     @Published var selectedEpisode: MedicalEpisode? = nil
+    
     @Published var activeSheet: ActiveSheet? = nil
     @Published var hideActionButton: Bool = false
-    @Published var cardsFilter: CardsFilter = .toSee
+    
+    @Published var cardsFilter: CardsFilter = .seen
+    @Published var cardsSort: MedicalEpisodeSort = .name
     @Published var episodesList: [MedicalEpisode] = []
 
     private var cancellables = Set<AnyCancellable>()
-    private var cardsFilterPublisher: AnyPublisher<NSPredicate?,Never> {
+    private var cardsFilterPublisher: AnyPublisher<[MedicalEpisode],Never> {
         $cardsFilter
             .map{ filter in
-                switch filter {
-                case .all:
-                    return nil
-                case .toSee:
-                    return nil
-                default:
-                    return nil
+                if let list = self.list, let episodesSet = list.medicalEpisodes, let episodes = Array(episodesSet) as? [MedicalEpisode] {
+                    switch filter {
+                    case .all:
+                        return episodes
+                    case .toSee:
+                        return episodes.filter {$0.patient?.name?.contains("Bob") ?? false}
+                    case .discharged:
+                        return []
+                    case .seen:
+                        return []
+                    }
                 }
+                return []
             }
             .eraseToAnyPublisher()
     }
+    
+//    public var cardsSortPublisher: AnyPublisher<NSSortDescriptor ,Never> {
+//
+//    }
 
-    init(){
+    var isEmpty: Bool { return list == nil }
+    var listTitle: String { return list?.title ?? "Untiltled list"}
+    
+    
+    init(patientsList list: PatientsList? = nil){
+        self.list = list
+        episodesList = filterEpisodes()
         $list
             .map{$0?.uniqueID?.uuidString}
-            //.compactMap{$0}
             .sink{ uniqueID in
                 UserDefaults.standard.set(uniqueID, forKey: "lastListSelected")
             }
@@ -45,41 +63,46 @@ class WorklistViewModel: ObservableObject {
         
         cardsFilterPublisher
             .receive(on: RunLoop.main)
-            .map{ predicate -> [MedicalEpisode] in
-                guard let list = self.list else {return []}
-                guard let episode = list.medicalEpisodes else {return []}
-                return []//episode.filtered(using: predicate).sortedArray(using: []) as? [MedicalEpisode] ?? []
-            }
             .assign(to: \.episodesList, on: self)
             .store(in: &cancellables)
     }
     
-    var isEmpty: Bool {
-        return list == nil
-    }
-    var listTitle: String {
-        return list?.title ?? "Untiltled list"
-    }
+//
+//
+//    var medicalEpisodes: [MedicalEpisode] {
+//        //TODO: convert to function and add a predicate and sorting option
+//        guard let list = list else {return []}
+//        let episodes = list.medicalEpisodes as? Set<MedicalEpisode> ?? []
+//        return Array(episodes)
+//    }
     
-    var medicalEpisodes: [MedicalEpisode] {
-        //TODO: convert to function and add a predicate and sorting option
+    private func filterEpisodes() -> [MedicalEpisode] {
         guard let list = list else {return []}
-        let episodes = list.medicalEpisodes as? Set<MedicalEpisode> ?? []
-        return Array(episodes)
+        guard let episodesSet = list.medicalEpisodes else {return []}
+        guard let episodes = Array(episodesSet) as? [MedicalEpisode] else {return []}
+        switch self.cardsFilter {
+        case .all:
+            return episodes
+        case .toSee:
+            return episodes.filter {$0.patient?.name?.contains("Bob") ?? false}
+        case .discharged:
+            return []
+        case .seen:
+            return []
+        }
     }
     
     func medicalEpisodes(sortedBy episodeFilters: [MedicalEpisodeSort], _ ascending: Bool) -> [MedicalEpisode] {
         //TODO: convert to function and add a predicate and sorting option
         guard let list = list else {return []}
         guard let episode = list.medicalEpisodes else {return []}
-        episode.fil
         // CAN CATCH ERROR HERE IF SORTDESCRIPTORS DO NOT FIT MEDICAL EPISODE
         return episode.sortedArray(using: episodeFilters.map{$0.descriptor(ascending)}) as? [MedicalEpisode] ?? []
     }
     
-    
-    var patientsList: [Patient] {
-        guard let list = list else {return []}
-        return list.patientsArray
-    }
+//
+//    var patientsList: [Patient] {
+//        guard let list = list else {return []}
+//        return list.patientsArray
+//    }
 }

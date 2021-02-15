@@ -20,6 +20,7 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="MedicalEpisode" representedClassName="MedicalEpisode" syncable="YES" codeGenerationType="class">
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="referringMD" optional="YES" attributeType="String"/>
         <attribute name="roomLocation" optional="YES" attributeType="String"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -62,7 +63,7 @@
         <element name="Act" positionX="-63" positionY="-9" width="128" height="74"/>
         <element name="ICD10dx" positionX="-63" positionY="63" width="128" height="89"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="MedicalEpisode" positionX="-63" positionY="63" width="128" height="164"/>
+        <element name="MedicalEpisode" positionX="-63" positionY="63" width="128" height="179"/>
         <element name="MedicalHxEntry" positionX="-45" positionY="72" width="128" height="119"/>
         <element name="Patient" positionX="-63" positionY="-9" width="128" height="149"/>
         <element name="PatientsList" positionX="-54" positionY="36" width="128" height="149"/>

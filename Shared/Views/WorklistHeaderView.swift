@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorklistHeaderView: View {
     @ObservedObject var model: WorklistViewModel
-    @State private var cardsGroup: CardsFilter = .toSee
+//    @State private var cardsGroup: CardsFilter = .toSee
     init(for model: WorklistViewModel){self.model = model}
     
     var body: some View{
@@ -30,7 +30,7 @@ struct WorklistHeaderView: View {
                 }
             }
 
-            Picker("Cards filter", selection: $cardsGroup) {
+            Picker("Cards filter", selection: $model.cardsFilter) {
                 ForEach(CardsFilter.allCases, id:\.self){option in
                     Text(option.label).tag(option)
                 }
