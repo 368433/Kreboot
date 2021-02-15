@@ -62,7 +62,7 @@ struct MedicalEpisodeRow: View {
         }
         .padding()
         .frame(maxHeight: expandCard ? 300:90)
-        .background(Color.pink)
+        .background(Color.white)
         .cornerRadius(10.0)
 //        .shadow(color: Color.black.opacity(0.3), radius: 5)
         
