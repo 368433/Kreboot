@@ -13,6 +13,7 @@
 		310A873325D01C4700437522 /* ActiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A873225D01C4700437522 /* ActiveSheet.swift */; };
 		310A873425D01C4700437522 /* ActiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310A873225D01C4700437522 /* ActiveSheet.swift */; };
 		3115ED2325DA0F5900E7A04E /* Color+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115ED2225DA0F5900E7A04E /* Color+Name.swift */; };
+		3115ED2925DA213600E7A04E /* PaddingTightness+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115ED2825DA213600E7A04E /* PaddingTightness+Enum.swift */; };
 		3118EFC225C59993002B3711 /* PatientFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFC125C59993002B3711 /* PatientFormView.swift */; };
 		3118EFC325C59993002B3711 /* PatientFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFC125C59993002B3711 /* PatientFormView.swift */; };
 		3118EFEA25C5E398002B3711 /* WorklistNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3118EFE925C5E398002B3711 /* WorklistNavigatorView.swift */; };
@@ -134,6 +135,7 @@
 		310996E325D6448800E0C123 /* ActFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActFormView.swift; sourceTree = "<group>"; };
 		310A873225D01C4700437522 /* ActiveSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheet.swift; sourceTree = "<group>"; };
 		3115ED2225DA0F5900E7A04E /* Color+Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Name.swift"; sourceTree = "<group>"; };
+		3115ED2825DA213600E7A04E /* PaddingTightness+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaddingTightness+Enum.swift"; sourceTree = "<group>"; };
 		3118EFC125C59993002B3711 /* PatientFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormView.swift; sourceTree = "<group>"; };
 		3118EFE925C5E398002B3711 /* WorklistNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistNavigatorView.swift; sourceTree = "<group>"; };
 		3118EFF025C5E88F002B3711 /* ListFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFormView.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				6A51F74125D883EF0060AE35 /* ScrollChoice.swift */,
 				311C862325C6F94A0021E596 /* SearchBar.swift */,
 				3149201225CDDEAC002D873C /* Button modifiers.swift */,
+				3115ED2825DA213600E7A04E /* PaddingTightness+Enum.swift */,
 				31643EBC25D622680009BF9C /* PopupView.swift */,
 				3146970725D79B2C00CEEDFD /* CheckmarkToggleStyle.swift */,
 				3146970125D79A8000CEEDFD /* TrlnClsrBadge.swift */,
@@ -634,6 +637,7 @@
 				6AD71C4625D88B0200840B6B /* WorklistHeaderView.swift in Sources */,
 				317CEA3E25D4157700393AD6 /* ListFormViewModel.swift in Sources */,
 				3146972A25D8C17B00CEEDFD /* MedicalEpisodeRow.swift in Sources */,
+				3115ED2925DA213600E7A04E /* PaddingTightness+Enum.swift in Sources */,
 				311C862425C6F94A0021E596 /* SearchBar.swift in Sources */,
 				3154A34425C95BD000E20978 /* ICDProvider2.swift in Sources */,
 				3118EFF125C5E88F002B3711 /* ListFormView.swift in Sources */,

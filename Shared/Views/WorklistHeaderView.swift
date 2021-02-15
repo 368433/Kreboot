@@ -14,25 +14,23 @@ struct WorklistHeaderView: View {
     
     var body: some View{
         VStack(alignment: .leading) {
-            Button(action:{model.list = nil}){Image(systemName:"xmark").font(.title3)}.padding(.bottom, 5)
-            HStack(alignment: .top){
-                VStack(alignment: .leading){
-                    Text(model.isEmpty ? "" : model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.3)
-                    
-                    HStack{
-                        Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
-                        ForEach(model.list?.listStatus ?? [], id:\.self) { listStatus in
-                            TrlnClsrBadge(name: listStatus.label, color: listStatus.tagColor)
-                        }
-                    }
-                    
-                }
+            HStack{
+                Button(action:{model.list = nil}){Image(systemName:"xmark").font(.title3)}.padding(.bottom, 5)
                 Spacer()
-                VStack (alignment: .center){
-                    Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}.disabled(model.isEmpty)
-                    Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
-                }.font(.caption).buttonStyle(CircularButton(tightness: .tight)).padding(.leading)
+                Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}.disabled(model.isEmpty).padding(.leading)
             }
+            VStack(alignment: .leading){
+                Text(model.isEmpty ? "" : model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.3)
+                
+                HStack{
+                    Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
+                    ForEach(model.list?.listStatus ?? [], id:\.self) { listStatus in
+                        TrlnClsrBadge(name: listStatus.label, color: listStatus.tagColor)
+                    }
+                }
+                
+            }
+
             Picker("Cards filter", selection: $cardsGroup) {
                 ForEach(CardsFilter.allCases, id:\.self){option in
                     Text(option.label).tag(option)

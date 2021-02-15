@@ -18,15 +18,17 @@ struct MedicalEpisodeRow: View {
     
     var body: some View {
         VStack{
-            HStack (alignment: .center) {
-                HStack {
+            HStack (alignment: .top) {
+                HStack (alignment: .center){
                     Button(action: {model.activeSheet = .showIdCard; model.selectedEpisode = episode}){Image(systemName: "person.crop.circle.fill").font(.title2)}
                     Text(episode.patient?.name ?? "No name").fontWeight(.bold)
                 }
                 Spacer()
-                Button(action: {model.activeSheet = .setDiagnosis; model.selectedEpisode = episode}){ Text(episode.diagnosis?.icd10Description ?? "Diagnosis").fontWeight(.bold)}//.buttonStyle(TightOutlineButton())
-                Button(action: {model.activeSheet = .addAct; model.selectedEpisode = episode}){Image(systemName: "plus")}.padding(.leading)
-            }
+                Button(action: {model.activeSheet = .setDiagnosis; model.selectedEpisode = episode}){ Text(episode.diagnosis?.icd10Description ?? "Diagnosis").fontWeight(.bold)}
+                    .padding(.horizontal)
+                Button(action: {model.activeSheet = .addAct; model.selectedEpisode = episode}){Image(systemName: "plus")}
+            }.lineLimit(2)
+            Spacer()
             Divider()
             if expandCard {
                 VStack (alignment: .leading){
@@ -51,7 +53,7 @@ struct MedicalEpisodeRow: View {
                     Divider()
                 }
             }
-            Spacer()
+//            Spacer()
             HStack{
                 Group{
                     Button(action: {model.activeSheet = .editRoom; model.selectedEpisode = episode}){Label(episode.roomLocation ?? "room", systemImage: "bed.double")}
@@ -61,7 +63,7 @@ struct MedicalEpisodeRow: View {
             }
         }
         .padding()
-        .frame(maxHeight: expandCard ? 350:90)
+        .frame(maxHeight: expandCard ? 350:110)
         .background(Color.Aliceblue)
         .cornerRadius(10.0)
         .shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)

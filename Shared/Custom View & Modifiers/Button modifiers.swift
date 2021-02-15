@@ -72,7 +72,7 @@ struct OutlineCapsuleButton: ButtonStyle {
 }
 
 struct CircularButton: ButtonStyle {
-    var tightness: Tightness = .normal
+    var tightness: PaddingTightness = .normal
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
@@ -106,16 +106,4 @@ struct PrimaryButtonStyle: ButtonStyle {
     }
 }
 
-enum Tightness {
-    case tight, normal, large
-    var space : CGFloat?{
-        switch self {
-        case .tight:
-            return 8
-        case .normal:
-            return nil
-        case .large:
-            return 25
-        }
-    }
-}
+
