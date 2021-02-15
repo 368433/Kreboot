@@ -12,7 +12,7 @@ struct WorklistActionButtons: View {
     init(for model: WorklistViewModel){self.model = model}
     
     var body: some View {
-        VStack{
+        HStack{
             Button(action: {}){Image(systemName: "arrow.up.arrow.down")}.disabled(model.isEmpty)
             Button(action: {}){Image(systemName: "doc.text.viewfinder")}.disabled(model.isEmpty)
             Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}.disabled(model.isEmpty)

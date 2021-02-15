@@ -87,6 +87,7 @@
 		3196B5C725CE2740006A3E72 /* DataTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196B5C625CE2740006A3E72 /* DataTab.swift */; };
 		3196B5D125CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
 		3196B5D225CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
+		31C384AB25DA09B600A4C526 /* ColorExtensions.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 31C384AA25DA09B600A4C526 /* ColorExtensions.swift.txt */; };
 		6A05183825CDF36100527AF1 /* UIEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A05183725CDF36100527AF1 /* UIEmptyState.swift */; };
 		6A51F71125D74E040060AE35 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9125C71E9A00097F2F /* CoreDataProvider.swift */; };
 		6A51F71B25D770650060AE35 /* PatientFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */; };
@@ -191,6 +192,7 @@
 		318E27E925D1388F002BE6CB /* CardsFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsFilterEnum.swift; sourceTree = "<group>"; };
 		3196B5C625CE2740006A3E72 /* DataTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTab.swift; sourceTree = "<group>"; };
 		3196B5D025CEE7F4006A3E72 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		31C384AA25DA09B600A4C526 /* ColorExtensions.swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ColorExtensions.swift.txt; sourceTree = "<group>"; };
 		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
 		6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormViewModel.swift; sourceTree = "<group>"; };
 		6A51F72925D8825A0060AE35 /* VerticalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabel.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 		3129D75525D55518000EAA5C /* Custom View & Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				31C384AA25DA09B600A4C526 /* ColorExtensions.swift.txt */,
 				6A51F74725D884330060AE35 /* Extensions customs.swift */,
 				6A51F73B25D883A70060AE35 /* Karla Preexisting values.swift */,
 				3146971725D7A18C00CEEDFD /* Custom colors.swift */,
@@ -558,6 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3196B5D125CEE7F4006A3E72 /* README in Resources */,
+				31C384AB25DA09B600A4C526 /* ColorExtensions.swift.txt in Resources */,
 				3154A35125C9DB4000E20978 /* icd10_codes.json in Resources */,
 				311CA85C25C5774900E4513A /* Assets.xcassets in Resources */,
 			);

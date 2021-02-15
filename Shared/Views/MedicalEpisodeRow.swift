@@ -27,11 +27,12 @@ struct MedicalEpisodeRow: View {
                 Button(action: {model.activeSheet = .setDiagnosis; model.selectedEpisode = episode}){ Text(episode.diagnosis?.icd10Description ?? "Diagnosis").fontWeight(.bold)}//.buttonStyle(TightOutlineButton())
                 Button(action: {model.activeSheet = .addAct; model.selectedEpisode = episode}){Image(systemName: "plus")}.padding(.leading)
             }
+            Divider()
             if expandCard {
                 VStack (alignment: .leading){
-                    Divider()
+                    Text("Act list").font(.subheadline).fontWeight(.bold).padding(.trailing)
                     ScrollView{
-                        VStack(alignment:.leading){
+                        VStack(alignment:.leading, spacing: 5){
                             // STRENGHTEN the foreach
                             ForEach(Array(episode.acts as? Set<Act> ?? [])){act in
                                 MedicalActRow(act: act).onTapGesture{
@@ -40,9 +41,10 @@ struct MedicalEpisodeRow: View {
                                 }
                             }
                         }
-                    }.padding(.bottom)
+                    }.padding([.leading, .bottom])
+                    
                     HStack(alignment:.bottom){
-                        Button(action:{}){Text("consulting")}; Spacer()
+                        Button(action:{}){Text("Consulting MD")}; Spacer()
                         Button(action:{}){Label("Notes", systemImage: "note.text")}; Spacer()
                         Button(action:{}){Image(systemName: "flag")}
                     }.font(.subheadline).lineLimit(1)
@@ -59,10 +61,10 @@ struct MedicalEpisodeRow: View {
             }
         }
         .padding()
-        .frame(maxHeight: expandCard ? 400:90)
-        .background(Color.white)
+        .frame(maxHeight: expandCard ? 300:90)
+        .background(Color.pink)
         .cornerRadius(10.0)
-        .shadow(color: Color.black.opacity(0.3), radius: 5)
+//        .shadow(color: Color.black.opacity(0.3), radius: 5)
         
         .onTapGesture {
             if couldExpand {
