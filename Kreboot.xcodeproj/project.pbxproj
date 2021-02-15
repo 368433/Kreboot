@@ -406,7 +406,6 @@
 				3196B5C625CE2740006A3E72 /* DataTab.swift */,
 				6A54659925D9CEA300AC55A0 /* DiagnosisSearchView.swift */,
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,
-				314C9A7D25C7720800E5B9FE /* PatientRow2.swift */,
 				311CA82B25C5774700E4513A /* PatientsDBView.swift */,
 				3118EFC125C59993002B3711 /* PatientFormView.swift */,
 				3118F01325C615F1002B3711 /* ListRow.swift */,
@@ -428,6 +427,7 @@
 		6A5465A025D9D03A00AC55A0 /* To Trash */ = {
 			isa = PBXGroup;
 			children = (
+				314C9A7D25C7720800E5B9FE /* PatientRow2.swift */,
 				3180F08025D0909600837FA2 /* ICDListView.swift */,
 			);
 			path = "To Trash";
