@@ -18,17 +18,18 @@ struct MedicalEpisodeRow: View {
     
     var body: some View {
         VStack{
-            HStack (alignment: .top) {
+            HStack (alignment: .center) {
                 HStack {
                     Button(action: {model.activeSheet = .showIdCard; model.selectedEpisode = episode}){Image(systemName: "person.crop.circle.fill").font(.title2)}
-                    Text(episode.patient?.name ?? "No name")
+                    Text(episode.patient?.name ?? "No name").fontWeight(.bold)
                 }
                 Spacer()
-                Button(action: {model.activeSheet = .setDiagnosis; model.selectedEpisode = episode}){ Text(episode.diagnosis?.icd10Description ?? "Diagnosis").font(.footnote)}.buttonStyle(TightOutlineButton())
-                Button(action: {model.activeSheet = .addAct; model.selectedEpisode = episode}){Image(systemName: "plus.viewfinder").foregroundColor(.secondary)}.padding(.leading)
+                Button(action: {model.activeSheet = .setDiagnosis; model.selectedEpisode = episode}){ Text(episode.diagnosis?.icd10Description ?? "Diagnosis").fontWeight(.bold)}//.buttonStyle(TightOutlineButton())
+                Button(action: {model.activeSheet = .addAct; model.selectedEpisode = episode}){Image(systemName: "plus")}.padding(.leading)
             }
             if expandCard {
-                HStack{
+                VStack (alignment: .leading){
+                    Divider()
                     ScrollView{
                         VStack(alignment:.leading){
                             // STRENGHTEN the foreach
@@ -39,25 +40,19 @@ struct MedicalEpisodeRow: View {
                                 }
                             }
                         }
-                    }
-                    Spacer()
-                    VStack(alignment:.trailing){
-                        Button(action:{}){Text("consulting")}
-                        Button(action:{}){Label("Notes", systemImage: "note.text")}.buttonStyle(CapsuleButton())
+                    }.padding(.bottom)
+                    HStack(alignment:.bottom){
+                        Button(action:{}){Text("consulting")}; Spacer()
+                        Button(action:{}){Label("Notes", systemImage: "note.text")}; Spacer()
                         Button(action:{}){Image(systemName: "flag")}
-                        Spacer()
-                    }.lineLimit(1)
-                }.padding(.leading)
+                    }.font(.subheadline).lineLimit(1)
+                    Divider()
+                }
             }
             Spacer()
             HStack{
                 Group{
                     Button(action: {model.activeSheet = .editRoom; model.selectedEpisode = episode}){Label(episode.roomLocation ?? "room", systemImage: "bed.double")}
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(Color.offWhite)
-                        .foregroundColor(.gray)
-                        .cornerRadius(20)
                     Label("#00000", systemImage: "folder")
                     Label("Last seen", systemImage: "clock")
                 }.foregroundColor(.secondary).font(.caption).lineLimit(1)

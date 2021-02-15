@@ -39,6 +39,10 @@ enum ListFilterEnum: CaseIterable {
         }
     }
     
+    var tagColor: Color {
+        return Color.yellow
+    }
+    
     var descriptors: [NSSortDescriptor] {
         switch self {
         default:

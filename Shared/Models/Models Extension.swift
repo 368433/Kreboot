@@ -55,6 +55,12 @@ extension PatientsList {
         title ?? "No title"
     }
     
+    var listStatus: [ListFilterEnum] {
+        var status = [ListFilterEnum]()
+        status.append(self.isArchived ? .archived:.active)
+        if self.isFavorite { status.append(.favorite) }
+        return status
+    }
     
     public var patientCountDescription: String {
         let number = String(self.patients?.count ?? 0)
