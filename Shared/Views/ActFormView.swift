@@ -69,7 +69,7 @@ struct ActFormView: View {
                         Text("test")
                     }
                     DatePicker("Date", selection: $model.actDate, displayedComponents: [.date, .hourAndMinute])
-                }.padding(.top)
+                }
                 
                 if !model.searchActText.isEmpty {
                     Section(header: Text("Consulting physician")) {

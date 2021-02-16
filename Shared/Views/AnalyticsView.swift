@@ -8,27 +8,12 @@
 import SwiftUI
 
 struct AnalyticsView: View {
+    
+    @FetchRequest(entity: MedicalEpisode.entity(), sortDescriptors: [])
+    private var cdList: FetchedResults<MedicalEpisode>
+    
     var body: some View {
-        ScrollView{
-            NavigationLink(
-                destination: SecondView(),
-                label: {
-                    VStack {
-                        Text("Navigate")
-                    }
-                }
-            )
-        }
-    }
-}
-
-struct SecondView: View {
-    var body: some View{
-        List{
-            ForEach(0..<10, id:\.self){ index in
-                Text("Row number \(index)")
-            }
-        }
+        Text("\(cdList.count)")
     }
 }
 

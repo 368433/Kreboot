@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EmptyWorklistView: View {
     var action: ()-> Void
+    
     var body: some View {
         HStack{
             Spacer()

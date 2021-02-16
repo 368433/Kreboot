@@ -13,11 +13,10 @@ struct WorklistView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @ObservedObject private var model: WorklistViewModel = WorklistViewModel()
-//    @State private var cardsGroup: CardsFilter = .toSee
-//
+    
     init(list: PatientsList? = nil ){
         self.model.list = list
-        self.model.cardsFilter = .discharged
+        self.model.cardsFilter = .toSee
     }
     
     var body: some View {
@@ -29,10 +28,9 @@ struct WorklistView: View {
                 ZStack(alignment: .bottomTrailing){
                     VStack {
                         WorklistHeaderView(for: model)
-                        
                         ScrollView {
                             VStack(spacing:-6){
-                                ForEach(/*model.medicalEpisodes(sortedBy:[model.cardsSort], true)*/model.episodesList, id:\.self){ episode in
+                                ForEach(/*model.medicalEpisodes(sortedBy:[model.cardsSort], true)*/model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self){ episode in
                                     MedicalEpisodeRow(episode: episode, model: model)
                                 }.padding().padding(.horizontal)
                             }

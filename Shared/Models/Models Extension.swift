@@ -33,6 +33,33 @@ extension MedicalEpisode {
     public var wrappedPatientName: String {
         return self.patient?.name ?? "No patient Name"
     }
+    
+    public var seenToday: Bool {
+        guard let acts = self.acts as? Set<Act> else {return false}
+        return acts.contains{act in act.doneToday}
+    }
+    
+    public var mostRecentAct: Act? {
+        guard let acts = self.acts as? Set<Act> else {return nil}
+        return acts.sorted { ($0.timestamp ?? .distantPast) > ($1.timestamp ?? .distantPast) }.first
+    }
+    
+    public func updateList(){
+        guard let list = self.list else {return}
+        list.update()
+    }
+}
+
+extension Act {
+    public var doneToday: Bool {
+        guard let date = self.timestamp else {return false}
+        return Calendar.current.isDateInToday(date)
+    }
+    
+    public var shortDate: String {
+        guard let date = self.timestamp else {return "No date"}
+        return date.dayLabel(dateStyle: .short)
+    }
 }
 
 extension ICD10dx {
@@ -51,6 +78,39 @@ extension Patient {
 }
 
 extension PatientsList {
+    func update(){
+        
+    }
+    
+    func getEpisodeList(filteredBy filter: CardsFilter, sortedBy sort: MedicalEpisodeSort) -> [MedicalEpisode] {
+        // Get the set of episodes
+        guard let episodes = self.medicalEpisodes as? Set<MedicalEpisode> else {return []}
+        // Filter the episodes by cardsfilter
+        let filteredEpisodes: Set<MedicalEpisode> = {
+            switch filter {
+            case .all:
+                return episodes
+            case .toSee:
+                return episodes.filter {!$0.seenToday}
+            case .discharged:
+                return episodes.filter {$0.endDate != nil}
+            case .seen:
+                return episodes.filter {$0.seenToday}
+            }
+        }()
+        // Sort by sort
+        let sorted = filteredEpisodes.sorted {first, second in
+            switch sort {
+            case .name:
+                return first.wrappedPatientName < second.wrappedPatientName
+            default:
+                return false
+            }
+        }
+        // return result
+        return sorted
+    }
+    
     public var wrappedTitle: String {
         title ?? "No title"
     }

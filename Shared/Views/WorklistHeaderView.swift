@@ -10,7 +10,11 @@ import SwiftUI
 struct WorklistHeaderView: View {
     @ObservedObject var model: WorklistViewModel
 //    @State private var cardsGroup: CardsFilter = .toSee
-    init(for model: WorklistViewModel){self.model = model}
+    
+    
+    init(for model: WorklistViewModel){
+        self.model = model
+    }
     
     var body: some View{
         VStack(alignment: .leading) {

@@ -57,6 +57,7 @@ class PatientFormViewModel: ObservableObject {
             let episode = MedicalEpisode(context: viewContext)
             episode.patient = patient
             episode.uniqueID = UUID()
+            episode.startDate = Date()
             if let list = list {
                 list.addToMedicalEpisodes(episode)
             }

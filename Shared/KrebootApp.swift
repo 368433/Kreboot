@@ -30,14 +30,6 @@ struct KrebootApp: App {
         WindowGroup {
             TabView{
                 
-                //                NavigationView{
-                ////                    testGen()
-                //                    PatientsListsView(selectedList: $test)
-                //                }.tabItem { Label("test", systemImage: "star.fill") }
-                
-                //                NavigationView{
-                // find last list viewed
-                
                 WorklistView(list: lastList) //}
                     .tabItem { Label("WorkList", systemImage: "doc.text") }
                 
