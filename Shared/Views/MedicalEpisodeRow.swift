@@ -62,6 +62,7 @@ struct MedicalEpisodeRow: View {
         .shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
 
         .onTapGesture {
+            model.selectedEpisode = episode
             if couldExpand {
                 withAnimation{
                     showFullCard.toggle()
