@@ -42,6 +42,12 @@ extension TextField {
     }
 }
 
+extension String {
+    func sortedAlpha(_ str1: String, _ str2: String, ascending: Bool = true) -> Bool{
+        return ascending ? str1 < str2 : str1 > str2
+    }
+}
+
 extension Date{
     public func dayLabel(dateStyle: DateFormatter.Style) -> String {
         let itemFormatter: DateFormatter = {

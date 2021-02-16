@@ -18,8 +18,8 @@ struct ActListView: View {
 //    }
     
     var body: some View {
-        VStack (alignment: .leading, spacing: 0){
-            Text("Act list").font(.subheadline).fontWeight(.bold).padding(.trailing)
+//        VStack (alignment: .leading, spacing: 0){
+//            Text("Act list").font(.subheadline).fontWeight(.bold).padding(.trailing)
             ScrollView{
                 VStack(alignment:.leading, spacing: 0){
                     // STRENGHTEN the foreach
@@ -31,7 +31,7 @@ struct ActListView: View {
                     }
                 }
             }.padding([.bottom])
-        }
+//        }
     }
 }
 
