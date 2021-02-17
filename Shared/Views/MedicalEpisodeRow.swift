@@ -8,8 +8,11 @@
 import SwiftUI
 
 class MedicalEpisodeRowViewModel: ObservableObject {
+    static let collapsedHeight: CGFloat = 100
+    static let expandedHeight: CGFloat = 350
+    
     @Published var episode: MedicalEpisode
-    @Published var cardHeight: CGFloat = 350
+    @Published var cardHeight: CGFloat = collapsedHeight
     
     @Published var diagnosis: String
     @Published var patientName: String
@@ -17,7 +20,7 @@ class MedicalEpisodeRowViewModel: ObservableObject {
     @Published var expandCard: Bool = false {
         didSet{
             withAnimation{
-                cardHeight = expandCard ? 350:100
+                cardHeight = expandCard ? MedicalEpisodeRowViewModel.expandedHeight : MedicalEpisodeRowViewModel.collapsedHeight
             }
         }
     }
