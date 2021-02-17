@@ -13,25 +13,17 @@ struct ActListView: View {
     @Binding var selectedAct: Act?
     @Binding var activeSheet: ActiveSheet?
     
-//    init(episode: MedicalEpisode?){
-//        self.model = ActListViewModel(episode: episode)
-//    }
-    
     var body: some View {
-//        VStack (alignment: .leading, spacing: 0){
-//            Text("Act list").font(.subheadline).fontWeight(.bold).padding(.trailing)
-            ScrollView{
-                VStack(alignment:.leading, spacing: 0){
-                    // STRENGHTEN the foreach
-                    ForEach(model.actList){act in
-                        MedicalActRow(act: act).onTapGesture{
-                            selectedAct = act
-                            activeSheet = .actFormView
-                        }
+        ScrollView{
+            VStack(spacing: 0){
+                ForEach(model.actList){act in
+                    MedicalActRow(act: act).onTapGesture{
+                        selectedAct = act
+                        activeSheet = .actFormView
                     }
                 }
-            }.padding([.bottom])
-//        }
+            }
+        }.border(Color.black)
     }
 }
 

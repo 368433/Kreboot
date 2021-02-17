@@ -30,7 +30,7 @@ struct WorklistView: View {
                         WorklistHeaderView(for: model)
                         ScrollView {
                             VStack(spacing:-6){
-                                ForEach(/*model.medicalEpisodes(sortedBy:[model.cardsSort], true)*/model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self){ episode in
+                                ForEach(model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self){ episode in
                                     MedicalEpisodeRow(episode: episode, worklistModel: model)
                                 }.padding().padding(.horizontal)
                             }
