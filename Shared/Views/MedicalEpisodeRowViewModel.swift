@@ -8,8 +8,6 @@
 import SwiftUI
 
 class MedicalEpisodeRowViewModel: ObservableObject {
-    static let collapsedHeight: CGFloat = 100
-    static let expandedHeight: CGFloat = 350
     
     @Published var episode: MedicalEpisode
     
@@ -29,7 +27,7 @@ class MedicalEpisodeRowViewModel: ObservableObject {
     }
     
     func chooseDiagnosis(){
-        worklistModel.activeSheet = .showIdCard
+        worklistModel.activeSheet = .setDiagnosis
         worklistModel.selectedEpisode = episode
     }
     

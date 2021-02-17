@@ -23,7 +23,7 @@ struct ActListView: View {
                     }
                 }
             }
-        }.border(Color.black)
+        }
     }
 }
 

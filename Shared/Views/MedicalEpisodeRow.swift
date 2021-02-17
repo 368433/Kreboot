@@ -25,7 +25,7 @@ struct MedicalEpisodeRow: View {
                 //button image person
                 Button(action: rowModel.editPatient){Image(systemName: "person.crop.circle.fill").font(.title2)}
                 //Vstack name and diagnosis
-                VStack (alignment: .leading){
+                HStack{
                     Text(rowModel.patientName).fontWeight(.bold).lineLimit(1)
                     Button(action: rowModel.chooseDiagnosis){ Text(rowModel.diagnosis).font(.footnote)}.lineLimit(2)
                 }
