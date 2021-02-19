@@ -31,14 +31,16 @@ struct WorklistHeaderView: View {
                     ForEach(model.list?.listStatus ?? [], id:\.self) { listStatus in
                         TrlnClsrBadge(name: listStatus.label, color: listStatus.tagColor)
                     }
+                    Spacer()
+                    Button(action: {} ){Label("Seen", systemImage: "slider.vertical.3")}.buttonStyle(CapsuleButton())
                 }
             }
 
-            Picker("Cards filter", selection: $model.cardsFilter) {
-                ForEach(CardsFilter.allCases, id:\.self){option in
-                    Text(option.label).tag(option)
-                }
-            }.pickerStyle(SegmentedPickerStyle()).disabled(model.isEmpty)
+//            Picker("Cards filter", selection: $model.cardsFilter) {
+//                ForEach(CardsFilter.allCases, id:\.self){option in
+//                    Text(option.label).tag(option)
+//                }
+//            }.pickerStyle(SegmentedPickerStyle()).disabled(model.isEmpty)
         }.padding(.horizontal)
     }
 }

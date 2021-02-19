@@ -23,7 +23,7 @@ class MedicalEpisodeFormViewModel: ObservableObject {
 struct MedicalEpisodeFormView: View {
     var body: some View {
         Form{
-            
+            Text("test")
         }
     }
 }

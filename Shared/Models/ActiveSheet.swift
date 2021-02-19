@@ -8,9 +8,10 @@
 import SwiftUI
 
 enum ActiveSheet: Identifiable {
-    case addAct, showAllLists, addPatient, searchPatients, editRoom, setDiagnosis, showIdCard, editListDetails, actFormView
+    case addAct, showAllLists, addPatient, searchPatients, editRoom, setDiagnosis, showIdCard, editListDetails, actFormView, medicalEpisodeFormView
     
     var id: Int {
         hashValue
     }
 }
+

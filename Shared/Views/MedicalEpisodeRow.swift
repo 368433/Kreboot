@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct MedicalEpisodeRow: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var rowModel: MedicalEpisodeRowViewModel
@@ -18,14 +16,13 @@ struct MedicalEpisodeRow: View {
         self.rowModel = MedicalEpisodeRowViewModel(episode: episode, worklistmodel: worklistModel)
     }
     
-    
     var body: some View {
         VStack{
             HStack{
                 //button image person
                 Button(action: rowModel.editPatient){Image(systemName: "person.crop.circle.fill").font(.title2)}
                 //Vstack name and diagnosis
-                HStack{
+                VStack(alignment: .leading){
                     Text(rowModel.patientName).fontWeight(.bold).lineLimit(1)
                     Button(action: rowModel.chooseDiagnosis){ Text(rowModel.diagnosis).font(.footnote)}.lineLimit(2)
                 }
@@ -35,8 +32,14 @@ struct MedicalEpisodeRow: View {
             }.buttonStyle(PlainButtonStyle())
             
             Divider()
+//            ForEach(rowModel.episode.actList()) { act in
+//                MedicalActRow(act: act).onTapGesture {
+//                    rowModel.worklistModel.selectedAct = act
+//                    rowModel.worklistModel.activeSheet = .actFormView
+//                }
+//            }
 
-            ActListView(model: ActListViewModel(episode: rowModel.episode), selectedAct: $rowModel.worklistModel.selectedAct, activeSheet: $rowModel.worklistModel.activeSheet)
+//            ActListView(model: ActListViewModel(episode: rowModel.episode), selectedAct: $rowModel.worklistModel.selectedAct, activeSheet: $rowModel.worklistModel.activeSheet)
             HStack(alignment:.bottom){
                 Button(action:{}){Text("Consulting MD")}; Spacer()
                 Button(action:{}){Label("Notes", systemImage: "note.text")}; Spacer()

@@ -60,6 +60,8 @@ struct WorklistView: View {
                 WorklistNavigatorView(selectedList: $model.list).environment(\.managedObjectContext, self.viewContext)
             case .actFormView:
                 ActFormView(for: model.selectedAct, in: nil).environment(\.managedObjectContext, self.viewContext)
+            case .medicalEpisodeFormView:
+                MedicalEpisodeFormView().environment(\.managedObjectContext, self.viewContext)
             }
         }
     }

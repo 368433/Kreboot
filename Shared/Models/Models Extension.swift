@@ -7,6 +7,7 @@
 
 import CoreData
 
+// MARK: NSManagedObject Extension
 extension NSManagedObject {
     public func saveYourself(in context: NSManagedObjectContext){
         do {
@@ -21,6 +22,7 @@ extension NSManagedObject {
     }
 }
 
+// MARK: Medical Episodes extension
 extension MedicalEpisode {
     public var wrappedRoom: String {
         return self.roomLocation ?? "No room"
@@ -48,8 +50,18 @@ extension MedicalEpisode {
         guard let list = self.list else {return}
         list.update()
     }
+    
+    public func actList() -> [Act] {
+        guard let actSet = self.acts as? Set<Act> else {return []}
+        return actSet.sorted(by: {
+            guard let time0 = $0.timestamp else {return true}
+            guard let time1 = $1.timestamp else {return true}
+            return time0 > time1
+        })
+    }
 }
 
+// MARK: Extentsion - Act
 extension Act {
     public var doneToday: Bool {
         guard let date = self.timestamp else {return false}
@@ -62,6 +74,7 @@ extension Act {
     }
 }
 
+// MARK: Extentsion - ICD10dx
 extension ICD10dx {
     public var wrappedCode: String {
         icd10Code ?? "No code"
@@ -71,12 +84,14 @@ extension ICD10dx {
     }
 }
 
+// MARK: Extentsion - Patient
 extension Patient {
     public var wrappedName: String {
         name ?? "No name assigned"
     }
 }
 
+// MARK: Extentsion - PatientsList
 extension PatientsList {
     func update(){
         
