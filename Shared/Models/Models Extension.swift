@@ -89,6 +89,10 @@ extension Patient {
     public var wrappedName: String {
         name ?? "No name assigned"
     }
+    public var age: String {
+        let test = Calendar.current.dateComponents([.year], from: self.dateOfBirth ?? Date(), to: Date()).year
+        return String(test ?? 0)
+    }
 }
 
 // MARK: Extentsion - PatientsList

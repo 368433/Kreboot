@@ -32,6 +32,7 @@ struct WorklistView: View {
                             VStack{
                                 ForEach(model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self){ episode in
                                     MedicalEpisodeRow(episode: episode, worklistModel: model).onTapGesture {
+                                        model.selectedEpisode = episode
                                         model.activeSheet = .medicalEpisodeFormView
                                     }
                                 }.padding(.horizontal).padding(.vertical, 3)
@@ -55,7 +56,7 @@ struct WorklistView: View {
             case .showAllLists:
                 WorklistNavigatorView(selectedList: $model.list).environment(\.managedObjectContext, self.viewContext)
             case .medicalEpisodeFormView:
-                MedicalEpisodeFormView().environment(\.managedObjectContext, self.viewContext)
+                MedicalEpisodeFormView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             }
         }
     }

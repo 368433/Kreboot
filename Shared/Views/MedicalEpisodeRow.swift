@@ -19,10 +19,16 @@ struct MedicalEpisodeRow: View {
     var body: some View {
         VStack(alignment: .leading){
             
-            Group{
-                Text(rowModel.patientName).fontWeight(.bold)
-                Label(title: {Text(rowModel.diagnosis).font(.footnote).fontWeight(.semibold)}, icon: {Image(systemName: "staroflife")})
-            }.lineLimit(1)
+            HStack{
+                Label(title: {Text(rowModel.patientName).fontWeight(.bold)}, icon: {Image(systemName: "person")}).lineLimit(1)
+                Spacer()
+                VStack{
+                    Text(rowModel.episode.patient?.age ?? "Err").bold()
+                    Text("years").font(.system(size: 10)).fontWeight(.thin)
+                }
+            }
+            Divider()
+            Label(title: {Text(rowModel.diagnosis).font(.footnote).fontWeight(.semibold)}, icon: {Image(systemName: "staroflife")})
             
             Divider()
             
