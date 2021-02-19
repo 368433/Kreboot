@@ -19,7 +19,7 @@ struct ActListView: View {
                 ForEach(model.actList){act in
                     MedicalActRow(act: act).onTapGesture{
                         selectedAct = act
-                        activeSheet = .actFormView
+//                        activeSheet = .actFormView
                     }
                 }
             }

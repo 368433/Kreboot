@@ -408,6 +408,7 @@
 				3115ED2E25DA3A0400E7A04E /* ActListViewModel.swift */,
 				6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */,
 				317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */,
+				6AD893B825DC25EF003598A9 /* MedicalEpisodeRowViewModel.swift */,
 				6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */,
 				6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */,
 			);
@@ -431,7 +432,6 @@
 				3169014325D8DCCB00B6403A /* MedicalActRow.swift */,
 				3196DA6025DB3D6800696068 /* MedicalEpisodeFormView.swift */,
 				3146972925D8C17B00CEEDFD /* MedicalEpisodeRow.swift */,
-				6AD893B825DC25EF003598A9 /* MedicalEpisodeRowViewModel.swift */,
 				3118EFC125C59993002B3711 /* PatientFormView.swift */,
 				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,

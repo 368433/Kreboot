@@ -17,43 +17,30 @@ struct MedicalEpisodeRow: View {
     }
     
     var body: some View {
-        VStack{
-            HStack{
-                //button image person
-                Button(action: rowModel.editPatient){Image(systemName: "person.crop.circle.fill").font(.title2)}
-                //Vstack name and diagnosis
-                VStack(alignment: .leading){
-                    Text(rowModel.patientName).fontWeight(.bold).lineLimit(1)
-                    Button(action: rowModel.chooseDiagnosis){ Text(rowModel.diagnosis).font(.footnote)}.lineLimit(2)
-                }
-                Spacer()
-                //button add act
-                Button(action: rowModel.addAct){Image(systemName: "plus")}
-            }.buttonStyle(PlainButtonStyle())
+        VStack(alignment: .leading){
+            
+            Group{
+                Text(rowModel.patientName).fontWeight(.bold)
+                Label(title: {Text(rowModel.diagnosis).font(.footnote).fontWeight(.semibold)}, icon: {Image(systemName: "staroflife")})
+            }.lineLimit(1)
             
             Divider()
-//            ForEach(rowModel.episode.actList()) { act in
-//                MedicalActRow(act: act).onTapGesture {
-//                    rowModel.worklistModel.selectedAct = act
-//                    rowModel.worklistModel.activeSheet = .actFormView
-//                }
-//            }
-
-//            ActListView(model: ActListViewModel(episode: rowModel.episode), selectedAct: $rowModel.worklistModel.selectedAct, activeSheet: $rowModel.worklistModel.activeSheet)
-            HStack(alignment:.bottom){
-                Button(action:{}){Text("Consulting MD")}; Spacer()
-                Button(action:{}){Label("Notes", systemImage: "note.text")}; Spacer()
-                Button(action:{}){Image(systemName: "flag")}
-            }.font(.subheadline).lineLimit(1)
+            
+            HStack(alignment: .center){
+                Text("Last seen").foregroundColor(.secondary).font(.caption)
+                Text("asdfasdfasdfasdasdfa").font(.subheadline)
+            }.lineLimit(1)
             
             Divider()
 
             HStack{
                 Group{
-                    Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}
+                    Label(rowModel.roomNumber, systemImage: "bed.double")
                     Label("#00000", systemImage: "folder")
-                    Label("Last seen", systemImage: "clock")
                 }.foregroundColor(.secondary).font(.caption).lineLimit(1)
+                Spacer()
+                Button(action:{}){Image(systemName: "flag")}
+                Button(action: rowModel.addAct){Image(systemName: "plus")}
             }
         }
         .padding()

@@ -11,6 +11,7 @@ struct TrlnClsrBadge: View {
     var name: String
     var color: Color = .blue
     var type: BadgeType = .normal
+    var fontWeight: Font.Weight = .regular
     
     enum BadgeType {
         case normal
@@ -21,7 +22,7 @@ struct TrlnClsrBadge: View {
         HStack{
             // Badge Label
             Text(name)
-                .font(Font.caption.bold())
+                .fontWeight(fontWeight)
             
             // Add 'x' if removable, and setup tap gesture
             switch type {

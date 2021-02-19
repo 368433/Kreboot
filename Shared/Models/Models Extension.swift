@@ -46,10 +46,10 @@ extension MedicalEpisode {
         return acts.sorted { ($0.timestamp ?? .distantPast) > ($1.timestamp ?? .distantPast) }.first
     }
     
-    public func updateList(){
-        guard let list = self.list else {return}
-        list.update()
-    }
+//    public func updateList(){
+//        guard let list = self.list else {return}
+////        list.update()
+//    }
     
     public func actList() -> [Act] {
         guard let actSet = self.acts as? Set<Act> else {return []}
@@ -93,9 +93,6 @@ extension Patient {
 
 // MARK: Extentsion - PatientsList
 extension PatientsList {
-    func update(){
-        
-    }
     
     func getEpisodeList(filteredBy filter: CardsFilter, sortedBy sort: MedicalEpisodeSort) -> [MedicalEpisode] {
         // Get the set of episodes
@@ -130,13 +127,17 @@ extension PatientsList {
         title ?? "No title"
     }
     
-    var listStatus: [ListFilterEnum] {
-        var status = [ListFilterEnum]()
-        status.append(self.isArchived ? .archived:.active)
-        if self.isFavorite { status.append(.favorite) }
-        return status
-    }
+//    var listStatus: [ListFilterEnum] {
+//        var status = [ListFilterEnum]()
+//        status.append(self.isArchived ? .archived:.active)
+//        if self.isFavorite { status.append(.favorite) }
+//        return status
+//    }
     
+    var listStatus: ListFilterEnum {
+        return self.isArchived ? .archived:.active
+    }
+        
     public var patientCountDescription: String {
         let number = String(self.patients?.count ?? 0)
         let text = number == "0" ? "patient":"patients"

@@ -26,17 +26,17 @@ class MedicalEpisodeRowViewModel: ObservableObject {
         self.roomNumber = episode.roomLocation ?? "room"
     }
     
-    func chooseDiagnosis(){
-        worklistModel.activeSheet = .setDiagnosis
-        worklistModel.selectedEpisode = episode
-    }
-    
-    func chooseRoom(){
-        worklistModel.activeSheet = .editRoom; worklistModel.selectedEpisode = episode
-    }
-    func editPatient(){
-        worklistModel.activeSheet = .showIdCard; worklistModel.selectedEpisode = episode
-    }
+//    func chooseDiagnosis(){
+//        worklistModel.activeSheet = .setDiagnosis
+//        worklistModel.selectedEpisode = episode
+//    }
+//    
+//    func chooseRoom(){
+//        worklistModel.activeSheet = .editRoom; worklistModel.selectedEpisode = episode
+//    }
+//    func editPatient(){
+//        worklistModel.activeSheet = .showIdCard; worklistModel.selectedEpisode = episode
+//    }
     func addAct(){
         worklistModel.activeSheet = .addAct; worklistModel.selectedEpisode = episode
     }

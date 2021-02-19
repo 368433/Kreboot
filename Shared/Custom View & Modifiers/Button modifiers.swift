@@ -50,13 +50,17 @@ struct TightOutlineButton: ButtonStyle {
 }
 
 struct CapsuleButton: ButtonStyle {
+    var vTightness: PaddingTightness = .normal
+    var hTightness: PaddingTightness = .normal
+    var bgColor: Color = .accentColor
+    var textColor: Color = .white
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
-            .foregroundColor(.white)
-            .padding(.vertical, 3)
-            .padding(.horizontal)
-            .background(Capsule().fill(configuration.isPressed ? Color.gray : Color.accentColor))
+            .foregroundColor(textColor)
+            .padding(.vertical, vTightness.space)
+            .padding(.horizontal, hTightness.space)
+            .background(Capsule().fill(configuration.isPressed ? Color.gray : bgColor))
     }
 }
 

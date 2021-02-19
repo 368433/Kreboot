@@ -25,19 +25,21 @@ struct WorklistView: View {
                 EmptyWorklistView(action: {model.activeSheet = .showAllLists}).offset(y:-50)
             }
             if !model.isEmpty{
-                ZStack(alignment: .bottomTrailing){
+//                ZStack(alignment: .bottomTrailing){
                     VStack {
                         WorklistHeaderView(for: model)
                         ScrollView {
-                            VStack(spacing:-6){
+                            VStack{
                                 ForEach(model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self){ episode in
-                                    MedicalEpisodeRow(episode: episode, worklistModel: model)
-                                }.padding().padding(.horizontal)
+                                    MedicalEpisodeRow(episode: episode, worklistModel: model).onTapGesture {
+                                        model.activeSheet = .medicalEpisodeFormView
+                                    }
+                                }.padding(.horizontal).padding(.vertical, 3)
                             }
                         }
                     }
-                    WorklistActionButtons(for: model).opacity(model.hideActionButton ? 0:1)
-                }
+//                    WorklistActionButtons(for: model).opacity(model.hideActionButton ? 0:1)
+//                }
             }
         }
         .sheet(item: $model.activeSheet) { item in
@@ -48,18 +50,10 @@ struct WorklistView: View {
                 NavigationView{ListFormView(list: model.list)}.environment(\.managedObjectContext, self.viewContext)
             case .addPatient:
                 NavigationView{PatientFormView(to: model.list, newEpisode: true)}.environment(\.managedObjectContext, self.viewContext)
-            case .setDiagnosis:
-                DiagnosisSearchView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
-            case .showIdCard:
-                NavigationView{PatientFormView(patient: model.selectedEpisode?.patient, newEpisode: false)}.environment(\.managedObjectContext, self.viewContext)
-            case .editRoom:
-                RoomChangeView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .addAct:
                 ActFormView(for: nil, in: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .showAllLists:
                 WorklistNavigatorView(selectedList: $model.list).environment(\.managedObjectContext, self.viewContext)
-            case .actFormView:
-                ActFormView(for: model.selectedAct, in: nil).environment(\.managedObjectContext, self.viewContext)
             case .medicalEpisodeFormView:
                 MedicalEpisodeFormView().environment(\.managedObjectContext, self.viewContext)
             }

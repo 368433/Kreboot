@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-enum PaddingTightness {
-    case tight, normal, medium, large
+enum PaddingTightness{
+    case ultraTight, tight, normal, medium, large
     var space : CGFloat?{
         switch self {
+        case .ultraTight:
+            return 3
         case .tight:
             return 8
         case .normal:
