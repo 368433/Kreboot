@@ -16,15 +16,24 @@ class MedicalEpisodeFormViewModel: ObservableObject {
     @Published var list: PatientsList?
     @Published var acts: [Act]?
     @Published var hospitalizedDate: Date?
+    @Published var episode: MedicalEpisode?
     
-//    let episode: MedicalEpisode?
+    init(episode: MedicalEpisode?){
+        self.episode = episode
+        self.patient = episode?.patient
+    }
+    
+    func patientName() -> String {
+        return episode?.patient?.wrappedName ?? "None"
+    }
 
 }
 
 struct MedicalEpisodeFormView: View {
-    var episode: MedicalEpisode?
+    @Environment(\.managedObjectContext) private var viewContext
+//    var episode: MedicalEpisode?
     
-    @ObservedObject var model = MedicalEpisodeFormViewModel()
+    @ObservedObject var model: MedicalEpisodeFormViewModel
     
     var body: some View {
         NavigationView{
@@ -33,20 +42,20 @@ struct MedicalEpisodeFormView: View {
                     Image(systemName: "person.crop.circle")
                     Text("Patient")
                 }, content: {
-                    NavigationLink(episode?.patient?.name ?? "Patient name", destination: Text("destination"))
+                    NavigationLink(model.patient?.wrappedName ?? "ghgh", destination: PatientFormView(patient: model.episode?.patient, to: nil, newEpisode: false))
                 })
                 
                 Section(header: HStack{
                     Image(systemName: "staroflife")
                     Text("diagnosis")
                 }, content: {
-                    NavigationLink(episode?.diagnosis?.wrappedDescription ?? "None", destination: Text("destination"))
+                    NavigationLink(model.episode?.diagnosis?.wrappedDescription ?? "None", destination: Text("destination"))
                 })
                 
                 Section(header: Text("Episode Details"), content: {
                     DatePicker("Hospitalized", selection: $model.hospitalizedDate ?? Date(), displayedComponents: [.date])
                     NavigationLink(destination: Text("physician"), label: {Label("Consulting physician", systemImage: "figure.wave")})
-                    NavigationLink(destination: RoomChangeView(episode: episode), label: {Label("Current room", systemImage: "bed.double.fill")})
+                    NavigationLink(destination: RoomChangeView(episode: model.episode), label: {Label("Current room", systemImage: "bed.double.fill")})
                     DisclosureGroup(content: {
                         DatePicker("Start", selection: $model.startDate ?? Date())
                         DatePicker("End", selection: $model.endDate ?? Date())
@@ -58,7 +67,7 @@ struct MedicalEpisodeFormView: View {
                 Section(header: HStack{
                     Text("Acts")
                 }, content: {
-                    Text("sefasdasd")
+                    Text(model.patient?.wrappedName ?? "error")
                     Text("sefasdasd")
                     Text("sefasdasd")
                     Text("sefasdasd")
@@ -66,7 +75,7 @@ struct MedicalEpisodeFormView: View {
                 })
                 
                 
-            }.navigationBarTitle("\(episode?.patient?.name ?? "")")
+            }.navigationBarTitle("\(model.episode?.patient?.name ?? "")")
         }
     }
 }

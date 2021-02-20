@@ -22,8 +22,8 @@ struct MedicalEpisodeRow: View {
             HStack{
                 Label(title: {Text(rowModel.patientName).fontWeight(.bold)}, icon: {Image(systemName: "person")}).lineLimit(1)
                 Spacer()
-                VStack{
-                    Text(rowModel.episode.patient?.age ?? "Err").bold()
+                VStack(spacing: 0){
+                    Text(rowModel.episode.patient?.age ?? "?").bold()
                     Text("years").font(.system(size: 10)).fontWeight(.thin)
                 }
             }
@@ -31,22 +31,27 @@ struct MedicalEpisodeRow: View {
             Label(title: {Text(rowModel.diagnosis).font(.footnote).fontWeight(.semibold)}, icon: {Image(systemName: "staroflife")})
             
             Divider()
+
             
-            HStack(alignment: .center){
-                Text("Last seen").foregroundColor(.secondary).font(.caption)
-                Text("asdfasdfasdfasdasdfa").font(.subheadline)
-            }.lineLimit(1)
+                Label(title: {
+                    HStack(alignment: .center){
+                        Text("Last seen").foregroundColor(.secondary).font(.caption)
+                        Text("asdfasdfasdfasdasdfa").font(.subheadline)
+                    }.lineLimit(1)
+                }, icon: {Image(systemName: "calendar")})
             
             Divider()
 
             HStack{
+                Spacer()
                 Group{
-                    Label(rowModel.roomNumber, systemImage: "bed.double")
+                    Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}
                     Label("#00000", systemImage: "folder")
                 }.foregroundColor(.secondary).font(.caption).lineLimit(1)
                 Spacer()
                 Button(action:{}){Image(systemName: "flag")}
                 Button(action: rowModel.addAct){Image(systemName: "plus")}
+                Button(action: rowModel.addAct){Image(systemName: "arrowshape.bounce.forward")}
             }
         }
         .padding()

@@ -31,9 +31,9 @@ class MedicalEpisodeRowViewModel: ObservableObject {
 //        worklistModel.selectedEpisode = episode
 //    }
 //    
-//    func chooseRoom(){
-//        worklistModel.activeSheet = .editRoom; worklistModel.selectedEpisode = episode
-//    }
+    func chooseRoom(){
+        worklistModel.activeSheet = .editRoom; worklistModel.selectedEpisode = episode
+    }
 //    func editPatient(){
 //        worklistModel.activeSheet = .showIdCard; worklistModel.selectedEpisode = episode
 //    }

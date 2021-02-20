@@ -82,6 +82,8 @@
 		3169014525D8DCCB00B6403A /* MedicalActRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169014325D8DCCB00B6403A /* MedicalActRow.swift */; };
 		3169014F25D8F74200B6403A /* MedicalEpisodeFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169014E25D8F74200B6403A /* MedicalEpisodeFilterEnum.swift */; };
 		3169015025D8F74200B6403A /* MedicalEpisodeFilterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169014E25D8F74200B6403A /* MedicalEpisodeFilterEnum.swift */; };
+		3169CDE225E09B0100E63CCC /* LocationChangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169CDE125E09B0100E63CCC /* LocationChangeViewModel.swift */; };
+		3169CDE325E09B0100E63CCC /* LocationChangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169CDE125E09B0100E63CCC /* LocationChangeViewModel.swift */; };
 		3173664425D97B5300237668 /* NSPredicate+KeyPath+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3173664325D97B5300237668 /* NSPredicate+KeyPath+Operators.swift */; };
 		3173664525D97B5300237668 /* NSPredicate+KeyPath+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3173664325D97B5300237668 /* NSPredicate+KeyPath+Operators.swift */; };
 		317CEA3E25D4157700393AD6 /* ListFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */; };
@@ -199,6 +201,7 @@
 		31643EC225D63A360009BF9C /* RoomChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomChangeView.swift; sourceTree = "<group>"; };
 		3169014325D8DCCB00B6403A /* MedicalActRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalActRow.swift; sourceTree = "<group>"; };
 		3169014E25D8F74200B6403A /* MedicalEpisodeFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalEpisodeFilterEnum.swift; sourceTree = "<group>"; };
+		3169CDE125E09B0100E63CCC /* LocationChangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChangeViewModel.swift; sourceTree = "<group>"; };
 		3173664325D97B5300237668 /* NSPredicate+KeyPath+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPredicate+KeyPath+Operators.swift"; sourceTree = "<group>"; };
 		317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFormViewModel.swift; sourceTree = "<group>"; };
 		3180F08025D0909600837FA2 /* ICDListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDListView.swift; sourceTree = "<group>"; };
@@ -408,6 +411,7 @@
 				3115ED2E25DA3A0400E7A04E /* ActListViewModel.swift */,
 				6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */,
 				317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */,
+				3169CDE125E09B0100E63CCC /* LocationChangeViewModel.swift */,
 				6AD893B825DC25EF003598A9 /* MedicalEpisodeRowViewModel.swift */,
 				6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */,
 				6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */,
@@ -663,6 +667,7 @@
 				311CA85425C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
 				315E5A5925C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
 				318E27EA25D1388F002BE6CB /* CardsFilterEnum.swift in Sources */,
+				3169CDE225E09B0100E63CCC /* LocationChangeViewModel.swift in Sources */,
 				3180F08125D0909600837FA2 /* ICDListView.swift in Sources */,
 				3146970225D79A8000CEEDFD /* TrlnClsrBadge.swift in Sources */,
 				6AD71C4D25D88B6400840B6B /* WorklistActionButtons.swift in Sources */,
@@ -719,6 +724,7 @@
 				3169012725D8CDE700B6403A /* ICDListView.swift in Sources */,
 				315E5A5A25C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
 				31548B8C25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,
+				3169CDE325E09B0100E63CCC /* LocationChangeViewModel.swift in Sources */,
 				3118F01525C615F1002B3711 /* ListRow.swift in Sources */,
 				6A51F71C25D770650060AE35 /* PatientFormViewModel.swift in Sources */,
 				3196DA6225DB3D6800696068 /* MedicalEpisodeFormView.swift in Sources */,

@@ -7,20 +7,7 @@
 
 import SwiftUI
 
-class LocationChangeViewModel: ObservableObject {
-    @Published var currentRoom: String
-    @Published var newRoom: String = ""
-    private var episode: MedicalEpisode?
-    init(episode: MedicalEpisode?){
-        self.episode = episode
-        self._currentRoom = Published(initialValue: self.episode?.roomLocation ?? "")
-    }
-    func save(){
-        guard let episode = episode else {return}
-        episode.roomLocation = newRoom
-        episode.saveYourself(in: PersistenceController.shared.container.viewContext)
-    }
-}
+
 
 struct RoomChangeView: View {
     @Environment(\.presentationMode) private var presentationMode
@@ -37,13 +24,14 @@ struct RoomChangeView: View {
             Section(header: Text("New location")) {
                 TextField(model.newRoom, text: $model.newRoom)
             }
-        }
-        .navigationBarTitle("Update room location")
-        .toolbar{
-            ToolbarItem(placement: .primaryAction) {
-                Button(action: {self.model.save();presentationMode.wrappedValue.dismiss()}){Text("Save").fontWeight(.bold)}
+            Button(action: {self.model.save();presentationMode.wrappedValue.dismiss()}){
+                HStack{
+                    Spacer(); Text("Save").fontWeight(.bold); Spacer()
+                }
             }
         }
+        .navigationBarTitle("Update room location")
+        
 //        VStack {
 //            HStack{
 //                Spacer()
