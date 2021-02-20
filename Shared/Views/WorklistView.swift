@@ -56,7 +56,9 @@ struct WorklistView: View {
             case .showAllLists:
                 WorklistNavigatorView(selectedList: $model.list).environment(\.managedObjectContext, self.viewContext)
             case .medicalEpisodeFormView:
-                MedicalEpisodeFormView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
+                if let episode = model.selectedEpisode {
+                    MedicalEpisodeFormView(episode: episode).environment(\.managedObjectContext, self.viewContext)
+                }
             case .editRoom:
                 RoomChangeView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             }
