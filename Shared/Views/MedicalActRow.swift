@@ -11,15 +11,12 @@ struct MedicalActRow: View {
     var act: Act
     var body: some View {
         HStack{
-            ZStack{
-                Divider()
-                Image(systemName: "smallcircle.fill.circle").font(.subheadline)
-            }
+            Image(systemName: "smallcircle.fill.circle")
             
             VStack (alignment: .leading){
-                Text("\(act.timestamp?.dayLabel(dateStyle: .short) ?? "No date")").foregroundColor(.secondary).font(.caption)
-                Text( "\(act.ramqCode ?? "No ramq code")").font(.subheadline).fontWeight(.medium)
-            }.padding(.vertical,4)
+                Text("\(act.timestamp?.dayLabel(dateStyle: .short) ?? "No date")").foregroundColor(.secondary).fontWeight(.light)
+                Text( "\(act.ramqCode ?? "No ramq code")").fontWeight(.medium)
+            }
             Spacer()
         }
         

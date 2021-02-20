@@ -12,6 +12,7 @@ struct PatientFormView: View {
     @ObservedObject private var model: PatientFormViewModel
     @State private var comments: String = ""
     
+    
     init(patient: Patient? = nil, to list: PatientsList? = nil, newEpisode: Bool){
         self.model = PatientFormViewModel(list: list, patient: patient, newEpisode: newEpisode)
     }

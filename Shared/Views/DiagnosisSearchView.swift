@@ -18,8 +18,8 @@ struct DiagnosisSearchView: View {
     
     var body: some View {
         VStack(alignment:.leading){
-            Text("ICD search").font(.largeTitle).fontWeight(.heavy).padding([.top, .leading])
-            SearchBar(text: $model.searchString).padding()
+            Text("ICD Database").fontWeight(.heavy)
+            SearchBar(text: $model.searchString)
             List{
                 ForEach(model.searchResults){ icd in
                     VStack (alignment: .leading){
@@ -31,6 +31,7 @@ struct DiagnosisSearchView: View {
                     }
                 }
             }
-        }
+            .navigationBarTitle("Diagnosis search")
+        }.padding(.horizontal)
     }
 }

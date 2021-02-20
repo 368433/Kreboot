@@ -11,6 +11,7 @@ class LocationChangeViewModel: ObservableObject {
     @Published var currentRoom: String
     @Published var newRoom: String = ""
     private var episode: MedicalEpisode?
+    
     init(episode: MedicalEpisode?){
         self.episode = episode
         self._currentRoom = Published(initialValue: self.episode?.roomLocation ?? "Not available")

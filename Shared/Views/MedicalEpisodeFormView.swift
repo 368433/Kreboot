@@ -7,33 +7,37 @@
 
 import SwiftUI
 
+import Combine
 class MedicalEpisodeFormViewModel: ObservableObject {
     @Published var startDate: Date?
     @Published var endDate: Date?
     @Published var roomLocation: String?
     @Published var diagnosis: ICD10dx?
-    @Published var patient: Patient?
     @Published var list: PatientsList?
     @Published var acts: [Act]?
     @Published var hospitalizedDate: Date?
-    @Published var episode: MedicalEpisode?
+    @Published var patientName: String = ""
     
+    @ObservedObject var episode: MedicalEpisode
+    @Published var patient: Patient
+    private var subscriptions = Set<AnyCancellable>()
+
     init(episode: MedicalEpisode?){
-        self.episode = episode
-        self.patient = episode?.patient
-    }
-    
-    func patientName() -> String {
-        return episode?.patient?.wrappedName ?? "None"
+        self.episode = episode ?? MedicalEpisode(context: PersistenceController.shared.container.viewContext)
+        self.patient = episode?.patient ?? Patient(context: PersistenceController.shared.container.viewContext)
     }
 
 }
 
 struct MedicalEpisodeFormView: View {
     @Environment(\.managedObjectContext) private var viewContext
-//    var episode: MedicalEpisode?
-    
     @ObservedObject var model: MedicalEpisodeFormViewModel
+//    @ObservedObject var episode: MedicalEpisode
+//    @ObservedObject var patient: Patient
+    
+    init(episode: MedicalEpisode?){
+        self.model = MedicalEpisodeFormViewModel(episode: episode)
+    }
     
     var body: some View {
         NavigationView{
@@ -42,20 +46,20 @@ struct MedicalEpisodeFormView: View {
                     Image(systemName: "person.crop.circle")
                     Text("Patient")
                 }, content: {
-                    NavigationLink(model.patient?.wrappedName ?? "ghgh", destination: PatientFormView(patient: model.episode?.patient, to: nil, newEpisode: false))
+                    NavigationLink(destination: PatientFormView(patient: model.patient, newEpisode: false), label: {Label(model.patient.wrappedName, systemImage: "person.crop.rectangle")})
                 })
                 
                 Section(header: HStack{
                     Image(systemName: "staroflife")
                     Text("diagnosis")
                 }, content: {
-                    NavigationLink(model.episode?.diagnosis?.wrappedDescription ?? "None", destination: Text("destination"))
+                    NavigationLink(destination: DiagnosisSearchView(episode: model.episode), label: {Label(model.episode.diagnosis?.wrappedDescription ?? "None", systemImage: "staroflife.fill")})
                 })
                 
                 Section(header: Text("Episode Details"), content: {
-                    DatePicker("Hospitalized", selection: $model.hospitalizedDate ?? Date(), displayedComponents: [.date])
+                    DatePicker(selection: $model.hospitalizedDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
                     NavigationLink(destination: Text("physician"), label: {Label("Consulting physician", systemImage: "figure.wave")})
-                    NavigationLink(destination: RoomChangeView(episode: model.episode), label: {Label("Current room", systemImage: "bed.double.fill")})
+                    NavigationLink(destination: RoomChangeView(episode: model.episode), label: {Label(model.episode.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
                     DisclosureGroup(content: {
                         DatePicker("Start", selection: $model.startDate ?? Date())
                         DatePicker("End", selection: $model.endDate ?? Date())
@@ -67,15 +71,13 @@ struct MedicalEpisodeFormView: View {
                 Section(header: HStack{
                     Text("Acts")
                 }, content: {
-                    Text(model.patient?.wrappedName ?? "error")
-                    Text("sefasdasd")
-                    Text("sefasdasd")
-                    Text("sefasdasd")
-                    Text("sefasdasd")
+                    ForEach(model.episode.actList()){act in
+                        MedicalActRow(act: act)
+                    }
                 })
                 
                 
-            }.navigationBarTitle("\(model.episode?.patient?.name ?? "")")
+            }.navigationBarTitle("\(model.episode.patient?.name ?? "")")
         }
     }
 }
