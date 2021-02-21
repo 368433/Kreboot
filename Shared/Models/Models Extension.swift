@@ -105,8 +105,10 @@ extension Patient {
 extension PatientsList {
     
     func getEpisodeList(filteredBy filter: EpisodeFilterEnum, sortedBy sort: EpisodeSortEnum) -> [MedicalEpisode] {
+        
         // Get the set of episodes
         guard let episodes = self.medicalEpisodes as? Set<MedicalEpisode> else {return []}
+        
         // Filter the episodes by cardsfilter
         let filteredEpisodes: Set<MedicalEpisode> = {
             switch filter {
@@ -121,12 +123,15 @@ extension PatientsList {
             }
         }()
         // Sort by sort
+        
         let sorted = filteredEpisodes.sorted {first, second in
             switch sort {
             case .name:
                 return first.wrappedPatientName < second.wrappedPatientName
-            default:
-                return false
+            case .room:
+                return first.roomLocation ?? "no room" < second.roomLocation  ?? "no room"
+            case .date:
+                return (first.startDate ?? .distantPast) < (second.startDate ?? .distantPast)
             }
         }
         // return result

@@ -29,7 +29,7 @@ struct WorklistHeaderView: View {
             HStack{
                 Button(action: {model.activeSheet = .editListDetails}){
                     Text((model.list?.listStatus.label ?? "?Status")+" list").foregroundColor(.black)
-                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: .yellow))
+                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: .Azure))
                 
                 Divider().frame(height: 20)
                 HStack{
@@ -50,35 +50,43 @@ struct WorklistHeaderView: View {
             }.font(.footnote)
             
             if showFilter{
-                HStack(alignment: .center){
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack{
-                            VStack{
-                                Text("filter".uppercased()).font(.system(size: 12)).fontWeight(.light)
-                                HStack{
-                                    ForEach(EpisodeFilterEnum.allCases, id:\.self) { filter in
-                                        Button(action: {}){Text(filter.label).font(.footnote)}.buttonStyle(OutlineCapsuleButton())
-                                    }
-                                }
-                            }
-                            Divider().frame(height: 20)
-                            VStack{
-                                Text("Sort".uppercased()).font(.system(size: 12)).fontWeight(.ultraLight)
-                                HStack{
-                                    ForEach(EpisodeFilterEnum.allCases, id:\.self) { filter in
-                                        Button(action: {}){
-                                            Text(filter.label)
-                                                .background(
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                    .foregroundColor(Color.white)
-                                                )
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                FilterAndSortPickerView(
+                    filterFunc: {filter in
+                        model.cardsFilter = filter
+                    },
+                    sortFunc: {sort in
+                        model.cardsSort = sort
                     }
-                }
+                )
+//                HStack(alignment: .center){
+//                    ScrollView(.horizontal, showsIndicators: false){
+//                        HStack{
+//                            VStack{
+//                                Text("filter".uppercased()).font(.system(size: 12)).fontWeight(.light)
+//                                HStack{
+//                                    ForEach(EpisodeFilterEnum.allCases, id:\.self) { filter in
+//                                        Button(action: {}){Text(filter.label).font(.footnote)}.buttonStyle(OutlineCapsuleButton())
+//                                    }
+//                                }
+//                            }
+//                            Divider().frame(height: 20)
+//                            VStack{
+//                                Text("Sort".uppercased()).font(.system(size: 12)).fontWeight(.ultraLight)
+//                                HStack{
+//                                    ForEach(EpisodeFilterEnum.allCases, id:\.self) { filter in
+//                                        Button(action: {}){
+//                                            Text(filter.label)
+//                                                .background(
+//                                                    RoundedRectangle(cornerRadius: 20)
+//                                                    .foregroundColor(Color.white)
+//                                                )
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
                 
                 //                Picker("Cards filter", selection: $model.cardsFilter) {
                 //                    ForEach(CardsFilter.allCases, id:\.self){option in

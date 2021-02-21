@@ -7,8 +7,10 @@
 
 import Foundation
 
-enum EpisodeSortEnum: CaseIterable {
-    case name, room, date
+enum EpisodeSortEnum: Int, CaseIterable, Identifiable {
+    case name = 0, room, date
+    
+    var id: Int {self.rawValue}
     
     var label: String {
         switch self {

@@ -7,8 +7,10 @@
 
 import Foundation
 
-enum EpisodeFilterEnum: CaseIterable{
+enum EpisodeFilterEnum: Int, CaseIterable, Identifiable{
     case toSee, seen, discharged, all
+    
+    var id: Int {self.rawValue}
     
     var label: String {
         switch self {
