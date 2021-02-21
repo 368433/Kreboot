@@ -24,6 +24,12 @@ extension NSManagedObject {
 
 // MARK: Medical Episodes extension
 extension MedicalEpisode {
+    
+    public func getPatientName() -> String {
+        guard let patient = self.patient else {return "No patient assigned"}
+        return patient.wrappedName
+    }
+    
     public var wrappedRoom: String {
         return self.roomLocation ?? "No room"
     }
@@ -98,7 +104,7 @@ extension Patient {
 // MARK: Extentsion - PatientsList
 extension PatientsList {
     
-    func getEpisodeList(filteredBy filter: CardsFilter, sortedBy sort: MedicalEpisodeSort) -> [MedicalEpisode] {
+    func getEpisodeList(filteredBy filter: EpisodeFilterEnum, sortedBy sort: EpisodeSortEnum) -> [MedicalEpisode] {
         // Get the set of episodes
         guard let episodes = self.medicalEpisodes as? Set<MedicalEpisode> else {return []}
         // Filter the episodes by cardsfilter

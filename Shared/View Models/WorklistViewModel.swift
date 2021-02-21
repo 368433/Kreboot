@@ -18,8 +18,8 @@ class WorklistViewModel: ObservableObject {
     @Published var activeSheet: ActiveSheet? = nil
     @Published var hideActionButton: Bool = false
     
-    @Published var cardsFilter: CardsFilter = .toSee
-    @Published var cardsSort: MedicalEpisodeSort = .name
+    @Published var cardsFilter: EpisodeFilterEnum = .toSee
+    @Published var cardsSort: EpisodeSortEnum = .name
     @Published var episodesList: [MedicalEpisode] = []
 
     @FetchRequest(entity: MedicalEpisode.entity(), sortDescriptors: [])

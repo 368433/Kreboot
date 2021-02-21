@@ -56,7 +56,7 @@ struct WorklistHeaderView: View {
                             VStack{
                                 Text("filter".uppercased()).font(.system(size: 12)).fontWeight(.light)
                                 HStack{
-                                    ForEach(CardsFilter.allCases, id:\.self) { filter in
+                                    ForEach(EpisodeFilterEnum.allCases, id:\.self) { filter in
                                         Button(action: {}){Text(filter.label).font(.footnote)}.buttonStyle(OutlineCapsuleButton())
                                     }
                                 }
@@ -65,7 +65,7 @@ struct WorklistHeaderView: View {
                             VStack{
                                 Text("Sort".uppercased()).font(.system(size: 12)).fontWeight(.ultraLight)
                                 HStack{
-                                    ForEach(CardsFilter.allCases, id:\.self) { filter in
+                                    ForEach(EpisodeFilterEnum.allCases, id:\.self) { filter in
                                         Button(action: {}){
                                             Text(filter.label)
                                                 .background(

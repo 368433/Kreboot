@@ -30,14 +30,13 @@ class MedicalEpisodeFormViewModel: ObservableObject {
 }
 
 struct MedicalEpisodeFormView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-//    @ObservedObject var model: MedicalEpisodeFormViewModel
+//    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var episode: MedicalEpisode
-    @ObservedObject var patient: Patient
+
     
     init(episode: MedicalEpisode){
         self.episode = episode
-        self.patient = episode.patient ?? Patient(context: PersistenceController.shared.container.viewContext)
     }
     
     var body: some View {
@@ -47,7 +46,7 @@ struct MedicalEpisodeFormView: View {
                     Image(systemName: "person.crop.circle")
                     Text("Patient")
                 }, content: {
-                    NavigationLink(destination: PatientFormView(patient: patient, newEpisode: false), label: {Label(patient.wrappedName, systemImage: "person.crop.rectangle")})
+                    NavigationLink(destination: PatientFormView(patient: episode.patient, newEpisode: false), label: {Label(episode.getPatientName(), systemImage: "person.crop.rectangle")})
                 })
                 
                 Section(header: HStack{
@@ -58,10 +57,10 @@ struct MedicalEpisodeFormView: View {
                 })
                 
                 Section(header: Text("Episode Details"), content: {
-                    DatePicker(selection: $episode.startDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
                     NavigationLink(destination: Text("physician"), label: {Label("Consulting physician", systemImage: "figure.wave")})
                     NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(episode.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
                     DisclosureGroup(content: {
+                        DatePicker(selection: $episode.startDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
                         DatePicker("Start", selection: $episode.startDate ?? Date())
                         DatePicker("End", selection: $episode.endDate ?? Date())
                     }, label: {
@@ -76,9 +75,12 @@ struct MedicalEpisodeFormView: View {
                         MedicalActRow(act: act)
                     }
                 })
-                
-                
-            }.navigationBarTitle("\(episode.patient?.name ?? "")")
+            }.navigationBarTitle("Episode: \(episode.patient?.name ?? "")")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction){
+                    Button(action: {self.presentationMode.wrappedValue.dismiss()}){Text("Done")}
+                }
+            }
         }
     }
 }

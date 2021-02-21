@@ -1,5 +1,5 @@
 //
-//  CardsFilterEnum.swift
+//  EpisodeFilterEnum.swift
 //  Kreboot
 //
 //  Created by Amir Mac Pro 2019 on 2021-02-08.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CardsFilter: CaseIterable {
+enum EpisodeFilterEnum: CaseIterable{
     case toSee, seen, discharged, all
     
     var label: String {

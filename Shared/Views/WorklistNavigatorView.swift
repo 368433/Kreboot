@@ -21,7 +21,10 @@ struct WorklistNavigatorView: View {
             HStack {
                 Text("Worklists").font(.largeTitle).fontWeight(.black)
                 Spacer()
-                Button(action: {presentForm.toggle()}){Text("Add").fontWeight(.bold)}//.padding()
+                HStack{
+                    Button(action: {presentForm.toggle()}){Image(systemName:"plus")}
+                    Button(action:{self.presentationMode.wrappedValue.dismiss()}){Text("Close")}
+                }
             }.padding([.top, .horizontal])
             
             Picker("List filter", selection: $listGroup) {

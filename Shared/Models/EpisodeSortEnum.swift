@@ -1,5 +1,5 @@
 //
-//  MedicalEpisodeSort.swift
+//  EpisodeSortEnum.swift
 //  Kreboot
 //
 //  Created by Amir Mac Pro 2019 on 2021-02-14.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MedicalEpisodeSort: CaseIterable {
+enum EpisodeSortEnum: CaseIterable {
     case name, room, date
     
     func descriptor(_ ascending: Bool) -> NSSortDescriptor {
