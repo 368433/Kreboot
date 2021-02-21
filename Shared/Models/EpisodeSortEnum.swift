@@ -10,6 +10,18 @@ import Foundation
 enum EpisodeSortEnum: CaseIterable {
     case name, room, date
     
+    var label: String {
+        switch self {
+        case .name:
+            return "Name"
+        case .room:
+            return "Room"
+        case .date:
+            return "Date"
+        }
+    }
+    
+    
     func descriptor(_ ascending: Bool) -> NSSortDescriptor {
         switch self {
         case .name:
@@ -19,13 +31,5 @@ enum EpisodeSortEnum: CaseIterable {
         case .date:
             return NSSortDescriptor(keyPath: \MedicalEpisode.startDate, ascending: ascending)
         }
-    }
-}
-
-enum MedicalEpisodeFilter: CaseIterable {
-    case toSee, seen, discharged, all
-    
-    func getPredicate() -> NSPredicate? {
-        return nil
     }
 }

@@ -8,32 +8,40 @@
 import SwiftUI
 
 struct FilterAndSortPickerView: View {
+    var optionSpacing: CGFloat = 10
     var body: some View {
         ScrollView(.horizontal){
             HStack{
-                
-            }
-        }
-    }
-}
-
-struct SubsectionPickerView: View {
-    var sectionTitle: String
-    var body: some View {
-        VStack{
-            Text(sectionTitle)
-            HStack{
-                ForEach(EpisodeFilterEnum.allCases, id:\.self){filter in
-                    Text(filter.label)
+                VStack{
+                    LabelSubsection("filter")
+                    Divider()
+                    HStack(spacing: optionSpacing){
+                        ForEach(EpisodeFilterEnum.allCases, id:\.self){filter in
+                            Button(action: {}){Text(filter.label)}
+                        }
+                    }
+                }
+                VStack{
+                    LabelSubsection("sort")
+                    Divider()
+                    HStack(spacing: optionSpacing){
+                        ForEach(EpisodeFilterEnum.allCases, id:\.self){filter in
+                            Button(action: {}){LabelSubsection(filter.label)}
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-struct SubsectionPickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        SubsectionPickerView(sectionTitle: "Filter")
+struct LabelSubsection: View {
+    var text: String
+    init(_ text: String){
+        self.text = text
+    }
+    var body: some View{
+        Text(text.uppercased()).fontWeight(.thin).font(.caption)
     }
 }
 
