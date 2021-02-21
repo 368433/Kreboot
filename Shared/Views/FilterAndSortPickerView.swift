@@ -18,8 +18,8 @@ struct FilterAndSortPickerView: View {
     init(startingFilter: EpisodeFilterEnum , startingSort: EpisodeSortEnum, filterFunc: @escaping (EpisodeFilterEnum) -> Void, sortFunc: @escaping (EpisodeSortEnum) -> Void){
         self.filterFunc = filterFunc
         self.sortFunc = sortFunc
-        self.selectedFilter = startingFilter.rawValue
-        self.selectedSort = startingSort.rawValue
+        self._selectedFilter = State(initialValue: startingFilter.rawValue)
+        self._selectedSort = State(initialValue: startingSort.rawValue)
     }
     
     var body: some View {
@@ -50,7 +50,7 @@ struct FilterAndSortPickerView: View {
                     }
                 }
             }
-        }
+        }.padding().background(Color.white).cornerRadius(5).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10).padding(.horizontal)
     }
 }
 

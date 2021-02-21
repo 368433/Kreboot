@@ -12,6 +12,10 @@ struct MedicalEpisodeRow: View {
     @ObservedObject var rowModel: MedicalEpisodeRowViewModel
     @State private var showFullCard: Bool = false
     
+    // View UI customization variables
+    private var textColor: Color = .black
+    private var cardBgColor: Color = .Whitesmoke
+    
     init(episode: MedicalEpisode, worklistModel: WorklistViewModel){
         self.rowModel = MedicalEpisodeRowViewModel(episode: episode, worklistmodel: worklistModel)
     }
@@ -53,12 +57,11 @@ struct MedicalEpisodeRow: View {
                 Button(action: rowModel.addAct){Image(systemName: "plus")}
                 Button(action: rowModel.addAct){Image(systemName: "arrowshape.bounce.forward")}
             }
-        }
+        }.foregroundColor(textColor)
         .padding()
-        .background(Color.Aliceblue)
+        .background(cardBgColor)
         .cornerRadius(10.0)
         .shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
-
     }
 }
 
