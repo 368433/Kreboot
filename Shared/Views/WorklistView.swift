@@ -11,7 +11,6 @@ struct WorklistView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
-    
     @ObservedObject private var model: WorklistViewModel = WorklistViewModel()
     
     init(list: PatientsList? = nil ){
@@ -25,22 +24,15 @@ struct WorklistView: View {
                 EmptyWorklistView(action: {model.activeSheet = .showAllLists}).offset(y:-50)
             }
             if !model.isEmpty{
-//                ZStack(alignment: .bottomTrailing){
+                VStack(alignment: .leading){
+                    Button(action:{model.list = nil}){Image(systemName:"xmark").font(.title3)}.padding(.horizontal)
+                    
                     VStack {
-                        WorklistHeaderView(for: model)
-                        ScrollView {
-                            VStack{
-                                ForEach(model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self){ episode in
-                                    MedicalEpisodeRow(episode: episode, worklistModel: model).onTapGesture {
-                                        model.selectedEpisode = episode
-                                        model.activeSheet = .medicalEpisodeFormView
-                                    }
-                                }.padding(.horizontal).padding(.vertical, 3)
-                            }
-                        }
+                        WorklistTitleHeader(model: model)
+                        WorklistHeaderButtons(model: model)
+                        WorklistCardsList(model: model)
                     }
-//                    WorklistActionButtons(for: model).opacity(model.hideActionButton ? 0:1)
-//                }
+                }
             }
         }
         .sheet(item: $model.activeSheet) { item in
