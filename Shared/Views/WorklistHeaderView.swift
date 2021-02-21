@@ -17,40 +17,31 @@ struct WorklistHeaderView: View {
     }
     
     var body: some View{
-        VStack (alignment: .center, spacing:5){
+        VStack (alignment: .center){
             HStack{
                 Button(action:{model.list = nil}){Image(systemName:"xmark").font(.title3)}.padding(.bottom, 5)
                 Spacer()
-                Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").font(.body).fontWeight(.thin)
             }
-            
-            Text(model.isEmpty ? "" : model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.7)
+            WorklistTitleHeader(model: model)
             
             HStack{
-                Button(action: {model.activeSheet = .editListDetails}){
-                    Text((model.list?.listStatus.label ?? "?Status")+" list").foregroundColor(.black)
-                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: .Azure))
+                Group{
+                    Button(action: {self.showFilter.toggle()}) {
+                        Image(systemName: "slider.vertical.3")
+                    }
+                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: .Beige, textColor: .black))
                 
                 Divider().frame(height: 20)
-                HStack{
-                    Group{
-                        Button(action: {self.showFilter.toggle()}) {
-                            Image(systemName: "slider.vertical.3")
-                        }
-                    }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: .Beige, textColor: .black))
-                    
-                    Divider().frame(height: 20)
-                    
-                    Group{
-                        Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
-                        Button(action: {}){Image(systemName: "doc.text.viewfinder")}
-                        Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}
-                    }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
-                }
+                
+                Group{
+                    Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
+                    Button(action: {}){Image(systemName: "doc.text.viewfinder")}
+                    Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}
+                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
             }.font(.footnote)
             
             if showFilter{
-                FilterAndSortPickerView(
+                FilterAndSortPickerView(startingFilter: model.cardsFilter, startingSort: model.cardsSort,
                     filterFunc: {filter in
                         model.cardsFilter = filter
                     },
@@ -97,6 +88,23 @@ struct WorklistHeaderView: View {
             
             
         }.padding(.horizontal)
+    }
+}
+
+struct WorklistTitleHeader: View {
+    var model: WorklistViewModel
+    var body: some View {
+        VStack{
+            Text(model.isEmpty ? "" : model.listTitle).font(.largeTitle).fontWeight(.heavy).lineLimit(2).minimumScaleFactor(0.5)
+            HStack{
+                Text((model.list?.listStatus.label ?? "?Status")+" list").fontWeight(.thin)
+                Text(" - ")
+                Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
+            }
+        }.padding().background(Color.white).cornerRadius(10).shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
+        .onTapGesture {
+            model.activeSheet = .editListDetails
+        }
     }
 }
 

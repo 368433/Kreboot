@@ -23,8 +23,8 @@ struct MedicalEpisodeRow: View {
                 Label(title: {Text(rowModel.patientName).fontWeight(.bold)}, icon: {Image(systemName: "person")}).lineLimit(1)
                 Spacer()
                 VStack(spacing: 0){
-                    Text(rowModel.episode.patient?.age ?? "?").bold()
-                    Text("years").font(.system(size: 10)).fontWeight(.thin)
+                    Text(rowModel.episode.patient?.ageString ?? "n/a").bold()
+                    Text(rowModel.episode.patient?.age != nil ? "years":"age").font(.system(size: 10)).fontWeight(.thin)
                 }
             }
             Divider()
@@ -36,7 +36,7 @@ struct MedicalEpisodeRow: View {
                 Label(title: {
                     HStack(alignment: .center){
                         Text("Last seen").foregroundColor(.secondary).font(.caption)
-                        Text("asdfasdfasdfasdasdfa").font(.subheadline)
+                        Text(rowModel.episode.mostRecentAct?.ramqCode ?? "No act").font(.subheadline)
                     }.lineLimit(1)
                 }, icon: {Image(systemName: "calendar")})
             

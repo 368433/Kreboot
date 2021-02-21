@@ -15,9 +15,11 @@ struct FilterAndSortPickerView: View {
     private var filterFunc: (EpisodeFilterEnum) -> Void
     private var sortFunc: (EpisodeSortEnum) -> Void
     
-    init(filterFunc: @escaping (EpisodeFilterEnum) -> Void, sortFunc: @escaping (EpisodeSortEnum) -> Void){
+    init(startingFilter: EpisodeFilterEnum , startingSort: EpisodeSortEnum, filterFunc: @escaping (EpisodeFilterEnum) -> Void, sortFunc: @escaping (EpisodeSortEnum) -> Void){
         self.filterFunc = filterFunc
         self.sortFunc = sortFunc
+        self.selectedFilter = startingFilter.rawValue
+        self.selectedSort = startingSort.rawValue
     }
     
     var body: some View {
@@ -75,6 +77,6 @@ struct LabelSubsection: View {
 
 struct FilterAndSortPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterAndSortPickerView(filterFunc: {filter in}, sortFunc: {sort in})
+        FilterAndSortPickerView(startingFilter: .toSee, startingSort: .name, filterFunc: {filter in}, sortFunc: {sort in})
     }
 }
