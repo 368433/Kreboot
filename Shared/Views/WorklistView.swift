@@ -25,15 +25,15 @@ struct WorklistView: View {
             }
             if !model.isEmpty{
                 ZStack(alignment: .top) {
-                    WorklistCardsList(model: model)
-                    VStack(spacing: 15){
+                    WorklistCardsList(model: model).offset(y:10)
+                    VStack{
                         ZStack(alignment: .topLeading){
                             WorklistTitleHeader(model: model)
                             Button(action:{model.list = nil}){Image(systemName:"xmark").font(.title3)}.offset(x: 25.0, y: 10.0)
                         }
                         WorklistHeaderButtons(model: model)
                     }
-                }.padding(.top)
+                }//.padding(.top, 5)
             }
         }
         .sheet(item: $model.activeSheet) { item in

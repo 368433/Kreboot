@@ -10,15 +10,17 @@ import SwiftUI
 struct WorklistCardsList: View {
     @ObservedObject var model: WorklistViewModel
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20){
-                ForEach(model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self){ episode in
-                    MedicalEpisodeRow(episode: episode, worklistModel: model).padding(.horizontal, 30).onTapGesture {
-                        model.selectedEpisode = episode
-                        model.activeSheet = .medicalEpisodeFormView
+//        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 20){
+                    ForEach(model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self){ episode in
+                        MedicalEpisodeRow(episode: episode, worklistModel: model).padding(.horizontal, 30).onTapGesture {
+                            model.selectedEpisode = episode
+                            model.activeSheet = .medicalEpisodeFormView
+                        }
                     }
-                }
-            }.padding(.top, 150)
+                }.padding(.top, 100)
+//            }
         }
     }
 }
@@ -33,12 +35,8 @@ struct WorklistHeaderButtons: View {
                 
                 Divider().frame(height: 20)
                 
-                Group{
-//                    Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
-//                    Button(action: {}){Image(systemName: "doc.text.viewfinder")}
-                    Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}
-                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
-            }.font(.subheadline).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 5)
+                Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
+            }.font(.headline).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 5)
             
             FilterAndSortPickerView(
                 startingFilter: model.cardsFilter,
@@ -53,16 +51,18 @@ struct WorklistHeaderButtons: View {
 struct WorklistTitleHeader: View {
     @ObservedObject var model: WorklistViewModel
     var body: some View {
-        Button(action: {model.activeSheet = .editListDetails}){
-            VStack(spacing:0){
-                Text(model.isEmpty ? "" : model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
-                Divider()
-                HStack{
-                    Text((model.list?.listStatus.label ?? "?Status")+" list").fontWeight(.thin)
-                    Text(" - ")
-                    Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
-                }
-            }.padding().background(Color.white).cornerRadius(10).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10).padding(.horizontal)
-        }.buttonStyle(PlainButtonStyle())
+        VStack(spacing:0){
+            Text(model.isEmpty ? "" : model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
+            Divider()
+            HStack{
+                Spacer()
+                Text((model.list?.listStatus.label ?? "?Status")+" list").fontWeight(.thin)
+                Text(" - ")
+                Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
+                Spacer()
+                Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}
+            }
+        }.padding().background(Color.white)//.cornerRadius(10).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10).padding(.horizontal)
+        
     }
 }
