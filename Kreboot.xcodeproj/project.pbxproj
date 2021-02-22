@@ -100,6 +100,7 @@
 		3196DA6225DB3D6800696068 /* MedicalEpisodeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196DA6025DB3D6800696068 /* MedicalEpisodeFormView.swift */; };
 		31A6F00925E1F4D000BE9E55 /* FilterAndSortPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */; };
 		31A6F00A25E1F4D000BE9E55 /* FilterAndSortPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */; };
+		31F43CA925E3648F00F9E837 /* RoundedCornersRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F43CA825E3648F00F9E837 /* RoundedCornersRect.swift */; };
 		6A05183825CDF36100527AF1 /* UIEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A05183725CDF36100527AF1 /* UIEmptyState.swift */; };
 		6A51F71125D74E040060AE35 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9125C71E9A00097F2F /* CoreDataProvider.swift */; };
 		6A51F71B25D770650060AE35 /* PatientFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */; };
@@ -215,6 +216,7 @@
 		3196B5D025CEE7F4006A3E72 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		3196DA6025DB3D6800696068 /* MedicalEpisodeFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalEpisodeFormView.swift; sourceTree = "<group>"; };
 		31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAndSortPickerView.swift; sourceTree = "<group>"; };
+		31F43CA825E3648F00F9E837 /* RoundedCornersRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersRect.swift; sourceTree = "<group>"; };
 		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
 		6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormViewModel.swift; sourceTree = "<group>"; };
 		6A51F72925D8825A0060AE35 /* VerticalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabel.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				3149201225CDDEAC002D873C /* Button modifiers.swift */,
+				31F43CA825E3648F00F9E837 /* RoundedCornersRect.swift */,
 				3146970725D79B2C00CEEDFD /* CheckmarkToggleStyle.swift */,
 				3115ED2225DA0F5900E7A04E /* Color+Name.swift */,
 				3146971725D7A18C00CEEDFD /* Custom colors.swift */,
@@ -684,6 +687,7 @@
 				311CA85425C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
 				315E5A5925C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
 				318E27EA25D1388F002BE6CB /* EpisodeFilterEnum.swift in Sources */,
+				31F43CA925E3648F00F9E837 /* RoundedCornersRect.swift in Sources */,
 				3169CDE225E09B0100E63CCC /* LocationChangeViewModel.swift in Sources */,
 				3180F08125D0909600837FA2 /* ICDListView.swift in Sources */,
 				3146970225D79A8000CEEDFD /* TrlnClsrBadge.swift in Sources */,
