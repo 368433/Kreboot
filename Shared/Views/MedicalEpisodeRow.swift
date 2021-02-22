@@ -24,42 +24,52 @@ struct MedicalEpisodeRow: View {
     }
     
     var body: some View {
-//        GeometryReader { geometry in
-            VStack(alignment: .leading){
-                Text("#00000").foregroundColor(.secondary).font(.caption).lineLimit(1).padding(.top,8)
-                HStack{
-                    Label(title: {Text(rowModel.patientName).fontWeight(.bold)}, icon: {Image(systemName: "person")}).lineLimit(1)
-                    Spacer()
-                    VStack(spacing: 0){
-                        Text(rowModel.episode.patient?.ageString ?? "n/a").bold()
-                        Text(rowModel.episode.patient?.age != nil ? "years":"age").font(.system(size: 10)).fontWeight(.thin)
-                    }
+        VStack(alignment: .leading){
+            Text("#00000").foregroundColor(.secondary).font(.caption).lineLimit(1).padding(.top,8)
+            HStack{
+                Label(title: {Text(rowModel.patientName).fontWeight(.bold)}, icon: {Image(systemName: "person")}).lineLimit(1)
+                Spacer()
+                VStack(spacing: 0){
+                    Text(rowModel.episode.patient?.ageString ?? "n/a").bold()
+                    Text(rowModel.episode.patient?.age != nil ? "years":"age").font(.system(size: 10)).fontWeight(.thin)
                 }
-
-                HStack(alignment:.top){
-                    Label(title: {Text(rowModel.diagnosis).font(.footnote).fontWeight(.semibold)}, icon: {Image(systemName: "staroflife")})
-                    Spacer()
-                    VStack{
-                        Text("test this as a place pushing").fontWeight(.light)
-                    }
-                    
-                }
-                Divider()
-                HStack{
-                    Spacer()
-                    Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}
-                    Button(action:{}){Image(systemName: "flag")}
-                    Button(action: rowModel.addAct){Image(systemName: "plus")}
-                    Button(action: rowModel.addAct){Image(systemName: "arrowshape.bounce.forward")}
-                    Spacer()
-                }.font(.caption).buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: .white, textColor: .black)).shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
-            }.foregroundColor(textColor)
-            .padding([.horizontal,.bottom])
-            .background(cardBgColor)
-            .cornerRadius(10.0)
-            .shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
-//        }
+            }
+            
+            HStack(alignment:.center){
+                Label(title: {Text(rowModel.diagnosis).font(.footnote).fontWeight(.semibold)}, icon: {Image(systemName: "staroflife")})
+                Spacer()
+                daysCountView(dayCount: 2)
+                
+            }
+            Divider()
+            HStack{
+                Spacer()
+                Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}
+                Button(action:{}){Image(systemName: "flag")}
+                Button(action: rowModel.addAct){Image(systemName: "plus")}
+                Button(action: rowModel.addAct){Image(systemName: "arrowshape.bounce.forward")}
+                Spacer()
+            }.font(.caption).buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: .white, textColor: .black)).shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
+        }.foregroundColor(textColor)
+        .padding([.horizontal,.bottom])
+        .background(cardBgColor)
+        .cornerRadius(10.0)
+        .shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
         
+    }
+}
+
+struct daysCountView: View {
+    var dayCount: Int
+    var body: some View {
+        HStack{
+            VStack(spacing: 0){
+                Text("seen").font(.caption).fontWeight(.ultraLight)
+                Text("\(dayCount) d").fontWeight(.black).lineLimit(1).minimumScaleFactor(0.4)
+                Text("ago").font(.caption).fontWeight(.ultraLight)
+            }
+//            Text("VC - 9150").font(.caption).fontWeight(.light)
+        }
     }
 }
 
