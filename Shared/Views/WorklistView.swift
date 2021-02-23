@@ -13,7 +13,7 @@ struct WorklistView: View {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject private var model: WorklistViewModel = WorklistViewModel()
     
-    init(list: PatientsList? = nil ){
+    init(list: PatientsList? ){
         self.model.list = list
         self.model.cardsFilter = .toSee
     }

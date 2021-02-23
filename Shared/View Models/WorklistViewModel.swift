@@ -18,31 +18,18 @@ class WorklistViewModel: ObservableObject {
     @Published var activeSheet: ActiveSheet? = nil
     @Published var hideActionButton: Bool = false
     
-    var cardsFilter: EpisodeFilterEnum = .toSee {
-        didSet{
-            setList()
-        }
-    }
-    var cardsSort: EpisodeSortEnum = .name {
-        didSet{
-            setList()
-        }
-    }
-    @Published var episodesList: [MedicalEpisode] = []
-
-    @FetchRequest(entity: MedicalEpisode.entity(), sortDescriptors: [])
-    private var cdList: FetchedResults<MedicalEpisode>
+    @Published var cardsFilter: EpisodeFilterEnum = .toSee
+    @Published var cardsSort: EpisodeSortEnum = .name
+    
+    var episodesList: [MedicalEpisode] = []
     
     private var cancellables = Set<AnyCancellable>()
-
 
     var isEmpty: Bool { return list == nil }
     var listTitle: String { return list?.title ?? "Untiltled list"}
     
-    
     init(patientsList list: PatientsList? = nil){
         self.list = list
-        setList()
         
         $list
             .map{$0?.uniqueID?.uuidString}
@@ -52,8 +39,14 @@ class WorklistViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func setList() {
-        self.episodesList = list?.getEpisodeList(filteredBy: cardsFilter, sortedBy: cardsSort) ?? []
+    func updateList(){
+        
+    }
+    func getList() -> [MedicalEpisode] {
+        guard let list = list else { return []}
+        let results = list.getEpisodeList(filteredBy: cardsFilter, sortedBy: cardsSort)
+        self.episodesList = results
+        return results
     }
     
 }

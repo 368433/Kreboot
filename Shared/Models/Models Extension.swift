@@ -147,13 +147,6 @@ extension PatientsList {
         title ?? "No title"
     }
     
-//    var listStatus: [ListFilterEnum] {
-//        var status = [ListFilterEnum]()
-//        status.append(self.isArchived ? .archived:.active)
-//        if self.isFavorite { status.append(.favorite) }
-//        return status
-//    }
-    
     var listStatus: ListFilterEnum {
         return self.isArchived ? .archived:.active
     }

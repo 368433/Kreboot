@@ -10,17 +10,15 @@ import SwiftUI
 struct WorklistCardsList: View {
     @ObservedObject var model: WorklistViewModel
     var body: some View {
-//        GeometryReader { geometry in
-            ScrollView {
-                VStack(spacing: 20){
-                    ForEach(model.episodesList/*model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self*/){ episode in
-                        MedicalEpisodeRow(episode: episode, worklistModel: model).padding(.horizontal, 30).onTapGesture {
-                            model.selectedEpisode = episode
-                            model.activeSheet = .medicalEpisodeFormView
-                        }
+        ScrollView {
+            VStack(spacing: 20){
+                ForEach(model.getList()){ episode in
+                    MedicalEpisodeRow(episode: episode, worklistModel: model).padding(.horizontal, 30).onTapGesture {
+                        model.selectedEpisode = episode
+                        model.activeSheet = .medicalEpisodeFormView
                     }
-                }.padding(.top, 120)
-//            }
+                }
+            }.padding(.top, 120)
         }
     }
 }
