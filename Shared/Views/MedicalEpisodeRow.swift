@@ -31,25 +31,30 @@ struct MedicalEpisodeRow: View {
                 Spacer()
                 VStack(spacing: 0){
                     Text(rowModel.episode.patient?.ageString ?? "n/a").bold()
-                    Text(rowModel.episode.patient?.age != nil ? "years":"age").font(.system(size: 10)).fontWeight(.thin)
+                    Text("yrs").font(.system(size: 10)).fontWeight(.thin)
                 }
             }
             
-            HStack(alignment:.center){
-                Label(title: {Text(rowModel.diagnosis).font(.footnote).fontWeight(.semibold)}, icon: {Image(systemName: "staroflife")})
-                Spacer()
-                daysCountView(dayCount: 2)
-                
-            }
+            Label(title: {Text(rowModel.diagnosis).font(.footnote).fontWeight(.semibold)}, icon: {Image(systemName: "staroflife")})
+            
             Divider()
             HStack{
+                HStack{
+                    daysCountView(dayCount: 20, dayLabel: "#hosp")
+                    Divider()
+                    daysCountView(dayCount: 2, dayLabel: "#seen")
+                }
                 Spacer()
-                Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}
-                Button(action:{}){Image(systemName: "flag")}
-                Button(action: rowModel.addAct){Image(systemName: "plus")}
-                Button(action: rowModel.addAct){Image(systemName: "arrowshape.bounce.forward")}
+                Group{
+                    Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}.scaledToFit().minimumScaleFactor(0.3)
+                    Button(action:{}){Image(systemName: "flag")}
+                    Button(action: rowModel.addAct){Image(systemName: "plus")}
+                    Button(action: rowModel.addAct){Image(systemName: "arrowshape.bounce.forward")}
+                }
+                .font(.caption)
+                .buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: .white, textColor: .black)).shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
                 Spacer()
-            }.font(.caption).buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: .white, textColor: .black)).shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
+            }
         }.foregroundColor(textColor)
         .padding([.horizontal,.bottom])
         .background(cardBgColor)
@@ -62,14 +67,12 @@ struct MedicalEpisodeRow: View {
 
 struct daysCountView: View {
     var dayCount: Int
+    var dayLabel: String
     var body: some View {
-        HStack{
-            VStack(spacing: 0){
-                Text("seen").font(.caption).fontWeight(.ultraLight)
-                Text("\(dayCount) d").fontWeight(.black).lineLimit(1).minimumScaleFactor(0.4)
-                Text("ago").font(.caption).fontWeight(.ultraLight)
-            }
-//            Text("VC - 9150").font(.caption).fontWeight(.light)
+        
+        VStack(spacing: 0){
+            Text("\(dayCount)d").fontWeight(.ultraLight).lineLimit(1)
+            Text(dayLabel).font(.caption2).fontWeight(.ultraLight).minimumScaleFactor(0.2)
         }
     }
 }

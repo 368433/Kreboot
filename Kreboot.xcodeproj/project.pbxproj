@@ -431,7 +431,6 @@
 		317CEA4525D4BF5400393AD6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				31A6F00325E1EE8000BE9E55 /* Unused views */,
 				310996E325D6448800E0C123 /* ActFormView.swift */,
 				3115ED3425DA3A0D00E7A04E /* ActListView.swift */,
 				311C861525C6E1860021E596 /* AddPatientToListView.swift */,
@@ -440,6 +439,7 @@
 				3196B5C625CE2740006A3E72 /* DataTab.swift */,
 				6A54659925D9CEA300AC55A0 /* DiagnosisSearchView.swift */,
 				3146971125D7A00100CEEDFD /* EmptyWorklistView.swift */,
+				31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */,
 				6AAAF5FA25D9D7AD00B77FDB /* ICDSettingsFooter.swift */,
 				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
 				3118F01325C615F1002B3711 /* ListRow.swift */,
@@ -453,10 +453,10 @@
 				31643EC225D63A360009BF9C /* RoomChangeView.swift */,
 				3149201325CDDEAC002D873C /* Settings.swift */,
 				6A05183725CDF36100527AF1 /* UIEmptyState.swift */,
+				31A6F00325E1EE8000BE9E55 /* Unused views */,
 				318F5DB325E2A9DF00D7A925 /* WorklistComponentViews.swift */,
 				3118EFE925C5E398002B3711 /* WorklistNavigatorView.swift */,
 				3118EFFB25C60311002B3711 /* WorklistView.swift */,
-				31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
