@@ -30,7 +30,7 @@ struct KrebootApp: App {
         WindowGroup {
             TabView{
                 
-                WorklistView(list: lastList) //}
+                WorklistHomeView(patientsList: lastList)
                     .tabItem { Label("WorkList", systemImage: "doc.text") }
                 
                 NavigationView{
