@@ -65,10 +65,9 @@ struct WorklistTitleHeader: View {
         VStack(spacing:0){
             Text(model.isEmpty ? "" : model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
             HStack{
-                Text((model.list?.listStatus.label ?? "?Status")+" list").fontWeight(.thin)
-                Text(" - ")
-                Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin).font(.subheadline)
-            }
+                Text("\(model.list?.listStatus.label ?? "?Status") list -").fontWeight(.thin)
+                Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
+            }.font(.headline)
             Divider()
             HStack{
                 Spacer()
