@@ -61,7 +61,7 @@ struct MedicalEpisodeFormView: View {
                     NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(episode.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
                     DisclosureGroup(content: {
                         DatePicker(selection: $episode.startDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
-                        DatePicker("Start", selection: $episode.startDate ?? Date())
+                        DatePicker("Start", selection: $episode.startDate ?? Date(), displayedComponents: [.date])
                         DatePicker("End", selection: $episode.endDate ?? Date())
                     }, label: {
                         Label("More details", systemImage: "ellipsis.circle")

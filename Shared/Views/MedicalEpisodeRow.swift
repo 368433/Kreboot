@@ -54,7 +54,7 @@ struct MedicalEpisodeRow: View {
         .padding([.horizontal,.bottom])
         .background(cardBgColor)
         .cornerRadius(10.0)
-        .shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
+        .shadow(color: Color.gray.opacity(0.5), radius: 12, y: 8)
         
     }
 }

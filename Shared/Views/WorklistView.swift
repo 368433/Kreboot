@@ -23,7 +23,7 @@ struct WorklistView: View {
             if model.isEmpty{
                 EmptyWorklistView(action: {model.activeSheet = .showAllLists}).offset(y:-50)
             }
-            if !model.isEmpty{
+            else {
                 ZStack(alignment: .top) {
                     WorklistCardsList(model: model).offset(y:10)
                     VStack{
@@ -33,7 +33,7 @@ struct WorklistView: View {
                         }
                         WorklistHeaderButtons(model: model)
                     }
-                }//.padding(.top, 5)
+                }
             }
         }
         .sheet(item: $model.activeSheet) { item in

@@ -13,13 +13,13 @@ struct WorklistCardsList: View {
 //        GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 20){
-                    ForEach(model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self){ episode in
+                    ForEach(model.episodesList/*model.list?.getEpisodeList(filteredBy: model.cardsFilter, sortedBy: model.cardsSort) ?? [], id:\.self*/){ episode in
                         MedicalEpisodeRow(episode: episode, worklistModel: model).padding(.horizontal, 30).onTapGesture {
                             model.selectedEpisode = episode
                             model.activeSheet = .medicalEpisodeFormView
                         }
                     }
-                }.padding(.top, 100)
+                }.padding(.top, 120)
 //            }
         }
     }
@@ -28,23 +28,34 @@ struct WorklistCardsList: View {
 struct WorklistHeaderButtons: View {
     @ObservedObject var model: WorklistViewModel
     @State private var showFilter: Bool = false
+    
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
+            
             HStack{
-                Button(action: {withAnimation{self.showFilter.toggle()}}) {Image(systemName: "slider.vertical.3")}.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: .Beige, textColor: .black))
+                Button(action: {self.showFilter.toggle()}) {
+                    Image(systemName: "slider.vertical.3")
+                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: showFilter ? Color.gray : Color.Beige, textColor: .black))
                 
                 Divider().frame(height: 20)
                 
-                Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
+                Button(action: {model.activeSheet = .addPatient}){
+                    Image(systemName: "person.crop.circle.badge.plus")
+                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
+                
             }.font(.headline).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 5)
             
-            FilterAndSortPickerView(
-                startingFilter: model.cardsFilter,
-                startingSort: model.cardsSort,
-                filterFunc: {filter in model.cardsFilter = filter},
-                sortFunc: {sort in model.cardsSort = sort}
-            ).offset(x: 0, y: showFilter ? 470:1000)
-        }
+            if showFilter {
+                Spacer()
+                FilterAndSortPickerView(
+                    startingFilter: model.cardsFilter,
+                    startingSort: model.cardsSort,
+                    filterFunc: {filter in model.cardsFilter = filter},
+                    sortFunc: {sort in model.cardsSort = sort}
+                )
+                .transition(.move(edge: .bottom))
+            }
+        }.animation(.easeIn(duration: 0.15))
     }
 }
 
@@ -53,16 +64,19 @@ struct WorklistTitleHeader: View {
     var body: some View {
         VStack(spacing:0){
             Text(model.isEmpty ? "" : model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
+            HStack{
+                Text((model.list?.listStatus.label ?? "?Status")+" list").fontWeight(.thin)
+                Text(" - ")
+                Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin).font(.subheadline)
+            }
             Divider()
             HStack{
                 Spacer()
-                Text((model.list?.listStatus.label ?? "?Status")+" list").fontWeight(.thin)
-                Text(" - ")
-                Text(model.isEmpty ? "":"Week of \(model.list?.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
+                Text("Showing: ").fontWeight(.ultraLight).font(.caption)
+                Text("\(model.episodesList.count) cards").fontWeight(.black)
                 Spacer()
                 Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}
             }
-        }.padding().background(Color.white)//.cornerRadius(10).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10).padding(.horizontal)
-        
+        }.padding([.horizontal, .top]).background(Color.white)
     }
 }
