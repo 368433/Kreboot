@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class WorklistViewModel: ObservableObject {
-    @Published var list: PatientsList?
+    @Published var list: PatientsList
     
     @Published var selectedCard: Patient? = nil
     @Published var selectedAct: Act? = nil
@@ -25,14 +25,13 @@ class WorklistViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
 
-    var isEmpty: Bool { return list == nil }
-    var listTitle: String { return list?.title ?? "Untiltled list"}
+    var listTitle: String { return list.title ?? "Untiltled list"}
     
-    init(patientsList list: PatientsList? = nil){
+    init(patientsList list: PatientsList){
         self.list = list
         
         $list
-            .map{$0?.uniqueID?.uuidString}
+            .map{$0.uniqueID?.uuidString}
             .sink{ uniqueID in
                 UserDefaults.standard.set(uniqueID, forKey: "lastListSelected")
             }
@@ -43,7 +42,6 @@ class WorklistViewModel: ObservableObject {
         
     }
     func getList() -> [MedicalEpisode] {
-        guard let list = list else { return []}
         let results = list.getEpisodeList(filteredBy: cardsFilter, sortedBy: cardsSort)
         self.episodesList = results
         return results

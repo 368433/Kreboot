@@ -35,13 +35,18 @@ struct MedicalEpisodeRow: View {
                 }
             }
             
-            Label(title: {Text(rowModel.diagnosis).font(.footnote).fontWeight(.semibold)}, icon: {Image(systemName: "staroflife")})
+            Label(title: {
+                Text(rowModel.diagnosis)
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .lineLimit(3)
+            }, icon: {Image(systemName: "staroflife")})//.frame(height: 50)
             
             Divider()
             HStack{
                 HStack{
                     daysCountView(dayCount: 20, dayLabel: "#hosp")
-                    Divider()
+                    Divider().frame(height: 30)
                     daysCountView(dayCount: 2, dayLabel: "#seen")
                 }
                 Spacer()
@@ -59,8 +64,8 @@ struct MedicalEpisodeRow: View {
         .padding([.horizontal,.bottom])
         .background(cardBgColor)
         .cornerRadius(10.0)
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(0.2), lineWidth: 1))
-        .shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(0.3), lineWidth: 1))
+        .shadow(color: Color.black.opacity(0.2), radius: 8, y: 8)
         
     }
 }

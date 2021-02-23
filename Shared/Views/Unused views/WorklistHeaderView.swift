@@ -17,7 +17,7 @@ struct WorklistHeaderView: View {
     var body: some View{
         VStack (alignment: .center){
             HStack{
-                Button(action:{model.list = nil}){Image(systemName:"xmark").font(.title3)}.padding(.bottom, 5)
+                Button(action:{}){Image(systemName:"xmark").font(.title3)}.padding(.bottom, 5)
                 Spacer()
             }
             WorklistTitleHeader(model: model)
@@ -28,8 +28,8 @@ struct WorklistHeaderView: View {
 }
 
 
-struct WorklistHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        WorklistHeaderView(for: WorklistViewModel())
-    }
-}
+//struct WorklistHeaderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WorklistHeaderView(for: WorklistViewModel())
+//    }
+//}

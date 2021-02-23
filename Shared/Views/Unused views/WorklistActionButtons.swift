@@ -23,9 +23,9 @@ struct WorklistActionButtons: View {
             if expandButtons {
                 Group{
                     Button(action: {model.activeSheet = .showAllLists}){Image(systemName: "doc.text.magnifyingglass")}
-                    Button(action: {}){Image(systemName: "arrow.up.arrow.down")}.disabled(model.isEmpty)
-                    Button(action: {}){Image(systemName: "doc.text.viewfinder")}.disabled(model.isEmpty)
-                    Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}.disabled(model.isEmpty)
+                    Button(action: {}){Image(systemName: "arrow.up.arrow.down")}
+                    Button(action: {}){Image(systemName: "doc.text.viewfinder")}
+                    Button(action: {model.activeSheet = .addPatient}){Image(systemName: "person.crop.circle.badge.plus")}
                 }.buttonStyle(CircularButton())
             }
             Button(action: {withAnimation{self.expandButtons.toggle()}}){
@@ -38,8 +38,8 @@ struct WorklistActionButtons: View {
     }
 }
 
-struct WorklistActionButtons_Previews: PreviewProvider {
-    static var previews: some View {
-        WorklistActionButtons(for: WorklistViewModel())
-    }
-}
+//struct WorklistActionButtons_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WorklistActionButtons(for: WorklistViewModel())
+//    }
+//}
