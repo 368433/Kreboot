@@ -41,6 +41,18 @@ struct RoomChangeView: View {
     }
 }
 
+struct NewRoomView: View {
+    @Environment(\.presentationMode) private var presentationMode
+    @State var room: String
+    
+    var body: some View {
+        VStack{
+            TextField("Room or location", text: $room)
+            Button(action: {}){Text("Update").cornerRadius(10).background(Color.blue).foregroundColor(.white)}
+        }//.frame(width: 200, height: 100)
+    }
+}
+
 struct RoomChangeView_Previews: PreviewProvider {
     static var previews: some View {
         RoomChangeView(episode: nil)

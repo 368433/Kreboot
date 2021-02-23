@@ -54,13 +54,14 @@ struct MedicalEpisodeRow: View {
                     Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}.scaledToFit().minimumScaleFactor(0.3)
                     Button(action:{}){Image(systemName: "flag")}
                     Button(action: rowModel.addAct){Image(systemName: "plus")}
-                    Button(action: rowModel.addAct){Image(systemName: "arrowshape.bounce.forward")}
+                    Button(action: {}){Image(systemName: "arrowshape.bounce.forward")}
                 }
                 .font(.caption)
                 .buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: .white, textColor: .black)).shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
                 Spacer()
             }
-        }.foregroundColor(textColor)
+        }
+        .foregroundColor(textColor)
         .padding([.horizontal,.bottom])
         .background(cardBgColor)
         .cornerRadius(10.0)

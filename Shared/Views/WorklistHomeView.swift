@@ -10,6 +10,7 @@ import SwiftUI
 struct WorklistHomeView: View {
     var patientsList: PatientsList?
     @State var sheetToPresent: wlHomeSheets? = nil
+    @State var selectedList: PatientsList?
     
     init(patientsList: PatientsList? = nil){
         self.patientsList = patientsList
@@ -17,13 +18,26 @@ struct WorklistHomeView: View {
     
     var body: some View {
         ZStack{
-            Color.Linen
-            Button(action:{self.sheetToPresent = .lastWorklist}){
-                Text("Last worksheet").multilineTextAlignment(.center)
-                    .frame(width: 100, height: 150, alignment: .center)
-                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.white))
-                    .shadow(color: Color.black.opacity(0.5),radius: 10, y: 10)
-            }
+            Color.Linen.edgesIgnoringSafeArea(.all)
+            VStack{
+                HStack{
+                    Spacer()
+                    Button(action: {sheetToPresent = .navigator}){Image(systemName: "circles.hexagongrid")}
+                }
+                Text("Active lists")
+                Divider()
+                ScrollView(.horizontal){
+                    Button(action:{self.sheetToPresent = .lastWorklist}){
+                        Text("Last worksheet").multilineTextAlignment(.center)
+                            .frame(width: 100, height: 150, alignment: .center)
+                            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.white))
+                            
+                    }.padding().shadow(color: Color.gray.opacity(0.3),radius: 5, y: 5)
+                }
+                Text("Pinned lists")
+                Divider()
+                Spacer()
+            }.padding()
             
         }
         .sheet(item: $sheetToPresent) { item in
@@ -32,6 +46,8 @@ struct WorklistHomeView: View {
                 if let list = patientsList{
                     WorklistView(list: list)
                 }
+            case .navigator:
+                WorklistNavigatorView(selectedList: $selectedList)
             }
         }.onAppear(){
             if let _ = patientsList {
@@ -42,7 +58,7 @@ struct WorklistHomeView: View {
 }
 
 enum wlHomeSheets: Identifiable {
-    case lastWorklist
+    case lastWorklist, navigator
     
     var id: Int { hashValue }
 }
