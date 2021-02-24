@@ -25,6 +25,13 @@ extension NSManagedObject {
 // MARK: Medical Episodes extension
 extension MedicalEpisode {
     
+    static func medicalEpisodeFetchRequest(predicate: NSPredicate?, sort: [NSSortDescriptor]) -> NSFetchRequest<MedicalEpisode> {
+        let request: NSFetchRequest<MedicalEpisode> = MedicalEpisode.fetchRequest()
+        request.predicate = predicate
+        request.sortDescriptors = sort
+        return request
+    }
+    
     public func getPatientName() -> String {
         guard let patient = self.patient else {return "No patient assigned"}
         return patient.wrappedName
