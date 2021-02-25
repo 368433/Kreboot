@@ -89,6 +89,7 @@
 		3169CDE325E09B0100E63CCC /* LocationChangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3169CDE125E09B0100E63CCC /* LocationChangeViewModel.swift */; };
 		3173664425D97B5300237668 /* NSPredicate+KeyPath+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3173664325D97B5300237668 /* NSPredicate+KeyPath+Operators.swift */; };
 		3173664525D97B5300237668 /* NSPredicate+KeyPath+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3173664325D97B5300237668 /* NSPredicate+KeyPath+Operators.swift */; };
+		3173B7D825E829EB00E427DA /* DefaultSettingsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3173B7D725E829EB00E427DA /* DefaultSettingsSectionView.swift */; };
 		317CEA3E25D4157700393AD6 /* ListFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */; };
 		317CEA3F25D4157700393AD6 /* ListFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */; };
 		3180F08125D0909600837FA2 /* ICDListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180F08025D0909600837FA2 /* ICDListView.swift */; };
@@ -215,6 +216,7 @@
 		3169014E25D8F74200B6403A /* EpisodeSortEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeSortEnum.swift; sourceTree = "<group>"; };
 		3169CDE125E09B0100E63CCC /* LocationChangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChangeViewModel.swift; sourceTree = "<group>"; };
 		3173664325D97B5300237668 /* NSPredicate+KeyPath+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPredicate+KeyPath+Operators.swift"; sourceTree = "<group>"; };
+		3173B7D725E829EB00E427DA /* DefaultSettingsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingsSectionView.swift; sourceTree = "<group>"; };
 		317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFormViewModel.swift; sourceTree = "<group>"; };
 		3180F08025D0909600837FA2 /* ICDListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDListView.swift; sourceTree = "<group>"; };
 		318E27E925D1388F002BE6CB /* EpisodeFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeFilterEnum.swift; sourceTree = "<group>"; };
@@ -416,8 +418,9 @@
 		3173B7D625E829AF00E427DA /* Settings Tab */ = {
 			isa = PBXGroup;
 			children = (
-				6AAAF5FA25D9D7AD00B77FDB /* ICDSettingsFooter.swift */,
+				3173B7D725E829EB00E427DA /* DefaultSettingsSectionView.swift */,
 				3149201425CDDEAC002D873C /* ICDSettings.swift */,
+				6AAAF5FA25D9D7AD00B77FDB /* ICDSettingsFooter.swift */,
 				3149201325CDDEAC002D873C /* Settings.swift */,
 			);
 			path = "Settings Tab";
@@ -729,6 +732,7 @@
 				3154A32825C8F2C600E20978 /* ICDdbTable2.swift in Sources */,
 				3196DA6125DB3D6800696068 /* MedicalEpisodeFormView.swift in Sources */,
 				310A873325D01C4700437522 /* ActiveSheet.swift in Sources */,
+				3173B7D825E829EB00E427DA /* DefaultSettingsSectionView.swift in Sources */,
 				31015B3925C9E426006D843D /* ICDDataBridge.swift in Sources */,
 				3154A32E25C8F34400E20978 /* ICD10Code.swift in Sources */,
 				6AAAF5FB25D9D7AD00B77FDB /* ICDSettingsFooter.swift in Sources */,

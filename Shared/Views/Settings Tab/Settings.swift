@@ -15,7 +15,7 @@ struct Settings: View {
         Form {
             Section(
                 header: Text("Defaults"),
-                content: {ICDSettings()})
+                content: {DefaultSettingsSectionView()})
             Section(
                 header: Text("Sync"),
                 content: {
@@ -23,13 +23,10 @@ struct Settings: View {
                     Toggle("Sync with Google firebase", isOn: $firebaseSynced)
                 })
             Section(
-                header: Text("ICD Codes"),
+                header: Text("Databases"),
                 footer: ICDSettingsFooter().padding(.bottom),
                 content: {ICDSettings()})
-            Section(
-                header: Text("Physicians Database"),
-                footer: Text("Last updated: ").padding(.bottom),
-                content: {Text("Upload database")})
+
             Section(
                 header: Text("Check Database"),
                 footer: Text("Ensure no nil UUID. Attach unassigned Episodes to UnassignedList").padding(.bottom),

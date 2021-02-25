@@ -11,21 +11,20 @@ struct ICDSettings: View {
     @ObservedObject private var idcDataProvider = ICDCodesProvider3()
     
     var body: some View {
-//        VStack {
-            Button(action: loadICDData, label: {
-                HStack(alignment: .center, spacing: nil, content: {
-                    Text("Reload data")
-                    Spacer()
-                    Image(systemName: "arrow.clockwise")
-                })
-            })
-            Button(action: deleteICDData, label: {
-                HStack {
-                    Text("Delete data")
-                    Spacer()
-                    Image(systemName: "trash")
-                }
-            })
+        HStack{
+            Text("ICD database")
+            Spacer()
+            Button(action: loadICDData){Image(systemName: "arrow.clockwise")}
+            Button(action: deleteICDData){Image(systemName: "trash")}.padding(.leading)
+        }
+        HStack{
+            Text("Physicians database")
+            Button(action: {}){Text("Implement")}
+        }
+        HStack{
+            Text("Internal database Check")
+            Button(action: {}){Text("Implement")}
+        }
     }
     
     private func loadICDData(){
