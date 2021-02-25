@@ -123,7 +123,7 @@ struct SimpleListOfList: View {
                         self.model.sheetToPresent = .selectedList
                     }
             }
-        }.emptyContent(if: list.count == 0, show: "list.bullet.rectangle", caption: "No list")
+        }.emptyContent(if: list.count == 0, show: "list.bullet.rectangle", caption: "No \(model.listGroup.label) list")
     }
 }
 
