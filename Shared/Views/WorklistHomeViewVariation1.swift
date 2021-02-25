@@ -46,7 +46,7 @@ struct WorklistHomeViewVariation1: View {
                     WorklistView(list: list)
                 }
             default:
-                WorklistNavigatorView(selectedList: $selectedList)
+                WorklistHomeViewVariation2(selectedList: $selectedList)
             }
         }.onAppear(){
             // add a setting variable to determine if should auto launch

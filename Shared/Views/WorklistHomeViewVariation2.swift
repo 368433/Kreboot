@@ -1,5 +1,5 @@
 //
-//  WorklistNavigatorView.swift
+//  WorklistHomeViewVariation2.swift
 //  Kreboot
 //
 //  Created by Amir Mac Pro 2019 on 2021-01-30.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WorklistNavigatorView: View {
+struct WorklistHomeViewVariation2: View {
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -48,8 +48,3 @@ struct WorklistNavigatorView: View {
     }
 }
 
-struct PatientsListsView_Previews: PreviewProvider {
-    static var previews: some View {
-        WorklistNavigatorView(selectedList: .constant(nil)).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
