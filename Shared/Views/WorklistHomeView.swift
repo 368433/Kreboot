@@ -49,10 +49,8 @@ struct WorklistHomeView: View {
                         Text(option.label).tag(option)
                     }
                 }.pickerStyle(SegmentedPickerStyle())
-                
                 Spacer()
                 Button(action: { self.sheetToPresent = .listFormView }) { Image(systemName:"plus") }.padding(.leading)
-
             }
             
             List {
