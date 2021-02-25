@@ -8,18 +8,16 @@
 import SwiftUI
 
 struct ListRow: View {
-//    @Environment(\.managedObjectContext) private var viewContext
+    //    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var list: PatientsList
     
     var body: some View {
-        HStack {
-            Image(systemName: "rectangle.stack.person.crop").scaledToFit().font(.title).foregroundColor(.secondary)
-            VStack(alignment:.leading){
-                Text((list.title ?? "No titlexxx").localizedCapitalized).fontWeight(.semibold).foregroundColor(.primary)
-                Text("wk of " + (list.dateCreated?.dayLabel(dateStyle: .medium) ?? "")).font(.footnote)
-                Text(list.patientCountDescription).font(.footnote).foregroundColor(.secondary)
-            }.lineLimit(1)
-        }
+        VStack(alignment:.leading){
+            Text((list.title ?? "No titlexxx").localizedCapitalized)
+            Text("wk of " + (list.dateCreated?.dayLabel(dateStyle: .medium) ?? "")).font(.footnote)
+            Text(list.patientCountDescription).font(.footnote).foregroundColor(.secondary)
+        }.lineLimit(1)
+        
     }
 }
 

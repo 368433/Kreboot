@@ -39,18 +39,21 @@ struct WorklistHomeView: View {
     @ObservedObject private var model = WorklistHomeViewModel()
     
     var body: some View {
-        VStack (alignment: .center){
-            HStack {
-                Text("Worklists").font(.largeTitle).fontWeight(.black)
-                Spacer()
-                Button(action: {self.sheetToPresent = .listFormView}){Image(systemName:"plus")}
-            }.padding([.top, .horizontal])
+        VStack{
             
-            Picker("List filter", selection: $model.listGroup) {
-                ForEach(ListFilterEnum.allCases, id:\.self){option in
-                    Text(option.label).tag(option)
-                }
-            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+            Text("Worklists").font(.largeTitle).fontWeight(.black)
+            
+            HStack{
+                Picker("List filter", selection: $model.listGroup) {
+                    ForEach(ListFilterEnum.allCases, id:\.self){option in
+                        Text(option.label).tag(option)
+                    }
+                }.pickerStyle(SegmentedPickerStyle())
+                
+                Spacer()
+                Button(action: { self.sheetToPresent = .listFormView }) { Image(systemName:"plus") }.padding(.leading)
+
+            }
             
             List {
                 CoreDataProvider(sorting: model.listGroup.descriptors, predicate: model.listGroup.predicate) { (list: PatientsList) in
@@ -64,23 +67,18 @@ struct WorklistHomeView: View {
             .sheet(item: $sheetToPresent){ item in
                 switch item {
                 case .lastWorklist:
-                    if let list = model.getLastOpenedList() {
-                        WorklistView(list: list)
-                    }
+                    if let list = model.getLastOpenedList() {WorklistView(list: list)}
                 case .listFormView:
                     NavigationView{ListFormView()}.environment(\.managedObjectContext, self.viewContext)
                 case .selectedList:
-                    if let list = selectedList {
-                        WorklistView(list: list)
-                    }
+                    if let list = selectedList {WorklistView(list: list)}
                 default:
                     EmptyView()
                 }
             }
-        }.onAppear{
-            if model.showLastList{
-                self.sheetToPresent = .lastWorklist
-            }
+        }.padding()
+        .onAppear{
+            if model.showLastList{self.sheetToPresent = .lastWorklist}
         }
     }
 }
