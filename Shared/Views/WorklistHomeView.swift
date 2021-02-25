@@ -6,63 +6,80 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct WorklistHomeView: View {
-    var patientsList: PatientsList?
-    @State var sheetToPresent: wlHomeSheets? = nil
-    @State var selectedList: PatientsList?
     
-    init(patientsList: PatientsList? = nil){
-        self.patientsList = patientsList
+    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @State private var sheetToPresent: wlHomeSheets? = nil
+    @State private var listGroup: ListFilterEnum = .active
+
+    @State var selectedList: PatientsList? = nil
+    var lastOpenedList: PatientsList? {
+        if let uniqueID = UserDefaults.standard.string(forKey: "lastListSelected") {
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PatientsList")
+            request.predicate = NSPredicate(format: "uniqueID == %@", uniqueID)
+            do {
+                return try PersistenceController.shared.container.viewContext.fetch(request).first as? PatientsList
+            } catch {print(error)}
+        }
+        return nil
     }
+
     
     var body: some View {
-        ZStack{
-            Color.Whitesmoke.edgesIgnoringSafeArea(.all)
-            VStack{
-                HStack{
-                    Spacer()
-                    Button(action: {sheetToPresent = .navigator}){Image(systemName: "circles.hexagongrid")}.padding()
-                }
-                Text("Active lists")
-                Divider()
-                ScrollView(.horizontal){
-                    HStack{
-                        WorklistCardView(bottomText: "Last worklist").onTapGesture {
-                            self.sheetToPresent = .lastWorklist
-                        }
-                    }
-                }
-                Text("Pinned lists")
-                Divider()
+        VStack (alignment: .center){
+            HStack {
+                Text("Worklists").font(.largeTitle).fontWeight(.black)
                 Spacer()
-            }
+                Button(action: {self.sheetToPresent = .listFormView}){Image(systemName:"plus")}
+            }.padding([.top, .horizontal])
             
-        }
-        .sheet(item: $sheetToPresent) { item in
-            switch item {
-            case .lastWorklist:
-                if let list = patientsList{
-                    WorklistView(list: list)
+            Picker("List filter", selection: $listGroup) {
+                ForEach(ListFilterEnum.allCases, id:\.self){option in
+                    Text(option.label).tag(option)
                 }
-            case .navigator:
-                WorklistNavigatorView(selectedList: $selectedList)
+            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+
+            List {
+                CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
+                    ListRow(list: list)
+                        .onTapGesture{
+                            self.selectedList = list
+                            self.sheetToPresent = .selectedList
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                }
             }
-        }.onAppear(){
-            // add a setting variable to determine if should auto launch
-//            if let _ = patientsList {
-//                self.sheetToPresent = .lastWorklist
-//            }
+            .sheet(item: $sheetToPresent){ item in
+                switch item {
+                case .lastWorklist:
+                    if let list = lastOpenedList {
+                        WorklistView(list: list)
+                    }
+                case .listFormView:
+                    NavigationView{ListFormView()}.environment(\.managedObjectContext, self.viewContext)
+                case .selectedList:
+                    if let list = selectedList {
+                        WorklistView(list: list)
+                    }
+                default:
+                    EmptyView()
+                }
+            }
         }
     }
 }
 
-
 enum wlHomeSheets: Identifiable {
-    case lastWorklist, navigator
+    case lastWorklist, navigator, listFormView, selectedList
     
     var id: Int { hashValue }
 }
+
+
 
 struct WorklistHomeView_Previews: PreviewProvider {
     static var previews: some View {
