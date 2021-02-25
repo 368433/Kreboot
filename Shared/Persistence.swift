@@ -94,12 +94,14 @@ struct PersistenceController {
         let singleList = PatientsList(context: viewContext)
         singleList.title = "You don't know what love is"
         singleList.dateCreated = Date()
+        
         //create linked patients
         for _ in 0..<10 {
             let newPatient = Patient(context: viewContext)
             newPatient.name = "A dude" + String(Int.random(in: 10..<50))
             newPatient.ramqNumber = String(Int.random(in: 1000000..<99999999))
-            singleList.addToPatients(newPatient)
+            let newEpisode = MedicalEpisode(context: viewContext)
+            newEpisode.patient = newPatient
         }
         do {
             try viewContext.save()

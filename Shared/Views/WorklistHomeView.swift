@@ -12,6 +12,10 @@ import CoreData
 class WorklistHomeViewModel: ObservableObject {
     @Published var lastOpenedList: PatientsList?
     @Published var listGroup: ListFilterEnum = .active
+    @Published var lists: [PatientsList] = []
+    @Published var selectedList: PatientsList? = nil
+    @Published var sheetToPresent: wlHomeSheets? = nil
+    
     var showLastList: Bool {
         return UserDefaults.standard.bool(forKey: "showLastList")
     }
@@ -26,59 +30,106 @@ class WorklistHomeViewModel: ObservableObject {
         }
         return nil
     }
+    
+    func getList() -> [PatientsList] {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PatientsList")
+        request.predicate = listGroup.predicate
+        request.sortDescriptors = listGroup.descriptors
+        do {
+            return try PersistenceController.shared.container.viewContext.fetch(request) as? [PatientsList] ?? []
+        } catch {
+            print(error)
+        }
+        return []
+    }
+    
+    func setList() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PatientsList")
+        request.predicate = listGroup.predicate
+        request.sortDescriptors = listGroup.descriptors
+        do {
+            self.lists = try PersistenceController.shared.container.viewContext.fetch(request) as? [PatientsList] ?? []
+        } catch {
+            print(error)
+        }
+    }
 }
 
 //View
 struct WorklistHomeView: View {
-    
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) private var viewContext
-    
-    @State private var sheetToPresent: wlHomeSheets? = nil
-    @State var selectedList: PatientsList? = nil
     @ObservedObject private var model = WorklistHomeViewModel()
+    @State var displayMode: wlDisplayMode = .list
     
     var body: some View {
         VStack{
-            
-            Text("Worklists").font(.largeTitle).fontWeight(.black)
-            
             HStack{
-                Picker("List filter", selection: $model.listGroup) {
-                    ForEach(ListFilterEnum.allCases, id:\.self){option in
-                        Text(option.label).tag(option)
-                    }
-                }.pickerStyle(SegmentedPickerStyle())
                 Spacer()
-                Button(action: { self.sheetToPresent = .listFormView }) { Image(systemName:"plus") }.padding(.leading)
+                Text("Worklists").font(.largeTitle).fontWeight(.black)
+                Spacer()
+                Button(action:{self.displayMode = .cards}){Image(systemName: "square.grid.2x2")}
+                Button(action:{self.displayMode = .list}){Image(systemName: "list.bullet")}
+                Button(action: { self.model.sheetToPresent = .listFormView }) { Image(systemName:"plus") }
             }
             
-            List {
-                CoreDataProvider(sorting: model.listGroup.descriptors, predicate: model.listGroup.predicate) { (list: PatientsList) in
-                    ListRow(list: list)
-                        .onTapGesture{
-                            self.selectedList = list
-                            self.sheetToPresent = .selectedList
-                        }
+            Picker("List filter", selection: $model.listGroup) {
+                ForEach(ListFilterEnum.allCases, id:\.self){option in
+                    Text(option.label).tag(option)
                 }
+            }.pickerStyle(SegmentedPickerStyle())
+            
+            switch self.displayMode {
+            case .list:
+                SimpleListOfList(model: model)
+            case .cards:
+                EmptyView()
             }
-            .sheet(item: $sheetToPresent){ item in
-                switch item {
-                case .lastWorklist:
-                    if let list = model.getLastOpenedList() {WorklistView(list: list)}
-                case .listFormView:
-                    NavigationView{ListFormView()}.environment(\.managedObjectContext, self.viewContext)
-                case .selectedList:
-                    if let list = selectedList {WorklistView(list: list)}
-                default:
-                    EmptyView()
-                }
-            }
+            Spacer()
         }.padding()
         .onAppear{
-            if model.showLastList{self.sheetToPresent = .lastWorklist}
+            if model.showLastList{self.model.sheetToPresent = .lastWorklist}
+        }
+        .sheet(item: $model.sheetToPresent){ item in
+            switch item {
+            case .lastWorklist:
+                if let list = model.getLastOpenedList() {WorklistView(list: list)}
+            case .listFormView:
+                NavigationView{ListFormView()}.environment(\.managedObjectContext, self.viewContext)
+            case .selectedList:
+                if let list = model.selectedList {WorklistView(list: list)}
+            default:
+                EmptyView()
+            }
         }
     }
+}
+
+struct SimpleListOfList: View {
+    @ObservedObject var model: WorklistHomeViewModel
+    private var list: [PatientsList]
+    
+    init(model: WorklistHomeViewModel){
+        self.model = model
+        self.list = model.getList()
+    }
+    
+    var body: some View {
+        List {
+            ForEach(list){ list in
+                ListRow(list: list)
+                    .onTapGesture{
+                        self.model.selectedList = list
+                        self.model.sheetToPresent = .selectedList
+                    }
+            }
+        }.emptyContent(if: list.count == 0, show: "list.bullet.rectangle", caption: "No list")
+    }
+}
+
+enum wlDisplayMode: Identifiable {
+    case list, cards
+    var id: Int {hashValue}
 }
 
 enum wlHomeSheets: Identifiable {

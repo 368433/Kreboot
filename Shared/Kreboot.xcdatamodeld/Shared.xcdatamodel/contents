@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Act" representedClassName="Act" syncable="YES" codeGenerationType="class">
         <attribute name="ramqCode" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -21,6 +21,7 @@
     </entity>
     <entity name="MedicalEpisode" representedClassName="MedicalEpisode" syncable="YES" codeGenerationType="class">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="flagged" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="referringMD" optional="YES" attributeType="String"/>
         <attribute name="roomLocation" optional="YES" attributeType="String"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -45,7 +46,6 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="postalCode" optional="YES" attributeType="String"/>
         <attribute name="ramqNumber" optional="YES" attributeType="String"/>
-        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PatientsList" inverseName="patients" inverseEntity="PatientsList"/>
         <relationship name="medicalDxList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MedicalHxEntry" inverseName="patient" inverseEntity="MedicalHxEntry"/>
         <relationship name="medicalEpisodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MedicalEpisode" inverseName="patient" inverseEntity="MedicalEpisode"/>
     </entity>
@@ -57,15 +57,14 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="uniqueID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="medicalEpisodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MedicalEpisode" inverseName="list" inverseEntity="MedicalEpisode"/>
-        <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="lists" inverseEntity="Patient"/>
     </entity>
     <elements>
         <element name="Act" positionX="-63" positionY="-9" width="128" height="74"/>
         <element name="ICD10dx" positionX="-63" positionY="63" width="128" height="89"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="MedicalEpisode" positionX="-63" positionY="63" width="128" height="179"/>
+        <element name="MedicalEpisode" positionX="-63" positionY="63" width="128" height="194"/>
         <element name="MedicalHxEntry" positionX="-45" positionY="72" width="128" height="119"/>
-        <element name="Patient" positionX="-63" positionY="-9" width="128" height="149"/>
-        <element name="PatientsList" positionX="-54" positionY="36" width="128" height="149"/>
+        <element name="Patient" positionX="-63" positionY="-9" width="128" height="134"/>
+        <element name="PatientsList" positionX="-54" positionY="36" width="128" height="134"/>
     </elements>
 </model>

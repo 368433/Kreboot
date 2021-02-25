@@ -14,9 +14,13 @@ struct ListRow: View {
     var body: some View {
         HStack{
             VStack(alignment:.leading){
-                Text((list.title ?? "No titlexxx").localizedCapitalized)
-                Text("wk of " + (list.dateCreated?.dayLabel(dateStyle: .medium) ?? "")).font(.footnote)
-                Text(list.patientCountDescription).font(.footnote).foregroundColor(.secondary)
+                Text((list.title ?? "No title").localizedCapitalized).font(.subheadline)
+                HStack {
+                    Text("wk of " + (list.dateCreated?.dayLabel(dateStyle: .medium) ?? "")).font(.footnote)
+                    Spacer()
+                    Text(list.patientCountDescription).font(.footnote)
+                }.foregroundColor(.secondary)
+                
             }.lineLimit(1)
             Spacer()
         }.background(Color.white)

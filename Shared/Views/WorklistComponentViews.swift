@@ -9,17 +9,24 @@ import SwiftUI
 
 struct WorklistCardsList: View {
     @ObservedObject var model: WorklistViewModel
+    private var episodes: [MedicalEpisode]
+    
+    init(model: WorklistViewModel){
+        self.model = model
+        self.episodes = model.getList()
+    }
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 20){
-                ForEach(model.getList()){ episode in
+                ForEach(episodes){ episode in
                     MedicalEpisodeRow(episode: episode, worklistModel: model).padding(.horizontal, 30).onTapGesture {
                         model.selectedEpisode = episode
                         model.activeSheet = .medicalEpisodeFormView
                     }
                 }
             }.padding(.top, 150)
-        }
+        }.emptyContent(if: episodes.isEmpty, show: "person.3", caption: "None")
     }
 }
 

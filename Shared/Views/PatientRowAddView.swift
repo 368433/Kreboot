@@ -33,9 +33,9 @@ struct PatientRowAddView: View {
     private func addPatient(){
         guard let list = list else {print("NEED TO handle this case");return}
         if isInList {
-            list.removeFromPatients(patient)
+//            list.removeFromPatients(patient)
         } else {
-            list.addToPatients(patient)
+//            list.addToPatients(patient)
         }
 
         list.saveYourself(in: viewContext)

@@ -116,6 +116,10 @@ extension Patient {
 // MARK: Extentsion - PatientsList
 extension PatientsList {
     
+    public var isEmpty: Bool {
+        return self.medicalEpisodes.isNull
+    }
+    
     func getEpisodeList(filteredBy filter: EpisodeFilterEnum, sortedBy sort: EpisodeSortEnum) -> [MedicalEpisode] {
         
         // Get the set of episodes
@@ -159,15 +163,12 @@ extension PatientsList {
     }
         
     public var patientCountDescription: String {
-        let number = String(self.patients?.count ?? 0)
-        let text = number == "0" ? "patient":"patients"
-        return number + " " + text
+        let number = self.medicalEpisodes?.count ?? 0
+        return number == 0 ?  "No patients": (number == 1 ? "1 patient" : "\(number) patients")
     }
     
     public var patientsArray: [Patient] {
-        let ptsList = self.patients as? Set<Patient> ?? []
-        return ptsList.sorted{
-            $0.wrappedName < $1.wrappedName
-        }
+        let episodeList = self.medicalEpisodes as? Set<MedicalEpisode> ?? []
+        return episodeList.compactMap{epi in epi.patient}
     }
 }
