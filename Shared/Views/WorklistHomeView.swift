@@ -18,26 +18,25 @@ struct WorklistHomeView: View {
     
     var body: some View {
         ZStack{
-            Color.Linen.edgesIgnoringSafeArea(.all)
+            Color.Whitesmoke.edgesIgnoringSafeArea(.all)
             VStack{
                 HStack{
                     Spacer()
-                    Button(action: {sheetToPresent = .navigator}){Image(systemName: "circles.hexagongrid")}
+                    Button(action: {sheetToPresent = .navigator}){Image(systemName: "circles.hexagongrid")}.padding()
                 }
                 Text("Active lists")
                 Divider()
                 ScrollView(.horizontal){
-                    Button(action:{self.sheetToPresent = .lastWorklist}){
-                        Text("Last worksheet").multilineTextAlignment(.center)
-                            .frame(width: 100, height: 150, alignment: .center)
-                            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.white))
-                            
-                    }.padding().shadow(color: Color.gray.opacity(0.3),radius: 5, y: 5)
+                    HStack{
+                        WorklistCardView(bottomText: "Last worklist").onTapGesture {
+                            self.sheetToPresent = .lastWorklist
+                        }
+                    }
                 }
                 Text("Pinned lists")
                 Divider()
                 Spacer()
-            }.padding()
+            }
             
         }
         .sheet(item: $sheetToPresent) { item in
@@ -50,12 +49,14 @@ struct WorklistHomeView: View {
                 WorklistNavigatorView(selectedList: $selectedList)
             }
         }.onAppear(){
-            if let _ = patientsList {
-                self.sheetToPresent = .lastWorklist
-            }
+            // add a setting variable to determine if should auto launch
+//            if let _ = patientsList {
+//                self.sheetToPresent = .lastWorklist
+//            }
         }
     }
 }
+
 
 enum wlHomeSheets: Identifiable {
     case lastWorklist, navigator
