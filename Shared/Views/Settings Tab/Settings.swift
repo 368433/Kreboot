@@ -14,6 +14,9 @@ struct Settings: View {
     var body: some View {
         Form {
             Section(
+                header: Text("Defaults"),
+                content: {ICDSettings()})
+            Section(
                 header: Text("Sync"),
                 content: {
                     Toggle("Sync with iCloud", isOn: $iCloudSynced)

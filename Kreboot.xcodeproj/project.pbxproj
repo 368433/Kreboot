@@ -376,7 +376,6 @@
 		3154A32625C8F2A400E20978 /* ICDImport  and view */ = {
 			isa = PBXGroup;
 			children = (
-				3149201425CDDEAC002D873C /* ICDSettings.swift */,
 				3154A35625C9DB7F00E20978 /* ICDdbTable3.swift */,
 				3154A35725C9DB7F00E20978 /* ICDProvider3.swift */,
 				3149200B25CB136B002D873C /* HelperFunctions.swift */,
@@ -414,6 +413,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		3173B7D625E829AF00E427DA /* Settings Tab */ = {
+			isa = PBXGroup;
+			children = (
+				6AAAF5FA25D9D7AD00B77FDB /* ICDSettingsFooter.swift */,
+				3149201425CDDEAC002D873C /* ICDSettings.swift */,
+				3149201325CDDEAC002D873C /* Settings.swift */,
+			);
+			path = "Settings Tab";
+			sourceTree = "<group>";
+		};
 		3175138E25D9921500C2B8CB /* JSON on disk DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,21 +457,20 @@
 				6A54659925D9CEA300AC55A0 /* DiagnosisSearchView.swift */,
 				3146971125D7A00100CEEDFD /* EmptyWorklistView.swift */,
 				31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */,
-				6AAAF5FA25D9D7AD00B77FDB /* ICDSettingsFooter.swift */,
 				3118EFF025C5E88F002B3711 /* ListFormView.swift */,
 				3118F01325C615F1002B3711 /* ListRow.swift */,
 				3169014325D8DCCB00B6403A /* MedicalActRow.swift */,
 				3196DA6025DB3D6800696068 /* MedicalEpisodeFormView.swift */,
 				3146972925D8C17B00CEEDFD /* MedicalEpisodeRow.swift */,
-				319277FC25E75C7D00D162AF /* WorklistCardView.swift */,
 				3118EFC125C59993002B3711 /* PatientFormView.swift */,
 				311C861C25C6E9F20021E596 /* PatientRowAddView.swift */,
 				3118F00225C608BD002B3711 /* PatientRowView.swift */,
 				311CA82B25C5774700E4513A /* PatientsDBView.swift */,
 				31643EC225D63A360009BF9C /* RoomChangeView.swift */,
-				3149201325CDDEAC002D873C /* Settings.swift */,
+				3173B7D625E829AF00E427DA /* Settings Tab */,
 				6A05183725CDF36100527AF1 /* UIEmptyState.swift */,
 				31A6F00325E1EE8000BE9E55 /* Unused views */,
+				319277FC25E75C7D00D162AF /* WorklistCardView.swift */,
 				318F5DB325E2A9DF00D7A925 /* WorklistComponentViews.swift */,
 				3101281425E496DA006BBBED /* WorklistHomeView.swift */,
 				31428C9725E81F55005AE875 /* WorklistHomeViewVariation1.swift */,
