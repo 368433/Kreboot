@@ -60,24 +60,16 @@ struct WorklistHeaderButtons: View {
 struct WorklistTitleHeader: View {
     @ObservedObject var model: WorklistViewModel
     var body: some View {
-        ZStack (alignment:.topTrailing){
-            Color.white.shadow(color: Color.gray.opacity(0.4),radius: 8, y:7)
-            VStack(spacing:0){
-                Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
-                HStack{
-                    Text("\(model.list.listStatus.label) list").fontWeight(.ultraLight)
-                    Divider().frame(height: 8)
-                    Text("Week of \(model.list.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
-                }.font(.footnote)
-                Divider()
-                HStack(alignment: .center){
-                    Spacer()
-                    Text("\(model.episodesList.count) \(model.episodesList.count > 1 ? "pts":"pt")").fontWeight(.black)
-                    Text("\(model.cardsFilter.label)").fontWeight(.ultraLight).font(.caption)
-                    Spacer()
-                }
-            }.padding([.horizontal, .top]).padding(.top)//.background(Color.white)
-            Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}.padding()
-        }.frame(height: 112)
+        VStack(alignment: .trailing){
+            Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}
+            Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
+            HStack{
+                Text("\(model.list.listStatus.label) list").fontWeight(.light)
+                Text("Week of \(model.list.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
+                Text("\(model.episodesList.count) \(model.episodesList.count > 1 ? "pts":"pt")").fontWeight(.semibold)
+                Text("\(model.cardsFilter.label)").fontWeight(.ultraLight).font(.caption)
+            }.font(.footnote)
+            Divider()
+        }.padding([.horizontal, .top]).background(Color.white)
     }
 }

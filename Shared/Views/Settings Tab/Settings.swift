@@ -7,7 +7,21 @@
 
 import SwiftUI
 
+//ViewModel
+class SettingsViewModel: ObservableObject {
+    @Published var showLastList: Bool = false
+    
+    init(){
+        self .showLastList = UserDefaults.standard.bool(forKey: "showLastList")
+    }
+    
+    func setShowLastList(){
+        UserDefaults.standard.set(showLastList, forKey: "showLastList")
+    }
+}
+
 struct Settings: View {
+    @ObservedObject private var model = SettingsViewModel()
     @State private var iCloudSynced: Bool = false
     @State private var firebaseSynced: Bool = false
     
@@ -15,7 +29,7 @@ struct Settings: View {
         Form {
             Section(
                 header: Text("Defaults"),
-                content: {DefaultSettingsSectionView()})
+                content: {DefaultSettingsSectionView(settingsModel: model)})
             Section(
                 header: Text("Sync"),
                 content: {
@@ -24,13 +38,8 @@ struct Settings: View {
                 })
             Section(
                 header: Text("Databases"),
-                footer: ICDSettingsFooter().padding(.bottom),
-                content: {ICDSettings()})
-
-            Section(
-                header: Text("Check Database"),
-                footer: Text("Ensure no nil UUID. Attach unassigned Episodes to UnassignedList").padding(.bottom),
-                content: {Text("Needs implementation")})
+                footer: DatabasesSettingsFooter().padding(.bottom),
+                content: {DatabasesSettingsView()})
         }
         .navigationBarTitle("Settings")
     }

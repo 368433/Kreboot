@@ -8,16 +8,15 @@
 import SwiftUI
 import CoreData
 
-struct WorklistHomeView: View {
+//ViewModel
+class WorklistHomeViewModel: ObservableObject {
+    @Published var lastOpenedList: PatientsList?
+    @Published var listGroup: ListFilterEnum = .active
+    var showLastList: Bool {
+        return UserDefaults.standard.bool(forKey: "showLastList")
+    }
     
-    @Environment(\.presentationMode) private var presentationMode
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @State private var sheetToPresent: wlHomeSheets? = nil
-    @State private var listGroup: ListFilterEnum = .active
-
-    @State var selectedList: PatientsList? = nil
-    var lastOpenedList: PatientsList? {
+    func getLastOpenedList() -> PatientsList?{
         if let uniqueID = UserDefaults.standard.string(forKey: "lastListSelected") {
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PatientsList")
             request.predicate = NSPredicate(format: "uniqueID == %@", uniqueID)
@@ -27,7 +26,17 @@ struct WorklistHomeView: View {
         }
         return nil
     }
+}
 
+//View
+struct WorklistHomeView: View {
+    
+    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @State private var sheetToPresent: wlHomeSheets? = nil
+    @State var selectedList: PatientsList? = nil
+    @ObservedObject private var model = WorklistHomeViewModel()
     
     var body: some View {
         VStack (alignment: .center){
@@ -37,26 +46,25 @@ struct WorklistHomeView: View {
                 Button(action: {self.sheetToPresent = .listFormView}){Image(systemName:"plus")}
             }.padding([.top, .horizontal])
             
-            Picker("List filter", selection: $listGroup) {
+            Picker("List filter", selection: $model.listGroup) {
                 ForEach(ListFilterEnum.allCases, id:\.self){option in
                     Text(option.label).tag(option)
                 }
             }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
-
+            
             List {
-                CoreDataProvider(sorting: listGroup.descriptors, predicate: listGroup.predicate) { (list: PatientsList) in
+                CoreDataProvider(sorting: model.listGroup.descriptors, predicate: model.listGroup.predicate) { (list: PatientsList) in
                     ListRow(list: list)
                         .onTapGesture{
                             self.selectedList = list
                             self.sheetToPresent = .selectedList
-                            self.presentationMode.wrappedValue.dismiss()
                         }
                 }
             }
             .sheet(item: $sheetToPresent){ item in
                 switch item {
                 case .lastWorklist:
-                    if let list = lastOpenedList {
+                    if let list = model.getLastOpenedList() {
                         WorklistView(list: list)
                     }
                 case .listFormView:
@@ -68,6 +76,10 @@ struct WorklistHomeView: View {
                 default:
                     EmptyView()
                 }
+            }
+        }.onAppear{
+            if model.showLastList{
+                self.sheetToPresent = .lastWorklist
             }
         }
     }

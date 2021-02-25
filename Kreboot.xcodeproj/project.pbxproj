@@ -59,7 +59,7 @@
 		3149200C25CB136B002D873C /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149200B25CB136B002D873C /* HelperFunctions.swift */; };
 		3149201625CDDEAC002D873C /* Button modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149201225CDDEAC002D873C /* Button modifiers.swift */; };
 		3149201725CDDEAC002D873C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149201325CDDEAC002D873C /* Settings.swift */; };
-		3149201825CDDEAC002D873C /* ICDSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149201425CDDEAC002D873C /* ICDSettings.swift */; };
+		3149201825CDDEAC002D873C /* DatabasesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149201425CDDEAC002D873C /* DatabasesSettingsView.swift */; };
 		3149201925CDDEAC002D873C /* Karla Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149201525CDDEAC002D873C /* Karla Protocols.swift */; };
 		314C9A7E25C7720800E5B9FE /* PatientRow2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C9A7D25C7720800E5B9FE /* PatientRow2.swift */; };
 		314C9A7F25C7720800E5B9FE /* PatientRow2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314C9A7D25C7720800E5B9FE /* PatientRow2.swift */; };
@@ -124,7 +124,7 @@
 		6A66E52725D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */; };
 		6A7177FB25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
 		6A7177FC25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */; };
-		6AAAF5FB25D9D7AD00B77FDB /* ICDSettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAF5FA25D9D7AD00B77FDB /* ICDSettingsFooter.swift */; };
+		6AAAF5FB25D9D7AD00B77FDB /* DatabasesSettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAF5FA25D9D7AD00B77FDB /* DatabasesSettingsFooter.swift */; };
 		6AD71C4625D88B0200840B6B /* WorklistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */; };
 		6AD71C4725D88B0200840B6B /* WorklistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */; };
 		6AD71C4D25D88B6400840B6B /* WorklistActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD71C4C25D88B6400840B6B /* WorklistActionButtons.swift */; };
@@ -195,7 +195,7 @@
 		3149200B25CB136B002D873C /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		3149201225CDDEAC002D873C /* Button modifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button modifiers.swift"; sourceTree = "<group>"; };
 		3149201325CDDEAC002D873C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		3149201425CDDEAC002D873C /* ICDSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICDSettings.swift; sourceTree = "<group>"; };
+		3149201425CDDEAC002D873C /* DatabasesSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabasesSettingsView.swift; sourceTree = "<group>"; };
 		3149201525CDDEAC002D873C /* Karla Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Karla Protocols.swift"; sourceTree = "<group>"; };
 		314C9A7D25C7720800E5B9FE /* PatientRow2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRow2.swift; sourceTree = "<group>"; };
 		31548B8A25C71A6F00097F2F /* ListFilterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilterEnum.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		6A54659925D9CEA300AC55A0 /* DiagnosisSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosisSearchView.swift; sourceTree = "<group>"; };
 		6A66E52525D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosisSearchViewModel.swift; sourceTree = "<group>"; };
 		6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistViewModel.swift; sourceTree = "<group>"; };
-		6AAAF5FA25D9D7AD00B77FDB /* ICDSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDSettingsFooter.swift; sourceTree = "<group>"; };
+		6AAAF5FA25D9D7AD00B77FDB /* DatabasesSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasesSettingsFooter.swift; sourceTree = "<group>"; };
 		6AD71C4525D88B0200840B6B /* WorklistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistHeaderView.swift; sourceTree = "<group>"; };
 		6AD71C4C25D88B6400840B6B /* WorklistActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistActionButtons.swift; sourceTree = "<group>"; };
 		6AD893B825DC25EF003598A9 /* MedicalEpisodeRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalEpisodeRowViewModel.swift; sourceTree = "<group>"; };
@@ -419,8 +419,8 @@
 			isa = PBXGroup;
 			children = (
 				3173B7D725E829EB00E427DA /* DefaultSettingsSectionView.swift */,
-				3149201425CDDEAC002D873C /* ICDSettings.swift */,
-				6AAAF5FA25D9D7AD00B77FDB /* ICDSettingsFooter.swift */,
+				3149201425CDDEAC002D873C /* DatabasesSettingsView.swift */,
+				6AAAF5FA25D9D7AD00B77FDB /* DatabasesSettingsFooter.swift */,
 				3149201325CDDEAC002D873C /* Settings.swift */,
 			);
 			path = "Settings Tab";
@@ -668,7 +668,7 @@
 				6A51F72A25D8825A0060AE35 /* VerticalLabel.swift in Sources */,
 				3118F00325C608BD002B3711 /* PatientRowView.swift in Sources */,
 				311CA85625C5774900E4513A /* KrebootApp.swift in Sources */,
-				3149201825CDDEAC002D873C /* ICDSettings.swift in Sources */,
+				3149201825CDDEAC002D873C /* DatabasesSettingsView.swift in Sources */,
 				6A7177FB25D73D5300C29CE9 /* WorklistViewModel.swift in Sources */,
 				3146970825D79B2C00CEEDFD /* CheckmarkToggleStyle.swift in Sources */,
 				6A54659325D9CE6D00AC55A0 /* BoolNegation.swift in Sources */,
@@ -735,7 +735,7 @@
 				3173B7D825E829EB00E427DA /* DefaultSettingsSectionView.swift in Sources */,
 				31015B3925C9E426006D843D /* ICDDataBridge.swift in Sources */,
 				3154A32E25C8F34400E20978 /* ICD10Code.swift in Sources */,
-				6AAAF5FB25D9D7AD00B77FDB /* ICDSettingsFooter.swift in Sources */,
+				6AAAF5FB25D9D7AD00B77FDB /* DatabasesSettingsFooter.swift in Sources */,
 				3146971825D7A18D00CEEDFD /* Custom colors.swift in Sources */,
 				318F5DB425E2A9DF00D7A925 /* WorklistComponentViews.swift in Sources */,
 			);

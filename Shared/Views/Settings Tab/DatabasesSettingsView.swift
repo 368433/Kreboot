@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ICDSettings: View {
+struct DatabasesSettingsView: View {
     @ObservedObject private var idcDataProvider = ICDCodesProvider3()
     
     var body: some View {
@@ -19,11 +19,14 @@ struct ICDSettings: View {
         }
         HStack{
             Text("Physicians database")
+            Spacer()
             Button(action: {}){Text("Implement")}
         }
         HStack{
             Text("Internal database Check")
+            Spacer()
             Button(action: {}){Text("Implement")}
+            /**Ensure no nil UUID. Attach unassigned Episodes to UnassignedList*/
         }
     }
     
@@ -53,6 +56,6 @@ struct ICDSettings: View {
 
 struct ICDSettings_Previews: PreviewProvider {
     static var previews: some View {
-        ICDSettings()
+        DatabasesSettingsView()
     }
 }

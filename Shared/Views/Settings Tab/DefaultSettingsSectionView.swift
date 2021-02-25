@@ -8,21 +8,11 @@
 import SwiftUI
 
 struct DefaultSettingsSectionView: View {
-    @State private var lastListShown: Bool = false {
-        didSet{
-            print("action")
-        }
-    }
+    @ObservedObject var settingsModel: SettingsViewModel
     
     var body: some View {
-        Toggle("Show Last list on appear", isOn: $lastListShown).onTapGesture {
-            print("test")
+        Toggle("Show Last list on appear", isOn: $settingsModel.showLastList).onReceive(settingsModel.$showLastList){ show in
+            settingsModel.setShowLastList()
         }
-    }
-}
-
-struct DefaultSettingsSectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        DefaultSettingsSectionView()
     }
 }

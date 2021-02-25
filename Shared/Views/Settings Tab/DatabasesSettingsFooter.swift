@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ICDSettingsFooter: View {
+struct DatabasesSettingsFooter: View {
     var body: some View {
         HStack(alignment: .center) {
             Text("ICD: ")
@@ -21,6 +21,6 @@ struct ICDSettingsFooter: View {
 
 struct ICDSettingsFooter_Previews: PreviewProvider {
     static var previews: some View {
-        ICDSettingsFooter()
+        DatabasesSettingsFooter()
     }
 }
