@@ -133,10 +133,10 @@ struct SimpleListOfList: View {
 struct CardsListOfList: View {
     @ObservedObject var model: WorklistHomeViewModel
     private var list : [PatientsList]
+    static private var cardWidth: CGFloat = 180
     
-    let rows = [GridItem(.flexible(minimum: 100, maximum: 140)),
-                GridItem(.flexible(minimum: 100, maximum: 140)),
-                GridItem(.flexible(minimum: 100, maximum: 140))]
+    let columns = [GridItem(.fixed(cardWidth)),
+                   GridItem(.fixed(cardWidth))]
     
     init(model: WorklistHomeViewModel){
         self.model = model
@@ -144,21 +144,20 @@ struct CardsListOfList: View {
     }
     
     var body: some View{
-        ScrollView(.vertical, showsIndicators: false){
-            LazyHGrid(rows: rows, alignment: .center){
+        ScrollView(showsIndicators: false){
+            LazyVGrid(columns: columns, alignment: .center){
                 ForEach(list) { list in
                     ListCard(list: list)
                 }
-            }.border(Color.black)
-        }//.padding(.horizontal, -20)
+            }
+        }
     }
 }
 
 struct ListCard: View {
     @ObservedObject var list: PatientsList
-    private var cardWidth: CGFloat = 140
     private var cornerRadius: CGFloat = 15
-    private var bgColor: Color = .white
+    private var bgColor: Color = .Whitesmoke
     private var strokeColor: Color = .gray
     
     init(list: PatientsList){
@@ -169,14 +168,16 @@ struct ListCard: View {
         ZStack {
             bgColor
             VStack{
-                Text(list.title ?? "No title").fontWeight(.bold).font(.headline)
+                Text(list.title ?? "No title").fontWeight(.semibold)
                 Spacer()
-            }.padding(.vertical)
+                Text("testing")
+                Text("testing")
+                Text("testing")
+                Text("testing")
+            }.padding()
         }
-        .frame(width: cardWidth, height: cardWidth * 1.4)
         .cornerRadius(cornerRadius)
-//        .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(strokeColor.opacity(0.1), lineWidth: 1))
-        .shadow(color: Color.gray.opacity(0.4), radius: 3, x: 0, y: 2)
+        .shadow(color: Color.black.opacity(0.25), radius: 4, x: 0, y: 2)
         .padding()
     }
 }
