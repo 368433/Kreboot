@@ -19,7 +19,7 @@ struct WorklistView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack {
             WorklistCardsList(model: model).offset(y:10)
             VStack{
                 ZStack(alignment: .topLeading){
@@ -28,7 +28,7 @@ struct WorklistView: View {
                 }
                 WorklistHeaderButtons(model: model)
             }
-            
+
         }
         .sheet(item: $model.activeSheet) { item in
             switch item {
@@ -43,7 +43,9 @@ struct WorklistView: View {
                     MedicalEpisodeFormView(episode: episode).environment(\.managedObjectContext, self.viewContext)
                 }
             case .editRoom:
-                RoomChangeView(episode: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
+                if let episode = model.selectedEpisode {
+                    RoomChangeView(episode: episode).environment(\.managedObjectContext, self.viewContext)
+                }
             default:
                 EmptyView()
             }

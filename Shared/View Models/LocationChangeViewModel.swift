@@ -10,15 +10,20 @@ import Foundation
 class LocationChangeViewModel: ObservableObject {
     @Published var currentRoom: String
     @Published var newRoom: String = ""
-    private var episode: MedicalEpisode?
+    var worklistModel: WorklistViewModel?
+    private var episode: MedicalEpisode
     
-    init(episode: MedicalEpisode?){
+    init(episode: MedicalEpisode, wlModel: WorklistViewModel?){
         self.episode = episode
-        self._currentRoom = Published(initialValue: self.episode?.roomLocation ?? "Not available")
+        self.worklistModel = wlModel
+        self.currentRoom = self.episode.roomLocation ?? "Not available"
     }
+    
     func save(){
-        guard let episode = episode else {return}
         episode.roomLocation = newRoom
+        if let worklistModel = worklistModel {
+            worklistModel.editRoom.toggle()
+        }
         episode.saveYourself(in: PersistenceController.shared.container.viewContext)
     }
 }

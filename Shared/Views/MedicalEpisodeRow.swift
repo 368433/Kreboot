@@ -52,7 +52,7 @@ struct MedicalEpisodeRow: View {
                 Spacer()
                 Group{
                     Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}.scaledToFit().minimumScaleFactor(0.3)
-                    Button(action:{}){Image(systemName: "flag")}
+                    Button(action: rowModel.flagEpisode){Image(systemName: rowModel.flaggedEpisode ? "flag.fill":"flag").foregroundColor(rowModel.flaggedEpisode ? Color.red:Color.black)}
                     Button(action: rowModel.addAct){Image(systemName: "plus")}
                     Button(action: {}){Image(systemName: "arrowshape.bounce.forward")}
                 }

@@ -14,7 +14,9 @@ struct RoomChangeView: View {
     
     @ObservedObject private var model: LocationChangeViewModel
 
-    init(episode: MedicalEpisode?){self.model = LocationChangeViewModel(episode: episode)}
+    init(worklistModel: WorklistViewModel? = nil, episode: MedicalEpisode){
+        self.model = LocationChangeViewModel(episode: episode, wlModel: worklistModel)
+    }
     
     var body: some View {
         Form {
@@ -30,14 +32,13 @@ struct RoomChangeView: View {
                 TextField("Enter new location", text: $model.newRoom)
             }
             
-            Button(action: {self.model.save();presentationMode.wrappedValue.dismiss()}){
+            Button(action: {self.model.save()}){
                 HStack{
                     Spacer(); Text("Save").fontWeight(.bold); Spacer()
                 }
             }
         }
         .navigationBarTitle("Update room location")
-
     }
 }
 
@@ -55,6 +56,6 @@ struct NewRoomView: View {
 
 struct RoomChangeView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomChangeView(episode: nil)
+        RoomChangeView(worklistModel: WorklistViewModel(patientsList: PersistenceController.singleList), episode: PersistenceController.singleMedicalEpisode)
     }
 }

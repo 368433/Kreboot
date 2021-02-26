@@ -17,6 +17,7 @@ class WorklistViewModel: ObservableObject {
     
     @Published var activeSheet: ActiveSheet? = nil
     @Published var hideActionButton: Bool = false
+    @Published var editRoom: Bool = false
     
     @Published var cardsFilter: EpisodeFilterEnum = .toSee
     @Published var cardsSort: EpisodeSortEnum = .name

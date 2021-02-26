@@ -68,8 +68,8 @@ struct WorklistHomeView: View {
                 Spacer()
                 Text("Worklists").font(.largeTitle).fontWeight(.black)
                 Spacer()
-                Button(action:{self.displayMode = .cards}){Image(systemName: "square.grid.2x2")}
-                Button(action:{self.displayMode = .list}){Image(systemName: "list.bullet")}
+                Button(action:{self.displayMode = .cards}){Image(systemName: self.displayMode == .cards ? "square.grid.2x2.fill":"square.grid.2x2")}
+                Button(action:{self.displayMode = .list}){Image(systemName: self.displayMode == .list ? "rectangle.split.1x2.fill":"rectangle.split.1x2")}
                 Button(action: { self.model.sheetToPresent = .listFormView }) { Image(systemName:"plus") }
             }
             
@@ -83,7 +83,7 @@ struct WorklistHomeView: View {
             case .list:
                 SimpleListOfList(model: model)
             case .cards:
-                EmptyView()
+                CardsListOfList()
             }
             Spacer()
         }.padding()
@@ -107,6 +107,7 @@ struct WorklistHomeView: View {
 
 struct SimpleListOfList: View {
     @ObservedObject var model: WorklistHomeViewModel
+    
     private var list: [PatientsList]
     
     init(model: WorklistHomeViewModel){
@@ -123,7 +124,37 @@ struct SimpleListOfList: View {
                         self.model.sheetToPresent = .selectedList
                     }
             }
-        }.emptyContent(if: list.count == 0, show: "list.bullet.rectangle", caption: "No \(model.listGroup.label) list")
+        }
+        .emptyContent(if: list.count == 0, show: "list.bullet.rectangle", caption: "No \(model.listGroup.label) list")
+    }
+}
+
+struct CardsListOfList: View {
+    var body: some View{
+        ScrollView(.horizontal){
+            HStack{
+                ForEach(0..<10) { index in
+                    ListCard()
+                }
+            }
+        }.padding(.horizontal, -20)
+    }
+}
+
+struct ListCard: View {
+    private var cardWidth: CGFloat = 160
+    private var cornerRadius: CGFloat = 8
+    private var bgColor: Color = .Salmon
+    private var strokeColor: Color = .Lightgray
+    
+    var body: some View {
+        ZStack {
+            bgColor
+        }
+        .frame(width: cardWidth, height: cardWidth * 1.68)
+        .cornerRadius(cornerRadius)
+        .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(strokeColor, lineWidth: 2))
+        .padding()
     }
 }
 

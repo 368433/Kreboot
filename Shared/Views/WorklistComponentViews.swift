@@ -50,6 +50,8 @@ struct WorklistHeaderButtons: View {
                 
             }.font(.headline).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 5)
             
+            Spacer()
+            
             if showFilter {
                 Spacer()
                 FilterAndSortPickerView(
@@ -60,12 +62,13 @@ struct WorklistHeaderButtons: View {
                 )
                 .transition(.move(edge: .bottom))
             }
-        }.animation(.easeIn(duration: 0.15))
+        }.animation(.easeIn(duration: 0.10))
     }
 }
 
 struct WorklistTitleHeader: View {
     @ObservedObject var model: WorklistViewModel
+    
     var body: some View {
         VStack(alignment: .trailing){
             Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}

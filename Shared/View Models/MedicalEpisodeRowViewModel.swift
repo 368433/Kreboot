@@ -14,6 +14,7 @@ class MedicalEpisodeRowViewModel: ObservableObject {
     @Published var diagnosis: String
     @Published var patientName: String
     @Published var roomNumber: String
+    @Published var flaggedEpisode: Bool
 
     
     @Published var worklistModel: WorklistViewModel
@@ -24,6 +25,7 @@ class MedicalEpisodeRowViewModel: ObservableObject {
         self.diagnosis = episode.diagnosis?.icd10Description ?? "Diagnosis"
         self.patientName = episode.patient?.name ?? "No name"
         self.roomNumber = episode.roomLocation ?? "room"
+        self.flaggedEpisode = episode.flagged
     }
     
 //    func chooseDiagnosis(){
@@ -32,12 +34,21 @@ class MedicalEpisodeRowViewModel: ObservableObject {
 //    }
 //    
     func chooseRoom(){
-        worklistModel.activeSheet = .editRoom; worklistModel.selectedEpisode = episode
+        worklistModel.selectedEpisode = episode
+        worklistModel.activeSheet = .editRoom
+        worklistModel.editRoom.toggle()
     }
 //    func editPatient(){
 //        worklistModel.activeSheet = .showIdCard; worklistModel.selectedEpisode = episode
 //    }
     func addAct(){
-        worklistModel.activeSheet = .addAct; worklistModel.selectedEpisode = episode
+        worklistModel.activeSheet = .addAct
+        worklistModel.selectedEpisode = episode
+    }
+    
+    func flagEpisode(){
+        self.flaggedEpisode.toggle()
+        self.episode.flagged = flaggedEpisode
+        self.episode.saveYourself(in: PersistenceController.shared.container.viewContext)
     }
 }
