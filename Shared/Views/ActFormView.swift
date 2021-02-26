@@ -93,7 +93,7 @@ struct ActFormView: View {
                     }
                 }
             }//.padding(.top)
-        }.background(Color.yellow)
+        }
     }
 }
 

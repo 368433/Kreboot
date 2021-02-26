@@ -83,9 +83,10 @@ struct WorklistHomeView: View {
             case .list:
                 SimpleListOfList(model: model)
             case .cards:
-                CardsListOfList()
+                CardsListOfList(model: model)
             }
             Spacer()
+            
         }.padding()
         .onAppear{
             if model.showLastList{self.model.sheetToPresent = .lastWorklist}
@@ -130,30 +131,52 @@ struct SimpleListOfList: View {
 }
 
 struct CardsListOfList: View {
+    @ObservedObject var model: WorklistHomeViewModel
+    private var list : [PatientsList]
+    
+    let rows = [GridItem(.flexible(minimum: 100, maximum: 140)),
+                GridItem(.flexible(minimum: 100, maximum: 140)),
+                GridItem(.flexible(minimum: 100, maximum: 140))]
+    
+    init(model: WorklistHomeViewModel){
+        self.model = model
+        self.list = model.getList()
+    }
+    
     var body: some View{
-        ScrollView(.horizontal){
-            HStack{
-                ForEach(0..<10) { index in
-                    ListCard()
+        ScrollView(.vertical, showsIndicators: false){
+            LazyHGrid(rows: rows, alignment: .center){
+                ForEach(list) { list in
+                    ListCard(list: list)
                 }
-            }
-        }.padding(.horizontal, -20)
+            }.border(Color.black)
+        }//.padding(.horizontal, -20)
     }
 }
 
 struct ListCard: View {
-    private var cardWidth: CGFloat = 160
-    private var cornerRadius: CGFloat = 8
-    private var bgColor: Color = .Salmon
-    private var strokeColor: Color = .Lightgray
+    @ObservedObject var list: PatientsList
+    private var cardWidth: CGFloat = 140
+    private var cornerRadius: CGFloat = 15
+    private var bgColor: Color = .white
+    private var strokeColor: Color = .gray
+    
+    init(list: PatientsList){
+        self.list = list
+    }
     
     var body: some View {
         ZStack {
             bgColor
+            VStack{
+                Text(list.title ?? "No title").fontWeight(.bold).font(.headline)
+                Spacer()
+            }.padding(.vertical)
         }
-        .frame(width: cardWidth, height: cardWidth * 1.68)
+        .frame(width: cardWidth, height: cardWidth * 1.4)
         .cornerRadius(cornerRadius)
-        .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(strokeColor, lineWidth: 2))
+//        .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(strokeColor.opacity(0.1), lineWidth: 1))
+        .shadow(color: Color.gray.opacity(0.4), radius: 3, x: 0, y: 2)
         .padding()
     }
 }
