@@ -45,10 +45,10 @@ struct MedicalEpisodeRow: View {
             Divider()
             HStack{
                 HStack{
-                    daysCountView(dayCount: 20, dayLabel: "#hosp")
+                    daysCountView(dayCount: rowModel.episode.daysSinceAdmission, dayLabel: "#hosp")
                     Divider().frame(height: 30)
-                    daysCountView(dayCount: 2, dayLabel: "#seen")
-                }
+                    daysCountView(dayCount: rowModel.episode.daysSinceSeen, dayLabel: "#seen")
+                }.minimumScaleFactor(0.3)
                 Spacer()
                 Group{
                     Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}.scaledToFit().minimumScaleFactor(0.3)

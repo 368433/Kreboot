@@ -27,20 +27,16 @@ class MedicalEpisodeRowViewModel: ObservableObject {
         self.roomNumber = episode.roomLocation ?? "room"
         self.flaggedEpisode = episode.flagged
     }
-    
-//    func chooseDiagnosis(){
-//        worklistModel.activeSheet = .setDiagnosis
-//        worklistModel.selectedEpisode = episode
-//    }
-//    
+
     func chooseRoom(){
         worklistModel.selectedEpisode = episode
-        worklistModel.activeSheet = .editRoom
-        worklistModel.editRoom.toggle()
+//        worklistModel.activeSheet = .editRoom
+        worklistModel.showRoomEdit()
     }
 //    func editPatient(){
 //        worklistModel.activeSheet = .showIdCard; worklistModel.selectedEpisode = episode
 //    }
+    
     func addAct(){
         worklistModel.activeSheet = .addAct
         worklistModel.selectedEpisode = episode

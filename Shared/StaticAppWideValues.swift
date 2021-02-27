@@ -13,8 +13,9 @@ extension CGFloat {
 }
 
 enum Karla {
-    static var strokeOpacity: Double = 0.4
+    static var strokeOpacity: Double = 0.3
     static var shadowOpacity: Double = 0.4
     static var cornerRadius: CGFloat = 10
+    static var animationSpeed: Double = 0.1
     case bon
 }

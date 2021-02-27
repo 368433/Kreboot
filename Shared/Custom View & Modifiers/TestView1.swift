@@ -8,25 +8,14 @@
 import SwiftUI
 
 struct TestView1: View {
-    @State private var showActionSheet = false
-
-        var body: some View {
-            VStack {
-                Button("Show action sheet") {
-                    self.showActionSheet = true
-                }
-            }.actionSheet(isPresented: $showActionSheet) {
-                ActionSheet(
-                    title: Text("Actions"),
-                    message: Text("Available actions"),
-                    buttons: [
-                        .cancel { print(self.showActionSheet) },
-                        .default(Text("Action")),
-                        .destructive(Text("Delete"))
-                    ]
-                )
-            }
+    
+    var body: some View {
+        ZStack{
+            Color.Whitesmoke.rotationEffect(.degrees(5)).shadow(radius: 10).opacity(0.8)
+            Color.Whitesmoke.shadow(radius: 10)
         }
+        .frame(width: 150, height: 300)
+    }
 }
 
 struct TestView1_Previews: PreviewProvider {

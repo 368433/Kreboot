@@ -50,7 +50,9 @@ struct FilterAndSortPickerView: View {
                     }
                 }
             }
-        }.padding().background(Color.white).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10).padding(.horizontal)
+        }.padding()
+        .background(Color.white)
+        .shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10).padding(.horizontal)
     }
 }
 

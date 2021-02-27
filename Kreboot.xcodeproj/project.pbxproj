@@ -50,6 +50,8 @@
 		311CA85D25C5774900E4513A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311CA82D25C5774800E4513A /* Assets.xcassets */; };
 		3121443825DA489B006E25C9 /* SwipeGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3121443725DA489B006E25C9 /* SwipeGesture.swift */; };
 		3129D75D25D55B18000EAA5C /* TestView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129D75C25D55B18000EAA5C /* TestView1.swift */; };
+		3136A46B25EA9A8B00780B4A /* WorklistOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3136A46A25EA9A8B00780B4A /* WorklistOptionsView.swift */; };
+		3136A46C25EA9A8B00780B4A /* WorklistOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3136A46A25EA9A8B00780B4A /* WorklistOptionsView.swift */; };
 		31428C9825E81F55005AE875 /* WorklistHomeViewVariation1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31428C9725E81F55005AE875 /* WorklistHomeViewVariation1.swift */; };
 		31428C9925E81F55005AE875 /* WorklistHomeViewVariation1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31428C9725E81F55005AE875 /* WorklistHomeViewVariation1.swift */; };
 		3146970225D79A8000CEEDFD /* TrlnClsrBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3146970125D79A8000CEEDFD /* TrlnClsrBadge.swift */; };
@@ -190,6 +192,7 @@
 		311CA85325C5774900E4513A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3121443725DA489B006E25C9 /* SwipeGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGesture.swift; sourceTree = "<group>"; };
 		3129D75C25D55B18000EAA5C /* TestView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView1.swift; sourceTree = "<group>"; };
+		3136A46A25EA9A8B00780B4A /* WorklistOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistOptionsView.swift; sourceTree = "<group>"; };
 		31428C9725E81F55005AE875 /* WorklistHomeViewVariation1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistHomeViewVariation1.swift; sourceTree = "<group>"; };
 		3146970125D79A8000CEEDFD /* TrlnClsrBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrlnClsrBadge.swift; sourceTree = "<group>"; };
 		3146970725D79B2C00CEEDFD /* CheckmarkToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkToggleStyle.swift; sourceTree = "<group>"; };
@@ -481,6 +484,7 @@
 				31A6F00325E1EE8000BE9E55 /* Unused views */,
 				319277FC25E75C7D00D162AF /* WorklistCardView.swift */,
 				318F5DB325E2A9DF00D7A925 /* WorklistComponentViews.swift */,
+				3136A46A25EA9A8B00780B4A /* WorklistOptionsView.swift */,
 				3101281425E496DA006BBBED /* WorklistHomeView.swift */,
 				31428C9725E81F55005AE875 /* WorklistHomeViewVariation1.swift */,
 				3118EFE925C5E398002B3711 /* WorklistHomeViewVariation2.swift */,
@@ -694,6 +698,7 @@
 				6A51F74825D884330060AE35 /* Extensions customs.swift in Sources */,
 				311C861625C6E1860021E596 /* AddPatientToListView.swift in Sources */,
 				3169014F25D8F74200B6403A /* EpisodeSortEnum.swift in Sources */,
+				3136A46B25EA9A8B00780B4A /* WorklistOptionsView.swift in Sources */,
 				3115ED2F25DA3A0400E7A04E /* ActListViewModel.swift in Sources */,
 				3100075025E9B7A100EEB5FB /* StaticAppWideValues.swift in Sources */,
 				3154A35925C9DB7F00E20978 /* ICDProvider3.swift in Sources */,
@@ -782,6 +787,7 @@
 				319277FE25E75C7D00D162AF /* WorklistCardView.swift in Sources */,
 				311CA85525C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
 				3169012725D8CDE700B6403A /* ICDListView.swift in Sources */,
+				3136A46C25EA9A8B00780B4A /* WorklistOptionsView.swift in Sources */,
 				315E5A5A25C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
 				31548B8C25C71A6F00097F2F /* ListFilterEnum.swift in Sources */,
 				3169CDE325E09B0100E63CCC /* LocationChangeViewModel.swift in Sources */,

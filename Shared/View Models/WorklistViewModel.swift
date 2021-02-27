@@ -18,6 +18,7 @@ class WorklistViewModel: ObservableObject {
     @Published var activeSheet: ActiveSheet? = nil
     @Published var hideActionButton: Bool = false
     @Published var editRoom: Bool = false
+    @Published var showFilter: Bool = false
     
     @Published var cardsFilter: EpisodeFilterEnum = .toSee
     @Published var cardsSort: EpisodeSortEnum = .name
@@ -46,6 +47,18 @@ class WorklistViewModel: ObservableObject {
         let results = list.getEpisodeList(filteredBy: cardsFilter, sortedBy: cardsSort)
         self.episodesList = results
         return results
+    }
+    
+    func showRoomEdit(){
+        if editRoom {
+            editRoom.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now() + Karla.animationSpeed + 0.01) {
+                self.editRoom.toggle()
+            }
+            
+        } else {
+            editRoom.toggle()
+        }
     }
     
 }

@@ -13,23 +13,31 @@ struct WorklistView: View {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject private var model: WorklistViewModel
     
+    private var buttonHeight: CGFloat = 32
+    
     init(list: PatientsList ){
         self.model = WorklistViewModel(patientsList: list)
         self.model.cardsFilter = .toSee
     }
     
     var body: some View {
-        ZStack {
-            WorklistCardsList(model: model).offset(y:10)
-            VStack{
+        ZStack(alignment: .bottom){
+            VStack(spacing: 0){
                 ZStack(alignment: .topLeading){
-                    WorklistTitleHeader(model: model)
                     Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark").font(.title3)}.padding()
+                    WorklistTitleHeader(model: model)
                 }
-                WorklistHeaderButtons(model: model)
+                ZStack(alignment: .top){
+                    WorklistCardsList(model: model)
+                    ZStack{
+                        Rectangle().frame(height: 1).foregroundColor(.yellow)
+                        WorklistHeaderButtons(model: model).frame(height: buttonHeight)
+                    }.offset(y: -buttonHeight/2)
+                }
             }
-
-        }
+            WorklistOptionsView(model: model)
+            
+        }.animation(.easeIn(duration: Karla.animationSpeed))
         .sheet(item: $model.activeSheet) { item in
             switch item {
             case .editListDetails:

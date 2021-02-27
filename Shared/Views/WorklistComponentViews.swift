@@ -25,44 +25,36 @@ struct WorklistCardsList: View {
                         model.activeSheet = .medicalEpisodeFormView
                     }
                 }
-            }.padding(.top, 150)
-        }.emptyContent(if: episodes.isEmpty, show: "person.3", caption: "None")
+            }.padding(.top, 30)
+        }
+        .emptyContent(if: episodes.isEmpty, show: "person.3", caption: "None")
     }
 }
 
 struct WorklistHeaderButtons: View {
     @ObservedObject var model: WorklistViewModel
-    @State private var showFilter: Bool = false
     
     var body: some View {
         VStack(spacing: 0){
             
             HStack{
-                Button(action: {self.showFilter.toggle()}) {
-                    Image(systemName: "slider.vertical.3")
-                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: showFilter ? Color.gray : Color.Beige, textColor: .black))
+                Button(action: {model.showFilter.toggle()}) {
+                    Image(systemName: "slider.vertical.3").scaledToFit()
+                }
+                .buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: model.showFilter ? Color.gray : Color.Beige, textColor: .black))
                 
-                Divider().frame(height: 20)
+                Divider().frame(height: 25)
                 
                 Button(action: {model.activeSheet = .addPatient}){
-                    Image(systemName: "person.crop.circle.badge.plus")
-                }.buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
+                    Image(systemName: "person.crop.circle.badge.plus").scaledToFit()
+                }
+                .buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
                 
-            }.font(.headline).shadow(color: Color.gray.opacity(0.6), radius: 10, y: 5)
-            
-            Spacer()
-            
-            if showFilter {
-                Spacer()
-                FilterAndSortPickerView(
-                    startingFilter: model.cardsFilter,
-                    startingSort: model.cardsSort,
-                    filterFunc: {filter in model.cardsFilter = filter},
-                    sortFunc: {sort in model.cardsSort = sort}
-                )
-                .transition(.move(edge: .bottom))
             }
-        }.animation(.easeIn(duration: 0.10))
+//            .font(.headline)
+            .shadow(color: Color.gray.opacity(0.6), radius: 10, y: 5)
+            
+        }
     }
 }
 
@@ -70,16 +62,19 @@ struct WorklistTitleHeader: View {
     @ObservedObject var model: WorklistViewModel
     
     var body: some View {
-        VStack(alignment: .trailing){
-            Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}
-            Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
-            HStack{
-                Text("\(model.list.listStatus.label) list").fontWeight(.light)
-                Text("Week of \(model.list.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
-                Text("\(model.episodesList.count) \(model.episodesList.count > 1 ? "pts":"pt")").fontWeight(.semibold)
-                Text("\(model.cardsFilter.label)").fontWeight(.ultraLight).font(.caption)
-            }.font(.footnote)
-            Divider()
-        }.padding([.horizontal, .top]).background(Color.white)
+        HStack{
+            Spacer()
+            VStack(alignment: .trailing){
+                Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}
+                Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
+                HStack{
+                    Text("\(model.list.listStatus.label) list").fontWeight(.light)
+                    Text("Week of \(model.list.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
+                    Text("\(model.episodesList.count) \(model.episodesList.count > 1 ? "pts":"pt")").fontWeight(.semibold)
+                    Text("\(model.cardsFilter.label)").fontWeight(.ultraLight).font(.caption)
+                }.font(.footnote)
+            }.padding().padding(.bottom)
+            .background(Color.white)
+        }
     }
 }

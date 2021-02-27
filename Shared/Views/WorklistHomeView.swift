@@ -144,26 +144,27 @@ struct CardsListOfList: View {
     }
     
     var body: some View{
-        ScrollView(showsIndicators: false){
-            LazyVGrid(columns: columns, alignment: .center){
-                ForEach(list) { list in
-                    ListCard(list: list)
-                        .onTapGesture{
-                            self.model.selectedList = list
-                            self.model.sheetToPresent = .selectedList
-                        }
+        GeometryReader { gp in
+            ScrollView(showsIndicators: false){
+                LazyVGrid(columns: columns, alignment: .center){
+                    ForEach(list) { list in
+                        ListCard(list: list)
+                            .onTapGesture{
+                                self.model.selectedList = list
+                                self.model.sheetToPresent = .selectedList
+                            }
+                    }
                 }
-            }
+            }.frame(width: gp.size.width)
         }
     }
 }
 
 struct ListCard: View {
     @ObservedObject var list: PatientsList
-    private var cornerRadius: CGFloat = 15
     private var bgColor: Color = .Whitesmoke
     private var strokeColor: Color = .offgray
-    private var height: CGFloat = 170
+    private var height: CGFloat = 180
     
     init(list: PatientsList){
         self.list = list
@@ -171,17 +172,17 @@ struct ListCard: View {
     
     var body: some View {
         ZStack {
+            bgColor.rotationEffect(.degrees(10)).shadow(color: Color.gray.opacity(Karla.shadowOpacity), radius: 4, x: 0, y: 2)
             bgColor
+                .cornerRadius(Karla.cornerRadius)
+                .shadow(color: Color.gray.opacity(0.25), radius: 4, x: 0, y: 2)
             VStack{
-                Text(list.title ?? "No title").fontWeight(.semibold)
+                Text(list.title ?? "No title").fontWeight(.semibold).font(.footnote)
                 Spacer()
                 Text(list.patientCountDescription).foregroundColor(.secondary).font(.caption)
             }.padding()
-        }
+        }.padding()
         .frame(height: height)
-        .cornerRadius(cornerRadius)
-        .shadow(color: Color.black.opacity(0.25), radius: 4, x: 0, y: 2)
-        .padding()
     }
 }
 

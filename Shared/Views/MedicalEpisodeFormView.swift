@@ -60,7 +60,7 @@ struct MedicalEpisodeFormView: View {
                     NavigationLink(destination: Text("physician"), label: {Label("Consulting physician", systemImage: "figure.wave")})
                     NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(episode.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
                     DisclosureGroup(content: {
-                        DatePicker(selection: $episode.startDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
+                        DatePicker(selection: $episode.admissionDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
                         DatePicker("Start", selection: $episode.startDate ?? Date(), displayedComponents: [.date])
                         DatePicker("End", selection: $episode.endDate ?? Date())
                     }, label: {
@@ -75,7 +75,7 @@ struct MedicalEpisodeFormView: View {
                         MedicalActRow(act: act)
                     }
                 })
-            }.navigationBarTitle("Episode: \(episode.patient?.name ?? "")")
+            }.navigationBarTitle("Edit episode")
             .toolbar {
                 ToolbarItem(placement: .primaryAction){
                     Button(action: {self.presentationMode.wrappedValue.dismiss()}){Text("Done")}

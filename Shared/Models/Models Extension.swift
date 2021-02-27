@@ -36,6 +36,18 @@ extension MedicalEpisode {
         guard let patient = self.patient else {return "No patient assigned"}
         return patient.wrappedName
     }
+    public var daysSinceAdmission: Int {
+        //get admission date
+        guard let admissionDate = self.admissionDate else {return 0}
+        return Calendar.current.dateComponents([.day], from: admissionDate, to:Date()).day ?? 0
+    }
+    
+    public var daysSinceSeen: Int {
+        guard let latestAct = self.mostRecentAct else {return 0}
+        guard let actDate = latestAct.timestamp else {return 0}
+        guard let days = Calendar.current.dateComponents([.day], from: actDate, to:Date()).day else {return 0}
+        return days
+    }
     
     public var wrappedRoom: String {
         return self.roomLocation ?? "No room"
