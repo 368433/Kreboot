@@ -17,7 +17,7 @@ class WorklistViewModel: ObservableObject {
     
     @Published var activeSheet: ActiveSheet? = nil
     @Published var hideActionButton: Bool = false
-    @Published var editRoom: Bool = false
+    @Published private(set) var editRoom: Bool = false
     @Published var showFilter: Bool = false
     
     @Published var cardsFilter: EpisodeFilterEnum = .toSee
@@ -57,6 +57,12 @@ class WorklistViewModel: ObservableObject {
             }
             
         } else {
+            editRoom.toggle()
+        }
+    }
+    
+    func hideRoomEdit(){
+        if editRoom {
             editRoom.toggle()
         }
     }

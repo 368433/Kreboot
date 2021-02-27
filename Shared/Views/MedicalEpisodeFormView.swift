@@ -21,19 +21,19 @@ class MedicalEpisodeFormViewModel: ObservableObject {
     @ObservedObject var episode: MedicalEpisode
     @Published var patient: Patient
     private var subscriptions = Set<AnyCancellable>()
-
+    
     init(episode: MedicalEpisode?){
         self.episode = episode ?? MedicalEpisode(context: PersistenceController.shared.container.viewContext)
         self.patient = episode?.patient ?? Patient(context: PersistenceController.shared.container.viewContext)
     }
-
+    
 }
 
 struct MedicalEpisodeFormView: View {
-//    @Environment(\.managedObjectContext) private var viewContext
+    //    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var episode: MedicalEpisode
-
+    
     
     init(episode: MedicalEpisode){
         self.episode = episode
@@ -59,13 +59,9 @@ struct MedicalEpisodeFormView: View {
                 Section(header: Text("Episode Details"), content: {
                     NavigationLink(destination: Text("physician"), label: {Label("Consulting physician", systemImage: "figure.wave")})
                     NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(episode.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
-                    DisclosureGroup(content: {
-                        DatePicker(selection: $episode.admissionDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
-                        DatePicker("Start", selection: $episode.startDate ?? Date(), displayedComponents: [.date])
-                        DatePicker("End", selection: $episode.endDate ?? Date())
-                    }, label: {
-                        Label("More details", systemImage: "ellipsis.circle")
-                    })
+                    DatePicker(selection: $episode.admissionDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
+                    DatePicker(selection: $episode.startDate ?? Date(), displayedComponents: [.date], label: {Label("Start", systemImage: "calendar")})
+                    DatePicker(selection: $episode.endDate ?? Date(), displayedComponents: [.date], label: {Label("End", systemImage: "stopwatch")})
                 })
                 
                 Section(header: HStack{

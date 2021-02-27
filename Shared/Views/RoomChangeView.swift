@@ -30,14 +30,12 @@ struct RoomChangeView: View {
                 Spacer()
                 TextField("Enter new location", text: $model.newRoom)
             }
-            Button(action: {self.model.save()}){
+            Button(action: {self.model.save(); self.presentationMode.wrappedValue.dismiss()}){
                 HStack{
                     Spacer(); Text("Save").fontWeight(.bold); Spacer()
                 }
             }
-        }.padding()
-        .background(Color.white.shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10))
-        .padding(.horizontal)
+        }
         .navigationBarTitle("Update room location")
     }
 }
@@ -52,8 +50,8 @@ struct NewRoomView: View {
     
     var body: some View {
         VStack{
-            TextField("Room or location", text: $model.currentRoom)
-            Button(action: {}){Text("Update")}
+            TextField("Current location \(model.currentRoom)", text: $model.newRoom).multilineTextAlignment(.center)
+            Button(action: {model.save()}){Text("Done")}
         }.padding()
         .background(Color.white.shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10))
         .padding(.horizontal)
