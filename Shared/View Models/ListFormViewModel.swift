@@ -32,7 +32,7 @@ class ListFormViewModel: ObservableObject {
         $title
             //.debounce(for: 0.2, scheduler: RunLoop.main)
             .removeDuplicates()
-            .map { print(self.formIsValid); return !$0.isEmpty }
+            .map { !$0.isEmpty }
             .eraseToAnyPublisher()
     }
     
