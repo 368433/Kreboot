@@ -33,7 +33,7 @@ struct WorklistView: View {
         .sheet(item: $model.activeSheet) { item in
             switch item {
             case .editListDetails:
-                NavigationView{ListFormView(list: model.list)}.environment(\.managedObjectContext, self.viewContext)
+                ListFormView(list: model.list).environment(\.managedObjectContext, self.viewContext)
             case .addPatient:
                 NavigationView{PatientFormView(to: model.list, newEpisode: true)}.environment(\.managedObjectContext, self.viewContext)
             case .addAct:

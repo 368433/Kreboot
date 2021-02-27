@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3100075025E9B7A100EEB5FB /* StaticAppWideValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3100074F25E9B7A100EEB5FB /* StaticAppWideValues.swift */; };
+		3100075125E9B7A100EEB5FB /* StaticAppWideValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3100074F25E9B7A100EEB5FB /* StaticAppWideValues.swift */; };
 		3101281525E496DA006BBBED /* WorklistHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101281425E496DA006BBBED /* WorklistHomeView.swift */; };
 		31015B3925C9E426006D843D /* ICDDataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31015B3825C9E426006D843D /* ICDDataBridge.swift */; };
 		310996E425D6448800E0C123 /* ActFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310996E325D6448800E0C123 /* ActFormView.swift */; };
@@ -152,6 +154,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3100074F25E9B7A100EEB5FB /* StaticAppWideValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticAppWideValues.swift; sourceTree = "<group>"; };
 		3101281425E496DA006BBBED /* WorklistHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklistHomeView.swift; sourceTree = "<group>"; };
 		31015B3825C9E426006D843D /* ICDDataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICDDataBridge.swift; sourceTree = "<group>"; };
 		310996E325D6448800E0C123 /* ActFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActFormView.swift; sourceTree = "<group>"; };
@@ -297,6 +300,7 @@
 				311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */,
 				311CA82A25C5774700E4513A /* KrebootApp.swift */,
 				311CA82C25C5774700E4513A /* Persistence.swift */,
+				3100074F25E9B7A100EEB5FB /* StaticAppWideValues.swift */,
 				3160B47625D4C056002BED92 /* Models */,
 				317CEA4425D4BF4B00393AD6 /* View Models */,
 				317CEA4525D4BF5400393AD6 /* Views */,
@@ -691,6 +695,7 @@
 				311C861625C6E1860021E596 /* AddPatientToListView.swift in Sources */,
 				3169014F25D8F74200B6403A /* EpisodeSortEnum.swift in Sources */,
 				3115ED2F25DA3A0400E7A04E /* ActListViewModel.swift in Sources */,
+				3100075025E9B7A100EEB5FB /* StaticAppWideValues.swift in Sources */,
 				3154A35925C9DB7F00E20978 /* ICDProvider3.swift in Sources */,
 				31428C9825E81F55005AE875 /* WorklistHomeViewVariation1.swift in Sources */,
 				6A51F74225D883EF0060AE35 /* ScrollChoice.swift in Sources */,
@@ -773,6 +778,7 @@
 				6A51F71125D74E040060AE35 /* CoreDataProvider.swift in Sources */,
 				310996E525D6448800E0C123 /* ActFormView.swift in Sources */,
 				318F5DB525E2A9DF00D7A925 /* WorklistComponentViews.swift in Sources */,
+				3100075125E9B7A100EEB5FB /* StaticAppWideValues.swift in Sources */,
 				319277FE25E75C7D00D162AF /* WorklistCardView.swift in Sources */,
 				311CA85525C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
 				3169012725D8CDE700B6403A /* ICDListView.swift in Sources */,

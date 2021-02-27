@@ -96,7 +96,7 @@ struct WorklistHomeView: View {
             case .lastWorklist:
                 if let list = model.getLastOpenedList() {WorklistView(list: list)}
             case .listFormView:
-                NavigationView{ListFormView()}.environment(\.managedObjectContext, self.viewContext)
+                ListFormView().environment(\.managedObjectContext, self.viewContext)
             case .selectedList:
                 if let list = model.selectedList {WorklistView(list: list)}
             default:
@@ -148,6 +148,10 @@ struct CardsListOfList: View {
             LazyVGrid(columns: columns, alignment: .center){
                 ForEach(list) { list in
                     ListCard(list: list)
+                        .onTapGesture{
+                            self.model.selectedList = list
+                            self.model.sheetToPresent = .selectedList
+                        }
                 }
             }
         }
@@ -158,7 +162,8 @@ struct ListCard: View {
     @ObservedObject var list: PatientsList
     private var cornerRadius: CGFloat = 15
     private var bgColor: Color = .Whitesmoke
-    private var strokeColor: Color = .gray
+    private var strokeColor: Color = .offgray
+    private var height: CGFloat = 170
     
     init(list: PatientsList){
         self.list = list
@@ -170,12 +175,10 @@ struct ListCard: View {
             VStack{
                 Text(list.title ?? "No title").fontWeight(.semibold)
                 Spacer()
-                Text("testing")
-                Text("testing")
-                Text("testing")
-                Text("testing")
+                Text(list.patientCountDescription).foregroundColor(.secondary).font(.caption)
             }.padding()
         }
+        .frame(height: height)
         .cornerRadius(cornerRadius)
         .shadow(color: Color.black.opacity(0.25), radius: 4, x: 0, y: 2)
         .padding()

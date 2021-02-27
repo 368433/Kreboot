@@ -30,9 +30,9 @@ class ListFormViewModel: ObservableObject {
     
     private var isTitleValidPublisher: AnyPublisher<Bool, Never> {
         $title
-            .debounce(for: 0.2, scheduler: RunLoop.main)
+            //.debounce(for: 0.2, scheduler: RunLoop.main)
             .removeDuplicates()
-            .map { !$0.isEmpty }
+            .map { print(self.formIsValid); return !$0.isEmpty }
             .eraseToAnyPublisher()
     }
     
