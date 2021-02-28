@@ -31,56 +31,57 @@ struct WorklistCardsList: View {
     }
 }
 
-struct WorklistHeaderButtons: View {
-    @ObservedObject var model: WorklistViewModel
-    
-    var body: some View {
-        VStack(spacing: 0){
-            
-            HStack{
-                Button(action: {model.showFilter.toggle()}) {
-                    Image(systemName: "slider.vertical.3").resizable()
-                }.scaledToFit()
-                .buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: model.showFilter ? Color.gray : Color.Beige, textColor: .black))
-                
-                Divider()//.frame(height: 25)
-                
-                Button(action: {model.activeSheet = .addPatient}){
-                    Image(systemName: "person.crop.circle.fill.badge.plus").resizable().scaledToFit()
-                }.scaledToFit()
-                .buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
-                
-            }
-//            .font(.headline)
-            .shadow(color: Color.gray.opacity(0.6), radius: 10, y: 5)
-            
-        }
-    }
-}
+//struct WorklistHeaderButtons: View {
+//    @ObservedObject var model: WorklistViewModel
+//    
+//    var body: some View {
+//        VStack(spacing: 0){
+//            
+//            HStack{
+//                Button(action: {model.showFilter.toggle()}) {
+//                    Image(systemName: "slider.vertical.3").resizable()
+//                }.scaledToFit()
+//                .buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: model.showFilter ? Color.gray : Color.Beige, textColor: .black))
+//                
+//                Divider()//.frame(height: 25)
+//                
+//                Button(action: {model.activeSheet = .addPatient}){
+//                    Image(systemName: "person.crop.circle.fill.badge.plus").resizable().scaledToFit()
+//                }.scaledToFit()
+//                .buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
+//                
+//            }
+////            .font(.headline)
+//            .shadow(color: Color.gray.opacity(0.6), radius: 10, y: 5)
+//            
+//        }
+//    }
+//}
 
 struct WorklistTitleHeader: View {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var model: WorklistViewModel
     
     var body: some View {
-//        HStack{
-//            Spacer()
-            VStack(alignment: .leading){
-                HStack{
-                    Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark").font(.title3)}
-                    Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}
-                }
-                Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
-                HStack{
-                    Text("\(model.list.listStatus.label) list").fontWeight(.light)
-                    Text("Week of \(model.list.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
-                    Text("\(model.episodesList.count) \(model.episodesList.count > 1 ? "pts":"pt")").fontWeight(.semibold)
-                    Text("\(model.cardsFilter.label)").fontWeight(.ultraLight).font(.caption)
-                }.font(.footnote)
-            }
-//            .padding()
-            .padding(.bottom)
+        VStack(alignment: .leading){
             
-//        }
+            HStack(alignment: .top){
+                Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark")}.padding(.bottom)
+                Spacer()
+                Group{
+                    Button(action: {model.activeSheet = .addPatient}){Image(systemName: "plus")}
+                    Button(action: {model.showFilter.toggle()}) {Image(systemName: "arrow.up.arrow.down")}
+                    Button(action: {model.activeSheet = .editListDetails}){Image(systemName: "pencil.circle.fill")}
+                }.font(.title3)
+            }
+            Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
+
+            HStack{
+                Text("\(model.list.listStatus.label) list").fontWeight(.light)
+                Text("Week of \(model.list.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)
+                Text("\(model.episodesList.count) \(model.episodesList.count > 1 ? "pts":"pt")").fontWeight(.semibold)
+                Text("\(model.cardsFilter.label)").fontWeight(.ultraLight).font(.caption)
+            }.font(.footnote)
+        }
     }
 }

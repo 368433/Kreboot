@@ -116,7 +116,7 @@ struct CardsListOfList: View {
 
 struct ListCard: View {
     @ObservedObject var list: PatientsList
-    private var bgColor: Color = .Whitesmoke
+    private var bgColor: Color = Color(UIColor.tertiarySystemBackground)
     private var strokeColor: Color = .offgray
     private var height: CGFloat = 180
     

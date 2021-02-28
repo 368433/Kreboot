@@ -24,13 +24,14 @@ struct WorklistView: View {
         ZStack(alignment: .bottom){
             VStack(spacing: 0){
                 WorklistTitleHeader(model: model).padding()
-                ZStack(alignment: .top){
-                    WorklistCardsList(model: model)
-                    ZStack{
-                        Divider()
-                        WorklistHeaderButtons(model: model)
-                    }.frame(height: buttonHeight).offset(y: -buttonHeight/2)
-                }
+                WorklistCardsList(model: model)
+//                ZStack(alignment: .top){
+//                    
+////                    ZStack{
+////                        Divider()
+////                        WorklistHeaderButtons(model: model)
+////                    }.frame(height: buttonHeight).offset(y: -buttonHeight/2)
+//                }
             }
             WorklistOptionsView(model: model)
             

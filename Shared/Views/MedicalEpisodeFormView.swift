@@ -65,7 +65,7 @@ struct MedicalEpisodeFormView: View {
                     })
                 }
                 if showaddActForm{
-                    ActFormView(for: nil, in: model.episode, isShowing: $showaddActForm).background(Color.white).cornerRadius(Karla.cornerRadius).shadow(radius: 10).padding()
+                    ActFormView(for: nil, in: model.episode, isShowing: $showaddActForm).background(Color(UIColor.systemBackground)).cornerRadius(Karla.cornerRadius).shadow(radius: 10).padding()
                         .transition(.scale)
                 }
             }
