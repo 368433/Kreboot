@@ -14,7 +14,11 @@ struct MedicalEpisodeFormView: View {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var episode: MedicalEpisode
     @ObservedObject var model: MedicalEpisodeFormViewModel
-    @State private var showaddActForm: Bool = false
+    @State private var showaddActForm: Bool = false {
+        didSet{
+            model.setValues()
+        }
+    }
     
     init(episode: MedicalEpisode){
         self.episode = episode
@@ -53,7 +57,7 @@ struct MedicalEpisodeFormView: View {
                         Button(action: {
                             withAnimation{
                                 self.showaddActForm.toggle()
-                            }}){Image(systemName: "plus.circle")}
+                            }}){Image(systemName: "plus.circle").font(.title2)}
                     }, content: {
                         ForEach(model.acts){act in
                             MedicalActRow(act: act)
@@ -61,7 +65,7 @@ struct MedicalEpisodeFormView: View {
                     })
                 }
                 if showaddActForm{
-                    ActFormView(for: nil, in: model.episode)
+                    ActFormView(for: nil, in: model.episode, isShowing: $showaddActForm).background(Color.white).cornerRadius(Karla.cornerRadius).shadow(radius: 10).padding()
                         .transition(.scale)
                 }
             }

@@ -26,6 +26,7 @@ class AddActViewModel: ObservableObject {
     }
     
     func saveAct(){
+        guard !actCode.isEmpty else {return}
         let context = PersistenceController.shared.container.viewContext
         let actToSave = act ?? Act(context: context)
         actToSave.ramqCode = self.actCode

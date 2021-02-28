@@ -22,7 +22,7 @@ struct PatientFormView: View {
             Section( header: VStack(alignment: .leading, spacing: 0){
                 HStack {
                     Spacer()
-                    Button(action: {}){Image(systemName: "doc.text.viewfinder")}.buttonStyle(CircularButton())//.padding(.top)
+                    Button(action: {}){Image(systemName: "doc.text.viewfinder")}.buttonStyle(CircularButton())
                 }
                 Text("Personnal data")
             }) {
