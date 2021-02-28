@@ -8,35 +8,16 @@
 import SwiftUI
 
 import Combine
-class MedicalEpisodeFormViewModel: ObservableObject {
-    @Published var startDate: Date?
-    @Published var endDate: Date?
-    @Published var roomLocation: String?
-    @Published var diagnosis: ICD10dx?
-    @Published var list: PatientsList?
-    @Published var acts: [Act]?
-    @Published var hospitalizedDate: Date?
-    @Published var patientName: String = ""
-    
-    @ObservedObject var episode: MedicalEpisode
-    @Published var patient: Patient
-    private var subscriptions = Set<AnyCancellable>()
-    
-    init(episode: MedicalEpisode?){
-        self.episode = episode ?? MedicalEpisode(context: PersistenceController.shared.container.viewContext)
-        self.patient = episode?.patient ?? Patient(context: PersistenceController.shared.container.viewContext)
-    }
-    
-}
 
 struct MedicalEpisodeFormView: View {
     //    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var episode: MedicalEpisode
-    
+    @ObservedObject var model: MedicalEpisodeFormViewModel
     
     init(episode: MedicalEpisode){
         self.episode = episode
+        self.model = MedicalEpisodeFormViewModel(episode: episode)
     }
     
     var body: some View {

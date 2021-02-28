@@ -112,6 +112,9 @@
 		31A6F00A25E1F4D000BE9E55 /* FilterAndSortPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */; };
 		31AAF8DD25E85AD90021B27B /* EmptyContentModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AAF8DC25E85AD90021B27B /* EmptyContentModifier.swift */; };
 		31F43CA925E3648F00F9E837 /* RoundedCornersRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F43CA825E3648F00F9E837 /* RoundedCornersRect.swift */; };
+		31FB7BFC25EBBEEB00911C9A /* Bordered+Karla+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FB7BFB25EBBEEB00911C9A /* Bordered+Karla+VM.swift */; };
+		31FB7C0625EBC38000911C9A /* MedicalEpisodeFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FB7C0525EBC38000911C9A /* MedicalEpisodeFormViewModel.swift */; };
+		31FB7C0C25EBC4EE00911C9A /* KarlaErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FB7C0B25EBC4EE00911C9A /* KarlaErrors.swift */; };
 		6A05183825CDF36100527AF1 /* UIEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A05183725CDF36100527AF1 /* UIEmptyState.swift */; };
 		6A51F71125D74E040060AE35 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31548B9125C71E9A00097F2F /* CoreDataProvider.swift */; };
 		6A51F71B25D770650060AE35 /* PatientFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */; };
@@ -235,6 +238,9 @@
 		31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAndSortPickerView.swift; sourceTree = "<group>"; };
 		31AAF8DC25E85AD90021B27B /* EmptyContentModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentModifier.swift; sourceTree = "<group>"; };
 		31F43CA825E3648F00F9E837 /* RoundedCornersRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersRect.swift; sourceTree = "<group>"; };
+		31FB7BFB25EBBEEB00911C9A /* Bordered+Karla+VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bordered+Karla+VM.swift"; path = "Shared/Custom View & Modifiers/Bordered+Karla+VM.swift"; sourceTree = SOURCE_ROOT; };
+		31FB7C0525EBC38000911C9A /* MedicalEpisodeFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MedicalEpisodeFormViewModel.swift; path = "Shared/View Models/MedicalEpisodeFormViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		31FB7C0B25EBC4EE00911C9A /* KarlaErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarlaErrors.swift; sourceTree = "<group>"; };
 		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
 		6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormViewModel.swift; sourceTree = "<group>"; };
 		6A51F72925D8825A0060AE35 /* VerticalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabel.swift; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				3149201225CDDEAC002D873C /* Button modifiers.swift */,
+				31FB7BFB25EBBEEB00911C9A /* Bordered+Karla+VM.swift */,
 				31AAF8DC25E85AD90021B27B /* EmptyContentModifier.swift */,
 				31F43CA825E3648F00F9E837 /* RoundedCornersRect.swift */,
 				3146970725D79B2C00CEEDFD /* CheckmarkToggleStyle.swift */,
@@ -412,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				310A873225D01C4700437522 /* ActiveSheet.swift */,
+				31FB7C0B25EBC4EE00911C9A /* KarlaErrors.swift */,
 				6A54659225D9CE6D00AC55A0 /* BoolNegation.swift */,
 				31548B9125C71E9A00097F2F /* CoreDataProvider.swift */,
 				318E27E925D1388F002BE6CB /* EpisodeFilterEnum.swift */,
@@ -452,6 +460,7 @@
 				317CEA3D25D4157700393AD6 /* ListFormViewModel.swift */,
 				3169CDE125E09B0100E63CCC /* LocationChangeViewModel.swift */,
 				6AD893B825DC25EF003598A9 /* MedicalEpisodeRowViewModel.swift */,
+				31FB7C0525EBC38000911C9A /* MedicalEpisodeFormViewModel.swift */,
 				6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */,
 				6A7177FA25D73D5300C29CE9 /* WorklistViewModel.swift */,
 			);
@@ -704,6 +713,7 @@
 				3154A35925C9DB7F00E20978 /* ICDProvider3.swift in Sources */,
 				31428C9825E81F55005AE875 /* WorklistHomeViewVariation1.swift in Sources */,
 				6A51F74225D883EF0060AE35 /* ScrollChoice.swift in Sources */,
+				31FB7C0625EBC38000911C9A /* MedicalEpisodeFormViewModel.swift in Sources */,
 				3129D75D25D55B18000EAA5C /* TestView1.swift in Sources */,
 				3118EFEA25C5E398002B3711 /* WorklistHomeViewVariation2.swift in Sources */,
 				3149201625CDDEAC002D873C /* Button modifiers.swift in Sources */,
@@ -722,6 +732,7 @@
 				3118EFF125C5E88F002B3711 /* ListFormView.swift in Sources */,
 				31A6F00925E1F4D000BE9E55 /* FilterAndSortPickerView.swift in Sources */,
 				311CA85425C5774900E4513A /* Kreboot.xcdatamodeld in Sources */,
+				31FB7BFC25EBBEEB00911C9A /* Bordered+Karla+VM.swift in Sources */,
 				315E5A5925C754D8005DB2A9 /* AnalyticsView.swift in Sources */,
 				318E27EA25D1388F002BE6CB /* EpisodeFilterEnum.swift in Sources */,
 				31F43CA925E3648F00F9E837 /* RoundedCornersRect.swift in Sources */,
@@ -742,6 +753,7 @@
 				311CA85825C5774900E4513A /* PatientsDBView.swift in Sources */,
 				311C861D25C6E9F20021E596 /* PatientRowAddView.swift in Sources */,
 				3173664425D97B5300237668 /* NSPredicate+KeyPath+Operators.swift in Sources */,
+				31FB7C0C25EBC4EE00911C9A /* KarlaErrors.swift in Sources */,
 				3118EFFC25C60311002B3711 /* WorklistView.swift in Sources */,
 				3154A32825C8F2C600E20978 /* ICDdbTable2.swift in Sources */,
 				3196DA6125DB3D6800696068 /* MedicalEpisodeFormView.swift in Sources */,

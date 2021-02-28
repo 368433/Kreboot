@@ -11,10 +11,10 @@ struct TestView1: View {
     
     var body: some View {
         ZStack{
-            Color.Whitesmoke.rotationEffect(.degrees(5)).shadow(radius: 10).opacity(0.8)
-            Color.Whitesmoke.shadow(radius: 10)
-        }
-        .frame(width: 150, height: 300)
+            TextEditor(text: .constant("Placeholder"))
+                //.padding()
+        }.padding()
+        
     }
 }
 

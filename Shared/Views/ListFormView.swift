@@ -42,7 +42,7 @@ struct ListFormView: View {
                     VStack(alignment: .leading){
                         Text("List title".uppercased()).foregroundColor(.secondary).font(.caption)
                         TextField("", text: $viewModel.title)
-                            .lightForm(show: $textfieldsSelected)
+                            .borderedK(show: $textfieldsSelected)
                             .onTapGesture {
                                 self.textfieldsSelected = true
                                 self.descriptionSelected = false
@@ -55,21 +55,16 @@ struct ListFormView: View {
                     }
                     
                     VStack(alignment: .leading){
-                        Text("List description".uppercased()).foregroundColor(.secondary).font(.caption)
-                        ZStack{
-                            RoundedRectangle(cornerRadius: Karla.cornerRadius)
-                                .frame(height: 120)
-                                .foregroundColor(.white)
-                                .overlay(RoundedRectangle(cornerRadius: Karla.cornerRadius).stroke(Color.gray.opacity(Karla.strokeOpacity), lineWidth: 0.5))
-                                .shadow(color: Color.gray.opacity(descriptionSelected ? Karla.shadowOpacity:0), radius: 5, x: 0, y: 3)
-                            TextEditor(text: $viewModel.listDescription)
-                                .padding(10)
-                                .font(.callout)
-                                .onTapGesture {
-                                    self.descriptionSelected = true
-                                    self.textfieldsSelected = false
-                                }
-                        }
+                        Text("List description".uppercased())
+                            .foregroundColor(.secondary).font(.caption)
+                        TextEditor(text: $viewModel.listDescription)
+                            .frame(height: 120)
+                            .borderedK(show: $descriptionSelected)
+                            .font(.callout)
+                            .onTapGesture {
+                                self.descriptionSelected = true
+                                self.textfieldsSelected = false
+                            }
                     }.padding()
                     
                     DatePicker("Date created", selection: $viewModel.date, displayedComponents: .date).datePickerStyle(GraphicalDatePickerStyle())
@@ -79,22 +74,7 @@ struct ListFormView: View {
         }.animation(.default)
     }
 }
-struct LightForm: ViewModifier {
-    var highlightField: Binding<Bool>
-    func body(content: Content) -> some View {
-        content
-            .padding(10)
-            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.white))
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(Karla.strokeOpacity), lineWidth: 0.5))
-            .shadow(color: Color.gray.opacity(highlightField.wrappedValue ? 0.3:0), radius: 5, x: 0, y: 3)
-    }
-}
 
-extension View {
-    func lightForm(show: Binding<Bool>) -> some View {
-        self.modifier(LightForm(highlightField: show))
-    }
-}
 
 struct ListFormView_Previews: PreviewProvider {
     static var previews: some View {
