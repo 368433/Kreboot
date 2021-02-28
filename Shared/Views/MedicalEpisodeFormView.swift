@@ -14,6 +14,7 @@ struct MedicalEpisodeFormView: View {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var episode: MedicalEpisode
     @ObservedObject var model: MedicalEpisodeFormViewModel
+    @State private var showaddActForm: Bool = false
     
     init(episode: MedicalEpisode){
         self.episode = episode
@@ -22,40 +23,56 @@ struct MedicalEpisodeFormView: View {
     
     var body: some View {
         NavigationView{
-            Form{
-                Section(header: HStack{
-                    Image(systemName: "person.crop.circle")
-                    Text("Patient")
-                }, content: {
-                    NavigationLink(destination: PatientFormView(patient: episode.patient, newEpisode: false), label: {Label(episode.getPatientName(), systemImage: "person.crop.rectangle")})
-                })
-                
-                Section(header: HStack{
-                    Image(systemName: "staroflife")
-                    Text("diagnosis")
-                }, content: {
-                    NavigationLink(destination: DiagnosisSearchView(episode: episode), label: {Label(episode.diagnosis?.wrappedDescription ?? "None", systemImage: "staroflife.fill")})
-                })
-                
-                Section(header: Text("Episode Details"), content: {
-                    NavigationLink(destination: Text("physician"), label: {Label("Consulting physician", systemImage: "figure.wave")})
-                    NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(episode.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
-                    DatePicker(selection: $episode.admissionDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
-                    DatePicker(selection: $episode.startDate ?? Date(), displayedComponents: [.date], label: {Label("Start", systemImage: "calendar")})
-                    DatePicker(selection: $episode.endDate ?? Date(), displayedComponents: [.date], label: {Label("End", systemImage: "stopwatch")})
-                })
-                
-                Section(header: HStack{
-                    Text("Acts")
-                }, content: {
-                    ForEach(episode.actList()){act in
-                        MedicalActRow(act: act)
-                    }
-                })
-            }.navigationBarTitle("Edit episode")
+            ZStack{
+                Form{
+                    Section(header: HStack{
+                        Image(systemName: "person.crop.circle")
+                        Text("Patient")
+                    }, content: {
+                        NavigationLink(destination: PatientFormView(patient: model.patient, newEpisode: false), label: {Label(model.patientName, systemImage: "person.crop.rectangle")})
+                    })
+                    
+                    Section(header: HStack{
+                        Image(systemName: "staroflife")
+                        Text("diagnosis")
+                    }, content: {
+                        NavigationLink(destination: DiagnosisSearchView(episode: model.episode), label: {Label(model.diagnosis, systemImage: "staroflife.fill")})
+                    })
+                    
+                    Section(header: Text("Episode Details"), content: {
+                        NavigationLink(destination: Text("physician"), label: {Label("Consulting physician", systemImage: "figure.wave")})
+                        NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(model.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
+                        DatePicker(selection: $model.admissionDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
+                        DatePicker(selection: $model.startDate ?? Date(), displayedComponents: [.date], label: {Label("Start", systemImage: "calendar")})
+                        DatePicker(selection: $model.endDate ?? Date(), displayedComponents: [.date], label: {Label("End", systemImage: "stopwatch")})
+                    })
+                    
+                    Section(header: HStack{
+                        Text("Acts")
+                        Spacer()
+                        Button(action: {
+                            withAnimation{
+                                self.showaddActForm.toggle()
+                            }}){Image(systemName: "plus.circle")}
+                    }, content: {
+                        ForEach(model.acts){act in
+                            MedicalActRow(act: act)
+                        }.onDelete(perform: model.remove)
+                    })
+                }
+                if showaddActForm{
+                    ActFormView(for: nil, in: model.episode)
+                        .transition(.scale)
+                }
+            }
+            .onAppear{model.setValues()}
+            .navigationBarTitle("Edit episode")
             .toolbar {
                 ToolbarItem(placement: .primaryAction){
-                    Button(action: {self.presentationMode.wrappedValue.dismiss()}){Text("Done")}
+                    Button(action: {
+                            model.saveForm()
+                            self.presentationMode.wrappedValue.dismiss()
+                    }){Text("Done")}
                 }
             }
         }
