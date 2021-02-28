@@ -39,15 +39,15 @@ struct WorklistHeaderButtons: View {
             
             HStack{
                 Button(action: {model.showFilter.toggle()}) {
-                    Image(systemName: "slider.vertical.3").scaledToFit()
-                }
+                    Image(systemName: "slider.vertical.3").resizable()
+                }.scaledToFit()
                 .buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight, bgColor: model.showFilter ? Color.gray : Color.Beige, textColor: .black))
                 
-                Divider().frame(height: 25)
+                Divider()//.frame(height: 25)
                 
                 Button(action: {model.activeSheet = .addPatient}){
-                    Image(systemName: "person.crop.circle.badge.plus").scaledToFit()
-                }
+                    Image(systemName: "person.crop.circle.fill.badge.plus").resizable().scaledToFit()
+                }.scaledToFit()
                 .buttonStyle(CapsuleButton(vTightness: .tight, hTightness: .tight))
                 
             }
@@ -62,9 +62,9 @@ struct WorklistTitleHeader: View {
     @ObservedObject var model: WorklistViewModel
     
     var body: some View {
-        HStack{
-            Spacer()
-            VStack(alignment: .trailing){
+//        HStack{
+//            Spacer()
+            VStack(alignment: .leading){
                 Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}
                 Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
                 HStack{
@@ -73,8 +73,10 @@ struct WorklistTitleHeader: View {
                     Text("\(model.episodesList.count) \(model.episodesList.count > 1 ? "pts":"pt")").fontWeight(.semibold)
                     Text("\(model.cardsFilter.label)").fontWeight(.ultraLight).font(.caption)
                 }.font(.footnote)
-            }.padding().padding(.bottom)
+            }
+//            .padding()
+            .padding(.bottom)
             .background(Color.white)
-        }
+//        }
     }
 }

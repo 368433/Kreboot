@@ -13,7 +13,7 @@ struct ListRow: View {
     @State private var dragOffset = CGSize.zero
     
     var body: some View {
-        GeometryReader{ gp in
+//        GeometryReader{ gp in
             ZStack{
                 // control stack underneath top layer
                 HStack{
@@ -26,9 +26,9 @@ struct ListRow: View {
                 // top layer of the row
                 HStack{
                     VStack(alignment:.leading){
-                        Text((list.title ?? "No title").localizedCapitalized).font(.subheadline)
+                        Text((list.title ?? "No title").localizedCapitalized)
                         HStack {
-                            Text("wk of " + (list.dateCreated?.dayLabel(dateStyle: .medium) ?? "")).font(.footnote)
+                            Text("wk of " + (list.dateCreated?.dayLabel(dateStyle: .medium) ?? "")).font(.subheadline)
                             Spacer()
                             Text(list.patientCountDescription).font(.footnote)
                         }.foregroundColor(.secondary)
@@ -39,18 +39,18 @@ struct ListRow: View {
                 .background(Color.white)
                 .animation(.spring())
                 .offset(x: self.dragOffset.width)
-                .gesture(DragGesture()
-                            .onChanged{ value in
-                                self.dragOffset = value.translation
-                            }
-                            .onEnded{ value in
-                                if abs(value.translation.width) > (gp.size.width * 0.4) {
-                                    self.dragOffset = value.translation
-                                } else {
-                                    self.dragOffset = .zero
-                                }
-                            })
-            }
+//                .gesture(DragGesture()
+//                            .onChanged{ value in
+//                                self.dragOffset = value.translation
+//                            }
+//                            .onEnded{ value in
+//                                if abs(value.translation.width) > (gp.size.width * 0.4) {
+//                                    self.dragOffset = value.translation
+//                                } else {
+//                                    self.dragOffset = .zero
+//                                }
+//                            })
+//            }
         }
     }
 }

@@ -20,9 +20,11 @@ struct WorklistHomeView: View {
                 Spacer()
                 Text("Worklists").font(.largeTitle).fontWeight(.black)
                 Spacer()
-                Button(action:{self.displayMode = .cards}){Image(systemName: self.displayMode == .cards ? "square.grid.2x2.fill":"square.grid.2x2")}
-                Button(action:{self.displayMode = .list}){Image(systemName: self.displayMode == .list ? "rectangle.split.1x2.fill":"rectangle.split.1x2")}
-                Button(action: { self.model.sheetToPresent = .listFormView }) { Image(systemName:"plus") }
+                Group{
+                    Button(action:{self.displayMode = .cards}){Image(systemName: self.displayMode == .cards ? "square.grid.2x2.fill":"square.grid.2x2")}
+                    Button(action:{self.displayMode = .list}){Image(systemName: self.displayMode == .list ? "rectangle.split.1x2.fill":"rectangle.split.1x2")}
+                    Button(action: { self.model.sheetToPresent = .listFormView }) { Image(systemName:"plus") }
+                }.font(.title3)
             }
             
             Picker("List filter", selection: $model.listGroup) {

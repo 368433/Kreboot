@@ -23,21 +23,24 @@ struct WorklistView: View {
     var body: some View {
         ZStack(alignment: .bottom){
             VStack(spacing: 0){
-                ZStack(alignment: .topLeading){
-                    Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark").font(.title3)}.padding()
+                HStack(alignment: .top){
                     WorklistTitleHeader(model: model)
-                }
+                    Spacer()
+                    Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark").font(.title3)}
+                }.padding()
                 ZStack(alignment: .top){
                     WorklistCardsList(model: model)
                     ZStack{
-                        Rectangle().frame(height: 1).foregroundColor(.yellow)
-                        WorklistHeaderButtons(model: model).frame(height: buttonHeight)
-                    }.offset(y: -buttonHeight/2)
+                        Divider()
+                        WorklistHeaderButtons(model: model)
+                    }.frame(height: buttonHeight).offset(y: -buttonHeight/2)
                 }
             }
             WorklistOptionsView(model: model)
             
-        }.animation(.easeIn(duration: Karla.animationSpeed))
+        }
+//        .onAppear{self.model.cardsFilter = .toSee}
+        .animation(.easeIn(duration: Karla.animationSpeed))
         .sheet(item: $model.activeSheet) { item in
             switch item {
             case .editListDetails:
