@@ -59,13 +59,17 @@ struct WorklistHeaderButtons: View {
 }
 
 struct WorklistTitleHeader: View {
+    @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var model: WorklistViewModel
     
     var body: some View {
 //        HStack{
 //            Spacer()
             VStack(alignment: .leading){
-                Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}
+                HStack{
+                    Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark").font(.title3)}
+                    Button(action: {model.activeSheet = .editListDetails}){Text("Edit")}
+                }
                 Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
                 HStack{
                     Text("\(model.list.listStatus.label) list").fontWeight(.light)
@@ -76,7 +80,7 @@ struct WorklistTitleHeader: View {
             }
 //            .padding()
             .padding(.bottom)
-            .background(Color.white)
+            
 //        }
     }
 }

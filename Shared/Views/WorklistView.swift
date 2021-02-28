@@ -23,11 +23,7 @@ struct WorklistView: View {
     var body: some View {
         ZStack(alignment: .bottom){
             VStack(spacing: 0){
-                HStack(alignment: .top){
-                    WorklistTitleHeader(model: model)
-                    Spacer()
-                    Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark").font(.title3)}
-                }.padding()
+                WorklistTitleHeader(model: model).padding()
                 ZStack(alignment: .top){
                     WorklistCardsList(model: model)
                     ZStack{
