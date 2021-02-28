@@ -16,7 +16,7 @@ struct EmptyContent: ViewModifier {
             content
             if condition{
                 VStack{
-                    Image(systemName: systemName).font(.system(size: 100))
+                    Image(systemName: systemName).font(.largeTitle)
                     Text(caption).font(.title)
                 }.foregroundColor(.Lightgray)
             }

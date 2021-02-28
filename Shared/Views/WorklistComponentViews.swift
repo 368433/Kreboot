@@ -20,7 +20,7 @@ struct WorklistCardsList: View {
         ScrollView {
             VStack(spacing: 20){
                 ForEach(episodes){ episode in
-                    MedicalEpisodeRow(episode: episode, worklistModel: model).padding(.horizontal, 30).onTapGesture {
+                    MedicalEpisodeRow(episode: episode, worklistModel: model).padding(.horizontal).onTapGesture {
                         model.selectedEpisode = episode
                         model.activeSheet = .medicalEpisodeFormView
                     }

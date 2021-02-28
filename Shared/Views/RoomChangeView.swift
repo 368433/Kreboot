@@ -21,7 +21,7 @@ struct RoomChangeView: View {
     var body: some View {
         Form {
             HStack{
-                Text("Current location")
+                Text("Last location")
                 Spacer()
                 Text(model.currentRoom)
             }
@@ -50,7 +50,7 @@ struct NewRoomView: View {
     
     var body: some View {
         VStack{
-            TextField("Current location \(model.currentRoom)", text: $model.newRoom).multilineTextAlignment(.center)
+            TextField("Last location \(model.currentRoom)", text: $model.newRoom).multilineTextAlignment(.center)
             Button(action: {model.save()}){Text("Done")}
         }.padding()
         .background(Color.white.shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10))

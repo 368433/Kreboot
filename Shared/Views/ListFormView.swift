@@ -23,19 +23,21 @@ struct ListFormView: View {
     var body: some View {
         VStack (alignment: .leading, spacing: 0){
             HStack{
-                Text(blankForm ? "Create New List":"Edit List").font(.largeTitle).fontWeight(.heavy)
+//                Text(blankForm ? "Create New List":"Edit List").font(.largeTitle).fontWeight(.heavy)
                 Spacer()
+                Button(action:{viewModel.isPinned.toggle()}){Image(systemName: viewModel.isPinned ? "pin.fill":"pin")}
+                Button(action:{viewModel.isArchived.toggle()}){Image(systemName: viewModel.isArchived ? "archivebox.fill":"archivebox")}.padding(.horizontal)
                 Button(action:{
                     viewModel.save()
                     self.presentationMode.wrappedValue.dismiss()
                 }){Text("Save")}.disabled(!viewModel.formIsValid)
             }.padding()
             
-            HStack{
-                Spacer()
-                Button(action:{viewModel.isPinned.toggle()}){Image(systemName: viewModel.isPinned ? "pin.fill":"pin")}
-                Button(action:{viewModel.isArchived.toggle()}){Image(systemName: viewModel.isArchived ? "archivebox.fill":"archivebox")}.padding(.horizontal)
-            }.font(.title3)
+//            HStack{
+//                Spacer()
+//                Button(action:{viewModel.isPinned.toggle()}){Image(systemName: viewModel.isPinned ? "pin.fill":"pin")}
+//                Button(action:{viewModel.isArchived.toggle()}){Image(systemName: viewModel.isArchived ? "archivebox.fill":"archivebox")}.padding(.horizontal)
+//            }.font(.title3)
             
             ScrollView{
                 VStack{

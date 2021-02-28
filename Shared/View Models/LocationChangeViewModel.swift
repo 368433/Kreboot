@@ -20,8 +20,10 @@ class LocationChangeViewModel: ObservableObject {
     }
     
     func save(){
-        episode.roomLocation = newRoom
-        episode.saveYourself(in: PersistenceController.shared.container.viewContext)
+        if !newRoom.isEmpty {
+            episode.roomLocation = newRoom
+            episode.saveYourself(in: PersistenceController.shared.container.viewContext)
+        }
         if let worklistModel = worklistModel {
             worklistModel.hideRoomEdit()
         }
