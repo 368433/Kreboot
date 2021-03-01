@@ -20,10 +20,8 @@ struct WorklistCardsList: View {
         ScrollView {
             VStack(spacing: 20){
                 ForEach(episodes){ episode in
-                    MedicalEpisodeRow(episode: episode, worklistModel: model).padding(.horizontal).onTapGesture {
-                        model.selectedEpisode = episode
-                        model.activeSheet = .medicalEpisodeFormView
-                    }
+                    MedicalEpisodeRow(episode: episode, worklistModel: model)
+                        .padding(.horizontal)
                 }
             }.padding(.top)
         }
@@ -75,7 +73,7 @@ struct WorklistTitleHeader: View {
                     Button(action: {model.activeSheet = .addPatient}){Image(systemName: "plus")}
                 }.padding(.trailing, 5).font(.title2)
             }
-
+            
             HStack{
                 Text("\(model.list.listStatus.label) list").fontWeight(.light)
                 Text("Week of \(model.list.dateCreated?.dayLabel(dateStyle: .medium) ?? "No date")").fontWeight(.thin)

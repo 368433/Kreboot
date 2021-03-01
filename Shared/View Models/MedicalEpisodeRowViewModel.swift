@@ -28,6 +28,14 @@ class MedicalEpisodeRowViewModel: ObservableObject {
         self.flaggedEpisode = episode.flagged
     }
 
+    func saveRoom(_ newRoom: String){
+        if !newRoom.isEmpty {
+            roomNumber = newRoom
+            episode.roomLocation = newRoom
+            episode.saveYourself(in: PersistenceController.shared.container.viewContext)
+        }
+    }
+    
     func chooseRoom(){
         worklistModel.selectedEpisode = episode
 //        worklistModel.activeSheet = .editRoom

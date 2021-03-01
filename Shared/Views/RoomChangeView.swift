@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct RoomChangeView: View {
     @Environment(\.presentationMode) private var presentationMode
     

@@ -14,9 +14,11 @@ struct MedicalEpisodeRow: View {
     //State variables
     @State private var showFullCard: Bool = false
     @State private var flagged: Bool = false
+    @State private var showRoomEdit: Bool = false
+    @State private var showTriage: Bool = false
+    @State var newRoom: String = ""
     
     // View UI customization variables
-    private var textColor: Color = .black
     private var cardBgColor: Color = Color(UIColor.secondarySystemBackground)
     
     init(episode: MedicalEpisode, worklistModel: WorklistViewModel){
@@ -25,22 +27,30 @@ struct MedicalEpisodeRow: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("#00000").foregroundColor(.secondary).font(.caption).lineLimit(1).padding(.top,8)
-            HStack{
-                Label(title: {Text(rowModel.patientName).fontWeight(.bold)}, icon: {Image(systemName: "person")}).lineLimit(1)
-                Spacer()
-                VStack(spacing: 0){
-                    Text(rowModel.episode.patient?.ageString ?? "n/a").bold()
-                    Text("yrs").font(.system(size: 10)).fontWeight(.thin)
+            ZStack{
+                cardBgColor
+                VStack(alignment: .leading){
+                    Text("#00000").foregroundColor(.secondary).font(.caption).lineLimit(1).padding(.top,8)
+                    HStack{
+                        Label(title: {Text(rowModel.patientName).fontWeight(.bold)}, icon: {Image(systemName: "person")}).lineLimit(1)
+                        Spacer()
+                        VStack(spacing: 0){
+                            Text(rowModel.episode.patient?.ageString ?? "n/a").bold()
+                            Text("yrs").font(.system(size: 10)).fontWeight(.thin)
+                        }
+                    }.foregroundColor(.primary)
+                    Label(title: {
+                        Text(rowModel.diagnosis)
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .lineLimit(3)
+                    }, icon: {Image(systemName: "staroflife")})
+                    .foregroundColor(.primary)
                 }
-            }.foregroundColor(.primary)
-            Label(title: {
-                Text(rowModel.diagnosis)
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .lineLimit(3)
-            }, icon: {Image(systemName: "staroflife")})
-            .foregroundColor(.primary)
+            }.onTapGesture {
+                rowModel.worklistModel.selectedEpisode = rowModel.episode
+                rowModel.worklistModel.activeSheet = .medicalEpisodeFormView
+            }
             
             Divider()
             HStack{
@@ -48,20 +58,47 @@ struct MedicalEpisodeRow: View {
                     daysCountView(dayCount: rowModel.episode.daysSinceAdmission, dayLabel: "#hosp")
                     Divider().frame(height: 30)
                     daysCountView(dayCount: rowModel.episode.daysSinceSeen, dayLabel: "#seen")
-                }.minimumScaleFactor(0.3).foregroundColor(.secondary)
+                }.foregroundColor(.secondary)
                 Spacer()
                 Group{
-                    Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}.scaledToFit().minimumScaleFactor(0.3)
+                    Button(action: {showRoomEdit.toggle();showTriage = false}){Label(rowModel.roomNumber, systemImage: "bed.double")}.scaledToFit()
                     Button(action: rowModel.flagEpisode){Image(systemName: rowModel.flaggedEpisode ? "flag.fill":"flag").foregroundColor(rowModel.flaggedEpisode ? Color.red:Color.primary)}
                     Button(action: rowModel.addAct){Image(systemName: "plus")}
-                    Button(action: {}){Image(systemName: "arrowshape.bounce.forward")}
+                    Button(action: {showRoomEdit=false;showTriage.toggle()}){Image(systemName: "arrowshape.bounce.forward")}
                 }
                 .font(.caption)
                 .buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: Color(UIColor.quaternaryLabel), textColor: Color.primary))
                 Spacer()
             }
+            if showRoomEdit {
+                HStack{
+                    Spacer()
+                    TextField("Update room...", text: $newRoom)
+                        .padding(4)
+                        .frame(maxWidth: 120)
+                        .multilineTextAlignment(.center)
+                        .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color(UIColor.systemGray3)))
+                    Button(action:{rowModel.saveRoom(newRoom);showRoomEdit.toggle()}){Text("Save")}
+                    Spacer()
+                }
+                .font(.footnote)
+                .transition(.move(edge: .bottom))
+            }
+            
+            if showTriage {
+                HStack{
+                    Spacer()
+                    Group{
+                        Button(action:{}){Text("D/C")}
+                        Button(action:{}){Text("Transf.")}
+                        Button(action:{}){Text("")}
+                    }
+                    Spacer()
+                }
+                .font(.footnote)
+                .transition(.move(edge: .bottom))
+            }
         }
-        .foregroundColor(textColor)
         .padding([.horizontal,.bottom])
         .background(cardBgColor)
         .cornerRadius(10.0)
@@ -78,7 +115,7 @@ struct daysCountView: View {
         
         VStack(spacing: 0){
             Text("\(dayCount)d").fontWeight(.ultraLight).lineLimit(1)
-            Text(dayLabel).font(.caption2).fontWeight(.ultraLight).minimumScaleFactor(0.2)
+            Text(dayLabel).font(.caption2).fontWeight(.ultraLight)
         }
     }
 }
