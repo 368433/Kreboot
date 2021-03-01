@@ -73,11 +73,11 @@ class WorklistViewModel: ObservableObject {
         }
         newRoom = ""
     }
-//
-//    func hideRoomEdit(){
-//        if editRoom {
-//            editRoom.toggle()
-//        }
-//    }
+
+    func hideRoomEdit(){
+        if editRoom {
+            editRoom.toggle()
+        }
+    }
     
 }

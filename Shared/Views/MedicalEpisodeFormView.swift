@@ -49,7 +49,7 @@ struct MedicalEpisodeFormView: View {
                             Spacer()
                             TextField("update...", text: $model.newRoom).multilineTextAlignment(.trailing)
                         }
-//                        NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(model.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
+                        //                        NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(model.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
                         DatePicker(selection: $model.admissionDate, displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
                         DatePicker(selection: $model.startDate, displayedComponents: [.date], label: {Label("Start", systemImage: "calendar")})
                         DatePicker(selection: $model.endDate, displayedComponents: [.date], label: {Label("End", systemImage: "stopwatch")})
@@ -59,26 +59,30 @@ struct MedicalEpisodeFormView: View {
                         Text("Acts")
                         Spacer()
                         Button(action: {
-                            withAnimation{
-                                self.showaddActForm.toggle()
-                            }}){Image(systemName: "plus.circle").font(.title2)}
+                                withAnimation{
+                                    self.showaddActForm.toggle()
+                                }}){Image(systemName: "plus.circle").font(.title2)}
                     }, content: {
                         ForEach(model.acts){act in
                             MedicalActRow(act: act)
                         }.onDelete(perform: model.remove)
                     })
                 }
+                
                 if showaddActForm{
-                    ZStack{
-                        
-                        Color(UIColor.systemBackground).blur(radius: 30).onTapGesture {
+                    VisualEffectBlur(blurStyle: .systemMaterial)
+                        .ignoresSafeArea()
+                        .onTapGesture {
                             showaddActForm.toggle()
                         }
+                    GeometryReader{ gp in
                         ActFormView(for: nil, in: model.episode, isShowing: $showaddActForm)
+                            .frame(maxHeight: gp.size.height * 0.7)
                             .background(Color(UIColor.tertiarySystemGroupedBackground))
-                            .cornerRadius(Karla.cornerRadius).shadow(radius: 10).padding()
-                            
-                    }.transition(.scale)
+                            .cornerRadius(Karla.cornerRadius)
+                            .shadow(radius: 10)
+                            .padding()
+                    }
                 }
             }
             .onAppear{model.setValues()}
@@ -86,8 +90,8 @@ struct MedicalEpisodeFormView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction){
                     Button(action: {
-                            model.saveForm()
-                            self.presentationMode.wrappedValue.dismiss()
+                        model.saveForm()
+                        self.presentationMode.wrappedValue.dismiss()
                     }){Text("Done")}
                 }
             }
