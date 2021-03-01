@@ -19,3 +19,7 @@ enum Karla {
     static var animationSpeed: Double = 0.1
     case bon
 }
+
+struct SomeConstants {
+    static let listTitleChoice = ["Clin. Externe", "Garde", "Appels", "Micro7", "Autre"]
+}

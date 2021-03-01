@@ -128,7 +128,6 @@
 		6A51F71B25D770650060AE35 /* PatientFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */; };
 		6A51F71C25D770650060AE35 /* PatientFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */; };
 		6A51F72A25D8825A0060AE35 /* VerticalLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F72925D8825A0060AE35 /* VerticalLabel.swift */; };
-		6A51F73C25D883A70060AE35 /* Karla Preexisting values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F73B25D883A70060AE35 /* Karla Preexisting values.swift */; };
 		6A51F74225D883EF0060AE35 /* ScrollChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F74125D883EF0060AE35 /* ScrollChoice.swift */; };
 		6A51F74825D884330060AE35 /* Extensions customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F74725D884330060AE35 /* Extensions customs.swift */; };
 		6A51F74E25D884510060AE35 /* Models Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A51F74D25D884510060AE35 /* Models Extension.swift */; };
@@ -257,7 +256,6 @@
 		6A05183725CDF36100527AF1 /* UIEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmptyState.swift; sourceTree = "<group>"; };
 		6A51F71A25D770650060AE35 /* PatientFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientFormViewModel.swift; sourceTree = "<group>"; };
 		6A51F72925D8825A0060AE35 /* VerticalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabel.swift; sourceTree = "<group>"; };
-		6A51F73B25D883A70060AE35 /* Karla Preexisting values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Karla Preexisting values.swift"; sourceTree = "<group>"; };
 		6A51F74125D883EF0060AE35 /* ScrollChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollChoice.swift; sourceTree = "<group>"; };
 		6A51F74725D884330060AE35 /* Extensions customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions customs.swift"; sourceTree = "<group>"; };
 		6A51F74D25D884510060AE35 /* Models Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models Extension.swift"; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 				3115ED2225DA0F5900E7A04E /* Color+Name.swift */,
 				3146971725D7A18C00CEEDFD /* Custom colors.swift */,
 				6A51F74725D884330060AE35 /* Extensions customs.swift */,
-				6A51F73B25D883A70060AE35 /* Karla Preexisting values.swift */,
 				3115ED2825DA213600E7A04E /* PaddingTightness+Enum.swift */,
 				31643EBC25D622680009BF9C /* PopupView.swift */,
 				6A51F74125D883EF0060AE35 /* ScrollChoice.swift */,
@@ -721,7 +718,6 @@
 				3118EFC225C59993002B3711 /* PatientFormView.swift in Sources */,
 				31548B9225C71E9A00097F2F /* CoreDataProvider.swift in Sources */,
 				311CA85A25C5774900E4513A /* Persistence.swift in Sources */,
-				6A51F73C25D883A70060AE35 /* Karla Preexisting values.swift in Sources */,
 				6A51F74825D884330060AE35 /* Extensions customs.swift in Sources */,
 				311C861625C6E1860021E596 /* AddPatientToListView.swift in Sources */,
 				3169014F25D8F74200B6403A /* EpisodeSortEnum.swift in Sources */,
