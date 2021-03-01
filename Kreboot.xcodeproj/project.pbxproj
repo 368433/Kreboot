@@ -114,6 +114,10 @@
 		3196B5D225CEE7F4006A3E72 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3196B5D025CEE7F4006A3E72 /* README */; };
 		3196DA6125DB3D6800696068 /* MedicalEpisodeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196DA6025DB3D6800696068 /* MedicalEpisodeFormView.swift */; };
 		3196DA6225DB3D6800696068 /* MedicalEpisodeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196DA6025DB3D6800696068 /* MedicalEpisodeFormView.swift */; };
+		31A530B925EDAF050002449A /* ramqDB.json in Resources */ = {isa = PBXBuildFile; fileRef = 31A530B825EDAF050002449A /* ramqDB.json */; };
+		31A530BA25EDAF050002449A /* ramqDB.json in Resources */ = {isa = PBXBuildFile; fileRef = 31A530B825EDAF050002449A /* ramqDB.json */; };
+		31A530C025EDB0700002449A /* RamqBillingCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A530BF25EDB0700002449A /* RamqBillingCodes.swift */; };
+		31A530C125EDB0700002449A /* RamqBillingCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A530BF25EDB0700002449A /* RamqBillingCodes.swift */; };
 		31A6F00925E1F4D000BE9E55 /* FilterAndSortPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */; };
 		31A6F00A25E1F4D000BE9E55 /* FilterAndSortPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */; };
 		31AAF8DD25E85AD90021B27B /* EmptyContentModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AAF8DC25E85AD90021B27B /* EmptyContentModifier.swift */; };
@@ -246,6 +250,8 @@
 		3196B5C625CE2740006A3E72 /* DataTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTab.swift; sourceTree = "<group>"; };
 		3196B5D025CEE7F4006A3E72 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		3196DA6025DB3D6800696068 /* MedicalEpisodeFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalEpisodeFormView.swift; sourceTree = "<group>"; };
+		31A530B825EDAF050002449A /* ramqDB.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ramqDB.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		31A530BF25EDB0700002449A /* RamqBillingCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RamqBillingCodes.swift; sourceTree = "<group>"; };
 		31A6F00825E1F4D000BE9E55 /* FilterAndSortPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAndSortPickerView.swift; sourceTree = "<group>"; };
 		31AAF8DC25E85AD90021B27B /* EmptyContentModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentModifier.swift; sourceTree = "<group>"; };
 		31F43CA825E3648F00F9E837 /* RoundedCornersRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersRect.swift; sourceTree = "<group>"; };
@@ -317,6 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				3196B5D025CEE7F4006A3E72 /* README */,
+				31A530B825EDAF050002449A /* ramqDB.json */,
+				31A530BF25EDB0700002449A /* RamqBillingCodes.swift */,
 				311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */,
 				311CA82A25C5774700E4513A /* KrebootApp.swift */,
 				311CA82C25C5774700E4513A /* Persistence.swift */,
@@ -661,6 +669,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3196B5D125CEE7F4006A3E72 /* README in Resources */,
+				31A530B925EDAF050002449A /* ramqDB.json in Resources */,
 				3154A35125C9DB4000E20978 /* icd10_codes.json in Resources */,
 				311CA85C25C5774900E4513A /* Assets.xcassets in Resources */,
 			);
@@ -670,6 +679,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A530BA25EDAF050002449A /* ramqDB.json in Resources */,
 				3196B5D225CEE7F4006A3E72 /* README in Resources */,
 				311CA85D25C5774900E4513A /* Assets.xcassets in Resources */,
 			);
@@ -697,6 +707,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3154A35825C9DB7F00E20978 /* ICDdbTable3.swift in Sources */,
+				31A530C025EDB0700002449A /* RamqBillingCodes.swift in Sources */,
 				6A51F74E25D884510060AE35 /* Models Extension.swift in Sources */,
 				31643EC325D63A360009BF9C /* RoomChangeView.swift in Sources */,
 				3154A33A25C902D100E20978 /* ICDProvider0.swift in Sources */,
@@ -835,6 +846,7 @@
 				3118EFFD25C60311002B3711 /* WorklistView.swift in Sources */,
 				317CEA3F25D4157700393AD6 /* ListFormViewModel.swift in Sources */,
 				6A66E52725D9CC9F00C09D47 /* DiagnosisSearchViewModel.swift in Sources */,
+				31A530C125EDB0700002449A /* RamqBillingCodes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
