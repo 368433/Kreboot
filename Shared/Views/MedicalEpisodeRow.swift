@@ -54,22 +54,27 @@ struct MedicalEpisodeRow: View {
             
             Divider()
             HStack{
+                
+                // Bottom hospit and seen days indicators
                 HStack{
                     daysCountView(dayCount: rowModel.episode.daysSinceAdmission, dayLabel: "#hosp")
                     Divider().frame(height: 30)
                     daysCountView(dayCount: rowModel.episode.daysSinceSeen, dayLabel: "#seen")
                 }.foregroundColor(.secondary)
+                
                 Spacer()
+                
+                // Bottom buttons
                 Group{
                     Button(action: {showRoomEdit.toggle();showTriage = false}){Label(rowModel.roomNumber, systemImage: "bed.double")}.scaledToFit()
                     Button(action: rowModel.flagEpisode){Image(systemName: rowModel.flaggedEpisode ? "flag.fill":"flag").foregroundColor(rowModel.flaggedEpisode ? Color.red:Color.primary)}
                     Button(action: rowModel.addAct){Image(systemName: "plus")}
                     Button(action: {showRoomEdit=false;showTriage.toggle()}){Image(systemName: "arrowshape.bounce.forward")}
                 }
-                .font(.caption)
-                .buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: Color(UIColor.quaternaryLabel), textColor: Color.primary))
-                Spacer()
+                .font(.subheadline)
+                .buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: Color(UIColor.tertiaryLabel), textColor: Color.primary))
             }
+            
             if showRoomEdit {
                 HStack{
                     Spacer()
@@ -91,19 +96,16 @@ struct MedicalEpisodeRow: View {
                     Group{
                         Button(action:{}){Text("D/C")}
                         Button(action:{}){Text("Transf.")}
-                        Button(action:{}){Text("")}
-                    }
-                    Spacer()
+                    }.font(.caption2).buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: Color.clear, textColor: Color.primary, strokeColor: Color(UIColor.systemGray4)))
                 }
-                .font(.footnote)
                 .transition(.move(edge: .bottom))
             }
         }
         .padding([.horizontal,.bottom])
-        .background(cardBgColor)
-        .cornerRadius(10.0)
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(0.3), lineWidth: 1))
-        .shadow(color: Color.black.opacity(0.2), radius: 8, y: 8)
+        .background(RoundedRectangle(cornerRadius: Karla.cornerRadius).foregroundColor(cardBgColor).shadow(color: Color.black.opacity(0.2), radius: 8, y: 8))
+//        .cornerRadius(10.0)
+        .overlay(RoundedRectangle(cornerRadius: Karla.cornerRadius).stroke(Color.gray.opacity(0.3), lineWidth: 1))
+        
         
     }
 }

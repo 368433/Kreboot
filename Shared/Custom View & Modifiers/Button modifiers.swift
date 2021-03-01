@@ -54,6 +54,7 @@ struct CapsuleButton: ButtonStyle {
     var hTightness: PaddingTightness = .normal
     var bgColor: Color = .accentColor
     var textColor: Color = .white
+    var strokeColor: Color = .clear
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
@@ -61,6 +62,7 @@ struct CapsuleButton: ButtonStyle {
             .padding(.vertical, vTightness.space)
             .padding(.horizontal, hTightness.space)
             .background(Capsule().fill(configuration.isPressed ? Color.gray : bgColor))
+            .overlay(Capsule().stroke(strokeColor))
     }
 }
 

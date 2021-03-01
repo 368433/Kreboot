@@ -69,7 +69,7 @@ struct WorklistTitleHeader: View {
                 Text(model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.3)
                 Spacer()
                 Group{
-                    Button(action: {model.activeSheet = .editListDetails}){Image(systemName: "pencil.circle")}
+                    Button(action: {model.activeSheet = .editListDetails}){Image(systemName: "pencil")}
                     Button(action: {model.activeSheet = .addPatient}){Image(systemName: "plus")}
                 }.padding(.trailing, 5).font(.title2)
             }
