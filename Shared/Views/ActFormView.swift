@@ -31,7 +31,7 @@ struct ActFormView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                     
-                }){Text("Save").fontWeight(.bold)}.buttonStyle(PlainButtonStyle())
+                }){Text("Done").fontWeight(.bold)}
             }
             
             Text("Act Form").font(.largeTitle).fontWeight(.heavy)
