@@ -17,9 +17,14 @@ struct DiagnosisSearchView: View {
     }
     
     var body: some View {
-        VStack(alignment:.leading){
-            Text("ICD Database").fontWeight(.heavy)
-            SearchBar(text: $model.searchString)
+        Form{
+            Section(header: HStack{
+                Text("Search")
+                Spacer()
+                if !model.searchString.isEmpty {Button(action:{model.searchString = ""}){Text("Cancel")}}
+            }){
+                TextField("Enter diagnosis", text: $model.searchString)
+            }
             List{
                 ForEach(model.searchResults){ icd in
                     VStack (alignment: .leading){
@@ -31,7 +36,8 @@ struct DiagnosisSearchView: View {
                     }
                 }
             }
-            .navigationBarTitle("Diagnosis search")
-        }.padding(.horizontal)
+            
+        }.navigationBarTitle("Diagnosis search")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

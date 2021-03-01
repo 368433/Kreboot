@@ -25,18 +25,11 @@ struct WorklistView: View {
             VStack(spacing: 0){
                 WorklistTitleHeader(model: model).padding()
                 WorklistCardsList(model: model)
-//                ZStack(alignment: .top){
-//                    
-////                    ZStack{
-////                        Divider()
-////                        WorklistHeaderButtons(model: model)
-////                    }.frame(height: buttonHeight).offset(y: -buttonHeight/2)
-//                }
             }
             WorklistOptionsView(model: model)
-            
         }
-//        .onAppear{self.model.cardsFilter = .toSee}
+
+        
         .animation(.easeIn(duration: Karla.animationSpeed))
         .sheet(item: $model.activeSheet) { item in
             switch item {

@@ -27,7 +27,7 @@ struct BorderedKarla: ViewModifier {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: Karla.cornerRadius)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(UIColor.secondarySystemBackground))
                     .overlay(
                         RoundedRectangle(cornerRadius: Karla.cornerRadius)
                             .stroke(Color.gray.opacity(Karla.strokeOpacity), lineWidth: 0.8))
