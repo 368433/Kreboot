@@ -23,8 +23,7 @@ struct ListRow: View {
                 
             }.lineLimit(1)
             Spacer()
-        }
-        .animation(.spring())
+        }.background(Color(UIColor.systemBackground))
     }
 }
 
