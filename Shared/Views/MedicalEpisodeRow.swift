@@ -18,6 +18,20 @@ struct MedicalEpisodeRow: View {
     @State private var showTriage: Bool = false
     @State var newRoom: String = ""
     
+    //Gesture variables
+    @State private var offset = CGSize.zero
+    var swipeGesture: some Gesture{
+        DragGesture()
+            .onChanged{value in
+                if value.translation.width > 0 { offset = value.translation}
+            }
+            .onEnded{value in
+                withAnimation{
+                    offset = CGSize.zero
+                }
+            }
+    }
+    
     // View UI customization variables
     private var cardBgColor: Color = Color(UIColor.secondarySystemBackground)
     
@@ -103,10 +117,9 @@ struct MedicalEpisodeRow: View {
         }
         .padding([.horizontal,.bottom])
         .background(RoundedRectangle(cornerRadius: Karla.cornerRadius).foregroundColor(cardBgColor).shadow(color: Color.black.opacity(0.2), radius: 8, y: 8))
-//        .cornerRadius(10.0)
         .overlay(RoundedRectangle(cornerRadius: Karla.cornerRadius).stroke(Color.gray.opacity(0.3), lineWidth: 1))
-        
-        
+        .offset(x: offset.width, y: 0)
+        .gesture(swipeGesture)
     }
 }
 

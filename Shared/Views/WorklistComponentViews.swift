@@ -9,11 +9,9 @@ import SwiftUI
 
 struct WorklistCardsList: View {
     @ObservedObject var model: WorklistViewModel
-    //private var episodes: [MedicalEpisode]
     
     init(model: WorklistViewModel){
         self.model = model
-        //self.episodes = model.getList()
     }
     
     var body: some View {
@@ -22,7 +20,6 @@ struct WorklistCardsList: View {
                 ForEach(model.episodesList){ episode in
                     MedicalEpisodeRow(episode: episode, worklistModel: model)
                 }.onDelete(perform: model.deleteEpisode)
-                
 //            }.padding(.top)
         }.onAppear{model.update()}
         //.emptyContent(if: model.episodesList.isEmpty, show: "person.3", caption: "None")
