@@ -17,7 +17,7 @@ struct MedicalEpisodeRow: View {
     
     // View UI customization variables
     private var textColor: Color = .black
-    private var cardBgColor: Color = .Whitesmoke
+    private var cardBgColor: Color = Color(UIColor.secondarySystemBackground)
     
     init(episode: MedicalEpisode, worklistModel: WorklistViewModel){
         self.rowModel = MedicalEpisodeRowViewModel(episode: episode, worklistmodel: worklistModel)
@@ -33,14 +33,14 @@ struct MedicalEpisodeRow: View {
                     Text(rowModel.episode.patient?.ageString ?? "n/a").bold()
                     Text("yrs").font(.system(size: 10)).fontWeight(.thin)
                 }
-            }
-            
+            }.foregroundColor(.primary)
             Label(title: {
                 Text(rowModel.diagnosis)
                     .font(.footnote)
                     .fontWeight(.semibold)
                     .lineLimit(3)
-            }, icon: {Image(systemName: "staroflife")})//.frame(height: 50)
+            }, icon: {Image(systemName: "staroflife")})
+            .foregroundColor(.primary)
             
             Divider()
             HStack{
@@ -48,16 +48,16 @@ struct MedicalEpisodeRow: View {
                     daysCountView(dayCount: rowModel.episode.daysSinceAdmission, dayLabel: "#hosp")
                     Divider().frame(height: 30)
                     daysCountView(dayCount: rowModel.episode.daysSinceSeen, dayLabel: "#seen")
-                }.minimumScaleFactor(0.3)
+                }.minimumScaleFactor(0.3).foregroundColor(.secondary)
                 Spacer()
                 Group{
                     Button(action: rowModel.chooseRoom){Label(rowModel.roomNumber, systemImage: "bed.double")}.scaledToFit().minimumScaleFactor(0.3)
-                    Button(action: rowModel.flagEpisode){Image(systemName: rowModel.flaggedEpisode ? "flag.fill":"flag").foregroundColor(rowModel.flaggedEpisode ? Color.red:Color.black)}
+                    Button(action: rowModel.flagEpisode){Image(systemName: rowModel.flaggedEpisode ? "flag.fill":"flag").foregroundColor(rowModel.flaggedEpisode ? Color.red:Color.primary)}
                     Button(action: rowModel.addAct){Image(systemName: "plus")}
                     Button(action: {}){Image(systemName: "arrowshape.bounce.forward")}
                 }
                 .font(.caption)
-                .buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: .white, textColor: .black)).shadow(color: Color.gray.opacity(0.4), radius: 10, y: 10)
+                .buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: Color(UIColor.quaternaryLabel), textColor: Color.primary))
                 Spacer()
             }
         }

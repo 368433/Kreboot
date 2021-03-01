@@ -10,10 +10,11 @@ import Combine
 
 class MedicalEpisodeFormViewModel: ObservableObject {
     //Medical Episode object attribute
-    @Published var startDate: Date?
-    @Published var endDate: Date?
-    @Published var admissionDate: Date?
-    @Published var roomLocation: String?
+    @Published var startDate: Date = Date()
+    @Published var endDate: Date = Date()
+    @Published var admissionDate: Date = Date()
+    @Published private(set) var roomLocation: String?
+    @Published var newRoom: String = ""
     @Published var list: PatientsList?
     @Published var acts: [Act] = []
 
@@ -33,12 +34,12 @@ class MedicalEpisodeFormViewModel: ObservableObject {
     }
     
     func setValues() {
-        self.startDate = episode.startDate
-        self.endDate = episode.endDate
+        self.startDate = episode.startDate ?? Date()
+        self.endDate = episode.endDate ?? Date()
         self.roomLocation = episode.roomLocation
         self.diagnosis = episode.diagnosis?.wrappedDescription ?? "None"
         self.list = episode.list
-        self.admissionDate = episode.admissionDate
+        self.admissionDate = episode.admissionDate ?? Date()
         self.patientName = patient?.name ?? "N/A"
         self.acts = episode.actList()
     }
@@ -52,6 +53,9 @@ class MedicalEpisodeFormViewModel: ObservableObject {
         self.episode.startDate = self.startDate
         self.episode.endDate = self.endDate
         self.episode.admissionDate = self.admissionDate
+        if !newRoom.isEmpty {
+            self.episode.roomLocation = newRoom
+        }
         self.episode.addToActs(NSSet(array: acts))
         self.episode.saveYourself(in: PersistenceController.shared.container.viewContext)
     }

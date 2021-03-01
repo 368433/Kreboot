@@ -45,10 +45,15 @@ struct MedicalEpisodeFormView: View {
                     
                     Section(header: Text("Episode Details"), content: {
                         NavigationLink(destination: Text("physician"), label: {Label("Consulting physician", systemImage: "figure.wave")})
-                        NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(model.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
-                        DatePicker(selection: $model.admissionDate ?? Date(), displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
-                        DatePicker(selection: $model.startDate ?? Date(), displayedComponents: [.date], label: {Label("Start", systemImage: "calendar")})
-                        DatePicker(selection: $model.endDate ?? Date(), displayedComponents: [.date], label: {Label("End", systemImage: "stopwatch")})
+                        HStack{
+                            Label(model.roomLocation ?? "N/A", systemImage: "bed.double.fill")
+                            Spacer()
+                            TextField("update...", text: $model.newRoom).multilineTextAlignment(.trailing)
+                        }
+//                        NavigationLink(destination: RoomChangeView(episode: episode), label: {Label(model.roomLocation ?? "Not assigned", systemImage: "bed.double.fill")})
+                        DatePicker(selection: $model.admissionDate, displayedComponents: [.date], label: {Label("Hospitalized", systemImage: "building")})
+                        DatePicker(selection: $model.startDate, displayedComponents: [.date], label: {Label("Start", systemImage: "calendar")})
+                        DatePicker(selection: $model.endDate, displayedComponents: [.date], label: {Label("End", systemImage: "stopwatch")})
                     })
                     
                     Section(header: HStack{

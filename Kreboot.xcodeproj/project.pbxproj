@@ -484,6 +484,7 @@
 		317CEA4525D4BF5400393AD6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				31F8B1D725EC23C600F74141 /* ActCodePicker.swift */,
 				310996E325D6448800E0C123 /* ActFormView.swift */,
 				3115ED3425DA3A0D00E7A04E /* ActListView.swift */,
 				315E5A5825C754D8005DB2A9 /* AnalyticsView.swift */,
@@ -507,11 +508,10 @@
 				31A6F00325E1EE8000BE9E55 /* Unused views */,
 				319277FC25E75C7D00D162AF /* WorklistCardView.swift */,
 				318F5DB325E2A9DF00D7A925 /* WorklistComponentViews.swift */,
-				31F8B1D725EC23C600F74141 /* ActCodePicker.swift */,
-				3136A46A25EA9A8B00780B4A /* WorklistOptionsView.swift */,
 				3101281425E496DA006BBBED /* WorklistHomeView.swift */,
 				31428C9725E81F55005AE875 /* WorklistHomeViewVariation1.swift */,
 				3118EFE925C5E398002B3711 /* WorklistHomeViewVariation2.swift */,
+				3136A46A25EA9A8B00780B4A /* WorklistOptionsView.swift */,
 				3118EFFB25C60311002B3711 /* WorklistView.swift */,
 			);
 			path = Views;

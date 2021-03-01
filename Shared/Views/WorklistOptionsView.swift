@@ -13,10 +13,9 @@ struct WorklistOptionsView: View {
     var body: some View {
         VStack{
             Spacer()
-            if model.editRoom, let episode = model.selectedEpisode {
-                NewRoomView(worklistModel: model, episode: episode)
+            if model.editRoom {
+                NewRoomView(worklistModel: model)
                     .transition(.move(edge: .bottom))
-                //                RoomChangeView(worklistModel: model, episode: episode)
             }
             
             if model.showFilter {

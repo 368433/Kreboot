@@ -15,7 +15,7 @@ struct RoomChangeView: View {
     @ObservedObject private var model: LocationChangeViewModel
     
     init(worklistModel: WorklistViewModel? = nil, episode: MedicalEpisode){
-        self.model = LocationChangeViewModel(episode: episode, wlModel: worklistModel)
+        self.model = LocationChangeViewModel(episode: episode)
     }
     
     var body: some View {
@@ -28,7 +28,7 @@ struct RoomChangeView: View {
             HStack{
                 Text("New location")
                 Spacer()
-                TextField("Enter new location", text: $model.newRoom)
+                TextField("Enter new location", text: $model.newRoom).multilineTextAlignment(.trailing)
             }
             Button(action: {self.model.save(); self.presentationMode.wrappedValue.dismiss()}){
                 HStack{
@@ -37,24 +37,26 @@ struct RoomChangeView: View {
             }
         }
         .navigationBarTitle("Update room location")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct NewRoomView: View {
     @Environment(\.presentationMode) private var presentationMode
-    @ObservedObject private var model: LocationChangeViewModel
+    @ObservedObject private var model: WorklistViewModel
     
-    init(worklistModel: WorklistViewModel, episode: MedicalEpisode){
-        self.model = LocationChangeViewModel(episode: episode, wlModel: worklistModel)
+    init(worklistModel: WorklistViewModel){
+        self.model = worklistModel
     }
     
     var body: some View {
         VStack{
-            TextField("Last location \(model.currentRoom)", text: $model.newRoom).multilineTextAlignment(.center)
-            Button(action: {model.save()}){Text("Done")}
+            TextField("Last location \(model.selectedEpisode?.roomLocation ?? "n/a")", text: $model.newRoom).multilineTextAlignment(.center)
+            Button(action: {model.saveRoom()}){Text("Done")}
         }.padding()
-        .background(Color.white.shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10))
-        .padding(.horizontal)
+        .background(RoundedRectangle(cornerRadius: Karla.cornerRadius)
+                        .foregroundColor(Color(UIColor.tertiarySystemBackground))
+                        .shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10))
     }
 }
 

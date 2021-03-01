@@ -25,7 +25,7 @@ struct FilterAndSortPickerView: View {
     var body: some View {
         VStack{
             HStack{
-                LabelSubsection("Filter by: ")
+                Text("Filter by: ").fontWeight(.thin).font(.caption)
                 ScrollView(.horizontal){
                     HStack(spacing: optionSpacing){
                         ForEach(EpisodeFilterEnum.allCases){filter in
@@ -38,7 +38,7 @@ struct FilterAndSortPickerView: View {
                 }
             }
             HStack{
-                LabelSubsection("Sort by: ")
+                Text("Sort by: ").fontWeight(.thin).font(.caption)
                 ScrollView(.horizontal){
                     HStack(spacing: optionSpacing){
                         ForEach(EpisodeSortEnum.allCases){sort in
@@ -50,9 +50,11 @@ struct FilterAndSortPickerView: View {
                     }
                 }
             }
-        }.padding()
-        .background(Color.white)
-        .shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10).padding(.horizontal)
+        }
+        .padding()
+        .background(RoundedRectangle(cornerRadius: Karla.cornerRadius)
+                        .foregroundColor(Color(UIColor.tertiarySystemBackground))
+                        .shadow(color: Color.gray.opacity(0.6), radius: 10, y: 10))
     }
 }
 
@@ -65,17 +67,6 @@ struct LabelOption: View {
         Text(text.uppercased()).font(.footnote).fontWeight(.bold)
     }
 }
-
-struct LabelSubsection: View {
-    var text: String
-    init(_ text: String){
-        self.text = text
-    }
-    var body: some View{
-        Text(text.uppercased()).fontWeight(.thin).font(.caption)
-    }
-}
-
 
 struct FilterAndSortPickerView_Previews: PreviewProvider {
     static var previews: some View {

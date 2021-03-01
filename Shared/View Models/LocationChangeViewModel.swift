@@ -10,12 +10,10 @@ import Foundation
 class LocationChangeViewModel: ObservableObject {
     @Published var currentRoom: String
     @Published var newRoom: String = ""
-    var worklistModel: WorklistViewModel?
     private var episode: MedicalEpisode
     
-    init(episode: MedicalEpisode, wlModel: WorklistViewModel?){
+    init(episode: MedicalEpisode){
         self.episode = episode
-        self.worklistModel = wlModel
         self.currentRoom = self.episode.roomLocation ?? "Not available"
     }
     
@@ -23,9 +21,6 @@ class LocationChangeViewModel: ObservableObject {
         if !newRoom.isEmpty {
             episode.roomLocation = newRoom
             episode.saveYourself(in: PersistenceController.shared.container.viewContext)
-        }
-        if let worklistModel = worklistModel {
-            worklistModel.hideRoomEdit()
         }
     }
     

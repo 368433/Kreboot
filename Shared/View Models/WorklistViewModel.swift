@@ -11,9 +11,10 @@ import Combine
 class WorklistViewModel: ObservableObject {
     @Published var list: PatientsList
     
-    @Published var selectedCard: Patient? = nil
-    @Published var selectedAct: Act? = nil
+    //    @Published var selectedCard: Patient? = nil
+    //    @Published var selectedAct: Act? = nil
     @Published var selectedEpisode: MedicalEpisode? = nil
+    @Published var newRoom: String = ""
     
     @Published var activeSheet: ActiveSheet? = nil
     @Published var hideActionButton: Bool = false
@@ -26,7 +27,7 @@ class WorklistViewModel: ObservableObject {
     var episodesList: [MedicalEpisode] = []
     
     private var cancellables = Set<AnyCancellable>()
-
+    
     var listTitle: String { return list.title ?? "Untiltled list"}
     
     init(patientsList list: PatientsList){
@@ -43,6 +44,14 @@ class WorklistViewModel: ObservableObject {
     func updateList(){
         
     }
+    
+    func saveRoom(){
+        guard let episode = selectedEpisode else {return}
+        episode.roomLocation = newRoom
+        episode.saveYourself(in: PersistenceController.shared.container.viewContext)
+        editRoom.toggle()
+    }
+    
     func getList() -> [MedicalEpisode] {
         let results = list.getEpisodeList(filteredBy: cardsFilter, sortedBy: cardsSort)
         self.episodesList = results
@@ -52,19 +61,22 @@ class WorklistViewModel: ObservableObject {
     func showRoomEdit(){
         if editRoom {
             editRoom.toggle()
-            DispatchQueue.main.asyncAfter(deadline: .now() + Karla.animationSpeed + 0.01) {
-                self.editRoom.toggle()
+            if selectedEpisode?.roomLocation != newRoom {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Karla.animationSpeed + 0.01) {
+                    self.editRoom.toggle()
+                }
             }
             
         } else {
             editRoom.toggle()
         }
+        newRoom = ""
     }
-    
-    func hideRoomEdit(){
-        if editRoom {
-            editRoom.toggle()
-        }
-    }
+//
+//    func hideRoomEdit(){
+//        if editRoom {
+//            editRoom.toggle()
+//        }
+//    }
     
 }
