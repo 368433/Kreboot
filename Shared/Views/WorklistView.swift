@@ -13,7 +13,7 @@ struct WorklistView: View {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject private var model: WorklistViewModel
     
-    private var buttonHeight: CGFloat = 32
+//    private var buttonHeight: CGFloat = 32
     
     init(list: PatientsList ){
         self.model = WorklistViewModel(patientsList: list)
@@ -21,13 +21,13 @@ struct WorklistView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .bottom){
+//        ZStack(alignment: .bottom){
             VStack(spacing: 0){
-                WorklistTitleHeader(model: model).padding()
+                WorklistTitleHeader(model: model).padding([.top, .horizontal]).padding(.bottom, 3)
                 WorklistCardsList(model: model)
             }
-            WorklistOptionsView(model: model)
-        }
+//            WorklistOptionsView(model: model)
+//        }
 
         
         .animation(.easeIn(duration: Karla.animationSpeed))

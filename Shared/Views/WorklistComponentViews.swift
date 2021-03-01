@@ -25,7 +25,7 @@ struct WorklistCardsList: View {
                         model.activeSheet = .medicalEpisodeFormView
                     }
                 }
-            }.padding(.top, 30)
+            }.padding(.top)
         }
         .emptyContent(if: episodes.isEmpty, show: "person.3", caption: "None")
     }
@@ -61,19 +61,21 @@ struct WorklistCardsList: View {
 struct WorklistTitleHeader: View {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var model: WorklistViewModel
+    @State private var showFilter: Bool = false
+    @State private var showSort: Bool = false
     
     var body: some View {
         VStack(alignment: .leading){
             
             HStack(alignment: .top){
-                Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark")}.padding(.bottom)
+                Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark")}
                 Spacer()
                 Group{
                     Button(action: {model.activeSheet = .addPatient}){Image(systemName: "plus")}
-                    Button(action: {model.showFilter.toggle()}) {Image(systemName: "arrow.up.arrow.down")}
+//                    Button(action: {model.showFilter.toggle()}) {Image(systemName: "arrow.up.arrow.down")}
                     Button(action: {model.activeSheet = .editListDetails}){Image(systemName: "pencil.circle.fill")}
-                }.font(.title3).padding(.trailing, 3)
-            }
+                }.padding(.trailing, 3)
+            }.font(.title2)
             Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
 
             HStack{
@@ -82,6 +84,43 @@ struct WorklistTitleHeader: View {
                 Text("\(model.episodesList.count) \(model.episodesList.count > 1 ? "pts":"pt")").fontWeight(.semibold)
                 Text("\(model.cardsFilter.label)").fontWeight(.ultraLight).font(.caption)
             }.font(.footnote)
+            
+            HStack{
+                Spacer()
+                if showFilter{
+                    Picker("Filter options", selection: $model.cardsFilter){
+                        ForEach(EpisodeFilterEnum.allCases) { filter in
+                            Text(filter.label).tag(filter)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                    .transition(.move(edge: .leading))
+                }
+                
+                Button(action:filterPickers){Text("Filter").foregroundColor(showSort ? .secondary:Color.accentColor)}
+                Divider().frame(height: 20)
+                Button(action:sortPickers){Text("Sort").foregroundColor(showFilter ? .secondary:Color.accentColor)}
+                if showSort{
+                    Picker("Sort options", selection: $model.cardsSort){
+                        ForEach(EpisodeSortEnum.allCases) { sort in
+                            Text(sort.label).tag(sort)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                    .transition(.move(edge: .trailing))
+                }
+                Spacer()
+            }.frame(height: 30)
+        }
+    }
+    private func filterPickers(){
+        showFilter.toggle()
+        if showSort{
+            showSort.toggle()
+        }
+    }
+    private func sortPickers(){
+        showSort.toggle()
+        if showFilter{
+            showFilter.toggle()
         }
     }
 }
