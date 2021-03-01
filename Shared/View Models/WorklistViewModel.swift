@@ -46,10 +46,11 @@ class WorklistViewModel: ObservableObject {
     }
     
     func saveRoom(){
-        guard let episode = selectedEpisode else {return}
-        episode.roomLocation = newRoom
-        episode.saveYourself(in: PersistenceController.shared.container.viewContext)
-        editRoom.toggle()
+        if !newRoom.isEmpty, let episode = selectedEpisode {
+            episode.roomLocation = newRoom
+            episode.saveYourself(in: PersistenceController.shared.container.viewContext)
+        }
+        editRoom = false
     }
     
     func getList() -> [MedicalEpisode] {

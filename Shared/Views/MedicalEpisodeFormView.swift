@@ -10,7 +10,6 @@ import SwiftUI
 import Combine
 
 struct MedicalEpisodeFormView: View {
-    //    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var episode: MedicalEpisode
     @ObservedObject var model: MedicalEpisodeFormViewModel
@@ -70,7 +69,7 @@ struct MedicalEpisodeFormView: View {
                     })
                 }
                 if showaddActForm{
-                    ActFormView(for: nil, in: model.episode, isShowing: $showaddActForm).background(Color(UIColor.systemBackground)).cornerRadius(Karla.cornerRadius).shadow(radius: 10).padding()
+                    ActFormView(for: nil, in: model.episode, isShowing: $showaddActForm).background(Color(UIColor.tertiarySystemGroupedBackground)).cornerRadius(Karla.cornerRadius).shadow(radius: 10).padding()
                         .transition(.scale)
                 }
             }

@@ -52,7 +52,7 @@ struct NewRoomView: View {
     var body: some View {
         VStack{
             TextField("Last location \(model.selectedEpisode?.roomLocation ?? "n/a")", text: $model.newRoom).multilineTextAlignment(.center)
-            Button(action: {model.saveRoom()}){Text("Done")}
+            Button(action: {model.saveRoom()}){Text("Save")}
         }.padding()
         .background(RoundedRectangle(cornerRadius: Karla.cornerRadius)
                         .foregroundColor(Color(UIColor.tertiarySystemBackground))
