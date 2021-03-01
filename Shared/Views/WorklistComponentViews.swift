@@ -74,9 +74,10 @@ struct WorklistTitleHeader: View {
                     Button(action: {model.activeSheet = .addPatient}){Image(systemName: "plus")}
 //                    Button(action: {model.showFilter.toggle()}) {Image(systemName: "arrow.up.arrow.down")}
                     Button(action: {model.activeSheet = .editListDetails}){Image(systemName: "pencil.circle.fill")}
-                }.padding(.trailing, 3)
+                }.padding(.trailing, 5)
             }.font(.title2)
-            Text(model.listTitle).font(.title).fontWeight(.black).lineLimit(2).minimumScaleFactor(0.5)
+            
+            Text(model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.5)
 
             HStack{
                 Text("\(model.list.listStatus.label) list").fontWeight(.light)
@@ -96,9 +97,21 @@ struct WorklistTitleHeader: View {
                     .transition(.move(edge: .leading))
                 }
                 
-                Button(action:filterPickers){Text("Filter").foregroundColor(showSort ? .secondary:Color.accentColor)}
+                Button(action:filterPickers){
+                    if showFilter{
+                        Image(systemName: "multiply")
+                    } else {
+                        Text("Filter").foregroundColor(showSort ? .secondary:Color.accentColor)
+                    }
+                }
                 Divider().frame(height: 20)
-                Button(action:sortPickers){Text("Sort").foregroundColor(showFilter ? .secondary:Color.accentColor)}
+                Button(action:sortPickers){
+                    if showSort{
+                        Image(systemName: "multiply")
+                    } else {
+                        Text("Sort").foregroundColor(showFilter ? .secondary:Color.accentColor)
+                    }
+                }
                 if showSort{
                     Picker("Sort options", selection: $model.cardsSort){
                         ForEach(EpisodeSortEnum.allCases) { sort in
