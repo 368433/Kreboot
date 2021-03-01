@@ -10,12 +10,11 @@ import Combine
 
 class MedicalEpisodeFormViewModel: ObservableObject {
     //Medical Episode object attribute
-    @Published var startDate: Date = Date()
-    @Published var endDate: Date = Date()
-    @Published var admissionDate: Date = Date()
+    @Published var startDate: Date
+    @Published var endDate: Date
+    @Published var admissionDate: Date
     @Published private(set) var roomLocation: String?
     @Published var newRoom: String = ""
-    @Published var list: PatientsList?
     @Published var acts: [Act] = []
 
     //Medical Episode relationships or related
@@ -30,16 +29,14 @@ class MedicalEpisodeFormViewModel: ObservableObject {
     init(episode: MedicalEpisode) {
         self.episode = episode
         self.patient = episode.patient
-        //setValues()
+        self.startDate = episode.startDate ?? Date()
+        self.endDate = episode.endDate ?? Date()
+        self.admissionDate = episode.admissionDate ?? Date()
     }
     
     func setValues() {
-        self.startDate = episode.startDate ?? Date()
-        self.endDate = episode.endDate ?? Date()
         self.roomLocation = episode.roomLocation
         self.diagnosis = episode.diagnosis?.wrappedDescription ?? "None"
-        self.list = episode.list
-        self.admissionDate = episode.admissionDate ?? Date()
         self.patientName = patient?.name ?? "N/A"
         self.acts = episode.actList()
     }
