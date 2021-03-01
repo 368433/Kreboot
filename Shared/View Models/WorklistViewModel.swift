@@ -24,7 +24,7 @@ class WorklistViewModel: ObservableObject {
     @Published var cardsFilter: EpisodeFilterEnum = .toSee
     @Published var cardsSort: EpisodeSortEnum = .name
     
-    var episodesList: [MedicalEpisode] = []
+    @Published var episodesList: [MedicalEpisode] = []
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -32,7 +32,7 @@ class WorklistViewModel: ObservableObject {
     
     init(patientsList list: PatientsList){
         self.list = list
-        
+        self.episodesList = list.getEpisodeList(filteredBy: cardsFilter, sortedBy: cardsSort)
         $list
             .map{$0.uniqueID?.uuidString}
             .sink{ uniqueID in
@@ -41,8 +41,13 @@ class WorklistViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func updateList(){
-        
+    func update(){
+        let results = list.getEpisodeList(filteredBy: cardsFilter, sortedBy: cardsSort)
+        self.episodesList = results
+    }
+    
+    func deleteEpisode(at offset: IndexSet){
+        print("implement")
     }
     
     func saveRoom(){

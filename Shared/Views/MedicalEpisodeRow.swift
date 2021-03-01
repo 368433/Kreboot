@@ -66,13 +66,13 @@ struct MedicalEpisodeRow: View {
                 
                 // Bottom buttons
                 Group{
-                    Button(action: {showRoomEdit.toggle();showTriage = false}){Label(rowModel.roomNumber, systemImage: "bed.double")}.scaledToFit()
+                    Button(action: {showRoomEdit.toggle();showTriage = false}){Label(rowModel.roomNumber, systemImage: "bed.double")}
                     Button(action: rowModel.flagEpisode){Image(systemName: rowModel.flaggedEpisode ? "flag.fill":"flag").foregroundColor(rowModel.flaggedEpisode ? Color.red:Color.primary)}
                     Button(action: rowModel.addAct){Image(systemName: "plus")}
                     Button(action: {showRoomEdit=false;showTriage.toggle()}){Image(systemName: "arrowshape.bounce.forward")}
                 }
-                .font(.subheadline)
-                .buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: Color(UIColor.tertiaryLabel), textColor: Color.primary))
+                .font(.footnote)
+                .buttonStyle(CapsuleButton(vTightness:.tight, hTightness: .tight, bgColor: Color(UIColor.quaternaryLabel), textColor: Color.primary))
             }
             
             if showRoomEdit {
