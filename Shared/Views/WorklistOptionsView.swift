@@ -22,20 +22,20 @@ struct WorklistOptionsView: View {
                         }
                     NewRoomView(worklistModel: model).padding()
                 }
-                
-                if model.showFilter {
-                    VisualEffectBlur(blurStyle: .systemMaterial)
-                        //.ignoresSafeArea()
-                        .onTapGesture {
-                            model.showFilter.toggle()
-                        }
-                    FilterAndSortPickerView(
-                        startingFilter: model.cardsFilter,
-                        startingSort: model.cardsSort,
-                        filterFunc: {filter in model.cardsFilter = filter},
-                        sortFunc: {sort in model.cardsSort = sort}
-                    ).padding()
-                }
+//                
+//                if model.showFilter {
+//                    VisualEffectBlur(blurStyle: .systemMaterial)
+//                        //.ignoresSafeArea()
+//                        .onTapGesture {
+//                            model.showFilter.toggle()
+//                        }
+//                    FilterAndSortPickerView(
+//                        startingFilter: model.cardsFilter,
+//                        startingSort: model.cardsSort,
+//                        filterFunc: {filter in model.cardsFilter = filter},
+//                        sortFunc: {sort in model.cardsSort = sort}
+//                    ).padding()
+//                }
 //            }
         }
     }

@@ -21,13 +21,13 @@ struct WorklistView: View {
     }
     
     var body: some View {
-//        ZStack(alignment: .bottom){
+        ZStack(alignment: .bottom){
             VStack(spacing: 0){
                 WorklistTitleHeader(model: model).padding([.top, .horizontal]).padding(.bottom, 3)
                 WorklistCardsList(model: model)
             }
-//            WorklistOptionsView(model: model)
-//        }
+            WorklistOptionsView(model: model)
+        }
 
         
         .animation(.easeIn(duration: Karla.animationSpeed))

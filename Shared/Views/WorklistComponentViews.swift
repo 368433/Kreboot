@@ -67,17 +67,14 @@ struct WorklistTitleHeader: View {
     var body: some View {
         VStack(alignment: .leading){
             
-            HStack(alignment: .top){
-                Button(action:{self.presentationMode.wrappedValue.dismiss()}){Image(systemName:"xmark")}
+            HStack(alignment: .center){
+                Text(model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.3)
                 Spacer()
                 Group{
+                    Button(action: {model.activeSheet = .editListDetails}){Image(systemName: "pencil.circle")}
                     Button(action: {model.activeSheet = .addPatient}){Image(systemName: "plus")}
-//                    Button(action: {model.showFilter.toggle()}) {Image(systemName: "arrow.up.arrow.down")}
-                    Button(action: {model.activeSheet = .editListDetails}){Image(systemName: "pencil.circle.fill")}
-                }.padding(.trailing, 5)
-            }.font(.title2)
-            
-            Text(model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.5)
+                }.padding(.trailing, 5).font(.title2)
+            }
 
             HStack{
                 Text("\(model.list.listStatus.label) list").fontWeight(.light)
