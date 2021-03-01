@@ -15,14 +15,15 @@ struct WorklistCardsList: View {
     }
     
     var body: some View {
-        List {
-//            VStack(spacing: 20){
+        ScrollView {
+            VStack(spacing: 20){
                 ForEach(model.episodesList){ episode in
                     MedicalEpisodeRow(episode: episode, worklistModel: model)
-                }.onDelete(perform: model.deleteEpisode)
-//            }.padding(.top)
+                        .padding(.horizontal)
+                }//.onDelete(perform: model.deleteEpisode)
+            }.padding(.top)
         }.onAppear{model.update()}
-        //.emptyContent(if: model.episodesList.isEmpty, show: "person.3", caption: "None")
+        .emptyContent(if: model.episodesList.isEmpty, show: "person.3", caption: "None")
     }
 }
 

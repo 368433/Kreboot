@@ -29,7 +29,7 @@ struct WorklistView: View {
 //            WorklistOptionsView(model: model)
 //        }
         
-//        .animation(.easeIn(duration: Karla.animationSpeed))
+        .animation(.easeOut/*(duration: Karla.animationSpeed)*/)
         .sheet(item: $model.activeSheet) { item in
             switch item {
             case .editListDetails:
