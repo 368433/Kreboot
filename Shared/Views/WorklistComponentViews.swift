@@ -22,7 +22,7 @@ struct WorklistCardsList: View {
                         .padding(.horizontal)
                 }//.onDelete(perform: model.deleteEpisode)
             }.padding(.top)
-        }.onAppear{model.update()}
+        }//.onAppear{model.update(filter: sort:)}
         .emptyContent(if: model.episodesList.isEmpty, show: "person.3", caption: "None")
     }
 }
@@ -35,7 +35,6 @@ struct WorklistTitleHeader: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            
             HStack(alignment: .center){
                 Text(model.listTitle).font(.largeTitle).fontWeight(.black).lineLimit(1).minimumScaleFactor(0.3)
                 Spacer()
@@ -89,6 +88,7 @@ struct WorklistTitleHeader: View {
                 Spacer()
             }.frame(height: 30)
         }
+        .animation(.default)
     }
     private func filterPickers(){
         showFilter.toggle()

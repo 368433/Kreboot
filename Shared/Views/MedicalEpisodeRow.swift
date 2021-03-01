@@ -123,6 +123,7 @@ struct MedicalEpisodeRow: View {
         .overlay(RoundedRectangle(cornerRadius: Karla.cornerRadius).stroke(Color.gray.opacity(0.3), lineWidth: 1))
         .offset(x: offset.width, y: 0)
         .gesture(swipeGesture)
+        .animation(.default)
     }
 }
 

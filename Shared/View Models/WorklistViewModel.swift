@@ -39,10 +39,24 @@ class WorklistViewModel: ObservableObject {
                 UserDefaults.standard.set(uniqueID, forKey: "lastListSelected")
             }
             .store(in: &cancellables)
+        $cardsFilter
+            .sink{filter in
+                if filter != self.cardsFilter {
+                    self.update(filter: filter, sort: self.cardsSort)
+                }
+            }
+            .store(in: &cancellables)
+        $cardsSort
+            .sink{sort in
+                if sort != self.cardsSort {
+                    self.update(filter: self.cardsFilter, sort: sort)
+                }
+            }
+            .store(in: &cancellables)
     }
     
-    func update(){
-        let results = list.getEpisodeList(filteredBy: cardsFilter, sortedBy: cardsSort)
+    func update(filter: EpisodeFilterEnum, sort: EpisodeSortEnum){
+        let results = list.getEpisodeList(filteredBy: filter, sortedBy: sort)
         self.episodesList = results
     }
     
