@@ -13,11 +13,11 @@ struct MedicalEpisodeFormView: View {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var episode: MedicalEpisode
     @ObservedObject var model: MedicalEpisodeFormViewModel
-    @State private var showaddActForm: Bool = false {
-        didSet{
-            model.setValues()
-        }
-    }
+    @State private var showaddActForm: Bool = false //{
+//        didSet{
+//            model.setValues()
+//        }
+//    }
     
     init(episode: MedicalEpisode){
         self.episode = episode
