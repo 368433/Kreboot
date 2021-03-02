@@ -25,25 +25,32 @@ struct ActFormView: View {
                 Spacer()
                 Button(action: saveAndDismiss){Text("Done").fontWeight(.bold)}
             }
-            
             Text("Act Form").font(.largeTitle).fontWeight(.heavy)
             
-            DatePicker("Date", selection: $model.actDate, displayedComponents: [.date, .hourAndMinute])
+            VStack{
+                DatePicker("Date", selection: $model.actDate, displayedComponents: [.date, .hourAndMinute])
+            }.makeFormSubsection()
+            
+            VStack(alignment: .leading){
+                Text("billing code").smallHeader()
+                VStack{
+                    TextField("Code", text: $model.actCode)
+                        .borderedK(text: $model.actCode, show: $searchCodeSelecte)
+                        .onTapGesture {
+                            searchCodeSelecte.toggle()
+                        }
+                    ActCodePicker(model: model)
+                }.makeFormSubsection()
+            }.padding(.top)
             
             VStack{
-                TextField("Code", text: $model.actCode)
-                    .borderedK(text: $model.actCode, show: $searchCodeSelecte)
-                    .onTapGesture {
-                        searchCodeSelecte.toggle()
-                    }
-                ActCodePicker(model: model)
-            }.padding()
-            .background(Color(UIColor.systemBackground))
-            .cornerRadius(Karla.cornerRadius)
-            
-            TextField("Search physician db", text: $model.historyNote)
+                TextField("Search physician db", text: $model.historyNote)
+            }.makeFormSubsection()
+
             Spacer()
-        }.padding().background(Color(UIColor.secondarySystemBackground))
+        }
+        .padding()
+        .background(Color(UIColor.secondarySystemBackground))
     }
     
     private func saveAndDismiss(){
@@ -53,6 +60,20 @@ struct ActFormView: View {
         } else {
             self.presentationMode.wrappedValue.dismiss()
         }
+    }
+}
+
+struct FormSubsec: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(Color(UIColor.systemBackground))
+            .cornerRadius(Karla.cornerRadius)
+    }
+}
+extension View {
+    func makeFormSubsection() -> some View {
+        self.modifier(FormSubsec())
     }
 }
 

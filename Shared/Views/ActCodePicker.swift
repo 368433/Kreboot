@@ -90,7 +90,7 @@ extension Text {
         self
             .textCase(.uppercase)
             .font(.caption2)
-            .foregroundColor(Color(UIColor.systemGray2))
+            .foregroundColor(Color(UIColor.darkGray))
     }
 }
 
