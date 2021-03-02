@@ -16,7 +16,8 @@ struct ActCodePicker: View {
     }
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading, spacing: 0){
+            Text("Code finder".uppercased()).font(.caption2)
             // TODO: implement with generics
             ForEach(model.database.actDatabase){location in
                 Button(action: {
@@ -50,6 +51,8 @@ struct ActCodePicker: View {
                 }.HScrollEmbeded()
             }
         }
+        .padding()
+        .overlay(RoundedRectangle(cornerRadius: Karla.cornerRadius).stroke(Color(UIColor.systemGray4)))
     }
 }
 
@@ -71,11 +74,14 @@ extension View {
 extension Text {
     func billCodePicker(comparison: Bool) -> some View {
         self
-            .font(.subheadline)
             .lineLimit(1)
-            .padding(5)
-            .overlay(RoundedRectangle(cornerRadius: 20)
-                        .stroke(comparison ? Color.black:Color.clear))
+            .font(.subheadline)
+            .foregroundColor(comparison ? Color.white:Color.secondary)
+            .padding(6)
+            .background(RoundedRectangle(cornerRadius: 30)
+                            .foregroundColor(comparison ? Color.blue:Color.clear))
+//            .overlay(RoundedRectangle(cornerRadius: 30)
+//                        .stroke(comparison ? Color.gray:Color.clear))
             .padding(2)
     }
 }
@@ -118,11 +124,6 @@ struct RAMQActDatabase: Codable {
     var dateRevision: String
     var actDatabase: [ActLocation]
 }
-
-enum InOutPatient { case inPatient, outPatient }
-enum Building { case hospital, cabinetOutpt, urgence, cliniExt, autres }
-//enum ActCategory { case rout, miee, crit, opat, iNoso, transf, prophylaxis, outbreak, expoBio }
-enum ActType { case vp, vc, c, vt, tw, planif, eval, eMajj1, eMajjsubseq }
 
 
 struct ActCodePicker_Previews: PreviewProvider {
