@@ -13,8 +13,10 @@ class MedicalEpisodeRowViewModel: ObservableObject {
     
     @Published var diagnosis: String
     @Published var patientName: String
+    @Published var patientAge: String
     @Published var roomNumber: String
     @Published var flaggedEpisode: Bool
+    @Published var chartNumber: String
 
     
     @Published var worklistModel: WorklistViewModel
@@ -23,9 +25,11 @@ class MedicalEpisodeRowViewModel: ObservableObject {
         self.episode = episode
         self.worklistModel = worklistmodel
         self.diagnosis = episode.diagnosis?.icd10Description ?? "Diagnosis"
-        self.patientName = episode.patient?.name ?? "No name"
+        self.patientName = episode.patient?.name ?? "N/A"
         self.roomNumber = episode.roomLocation ?? "room"
         self.flaggedEpisode = episode.flagged
+        self.patientAge = episode.patient?.ageString ?? "N/A"
+        self.chartNumber = episode.patient?.chartNumber ?? "N/A"
     }
 
     func saveRoom(_ newRoom: String){

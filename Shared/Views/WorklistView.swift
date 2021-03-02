@@ -21,21 +21,16 @@ struct WorklistView: View {
     }
     
     var body: some View {
-//        ZStack(alignment: .bottom){
-            VStack(spacing: 0){
-                WorklistTitleHeader(model: model).padding([.top, .horizontal]).padding(.bottom, 3)
-                WorklistCardsList(model: model)
-            }
-//            WorklistOptionsView(model: model)
-//        }
-        
-//        .animation(.default/*(duration: Karla.animationSpeed)*/)
+        VStack(spacing: 0){
+            WorklistTitleHeader(model: model).padding([.top, .horizontal]).padding(.bottom, 3)
+            WorklistCardsList(model: model)
+        }
         .sheet(item: $model.activeSheet) { item in
             switch item {
             case .editListDetails:
                 ListFormView(list: model.list).environment(\.managedObjectContext, self.viewContext)
             case .addPatient:
-                NavigationView{PatientFormView(to: model.list, newEpisode: true)}.environment(\.managedObjectContext, self.viewContext)
+                NavigationView{PatientFormView(to: model, newEpisode: true)}.environment(\.managedObjectContext, self.viewContext)
             case .addAct:
                 ActFormView(for: nil, in: model.selectedEpisode).environment(\.managedObjectContext, self.viewContext)
             case .medicalEpisodeFormView:

@@ -11,10 +11,12 @@ struct PatientFormView: View {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject private var model: PatientFormViewModel
     @State private var comments: String = ""
+    var worklistModel : WorklistViewModel?
     
     
-    init(patient: Patient? = nil, to list: PatientsList? = nil, newEpisode: Bool){
-        self.model = PatientFormViewModel(list: list, patient: patient, newEpisode: newEpisode)
+    init(patient: Patient? = nil, to worklist: WorklistViewModel? = nil, newEpisode: Bool){
+        self.worklistModel = worklist
+        self.model = PatientFormViewModel(worklist: worklist, patient: patient, newEpisode: newEpisode)
     }
     
     var body: some View {
@@ -27,7 +29,7 @@ struct PatientFormView: View {
                 Text("Personnal data")
             }) {
                 TextField("Name", text: $model.name)
-                TextField("PostalCode", text: $model.postalCode)
+                TextField("PostalCode", text: $model.postalCode ?? "")
                 Button(action: {}){
                     HStack{
                         Text("Card photo")
@@ -35,14 +37,14 @@ struct PatientFormView: View {
                         Image(systemName: "person.crop.rectangle")
                     }
                 }
-                DatePicker("Date of Birth", selection: $model.dateOfBirth, displayedComponents: .date)
+                DatePicker("Date of Birth", selection: $model.dateOfBirth ?? Date(), displayedComponents: .date)
             }
             Section(header: Text("Healthcare system Data")) {
-                TextField("RAMQ", text: $model.ramqNumber)
-                TextField("Chart number", text: $model.chartNumber)
+                TextField("RAMQ", text: $model.ramqNumber ?? "")
+                TextField("Chart number", text: $model.chartNumber ?? "")
             }
             Section(header: Text("Allergies")) {
-                TextField("Allergies, comma separated", text: $model.ramqNumber)
+                TextField("Allergies, comma separated", text: $model.ramqNumber ?? "")
                 Text("Frequency List:").font(.subheadline).fontWeight(.light).foregroundColor(.secondary)
 
             }

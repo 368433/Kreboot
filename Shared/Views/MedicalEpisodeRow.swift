@@ -32,43 +32,27 @@ struct MedicalEpisodeRow: View {
             }
     }
     
-    // View UI customization variables
-    private var cardBgColor: Color = Color(UIColor.secondarySystemBackground)
-    
     init(episode: MedicalEpisode, worklistModel: WorklistViewModel){
         self.rowModel = MedicalEpisodeRowViewModel(episode: episode, worklistmodel: worklistModel)
     }
     
     var body: some View {
         VStack(alignment: .leading){
-            ZStack{
-                cardBgColor
-                VStack(alignment: .leading){
-                    Text("#00000").foregroundColor(.secondary).font(.caption).lineLimit(1).padding(.top,8)
-                    HStack{
-                        Label(title: {Text(rowModel.patientName).fontWeight(.bold)}, icon: {Image(systemName: "person")}).lineLimit(1)
-                        Spacer()
-                        VStack(spacing: 0){
-                            Text(rowModel.episode.patient?.ageString ?? "n/a").bold()
-                            Text("yrs").font(.system(size: 10)).fontWeight(.thin)
-                        }
-                    }.foregroundColor(.primary)
-                    Label(title: {
-                        Text(rowModel.diagnosis)
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .lineLimit(3)
-                    }, icon: {Image(systemName: "staroflife")})
-                    .foregroundColor(.primary)
-                }
-            }.onTapGesture {
+            
+            EpisodeCardTopSection(
+                cardBgColor: Karla.episodeCardBgColor,
+                chartNumber: rowModel.chartNumber,
+                patientName: rowModel.patientName,
+                age: rowModel.patientAge,
+                diagnosis: rowModel.diagnosis)
+            .onTapGesture {
                 rowModel.worklistModel.selectedEpisode = rowModel.episode
                 rowModel.worklistModel.activeSheet = .medicalEpisodeFormView
             }
             
             Divider()
             ZStack{
-                cardBgColor
+                Karla.episodeCardBgColor
                 HStack{
                     // Bottom hospit and seen days indicators
                     HStack{
@@ -119,14 +103,45 @@ struct MedicalEpisodeRow: View {
             }
         }
         .padding([.horizontal,.bottom])
-        .background(RoundedRectangle(cornerRadius: Karla.cornerRadius).foregroundColor(cardBgColor).shadow(color: Color.black.opacity(0.2), radius: 8, y: 8))
+        .background(RoundedRectangle(cornerRadius: Karla.cornerRadius).foregroundColor(Karla.episodeCardBgColor).shadow(color: Color.black.opacity(0.2), radius: 8, y: 8))
         .overlay(RoundedRectangle(cornerRadius: Karla.cornerRadius).stroke(Color.gray.opacity(0.3), lineWidth: 1))
-        .offset(x: offset.width, y: 0)
+        .offset(x: offset.width, y: 0) //for swipe gesture response
         .gesture(swipeGesture)
         .animation(.default)
     }
 }
 
+struct EpisodeCardTopSection: View {
+    var cardBgColor: Color
+    var chartNumber: String
+    var patientName: String
+    var age: String
+    var diagnosis: String
+    
+    var body: some View {
+        ZStack{
+            cardBgColor
+            VStack(alignment: .leading){
+                Text(chartNumber).foregroundColor(.secondary).font(.caption).lineLimit(1).padding(.top,8)
+                HStack{
+                    Label(title: {Text(patientName).fontWeight(.bold)}, icon: {Image(systemName: "person")}).lineLimit(1)
+                    Spacer()
+                    VStack(spacing: 0){
+                        Text(age).bold()
+                        Text("yrs").font(.system(size: 10)).fontWeight(.thin)
+                    }
+                }.foregroundColor(.primary)
+                Label(title: {
+                    Text(diagnosis)
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .lineLimit(3)
+                }, icon: {Image(systemName: "staroflife")})
+                .foregroundColor(.primary)
+            }
+        }
+    }
+}
 struct daysCountView: View {
     var dayCount: Int
     var dayLabel: String

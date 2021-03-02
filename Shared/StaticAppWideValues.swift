@@ -17,6 +17,7 @@ enum Karla {
     static var shadowOpacity: Double = 0.4
     static var cornerRadius: CGFloat = 10
     static var animationSpeed: Double = 0.1
+    static var episodeCardBgColor: Color = Color(UIColor.secondarySystemBackground)
     case bon
 }
 

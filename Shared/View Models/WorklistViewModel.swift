@@ -72,6 +72,10 @@ class WorklistViewModel: ObservableObject {
         editRoom = false
     }
     
+    func updateContent(){
+        update(filter: cardsFilter, sort: cardsSort)
+    }
+    
     func getList() -> [MedicalEpisode] {
         let results = list.getEpisodeList(filteredBy: cardsFilter, sortedBy: cardsSort)
         self.episodesList = results
