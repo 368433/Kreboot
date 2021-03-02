@@ -23,7 +23,7 @@ struct TestView1: View {
                 self.numbers.append(self.currentNumber)
                 self.currentNumber += 1
             }
-        }
+        }.background(Color(UIColor.secondaryLabel))
     }
     func removeRows(at offsets: IndexSet) {
         numbers.remove(atOffsets: offsets)

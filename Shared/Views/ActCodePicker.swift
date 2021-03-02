@@ -16,8 +16,9 @@ struct ActCodePicker: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0){
+        VStack(alignment: .leading){
             Text("Code finder".uppercased()).font(.caption2)
+            Divider()
             // TODO: implement with generics
             ForEach(model.database.actDatabase){location in
                 Button(action: {
@@ -52,7 +53,8 @@ struct ActCodePicker: View {
             }
         }
         .padding()
-        .overlay(RoundedRectangle(cornerRadius: Karla.cornerRadius).stroke(Color(UIColor.systemGray4)))
+        .overlay(RoundedRectangle(cornerRadius: Karla.cornerRadius)
+                    .stroke(Color(UIColor.systemGray4)))
     }
 }
 
@@ -78,11 +80,8 @@ extension Text {
             .font(.subheadline)
             .foregroundColor(comparison ? Color.white:Color.secondary)
             .padding(6)
-            .background(RoundedRectangle(cornerRadius: 30)
-                            .foregroundColor(comparison ? Color.blue:Color.clear))
-//            .overlay(RoundedRectangle(cornerRadius: 30)
-//                        .stroke(comparison ? Color.gray:Color.clear))
-            .padding(2)
+            .background(comparison ? Color.blue:Color.clear)
+            .clipShape(Capsule())
     }
 }
 

@@ -23,34 +23,36 @@ struct ActFormView: View {
         VStack (alignment: .leading){
             HStack{
                 Spacer()
-                Button(action:{
-                    model.saveAct()
-                    if let isShowing = isShowing {
-                        isShowing.wrappedValue = false
-                    } else {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                    
-                }){Text("Done").fontWeight(.bold)}
+                Button(action: saveAndDismiss){Text("Done").fontWeight(.bold)}
             }
             
             Text("Act Form").font(.largeTitle).fontWeight(.heavy)
             
             DatePicker("Date", selection: $model.actDate, displayedComponents: [.date, .hourAndMinute])
             
-            TextField("Search code", text: $model.actCode)
-                .borderedK(show: $searchCodeSelecte)
-                .onTapGesture {
-                    searchCodeSelecte.toggle()
-                }
-            
-            ActCodePicker(model: model)
+            VStack{
+                TextField("Code", text: $model.actCode)
+                    .borderedK(show: $searchCodeSelecte)
+                    .onTapGesture {
+                        searchCodeSelecte.toggle()
+                    }
+                ActCodePicker(model: model)
+            }.padding()
+            .background(Color(UIColor.systemBackground))
+            .cornerRadius(Karla.cornerRadius)
             
             TextField("Search physician db", text: $model.historyNote)
-            TextField("Manual entry", text: $model.consultingPhysician)
-            Text("Physician name")
             Spacer()
-        }.padding()
+        }.padding().background(Color(UIColor.secondarySystemBackground))
+    }
+    
+    private func saveAndDismiss(){
+        model.saveAct()
+        if let isShowing = isShowing {
+            isShowing.wrappedValue = false
+        } else {
+            self.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 
