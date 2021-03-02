@@ -50,20 +50,69 @@ class ActCodeGenerator: ObservableObject {
 struct ActCodePicker: View {
     
     @ObservedObject private var model = ActCodeGenerator()
-    @State private var actLocation: ActLocation
-    @State private var actCategory: ActCategory
-    @State private var ramqAct: RAMQAct
+    @State private var actLocation: ActLocation?
+    @State private var actCategory: ActCategory?
+    @State private var ramqAct: RAMQAct?
     
+    init(){
+//        self.actLocation = model.database.actDatabase.first
+    }
     
     var body: some View {
         VStack{
+            // TODO: implement with generics
+            ScrollView(.horizontal){
+                HStack{
+                    Spacer()
+                    ForEach(model.database.actDatabase){location in
+                        Button(action: {actLocation = location}){
+                            Text(location.location)
+                                .lineLimit(1)
+                                .padding(6)
+                                .overlay(RoundedRectangle(cornerRadius: 30)
+                                            .stroke(actLocation == location ? Color.black:Color.clear))
+                        }
+                    }
+                    Spacer()
+                }
+            }
             
+            // Category buttons
+            if let location = actLocation {
+                HStack{
+                    Spacer()
+                    ForEach(location.actCategories){category in
+                        Button(action: {actCategory = category}){
+                            Text(category.abbreviation)
+                                .padding(6)
+                                .overlay(RoundedRectangle(cornerRadius: 20)
+                                            .stroke(actCategory == category ? Color.black:Color.clear))
+                        }
+                    }
+                    Spacer()
+                }
+            }
+            if let category = actCategory {
+                HStack{
+                    Spacer()
+                    ForEach(category.acts){act in
+                        Button(action: {ramqAct = act}){
+                            Text(act.abbreviation)
+                                .padding(6)
+                                .overlay(RoundedRectangle(cornerRadius: 20)
+                                            .stroke(ramqAct == act ? Color.black:Color.clear))
+                        }
+                    }
+                    Spacer()
+                }
+            }
         }
+        .animation(.default)
     }
 }
 
 
-struct RAMQAct: Codable, Identifiable {
+struct RAMQAct: Codable, Identifiable, Hashable {
     enum CodingKeys: CodingKey{
         case abbreviation, code, fee, actDescription
     }
@@ -75,7 +124,7 @@ struct RAMQAct: Codable, Identifiable {
     var actDescription: String
 }
 
-struct ActCategory: Codable, Identifiable {
+struct ActCategory: Codable, Identifiable, Hashable {
     enum CodingKeys: CodingKey{
         case abbreviation, acts
     }
@@ -85,7 +134,11 @@ struct ActCategory: Codable, Identifiable {
     var acts: [RAMQAct]
 }
 
-struct ActLocation: Codable, Identifiable {
+struct ActLocation: Codable, Identifiable, Hashable {
+    static func == (lhs: ActLocation, rhs: ActLocation) -> Bool {
+        lhs.location == rhs.location
+    }
+    
     enum CodingKeys: CodingKey{
         case location, actCategories
     }
