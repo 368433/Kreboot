@@ -24,11 +24,11 @@ class ActCodeGenerator: ObservableObject {
     
     func fetchJSON(completionHandler: @escaping (Error?) -> Void) {
         //JSON file is on disk. Open it and import
-        let jsonFile = "ramqDB"
+        let jsonFile = "testJS2"
 //        let jsonFile = "Directions"
         
         //Get file URL from directory on disk
-        guard let url = Bundle.main.url(forResource: jsonFile, withExtension: ".json") else {
+        guard let url = Bundle.main.url(forResource: jsonFile, withExtension: nil) else {
             fatalError("Failed to located json file on disk")
         }
          // get a data representation of JSON
