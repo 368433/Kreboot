@@ -24,7 +24,7 @@ struct BorderedKarla: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .padding()
+            .padding(8)
             .background(
                 RoundedRectangle(cornerRadius: Karla.cornerRadius)
                     .foregroundColor(Color(UIColor.secondarySystemBackground))

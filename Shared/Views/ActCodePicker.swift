@@ -40,7 +40,10 @@ struct ActCodePicker: View {
             }
             if let category = model.actCategory {
                 ForEach(category.acts){act in
-                    Button(action: {model.ramqAct = act}){
+                    Button(action: {
+                        model.ramqAct = act
+                        model.actCode = act.code
+                    }){
                         Text(act.abbreviation)
                             .billCodePicker(comparison: model.ramqAct == act)
                     }

@@ -8,7 +8,6 @@
 import Foundation
 
 class AddActViewModel: ObservableObject {
-    @Published var searchActText: String = ""
     @Published var actCode: String = ""
     @Published var actDate: Date = Date()
     @Published var historyNote: String = ""
