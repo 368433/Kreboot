@@ -8,12 +8,9 @@
 import SwiftUI
 
 class ActCodeGenerator: ObservableObject {
-//    @Published var database: RAMQActDatabase
-    @Published var database: TestJSON
+    @Published var database = RAMQActDatabase(version: "", dateRevision: "", actDatabase: [])
     
     init(){
-//        self.database = RAMQActDatabase(version: 0, dateRevision: "", actDatabase: [])
-        self.database = TestJSON(type: "", coordinates: "")
         self.fetchJSON{ error in
             if let error = error {
                 print(error)
@@ -24,22 +21,22 @@ class ActCodeGenerator: ObservableObject {
     
     func fetchJSON(completionHandler: @escaping (Error?) -> Void) {
         //JSON file is on disk. Open it and import
-        let jsonFile = "testJS2"
-//        let jsonFile = "Directions"
-        
+        let jsonFile = "ramqDB"
+
         //Get file URL from directory on disk
-        guard let url = Bundle.main.url(forResource: jsonFile, withExtension: nil) else {
+        guard let url = Bundle.main.url(forResource: jsonFile, withExtension: "json") else {
             fatalError("Failed to located json file on disk")
         }
+
          // get a data representation of JSON
         guard let data = try? Data(contentsOf: url) else {
             fatalError("Failed to load file to data from Bundle")
         }
-        
+
         // Decode JSON and import it
         do {
             // Decode JSON into codable type
-            let ramqDB = try JSONDecoder().decode(TestJSON.self, from: data)
+            let ramqDB = try JSONDecoder().decode(RAMQActDatabase.self, from: data)
             database = ramqDB
         } catch {
             // Alert user data not digested
@@ -53,23 +50,24 @@ class ActCodeGenerator: ObservableObject {
 struct ActCodePicker: View {
     
     @ObservedObject private var model = ActCodeGenerator()
+    @State private var actLocation: ActLocation
+    @State private var actCategory: ActCategory
+    @State private var ramqAct: RAMQAct
+    
     
     var body: some View {
-        Text(model.database.type)
-//        List{
-//            ForEach(model.database.actDatabase){ location in
-//                Text(location.location)
-//            }
-//        }
+        VStack{
+            
+        }
     }
 }
 
-struct TestJSON: Codable {
-    var type: String
-    var coordinates : String
-}
 
 struct RAMQAct: Codable, Identifiable {
+    enum CodingKeys: CodingKey{
+        case abbreviation, code, fee, actDescription
+    }
+    
     var id = UUID()
     var abbreviation: String
     var code: String
@@ -78,19 +76,27 @@ struct RAMQAct: Codable, Identifiable {
 }
 
 struct ActCategory: Codable, Identifiable {
+    enum CodingKeys: CodingKey{
+        case abbreviation, acts
+    }
+    
     var id = UUID()
     var abbreviation: String
     var acts: [RAMQAct]
 }
 
 struct ActLocation: Codable, Identifiable {
+    enum CodingKeys: CodingKey{
+        case location, actCategories
+    }
+    
     var id = UUID()
     var location: String
     var actCategories: [ActCategory]
 }
 
 struct RAMQActDatabase: Codable {
-    var version: Double
+    var version: String
     var dateRevision: String
     var actDatabase: [ActLocation]
 }

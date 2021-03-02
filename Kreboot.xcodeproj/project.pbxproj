@@ -327,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				3196B5D025CEE7F4006A3E72 /* README */,
-				31A530BF25EDB0700002449A /* RamqBillingCodes.swift */,
 				311CA82825C5774700E4513A /* Kreboot.xcdatamodeld */,
 				311CA82A25C5774700E4513A /* KrebootApp.swift */,
 				311CA82C25C5774700E4513A /* Persistence.swift */,
@@ -470,6 +469,7 @@
 		3175138E25D9921500C2B8CB /* JSON on disk DB */ = {
 			isa = PBXGroup;
 			children = (
+				31A530BF25EDB0700002449A /* RamqBillingCodes.swift */,
 				31A530B825EDAF050002449A /* ramqDB.json */,
 				3129A0D825EDC8530063953D /* testingJs.json */,
 				31964B2D25EDCC9600DC9C9F /* testJS2.json */,

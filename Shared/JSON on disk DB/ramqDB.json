@@ -1,6 +1,6 @@
 {
-    "version" : 0.1,
-    "dateRevision" : "mars 2021"
+    "version" : "0.1",
+    "dateRevision" : "mars 2021",
     "actDatabase" : [
         {
             "location": "Cabinet",
@@ -10,20 +10,20 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9165"
-                    "fee": 218.05
+                    "code": "9165",
+                    "fee": 218.05,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VP",
-                    "code": "9127"
-                    "fee": 100.75
+                    "code": "9127",
+                    "fee": 100.75,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VC",
-                    "code": "9129"
-                    "fee": 46.17
+                    "code": "9129",
+                    "fee": 46.17,
                     "actDescription" : ""
                 }]
             },
@@ -32,8 +32,8 @@
                 "acts" : [
                 {
                     "abbreviation": "VP",
-                    "code": "15104"
-                    "fee": 122.85
+                    "code": "15104",
+                    "fee": 122.85,
                     "actDescription" : ""
                 }]
             }]
@@ -46,32 +46,32 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9165"
-                    "fee": 218.05
+                    "code": "9165",
+                    "fee": 218.05,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VP",
-                    "code": "9150"
-                    "fee": 111.45
+                    "code": "9150",
+                    "fee": 111.45,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VC",
-                    "code": "9152"
-                    "fee": 42.80
+                    "code": "9152",
+                    "fee": 42.80,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "TW",
-                    "code": "9161"
-                    "fee": 73.75
+                    "code": "9161",
+                    "fee": 73.75,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VT",
-                    "code": "9094"
-                    "fee": 95.25
+                    "code": "9094",
+                    "fee": 95.25,
                     "actDescription" : ""
                 }]
             },
@@ -80,20 +80,20 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9027"
-                    "fee": 245.25
+                    "code": "9027",
+                    "fee": 245.25,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VP",
-                    "code": "9026"
-                    "fee": 155.85
+                    "code": "9026",
+                    "fee": 155.85,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VC",
-                    "code": "16062"
-                    "fee": 48.30
+                    "code": "16062",
+                    "fee": 48.30,
                     "actDescription" : ""
                 }]
             },
@@ -102,26 +102,26 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9011"
-                    "fee": 285.25
+                    "code": "9011",
+                    "fee": 285.25,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VP",
-                    "code": "16060"
-                    "fee": 155.85
+                    "code": "16060",
+                    "fee": 155.85,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VT",
-                    "code": "16061"
-                    "fee": 133.25
+                    "code": "16061",
+                    "fee": 133.25,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VC",
-                    "code": "9019"
-                    "fee": 48.30
+                    "code": "9019",
+                    "fee": 48.30,
                     "actDescription" : ""
                 }]
             },
@@ -130,14 +130,14 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9029"
-                    "fee": 245.25
+                    "code": "9029",
+                    "fee": 245.25,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "Planif",
-                    "code": "9030"
-                    "fee": 108.95
+                    "code": "9030",
+                    "fee": 108.95,
                     "actDescription" : ""
                 }]
             }]
@@ -150,14 +150,14 @@
                 "acts" : [
                 {
                     "abbreviation": "J#1",
-                    "code": "90000"
-                    "fee": 218.05
+                    "code": "90000",
+                    "fee": 218.05,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "J#sub",
-                    "code": "9007"
-                    "fee": 44.16
+                    "code": "9007",
+                    "fee": 44.16,
                     "actDescription" : ""
                 }]
             },
@@ -166,8 +166,8 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9031"
-                    "fee": 245.25
+                    "code": "9031",
+                    "fee": 245.25,
                     "actDescription" : ""
                 }]
             },
@@ -176,8 +176,8 @@
                 "acts" : [
                 {
                     "abbreviation": "Eval",
-                    "code": "9033"
-                    "fee": 98.1
+                    "code": "9033",
+                    "fee": 98.1,
                     "actDescription" : ""
                 }]
             },
@@ -186,26 +186,26 @@
                 "acts" : [
                 {
                     "abbreviation": "EMaj-J1",
-                    "code": "15254"
-                    "fee":580.55
+                    "code": "15254",
+                    "fee":580.55,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "EMaj-J#subMax9j",
-                    "code": "15255"
-                    "fee":290.25
+                    "code": "15255",
+                    "fee":290.25,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "Emin-J1",
-                    "code": "15252"
-                    "fee":290.25
+                    "code": "15252",
+                    "fee":290.25,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "Emin-J#subMax9j",
-                    "code": "15253"
-                    "fee":145.15
+                    "code": "15253",
+                    "fee":145.15,
                     "actDescription" : ""
                 }]
             }]
@@ -218,20 +218,20 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9170"
-                    "fee":174.55
+                    "code": "9170",
+                    "fee":174.55,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VP",
-                    "code": "9162"
-                    "fee":080.65
+                    "code": "9162",
+                    "fee":80.65,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VC",
-                    "code": "9164"
-                    "fee":037.35
+                    "code": "9164",
+                    "fee":37.35,
                     "actDescription" : ""
                 }]
             },
@@ -240,20 +240,20 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9042"
-                    "fee":196.30
+                    "code": "9042",
+                    "fee":196.30,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VP",
-                    "code": "9041"
-                    "fee":098.13
+                    "code": "9041",
+                    "fee":98.13,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VC",
-                    "code": "9043"
-                    "fee":042.80
+                    "code": "9043",
+                    "fee":42.80,
                     "actDescription" : ""
                 }]
             },
@@ -262,26 +262,26 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9044"
-                    "fee":245.25
+                    "code": "9044",
+                    "fee":245.25,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VP",
-                    "code": "15435"
-                    "fee":084.45
+                    "code": "15435",
+                    "fee":84.45,
                     "actDescription" : ""
                 },
                 {
                     "abbreviation": "VC",
-                    "code": "9045"
-                    "fee":055.30
+                    "code": "9045",
+                    "fee":55.30,
                     "actDescription" : ""
                 },
                 {
-                    "abbreviation": "Planif"
-                    "code" : "9032"
-                    "fee" :108.95
+                    "abbreviation": "Planif",
+                    "code" : "9032",
+                    "fee" :108.95,
                     "actDescription" : ""
                 }]
             },
@@ -290,8 +290,8 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": ""
-                    "fee":196.30
+                    "code": "15003",
+                    "fee":196.30,
                     "actDescription" : ""
                 }]
             }]
@@ -304,8 +304,8 @@
                 "acts" : [
                 {
                     "abbreviation": "C",
-                    "code": "9046"
-                    "fee": 245.25
+                    "code": "9046",
+                    "fee": 245.25,
                     "actDescription" : ""
                 }]
             },
@@ -314,8 +314,8 @@
                 "acts" : [
                 {
                     "abbreviation": "VP",
-                    "code": "9048"
-                    "fee":245.25
+                    "code": "9048",
+                    "fee":245.25,
                     "actDescription" : ""
                 }]
             },
@@ -324,8 +324,8 @@
                 "acts" : [
                 {
                     "abbreviation": "VP",
-                    "code": "9047"
-                    "fee":245.25
+                    "code": "9047",
+                    "fee":245.25,
                     "actDescription" : ""
                 }]
             },
@@ -334,8 +334,8 @@
                 "acts" : [
                 {
                     "abbreviation": "VP",
-                    "code": "9049"
-                    "fee":098.10
+                    "code": "9049",
+                    "fee":98.10,
                     "actDescription" : ""
                 }]
             }]
