@@ -7,45 +7,6 @@
 
 import SwiftUI
 
-class ActCodeGenerator: ObservableObject {
-    @Published var database = RAMQActDatabase(version: "", dateRevision: "", actDatabase: [])
-    
-    init(){
-        self.fetchJSON{ error in
-            if let error = error {
-                print(error)
-            }
-        }
-    }
-    
-    
-    func fetchJSON(completionHandler: @escaping (Error?) -> Void) {
-        //JSON file is on disk. Open it and import
-        let jsonFile = "ramqDB"
-        
-        //Get file URL from directory on disk
-        guard let url = Bundle.main.url(forResource: jsonFile, withExtension: "json") else {
-            fatalError("Failed to located json file on disk")
-        }
-        
-        // get a data representation of JSON
-        guard let data = try? Data(contentsOf: url) else {
-            fatalError("Failed to load file to data from Bundle")
-        }
-        
-        // Decode JSON and import it
-        do {
-            // Decode JSON into codable type
-            let ramqDB = try JSONDecoder().decode(RAMQActDatabase.self, from: data)
-            database = ramqDB
-        } catch {
-            // Alert user data not digested
-            completionHandler(error)
-            return
-        }
-    }
-}
-
 struct ActCodePicker: View {
     
     @ObservedObject private var model: AddActViewModel
