@@ -8,13 +8,6 @@
 import SwiftUI
 
 struct ActCodePicker: View {
-    var codeOptions: [BillCodeElement] = ["HPB", "ICM", "MGH", "GHJ", "FSDF"].map{BillCodeElement(code: $0)}
-    @State var selectedOption: [String] = []
-    
-    let rows = [GridItem(.fixed(20)),
-                GridItem(.fixed(20)),
-                GridItem(.fixed(20)),
-    ]
     
     var body: some View {
         HStack(alignment: .top){
@@ -23,13 +16,30 @@ struct ActCodePicker: View {
     }
 }
 
-struct ramqAct{
-    var inOutPatient: String
-    var building: String
-    var actCategory: String
-    var actType: String
+struct ramqAct: Codable {
+    var id = UUID()
+    var abbreviation: String
     var code: String
     var fee: Double
+    var actDescription: String
+}
+
+struct actCategory: Codable {
+    var id = UUID()
+    var abbreviation: String
+    var acts: [ramqAct]
+}
+
+struct actLocation: Codable {
+    var id = UUID()
+    var location: String
+    var categories: [actCategory]
+}
+
+struct ramqActDatabase: Codable {
+    var version: String
+    var dateRevision: String
+    var actDatabase: [actLocation]
 }
 
 enum InOutPatient { case inPatient, outPatient }
@@ -37,11 +47,6 @@ enum Building { case hospital, cabinetOutpt, urgence, cliniExt, autres }
 enum ActCategory { case rout, miee, crit, opat, iNoso, transf, prophylaxis, outbreak, expoBio }
 enum ActType { case vp, vc, c, vt, tw, planif, eval, eMajj1, eMajjsubseq }
 
-
-struct BillCodeElement: Identifiable, Hashable {
-    var id = UUID()
-    var code: String
-}
 
 struct ActCodePicker_Previews: PreviewProvider {
     static var previews: some View {
