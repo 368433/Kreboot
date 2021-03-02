@@ -17,7 +17,7 @@ struct ActCodePicker: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("Code finder".uppercased()).font(.caption2)
+            Text("Code finder").smallHeader()
             Divider()
             // TODO: implement with generics
             ForEach(model.database.actDatabase){location in
@@ -34,7 +34,10 @@ struct ActCodePicker: View {
             // Category buttons
             if let location = model.actLocation {
                 ForEach(location.actCategories){category in
-                    Button(action: {model.actCategory = category}){
+                    Button(action: {
+                        model.actCategory = category
+                        model.ramqAct = nil
+                    }){
                         Text(category.abbreviation)
                             .billCodePicker(comparison: model.actCategory == category)
                     }
@@ -51,6 +54,15 @@ struct ActCodePicker: View {
                     }
                 }.HScrollEmbeded()
             }
+            if let act = model.ramqAct, !act.actDescription.isEmpty {
+                Divider()
+                Text("Description").smallHeader()
+                ScrollView{
+                    Text(act.actDescription)
+                        .foregroundColor(.secondary)
+                        .font(.footnote)
+                }.frame(maxHeight: 150)
+            }
         }
         .padding()
         .overlay(RoundedRectangle(cornerRadius: Karla.cornerRadius)
@@ -60,7 +72,7 @@ struct ActCodePicker: View {
 
 struct HScroll: ViewModifier {
     func body(content: Content) -> some View {
-        ScrollView(.horizontal){
+        ScrollView(.horizontal, showsIndicators: false){
             HStack{
                 content
             }
@@ -74,14 +86,24 @@ extension View {
 }
 
 extension Text {
+    func smallHeader() -> some View{
+        self
+            .textCase(.uppercase)
+            .font(.caption2)
+            .foregroundColor(Color(UIColor.systemGray2))
+    }
+}
+
+extension Text {
     func billCodePicker(comparison: Bool) -> some View {
         self
             .lineLimit(1)
-            .font(.subheadline)
+            .font(.footnote)
             .foregroundColor(comparison ? Color.white:Color.secondary)
             .padding(6)
             .background(comparison ? Color.blue:Color.clear)
             .clipShape(Capsule())
+            .overlay(Capsule().strokeBorder(comparison ? Color.clear:Color(UIColor.systemGray5)))
     }
 }
 
