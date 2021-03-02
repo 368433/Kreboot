@@ -44,7 +44,7 @@ struct ListFormView: View {
                     VStack(alignment: .leading){
                         Text("List title".uppercased()).foregroundColor(.secondary).font(.caption)
                         TextField("", text: $viewModel.title)
-                            .borderedK(show: $textfieldsSelected)
+                            .borderedK(text: $viewModel.title, show: $textfieldsSelected)
                             .onTapGesture {
                                 self.textfieldsSelected = true
                                 self.descriptionSelected = false
@@ -61,7 +61,7 @@ struct ListFormView: View {
                             .foregroundColor(.secondary).font(.caption)
                         TextEditor(text: $viewModel.listDescription)
                             .frame(height: 120)
-                            .borderedK(show: $descriptionSelected)
+                            .borderedK(text: $viewModel.listDescription, show: $descriptionSelected)
                             .font(.callout)
                             .onTapGesture {
                                 self.descriptionSelected = true

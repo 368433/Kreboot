@@ -32,7 +32,7 @@ struct ActFormView: View {
             
             VStack{
                 TextField("Code", text: $model.actCode)
-                    .borderedK(show: $searchCodeSelecte)
+                    .borderedK(text: $model.actCode, show: $searchCodeSelecte)
                     .onTapGesture {
                         searchCodeSelecte.toggle()
                     }
