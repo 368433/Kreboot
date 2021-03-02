@@ -22,17 +22,17 @@ class ActCodeGenerator: ObservableObject {
     func fetchJSON(completionHandler: @escaping (Error?) -> Void) {
         //JSON file is on disk. Open it and import
         let jsonFile = "ramqDB"
-
+        
         //Get file URL from directory on disk
         guard let url = Bundle.main.url(forResource: jsonFile, withExtension: "json") else {
             fatalError("Failed to located json file on disk")
         }
-
-         // get a data representation of JSON
+        
+        // get a data representation of JSON
         guard let data = try? Data(contentsOf: url) else {
             fatalError("Failed to load file to data from Bundle")
         }
-
+        
         // Decode JSON and import it
         do {
             // Decode JSON into codable type
@@ -43,74 +43,78 @@ class ActCodeGenerator: ObservableObject {
             completionHandler(error)
             return
         }
-
     }
 }
 
 struct ActCodePicker: View {
     
-    @ObservedObject private var model = ActCodeGenerator()
-    @State private var actLocation: ActLocation?
-    @State private var actCategory: ActCategory?
-    @State private var ramqAct: RAMQAct?
+    @ObservedObject private var model: AddActViewModel
     
-    init(){
-//        self.actLocation = model.database.actDatabase.first
+    init(model: AddActViewModel){
+        self.model = model
     }
     
     var body: some View {
         VStack{
             // TODO: implement with generics
-            ScrollView(.horizontal){
-                HStack{
-                    Spacer()
-                    ForEach(model.database.actDatabase){location in
-                        Button(action: {actLocation = location}){
-                            Text(location.location)
-                                .lineLimit(1)
-                                .padding(6)
-                                .overlay(RoundedRectangle(cornerRadius: 30)
-                                            .stroke(actLocation == location ? Color.black:Color.clear))
-                        }
-                    }
-                    Spacer()
+            ForEach(model.database.actDatabase){location in
+                Button(action: {
+                    model.actLocation = location
+                    model.actCategory = nil
+                    model.ramqAct = nil
+                }){
+                    Text(location.location)
+                        .billCodePicker(comparison: model.actLocation == location)
                 }
-            }
+            }.HScrollEmbeded()
             
             // Category buttons
-            if let location = actLocation {
-                HStack{
-                    Spacer()
-                    ForEach(location.actCategories){category in
-                        Button(action: {actCategory = category}){
-                            Text(category.abbreviation)
-                                .padding(6)
-                                .overlay(RoundedRectangle(cornerRadius: 20)
-                                            .stroke(actCategory == category ? Color.black:Color.clear))
-                        }
+            if let location = model.actLocation {
+                ForEach(location.actCategories){category in
+                    Button(action: {model.actCategory = category}){
+                        Text(category.abbreviation)
+                            .billCodePicker(comparison: model.actCategory == category)
                     }
-                    Spacer()
-                }
+                }.HScrollEmbeded()
             }
-            if let category = actCategory {
-                HStack{
-                    Spacer()
-                    ForEach(category.acts){act in
-                        Button(action: {ramqAct = act}){
-                            Text(act.abbreviation)
-                                .padding(6)
-                                .overlay(RoundedRectangle(cornerRadius: 20)
-                                            .stroke(ramqAct == act ? Color.black:Color.clear))
-                        }
+            if let category = model.actCategory {
+                ForEach(category.acts){act in
+                    Button(action: {model.ramqAct = act}){
+                        Text(act.abbreviation)
+                            .billCodePicker(comparison: model.ramqAct == act)
                     }
-                    Spacer()
-                }
+                }.HScrollEmbeded()
             }
         }
-        .animation(.default)
     }
 }
 
+struct HScroll: ViewModifier {
+    func body(content: Content) -> some View {
+        ScrollView(.horizontal){
+            HStack{
+                content
+            }
+        }
+    }
+}
+extension View {
+    func HScrollEmbeded() -> some View {
+        self.modifier(HScroll())
+    }
+}
+
+extension Text {
+    func billCodePicker(comparison: Bool) -> some View {
+        self
+            .font(.subheadline)
+            .lineLimit(1)
+            .padding(5)
+            .overlay(RoundedRectangle(cornerRadius: 20)
+                        .stroke(comparison ? Color.black:Color.clear))
+            .padding(2)
+    }
+}
 
 struct RAMQAct: Codable, Identifiable, Hashable {
     enum CodingKeys: CodingKey{
@@ -135,9 +139,6 @@ struct ActCategory: Codable, Identifiable, Hashable {
 }
 
 struct ActLocation: Codable, Identifiable, Hashable {
-    static func == (lhs: ActLocation, rhs: ActLocation) -> Bool {
-        lhs.location == rhs.location
-    }
     
     enum CodingKeys: CodingKey{
         case location, actCategories
@@ -162,6 +163,6 @@ enum ActType { case vp, vc, c, vt, tw, planif, eval, eMajj1, eMajjsubseq }
 
 struct ActCodePicker_Previews: PreviewProvider {
     static var previews: some View {
-        ActCodePicker()
+        ActCodePicker(model: AddActViewModel(act: nil, episode: nil))
     }
 }

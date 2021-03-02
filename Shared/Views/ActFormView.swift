@@ -44,7 +44,7 @@ struct ActFormView: View {
                     searchCodeSelecte.toggle()
                 }
             
-            ActCodePicker()
+            ActCodePicker(model: model)
             
             TextField("Search physician db", text: $model.historyNote)
             TextField("Manual entry", text: $model.consultingPhysician)
