@@ -7,16 +7,69 @@
 
 import SwiftUI
 
-struct ActCodePicker: View {
+class ActCodeGenerator: ObservableObject {
+//    @Published var database: RAMQActDatabase
+    @Published var database: TestJSON
     
-    var body: some View {
-        HStack(alignment: .top){
-            
+    init(){
+//        self.database = RAMQActDatabase(version: 0, dateRevision: "", actDatabase: [])
+        self.database = TestJSON(type: "", coordinates: "")
+        self.fetchJSON{ error in
+            if let error = error {
+                print(error)
+            }
         }
+    }
+    
+    
+    func fetchJSON(completionHandler: @escaping (Error?) -> Void) {
+        //JSON file is on disk. Open it and import
+//        let jsonFile = "ramqDB"
+        let jsonFile = "Directions"
+        
+        //Get file URL from directory on disk
+        guard let url = Bundle.main.url(forResource: jsonFile, withExtension: ".json") else {
+            fatalError("Failed to located json file on disk")
+        }
+         // get a data representation of JSON
+        guard let data = try? Data(contentsOf: url) else {
+            fatalError("Failed to load file to data from Bundle")
+        }
+        
+        // Decode JSON and import it
+        do {
+            // Decode JSON into codable type
+            let ramqDB = try JSONDecoder().decode(TestJSON.self, from: data)
+            database = ramqDB
+        } catch {
+            // Alert user data not digested
+            completionHandler(error)
+            return
+        }
+
     }
 }
 
-struct ramqAct: Codable {
+struct ActCodePicker: View {
+    
+    @ObservedObject private var model = ActCodeGenerator()
+    
+    var body: some View {
+        Text(model.database.type)
+//        List{
+//            ForEach(model.database.actDatabase){ location in
+//                Text(location.location)
+//            }
+//        }
+    }
+}
+
+struct TestJSON: Codable {
+    var type: String
+    var coordinates : String
+}
+
+struct RAMQAct: Codable, Identifiable {
     var id = UUID()
     var abbreviation: String
     var code: String
@@ -24,27 +77,27 @@ struct ramqAct: Codable {
     var actDescription: String
 }
 
-struct actCategory: Codable {
+struct ActCategory: Codable, Identifiable {
     var id = UUID()
     var abbreviation: String
-    var acts: [ramqAct]
+    var acts: [RAMQAct]
 }
 
-struct actLocation: Codable {
+struct ActLocation: Codable, Identifiable {
     var id = UUID()
     var location: String
-    var categories: [actCategory]
+    var actCategories: [ActCategory]
 }
 
-struct ramqActDatabase: Codable {
-    var version: String
+struct RAMQActDatabase: Codable {
+    var version: Double
     var dateRevision: String
-    var actDatabase: [actLocation]
+    var actDatabase: [ActLocation]
 }
 
 enum InOutPatient { case inPatient, outPatient }
 enum Building { case hospital, cabinetOutpt, urgence, cliniExt, autres }
-enum ActCategory { case rout, miee, crit, opat, iNoso, transf, prophylaxis, outbreak, expoBio }
+//enum ActCategory { case rout, miee, crit, opat, iNoso, transf, prophylaxis, outbreak, expoBio }
 enum ActType { case vp, vc, c, vt, tw, planif, eval, eMajj1, eMajjsubseq }
 
 
