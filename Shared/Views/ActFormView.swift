@@ -23,7 +23,7 @@ struct ActFormView: View {
         VStack (alignment: .leading){
             HStack{
                 Spacer()
-                Button(action: saveAndDismiss){Text("Done").fontWeight(.bold)}
+                Button(action: saveAndDismiss){Text("Done").fontWeight(.bold)}.disabled(model.actCode.isEmpty)
             }
             Text("Act Form").font(.largeTitle).fontWeight(.heavy)
             

@@ -133,9 +133,9 @@ struct daysCountView: View {
     var body: some View {
         
         VStack(spacing: 0){
-            Text("\(dayCount)d").fontWeight(.ultraLight).lineLimit(1)
-            Text(dayLabel).font(.caption2).fontWeight(.ultraLight)
-        }
+            Text("\(dayCount)d").fontWeight(.light).lineLimit(1)
+            Text(dayLabel).font(.caption2).fontWeight(.light)
+        }.foregroundColor(Color(UIColor.lightGray))
     }
 }
 
