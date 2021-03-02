@@ -58,31 +58,15 @@ struct MedicalEpisodeFormView: View {
                     Section(header: HStack{
                         Text("Acts")
                         Spacer()
-                        Button(action: {
-                                withAnimation{
-                                    self.showaddActForm.toggle()
-                                }}){Image(systemName: "plus.circle").font(.title2)}
+                        Button(action: {showaddActForm.toggle()}){Image(systemName: "plus.circle").font(.title2)}
                     }, content: {
                         ForEach(model.acts){act in
                             MedicalActRow(act: act)
                         }.onDelete(perform: model.remove)
                     })
                 }
-                
-                if showaddActForm{
-                    VisualEffectBlur(blurStyle: .systemMaterial)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            showaddActForm.toggle()
-                        }
-                    GeometryReader{ gp in
-                        ActFormView(for: nil, in: model.episode, isShowing: $showaddActForm)
-                            .frame(maxHeight: gp.size.height * 0.7)
-                            .background(Color(UIColor.tertiarySystemGroupedBackground))
-                            .cornerRadius(Karla.cornerRadius)
-                            .shadow(radius: 10)
-                            .padding()
-                    }
+                .sheet(isPresented: $showaddActForm) {
+                    ActFormView(for: nil, in: model.episode, isShowing: $showaddActForm)
                 }
             }
             .onAppear{model.setValues()}
